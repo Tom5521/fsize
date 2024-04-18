@@ -18,7 +18,7 @@ type File struct {
 	IsDir   bool
 
 	// IsDir vars
-	FileNumber int64
+	FilesNumber int64
 }
 
 func Read(path string) (File, error) {
@@ -38,15 +38,18 @@ func Read(path string) (File, error) {
 	}
 
 	f.Size = finfo.Size()
-	if finfo.IsDir() {
+	if finfo.IsDir() && !*NoWalk {
 		err = filepath.Walk(path, func(_ string, info fs.FileInfo, err error) error {
 			if err != nil {
 				messages.Warning(err)
 				return nil
 			}
+			if *PrintOnWalk {
+				messages.Infof("Reading \"%s\"...", info.Name())
+			}
 
 			f.Size += info.Size()
-			f.FileNumber++
+			f.FilesNumber++
 
 			return nil
 		})

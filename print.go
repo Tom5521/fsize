@@ -16,7 +16,7 @@ func Print(f File) {
 	makePrint("Is directory:", f.IsDir)
 
 	if f.IsDir {
-		makePrint("Number of files:", f.FileNumber)
+		makePrint("Number of files:", f.FilesNumber)
 	}
 }
 

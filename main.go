@@ -1,21 +1,23 @@
 package main
 
 import (
-	"os"
+	"flag"
 
-	"github.com/Tom5521/GoNotes/pkg/messages"
+	msg "github.com/Tom5521/GoNotes/pkg/messages"
 )
 
 func main() {
-	var file File
-	var err error
-	if len(os.Args) == 1 {
-		messages.Warning("No file was specified, the current directory will be used. (.)")
-		file, err = Read(".")
+	flag.Parse()
+	files := flag.Args()
+	if len(files) == 0 {
+		msg.Warning("No file/directory was specified, the current directory will be used. (.)")
+		files = append(files, ".")
 	}
-	file, err = Read(os.Args[1])
-	if err != nil {
-		messages.FatalError(err)
+	for _, f := range files {
+		file, err := Read(f)
+		if err != nil {
+			msg.FatalError(err)
+		}
+		Print(file)
 	}
-	Print(file)
 }
