@@ -15,7 +15,7 @@ func Print(f File) {
 	makePrint("Date Modified:", f.ModTime.Format(time.DateTime))
 	makePrint("Is directory:", f.IsDir)
 
-	if f.IsDir {
+	if f.IsDir && !*NoWalk {
 		makePrint("Number of files:", f.FilesNumber)
 	}
 }
