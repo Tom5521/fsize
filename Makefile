@@ -11,3 +11,5 @@ release:
 	GOOS=darwin GOARCH=arm64 go build -v -o builds/fsize-darwin-arm64
 build:
 	go build -v
+clean:
+	rm -rf builds
