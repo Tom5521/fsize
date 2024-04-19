@@ -14,7 +14,7 @@ func Print(f File) {
 	makePrint("Absolute Path:", f.AbsPath)
 	makePrint("Date Modified:", f.ModTime.Format(time.DateTime))
 	makePrint("Is directory:", f.IsDir)
-
+	makePrint("Permissions:", fmt.Sprintf("%v/%v", int(f.Perms), f.Perms))
 	if f.IsDir && !*NoWalk {
 		makePrint("Number of files:", f.FilesNumber)
 	}

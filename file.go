@@ -16,6 +16,7 @@ type File struct {
 	AbsPath string
 	ModTime time.Time
 	IsDir   bool
+	Perms   fs.FileMode
 
 	// IsDir vars
 	FilesNumber int64
@@ -39,13 +40,13 @@ func Read(path string) (File, error) {
 
 	f.Size = finfo.Size()
 	if finfo.IsDir() && !*NoWalk {
-		err = filepath.Walk(path, func(_ string, info fs.FileInfo, err error) error {
+		err = filepath.Walk(path, func(name string, info fs.FileInfo, err error) error {
 			if err != nil {
 				messages.Warning(err)
 				return nil
 			}
 			if *PrintOnWalk {
-				messages.Infof("Reading \"%s\"...", info.Name())
+				messages.Infof("Reading \"%s\"...", name)
 			}
 
 			f.Size += info.Size()
@@ -61,6 +62,7 @@ func Read(path string) (File, error) {
 	f.Name = finfo.Name()
 	f.IsDir = finfo.IsDir()
 	f.ModTime = finfo.ModTime()
+	f.Perms = finfo.Mode().Perm()
 	f.AbsPath = absPath
 
 	return f, nil
