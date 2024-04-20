@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/Tom5521/GoNotes/pkg/messages"
+	msg "github.com/Tom5521/GoNotes/pkg/messages"
 	"github.com/schollz/progressbar/v3"
 )
 
@@ -43,12 +43,12 @@ func Read(path string) (File, error) {
 	f.Size = finfo.Size()
 
 	if *ProgressBar && finfo.IsDir() && !*NoWalk {
-		fmt.Println("Counting the amount of files...")
+		msg.Info("Counting the amount of files...")
 		var fileNumber int64
 		var files []string
 		err = filepath.Walk(path, func(name string, _ fs.FileInfo, err error) error {
 			if err != nil {
-				messages.Warning(err)
+				msg.Warning(err)
 				return nil
 			}
 			fileNumber++
@@ -59,7 +59,7 @@ func Read(path string) (File, error) {
 		if err != nil {
 			return f, err
 		}
-		messages.Info("Calculating total size...")
+		msg.Info("Calculating total size...")
 		f.FilesNumber = fileNumber
 		bar := progressbar.Default(fileNumber)
 		for _, file := range files {
@@ -74,11 +74,11 @@ func Read(path string) (File, error) {
 	} else if finfo.IsDir() && !*NoWalk {
 		err = filepath.Walk(path, func(name string, info fs.FileInfo, err error) error {
 			if err != nil {
-				messages.Warning(err)
+				msg.Warning(err)
 				return nil
 			}
 			if *PrintOnWalk {
-				messages.Infof("Reading \"%s\"...", name)
+				msg.Infof("Reading \"%s\"...", name)
 			}
 
 			f.Size += info.Size()
