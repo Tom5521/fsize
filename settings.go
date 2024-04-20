@@ -13,12 +13,14 @@ const (
 	AlwaysPrintOnWalk  = "AlwaysPrintOnWalk"
 	AlwaysSkipWalk     = "AlwaysSkipWalk"
 	AlwaysShowProgress = "AlwaysShowProgress"
+	HideWarnings       = "HideWarnings"
 )
 
 var Keys = []string{
 	AlwaysPrintOnWalk,
 	AlwaysSkipWalk,
 	AlwaysShowProgress,
+	HideWarnings,
 }
 
 var Settings conf.Preferences

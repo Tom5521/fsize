@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 
+	msg "github.com/Tom5521/GoNotes/pkg/messages"
 	"github.com/gookit/color"
 	cbytes "github.com/labstack/gommon/bytes"
 )
@@ -22,11 +23,18 @@ func Print(f File) {
 
 func PrintSettings() {
 	printSetting := func(key string) {
-		makePrint(key, Settings.Read(key))
+		makePrint(key+":", Settings.Read(key))
 	}
-	printSetting(AlwaysShowProgress)
-	printSetting(AlwaysSkipWalk)
-	printSetting(AlwaysPrintOnWalk)
+	for _, s := range Keys {
+		printSetting(s)
+	}
+}
+
+func Warning(warn ...any) {
+	if NoWarns {
+		return
+	}
+	msg.Warning(warn...)
 }
 
 func makePrint(title string, content ...any) {

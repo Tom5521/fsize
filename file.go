@@ -48,7 +48,7 @@ func Read(path string) (File, error) {
 		var files []string
 		err = filepath.Walk(path, func(name string, _ fs.FileInfo, err error) error {
 			if err != nil {
-				msg.Warning(err)
+				Warning(err)
 				return nil
 			}
 			fileNumber++
@@ -56,6 +56,7 @@ func Read(path string) (File, error) {
 			fmt.Printf("%v files found...\r", fileNumber)
 			return nil
 		})
+		fmt.Print("\n")
 		if err != nil {
 			return f, err
 		}
@@ -74,7 +75,7 @@ func Read(path string) (File, error) {
 	} else if finfo.IsDir() && !NoWalk {
 		err = filepath.Walk(path, func(name string, info fs.FileInfo, err error) error {
 			if err != nil {
-				msg.Warning(err)
+				Warning(err)
 				return nil
 			}
 			if PrintOnWalk {

@@ -27,7 +27,7 @@ func main() {
 	}
 	files := flag.Args()
 	if len(files) == 0 {
-		msg.Warning("No file/directory was specified, the current directory will be used. (.)")
+		Warning("No file/directory was specified, the current directory will be used. (.)")
 		files = append(files, ".")
 	}
 	for _, f := range files {

@@ -6,6 +6,7 @@ var (
 	PrintOnWalk bool
 	NoWalk      bool
 	Progress    bool
+	NoWarns     bool
 
 	PrintSettingsFlag bool
 	SettingsFlag      string
@@ -27,6 +28,11 @@ Example: "fsize --config 'AlwaysShowProgress=true;AlwaysPrintOnWalk=false'".
 
 To see the available variables and their values run "fsize --print-settings".`,
 	)
-	flag.BoolVar(&PrintSettingsFlag, "print-settings", false, "")
+	flag.BoolVar(&PrintSettingsFlag, "print-settings", false,
+		"Prints the current configuration values.",
+	)
+	flag.BoolVar(&NoWarns, "no-warns", Settings.Bool(HideWarnings),
+		"Hide possible warnings.",
+	)
 	flag.Parse()
 }
