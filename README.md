@@ -10,9 +10,7 @@ The project is focused to be simple and easy to read,
 so don't expect very advanced functions, but I will probably
 add more according to my needs.
 
-## Screenshots
-
-![screenshot1](./screenshots/sc1.png)
+[![asciicast](https://asciinema.org/a/655455.svg)](https://asciinema.org/a/655455)
 
 ## Install
 
