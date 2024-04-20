@@ -42,7 +42,7 @@ func Read(path string) (File, error) {
 
 	f.Size = finfo.Size()
 
-	if *ProgressBar && finfo.IsDir() && !*NoWalk {
+	if Progress && finfo.IsDir() && !NoWalk {
 		msg.Info("Counting the amount of files...")
 		var fileNumber int64
 		var files []string
@@ -71,13 +71,13 @@ func Read(path string) (File, error) {
 			f.Size += info.Size()
 			bar.Add(1)
 		}
-	} else if finfo.IsDir() && !*NoWalk {
+	} else if finfo.IsDir() && !NoWalk {
 		err = filepath.Walk(path, func(name string, info fs.FileInfo, err error) error {
 			if err != nil {
 				msg.Warning(err)
 				return nil
 			}
-			if *PrintOnWalk {
+			if PrintOnWalk {
 				msg.Infof("Reading \"%s\"...", name)
 			}
 

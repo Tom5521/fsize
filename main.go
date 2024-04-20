@@ -7,7 +7,24 @@ import (
 )
 
 func main() {
-	flag.Parse()
+	err := LoadSettings()
+	if err != nil {
+		msg.Error(err)
+	}
+	InitFlags()
+	if SettingsFlag != "" {
+		err = ParseSettings(SettingsFlag)
+		if err != nil {
+			msg.Error(err)
+			msg.Info("Available configuration keys:")
+			PrintSettings()
+		}
+		return
+	}
+	if PrintSettingsFlag {
+		PrintSettings()
+		return
+	}
 	files := flag.Args()
 	if len(files) == 0 {
 		msg.Warning("No file/directory was specified, the current directory will be used. (.)")

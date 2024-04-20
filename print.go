@@ -15,9 +15,18 @@ func Print(f File) {
 	makePrint("Date Modified:", f.ModTime.Format(time.DateTime))
 	makePrint("Is directory:", f.IsDir)
 	makePrint("Permissions:", fmt.Sprintf("%v/%v", int(f.Perms), f.Perms))
-	if f.IsDir && !*NoWalk {
+	if f.IsDir && !NoWalk {
 		makePrint("Number of files:", f.FilesNumber)
 	}
+}
+
+func PrintSettings() {
+	printSetting := func(key string) {
+		makePrint(key, Settings.Read(key))
+	}
+	printSetting(AlwaysShowProgress)
+	printSetting(AlwaysSkipWalk)
+	printSetting(AlwaysPrintOnWalk)
 }
 
 func makePrint(title string, content ...any) {
