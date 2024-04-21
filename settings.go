@@ -51,6 +51,7 @@ func ParseSettings(optionsStr string) error {
 		for _, k := range Keys {
 			if k == key {
 				exists = true
+				break
 			}
 		}
 		if !exists {
