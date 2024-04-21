@@ -17,7 +17,7 @@ add more according to my needs.
 You can install it running
 
 ```bash
-go install -v github.com/Tom5521/fsize@latest
+go install -v github.com/Tom5521/fsize@v1.4.0
 ```
 
 Or by copying one of the
