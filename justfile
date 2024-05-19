@@ -13,3 +13,5 @@ build:
   go build -v
 clean:
   rm -rf builds
+install:
+  go install -v github.com/Tom5521/fsize@latest
