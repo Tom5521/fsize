@@ -33,7 +33,8 @@ func PrintSettings() {
 				s = color.Red.Render(s)
 			}
 		}
-		makePrint(key+":", s)
+		fmt.Print(key + ": ")
+		fmt.Println(s)
 	}
 	for _, s := range Keys {
 		printSetting(s)
@@ -48,6 +49,6 @@ func Warning(warn ...any) {
 }
 
 func makePrint(title string, content ...any) {
-	fmt.Print(title + " ")
+	color.Green.Print(title + " ")
 	fmt.Println(content...)
 }
