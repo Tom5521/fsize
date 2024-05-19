@@ -34,9 +34,9 @@ func LoadSettings() error {
 	return nil
 }
 
-func ParseSettings(optionsStr string) error {
-	options := strings.Split(optionsStr, ";")
-	for _, option := range options {
+func ParseSettings(optionsArgs []string) error {
+	//options := strings.Split(optionsArgs, ";")
+	for _, option := range optionsArgs {
 		data := strings.SplitN(option, "=", 2)
 		if len(data) != 2 {
 			return errors.New("syntax error")

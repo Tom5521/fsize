@@ -23,7 +23,17 @@ func Print(f File) {
 
 func PrintSettings() {
 	printSetting := func(key string) {
-		makePrint(key+":", Settings.Read(key))
+		s := Settings.Read(key)
+		_, isBool := s.(bool)
+		if isBool {
+			switch s {
+			case true:
+				s = color.Green.Render(s)
+			default:
+				s = color.Red.Render(s)
+			}
+		}
+		makePrint(key+":", s)
 	}
 	for _, s := range Keys {
 		printSetting(s)
@@ -38,6 +48,6 @@ func Warning(warn ...any) {
 }
 
 func makePrint(title string, content ...any) {
-	color.Green.Print(title + " ")
+	fmt.Print(title + " ")
 	fmt.Println(content...)
 }
