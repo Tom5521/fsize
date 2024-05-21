@@ -43,32 +43,4 @@ func main() {
 	if err != nil {
 		msg.FatalError(err)
 	}
-	/*
-		InitFlags()
-		if SettingsFlag != "" {
-			err = ParseSettings(SettingsFlag)
-			if err != nil {
-				msg.Error(err)
-				msg.Info("Available configuration keys:")
-				PrintSettings()
-			}
-			return
-		}
-		if PrintSettingsFlag {
-			PrintSettings()
-			return
-		}
-		files := flag.Args()
-		if len(files) == 0 {
-			Warning("No file/directory was specified, the current directory will be used. (.)")
-			files = append(files, ".")
-		}
-		for _, f := range files {
-			file, err := Read(f)
-			if err != nil {
-				msg.FatalError(err)
-			}
-			Print(file)
-		}
-	*/
 }
