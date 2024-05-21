@@ -14,7 +14,7 @@ func main() {
 	root.RunE = func(cmd *cobra.Command, args []string) error {
 		root.PersistentFlags().Parse(args)
 		if len(SettingsFlag) != 0 {
-			err := ParseSettings(SettingsFlag)
+			err = ParseSettings(SettingsFlag)
 			if err != nil {
 				msg.Info("Available configuration keys:")
 				PrintSettings()
