@@ -8,39 +8,44 @@ import (
 func main() {
 	err := LoadSettings()
 	if err != nil {
-		msg.Error(err)
+		return
 	}
 	InitFlags()
-	root.RunE = func(cmd *cobra.Command, args []string) error {
-		root.PersistentFlags().Parse(args)
-		if len(SettingsFlag) != 0 {
-			err = ParseSettings(SettingsFlag)
-			if err != nil {
-				msg.Info("Available configuration keys:")
-				PrintSettings()
-			}
-			return err
-		}
-		if PrintSettingsFlag {
-			PrintSettings()
-			return nil
-		}
-
-		if len(args) == 0 {
-			Warning("No file/directory was specified, the current directory will be used. (.)")
-			args = append(args, ".")
-		}
-		for _, f := range args {
-			file, err := Read(f)
-			if err != nil {
-				return err
-			}
-			Print(file)
-		}
-		return nil
-	}
 	err = root.Execute()
 	if err != nil {
 		msg.FatalError(err)
 	}
+}
+
+func RunE(cmd *cobra.Command, args []string) (err error) {
+	err = cmd.PersistentFlags().Parse(args)
+	if err != nil {
+		return err
+	}
+	if len(SettingsFlag) != 0 {
+		err = ParseSettings(SettingsFlag)
+		if err != nil {
+			msg.Info("Available configuration keys:")
+			PrintSettings()
+		}
+		return err
+	}
+	if PrintSettingsFlag {
+		PrintSettings()
+		return nil
+	}
+
+	if len(args) == 0 {
+		Warning("No file/directory was specified, the current directory will be used. (.)")
+		args = append(args, ".")
+	}
+	for _, f := range args {
+		var file File
+		file, err = Read(f)
+		if err != nil {
+			return err
+		}
+		Print(file)
+	}
+	return nil
 }

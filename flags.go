@@ -8,6 +8,7 @@ var (
 	root = cobra.Command{
 		Use:   "fsize",
 		Short: "Displays the file/folder properties.",
+		RunE:  RunE,
 	}
 
 	PrintOnWalk bool
@@ -20,18 +21,17 @@ var (
 )
 
 func InitFlags() {
-	flag := root.PersistentFlags()
-
+	flag := root.Flags()
 	flag.BoolVar(&PrintOnWalk, "print-on-walk", Settings.Bool(AlwaysPrintOnWalk),
 		"Prints the name of the file being walked if a directory has been selected.",
 	)
 	flag.BoolVar(&NoWalk, "no-walk", Settings.Bool(AlwaysSkipWalk),
 		"Skips walking inside the directories.",
 	)
-	flag.BoolVar(&Progress, "progress", Settings.Bool(AlwaysShowProgress),
+	flag.BoolVarP(&Progress, "progress", "p", Settings.Bool(AlwaysShowProgress),
 		"Displays a file count and progress bar when counting and summing file sizes.",
 	)
-	flag.StringSliceVar(&SettingsFlag, "config", []string{},
+	flag.StringSliceVarP(&SettingsFlag, "config", "c", []string{},
 		`Configure the variables used for preferences
 		Example: "fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'".
 

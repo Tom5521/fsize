@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 	"time"
 
 	msg "github.com/Tom5521/GoNotes/pkg/messages"
@@ -18,6 +19,11 @@ func Print(f File) {
 	makePrint("Permissions:", fmt.Sprintf("%v/%v", int(f.Perms), f.Perms))
 	if f.IsDir && !NoWalk {
 		makePrint("Number of files:", f.FilesNumber)
+	}
+
+	if runtime.GOOS == "linux" {
+		makePrint("UID/Name:", fmt.Sprintf("%v/%v", f.User.Uid, f.User.Username))
+		makePrint("GID/Name:", fmt.Sprintf("%v/%v", f.Group.Gid, f.Group.Name))
 	}
 }
 

@@ -4,7 +4,10 @@ import (
 	"fmt"
 	"io/fs"
 	"os"
+	"os/user"
 	"path/filepath"
+	"strconv"
+	"syscall"
 	"time"
 
 	msg "github.com/Tom5521/GoNotes/pkg/messages"
@@ -20,27 +23,26 @@ type File struct {
 	IsDir   bool
 	Perms   fs.FileMode
 
+	Group *user.Group
+	User  *user.User
+
 	// IsDir vars
 	FilesNumber int64
 }
 
-func Read(path string) (File, error) {
-	var f File
-
-	ofile, err := os.Open(path)
+func Read(path string) (f File, err error) {
+	var (
+		finfo   os.FileInfo
+		absPath string
+	)
+	_, finfo, absPath, err = BasicFileInfo(path)
 	if err != nil {
-		return f, err
+		return
 	}
-	finfo, err := ofile.Stat()
+	f, err = BasicFile(finfo, absPath)
 	if err != nil {
-		return f, err
+		return
 	}
-	absPath, err := filepath.Abs(path)
-	if err != nil {
-		return f, err
-	}
-
-	f.Size = finfo.Size()
 
 	if Progress && finfo.IsDir() && !NoWalk {
 		msg.Info("Counting the amount of files...")
@@ -92,11 +94,44 @@ func Read(path string) (File, error) {
 		}
 	}
 
+	return f, nil
+}
+
+func BasicFile(finfo os.FileInfo, absPath string) (f File, err error) {
+	f.Size = finfo.Size()
 	f.Name = finfo.Name()
 	f.IsDir = finfo.IsDir()
 	f.ModTime = finfo.ModTime()
 	f.Perms = finfo.Mode().Perm()
 	f.AbsPath = absPath
 
-	return f, nil
+	// Only on linux.
+	if stat, ok := finfo.Sys().(*syscall.Stat_t); ok {
+		f.User, err = user.LookupId(strconv.Itoa(int(stat.Uid)))
+		if err != nil {
+			return
+		}
+		f.Group, err = user.LookupGroupId(strconv.Itoa(int(stat.Gid)))
+		if err != nil {
+			return
+		}
+	}
+
+	return
+}
+
+func BasicFileInfo(name string) (file *os.File, stat os.FileInfo, abspath string, err error) {
+	file, err = os.Open(name)
+	if err != nil {
+		return
+	}
+	stat, err = file.Stat()
+	if err != nil {
+		return
+	}
+	abspath, err = filepath.Abs(name)
+	if err != nil {
+		return
+	}
+	return
 }

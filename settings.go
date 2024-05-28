@@ -25,8 +25,7 @@ var Keys = []string{
 
 var Settings conf.Preferences
 
-func LoadSettings() error {
-	var err error
+func LoadSettings() (err error) {
 	Settings, err = conf.New("fsize")
 	if err != nil {
 		return err
@@ -35,7 +34,6 @@ func LoadSettings() error {
 }
 
 func ParseSettings(optionsArgs []string) error {
-	//options := strings.Split(optionsArgs, ";")
 	for _, option := range optionsArgs {
 		data := strings.SplitN(option, "=", 2)
 		if len(data) != 2 {
