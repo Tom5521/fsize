@@ -6,11 +6,10 @@ import (
 	"os"
 	"os/user"
 	"path/filepath"
-	"strconv"
-	"syscall"
 	"time"
 
 	msg "github.com/Tom5521/GoNotes/pkg/messages"
+	"github.com/Tom5521/fsize/fstats"
 	"github.com/schollz/progressbar/v3"
 )
 
@@ -105,17 +104,7 @@ func BasicFile(finfo os.FileInfo, absPath string) (f File, err error) {
 	f.Perms = finfo.Mode().Perm()
 	f.AbsPath = absPath
 
-	// Only on linux.
-	if stat, ok := finfo.Sys().(*syscall.Stat_t); ok {
-		f.User, err = user.LookupId(strconv.Itoa(int(stat.Uid)))
-		if err != nil {
-			return
-		}
-		f.Group, err = user.LookupGroupId(strconv.Itoa(int(stat.Gid)))
-		if err != nil {
-			return
-		}
-	}
+	f.User, f.Group, err = fstats.GetUsrAndGroup(finfo)
 
 	return
 }
