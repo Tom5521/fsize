@@ -28,6 +28,6 @@ build-windows arch:
 build-darwin arch:
   @just build darwin {{arch}}
 clean:
-  rm -rf builds
+  @rm -rf builds
 install:
   go install -v github.com/Tom5521/fsize@latest
