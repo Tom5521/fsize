@@ -1,18 +1,31 @@
+
+
+default:
+  go build -v .
 release:
   just clean
   # Linux
-  GOOS=linux GOARCH=amd64 go build -v -o builds/fsize-linux-amd64
-  GOOS=linux GOARCH=arm64 go build -v -o builds/fsize-linux-arm64
-  GOOS=linux GOARCH=386 go build -v -o builds/fsize-linux-386
+  just build-linux amd64
+  just build-linux arm64
+  just build-linux 386
   # Windows
-  GOOS=windows GOARCH=amd64 go build -v -o builds/fsize-windows-x64.exe
-  GOOS=windows GOARCH=arm64 go build -v -o builds/fsize-windows-arm64.exe
-  GOOS=windows GOARCH=386 go build -v -o builds/fsize-windows-x86.exe
+  just build-windows amd64
+  just build-windows arm64
+  just build-windows 386
   # Darwin
-  GOOS=darwin GOARCH=amd64 go build -v -o builds/fsize-darwin-amd64
-  GOOS=darwin GOARCH=arm64 go build -v -o builds/fsize-darwin-arm64
-build:
-  go build -v
+  just build-darwin amd64
+  just build-darwin arm64
+build os arch:
+  @ GOOS={{os}} GOARCH={{arch}} \
+  go build -v \
+  -ldflags "-X github.com/Tom5521/fsize/meta.Version=$(git describe --tags)" \
+  -o builds/fsize-{{os}}-{{arch}}\
+build-linux arch:
+  @just build linux {{arch}}
+build-windows arch:
+  @just build windows {{arch}}
+build-darwin arch:
+  @just build darwin {{arch}}
 clean:
   rm -rf builds
 install:

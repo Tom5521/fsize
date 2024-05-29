@@ -1,14 +1,16 @@
 package main
 
 import (
+	"github.com/Tom5521/fsize/meta"
 	"github.com/spf13/cobra"
 )
 
 var (
 	root = cobra.Command{
-		Use:   "fsize",
-		Short: "Displays the file/folder properties.",
-		RunE:  RunE,
+		Use:     "fsize",
+		Short:   "Displays the file/folder properties.",
+		RunE:    RunE,
+		Version: meta.Version,
 	}
 
 	PrintOnWalk bool
