@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"runtime"
 	"time"
 
 	msg "github.com/Tom5521/GoNotes/pkg/messages"
+	"github.com/Tom5521/fsize/checkos"
 	"github.com/gookit/color"
 	cbytes "github.com/labstack/gommon/bytes"
 )
@@ -21,9 +21,12 @@ func Print(f File) {
 		makePrint("Number of files:", f.FilesNumber)
 	}
 
-	if runtime.GOOS == "linux" {
+	switch {
+	case checkos.Unix:
 		makePrint("UID/Name:", fmt.Sprintf("%v/%v", f.User.Uid, f.User.Username))
 		makePrint("GID/Name:", fmt.Sprintf("%v/%v", f.Group.Gid, f.Group.Name))
+	case checkos.Windows:
+		makePrint("Creation Date:", f.CreationDate.Format(time.DateTime))
 	}
 }
 

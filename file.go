@@ -25,6 +25,8 @@ type File struct {
 	Group *user.Group
 	User  *user.User
 
+	CreationDate time.Time
+
 	// IsDir vars
 	FilesNumber int64
 }
@@ -104,7 +106,12 @@ func BasicFile(finfo os.FileInfo, absPath string) (f File, err error) {
 	f.Perms = finfo.Mode().Perm()
 	f.AbsPath = absPath
 
-	f.User, f.Group, err = filestat.GetUsrAndGroup(finfo)
+	// Values which do not work on some systems.
+
+	// Only on windows systems.
+	f.CreationDate = filestat.CreationDate(finfo)
+	// Only on unix systems.
+	f.User, f.Group, err = filestat.UsrAndGroup(finfo)
 
 	return
 }
