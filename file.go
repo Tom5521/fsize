@@ -9,7 +9,7 @@ import (
 	"time"
 
 	msg "github.com/Tom5521/GoNotes/pkg/messages"
-	"github.com/Tom5521/fsize/fstats"
+	"github.com/Tom5521/fsize/filestat"
 	"github.com/schollz/progressbar/v3"
 )
 
@@ -104,7 +104,7 @@ func BasicFile(finfo os.FileInfo, absPath string) (f File, err error) {
 	f.Perms = finfo.Mode().Perm()
 	f.AbsPath = absPath
 
-	f.User, f.Group, err = fstats.GetUsrAndGroup(finfo)
+	f.User, f.Group, err = filestat.GetUsrAndGroup(finfo)
 
 	return
 }

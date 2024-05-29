@@ -1,7 +1,7 @@
 //go:build !unix
 // +build !unix
 
-package fstats
+package filestat
 
 import (
 	"os"
