@@ -20,6 +20,7 @@ build os arch:
   go build -v \
   -ldflags "-X github.com/Tom5521/fsize/meta.Version=$(git describe --tags)" \
   -o builds/fsize-{{os}}-{{arch}}\
+  $([[ "{{os}}" == "windows" ]] && echo ".exe")
 build-linux arch:
   @just build linux {{arch}}
 build-windows arch:
