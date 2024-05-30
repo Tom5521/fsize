@@ -1,5 +1,6 @@
 
 version-flag := '-ldflags "-X github.com/Tom5521/fsize/meta.Version=$(git describe --tags)"'
+go-install-version-flag := '-ldflags "-X github.com/Tom5521/fsize/meta.Version=$(git describe --tags --abbrev=0)"'
 latest-tag := "$(git describe --tags --abbrev=0)"
 
 default:
@@ -35,7 +36,7 @@ build-darwin arch:
 clean:
   @rm -rf builds
 go-install:
-  go install -v {{version-flag}} github.com/Tom5521/fsize@{{latest-tag}}
+  go install -v {{go-install-version-flag}} github.com/Tom5521/fsize@{{latest-tag}}
 go-uninstall:
   rm ~/go/bin/fsize
 go-reinstall:
