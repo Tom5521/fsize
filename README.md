@@ -10,7 +10,7 @@ The project is focused to be simple and easy to read,
 so don't expect very advanced functions, but I will probably
 add more according to my needs.
 
-[![asciicast](https://asciinema.org/a/655455.svg)](https://asciinema.org/a/655455)
+[![asciicast](https://asciinema.org/a/661870.svg)](https://asciinema.org/a/661870)
 
 ## Install
 
