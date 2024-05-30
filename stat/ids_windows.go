@@ -1,7 +1,7 @@
 //go:build windows
 // +build windows
 
-package filestat
+package stat
 
 import (
 	"os"

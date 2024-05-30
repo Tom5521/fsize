@@ -9,7 +9,7 @@ import (
 	"time"
 
 	msg "github.com/Tom5521/GoNotes/pkg/messages"
-	"github.com/Tom5521/fsize/filestat"
+	"github.com/Tom5521/fsize/stat"
 	"github.com/schollz/progressbar/v3"
 )
 
@@ -106,9 +106,9 @@ func BasicFile(finfo os.FileInfo, absPath string) (f File, err error) {
 	// Values which do not work on some systems.
 
 	// Only on windows systems.
-	f.CreationDate = filestat.CreationDate(finfo)
+	f.CreationDate = stat.CreationDate(finfo)
 	// Only on unix systems.
-	f.User, f.Group, err = filestat.UsrAndGroup(finfo)
+	f.User, f.Group, err = stat.UsrAndGroup(finfo)
 
 	return
 }

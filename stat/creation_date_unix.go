@@ -1,7 +1,7 @@
 //go:build unix
 // +build unix
 
-package filestat
+package stat
 
 import (
 	"os"
