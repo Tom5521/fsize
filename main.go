@@ -2,6 +2,7 @@ package main
 
 import (
 	msg "github.com/Tom5521/GoNotes/pkg/messages"
+	"github.com/gookit/color"
 	"github.com/spf13/cobra"
 )
 
@@ -11,10 +12,8 @@ func main() {
 		return
 	}
 	InitFlags()
-	err = root.Execute()
-	if err != nil {
-		msg.FatalError(err)
-	}
+	root.SetErrPrefix(color.Red.Render("ERROR:"))
+	root.Execute()
 }
 
 func RunE(cmd *cobra.Command, args []string) (err error) {
