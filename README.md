@@ -17,7 +17,16 @@ add more according to my needs.
 You can install it running
 
 ```bash
-go install -v github.com/Tom5521/fsize@v1.4.0
+go install -v github.com/Tom5521/fsize@latest
+```
+
+However, I recommend this method more:
+
+Basically because go takes a long time to automatically detect the newest tags.
+
+```bash
+git clone https://github.com/Tom5521/fsize.git
+just go-install # or "sudo just linux-install" which will copy it to /usr/bin
 ```
 
 Or by copying one of the
