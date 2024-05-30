@@ -47,15 +47,17 @@ func Read(path string) (f File, err error) {
 
 	if Progress && finfo.IsDir() && !NoWalk {
 		msg.Info("Counting the amount of files...")
-		var fileNumber int64
-		var files []string
-		err = filepath.Walk(path, func(name string, _ fs.FileInfo, err error) error {
+		var (
+			fileNumber int64
+			files      []os.FileInfo
+		)
+		err = filepath.Walk(path, func(_ string, info fs.FileInfo, err error) error {
 			if err != nil {
 				Warning(err)
 				return nil
 			}
 			fileNumber++
-			files = append(files, name)
+			files = append(files, info)
 			fmt.Printf("%v files found...\r", fileNumber)
 			return nil
 		})
@@ -67,12 +69,7 @@ func Read(path string) (f File, err error) {
 		f.FilesNumber = fileNumber
 		bar := progressbar.Default(fileNumber)
 		for _, file := range files {
-			info, err := os.Stat(file)
-			if err != nil {
-				bar.Add(1)
-				continue
-			}
-			f.Size += info.Size()
+			f.Size += file.Size()
 			bar.Add(1)
 		}
 	} else if finfo.IsDir() && !NoWalk {
