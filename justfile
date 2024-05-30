@@ -38,6 +38,9 @@ go-install:
   go install -v {{version-flag}} github.com/Tom5521/fsize@{{latest-tag}}
 go-uninstall:
   rm ~/go/bin/fsize
+go-reinstall:
+  @just go-uninstall
+  @just go-install
 install-linux:
   just build-local
   cp fsize /usr/bin/
