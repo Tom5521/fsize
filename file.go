@@ -1,16 +1,15 @@
 package main
 
 import (
-	"fmt"
 	"io/fs"
 	"os"
 	"os/user"
 	"path/filepath"
 	"time"
 
-	msg "github.com/Tom5521/GoNotes/pkg/messages"
+	"github.com/Tom5521/fsize/checkos"
+	"github.com/Tom5521/fsize/filecount"
 	"github.com/Tom5521/fsize/stat"
-	"github.com/schollz/progressbar/v3"
 )
 
 type File struct {
@@ -46,53 +45,12 @@ func Read(path string) (f File, err error) {
 	}
 
 	if Progress && finfo.IsDir() && !NoWalk {
-		msg.Info("Counting the amount of files...")
-		var (
-			fileNumber int64
-			files      []os.FileInfo
-		)
-		err = filepath.Walk(path, func(_ string, info fs.FileInfo, err error) error {
-			if err != nil {
-				Warning(err)
-				return nil
-			}
-			fileNumber++
-			files = append(files, info)
-			fmt.Printf("%v files found...\r", fileNumber)
-			return nil
-		})
-		fmt.Print("\n")
-		if err != nil {
-			return f, err
-		}
-		msg.Info("Calculating total size...")
-		f.FilesNumber = fileNumber
-		bar := progressbar.Default(fileNumber)
-		for _, file := range files {
-			f.Size += file.Size()
-			bar.Add(1)
-		}
+		err = filecount.Progress(&f.FilesNumber, &f.Size, path)
 	} else if finfo.IsDir() && !NoWalk {
-		err = filepath.Walk(path, func(name string, info fs.FileInfo, err error) error {
-			if err != nil {
-				Warning(err)
-				return nil
-			}
-			if PrintOnWalk {
-				msg.Infof("Reading \"%s\"...", name)
-			}
-
-			f.Size += info.Size()
-			f.FilesNumber++
-
-			return nil
-		})
-		if err != nil {
-			return f, err
-		}
+		err = filecount.Print(&f.FilesNumber, &f.Size, path)
 	}
 
-	return f, nil
+	return
 }
 
 func BasicFile(finfo os.FileInfo, absPath string) (f File, err error) {
@@ -106,9 +64,13 @@ func BasicFile(finfo os.FileInfo, absPath string) (f File, err error) {
 	// Values which do not work on some systems.
 
 	// Only on windows systems.
-	f.CreationDate = stat.CreationDate(finfo)
+	if checkos.Windows {
+		f.CreationDate = stat.CreationDate(finfo)
+	}
 	// Only on unix systems.
-	f.User, f.Group, err = stat.UsrAndGroup(finfo)
+	if checkos.Unix {
+		f.User, f.Group, err = stat.UsrAndGroup(finfo)
+	}
 
 	return
 }

@@ -2,11 +2,15 @@ package main
 
 import (
 	msg "github.com/Tom5521/GoNotes/pkg/messages"
+	"github.com/Tom5521/fsize/filecount"
 	"github.com/gookit/color"
 	"github.com/spf13/cobra"
 )
 
 func main() {
+	// Initialize variables
+	filecount.Warning = Warning
+	filecount.PrintOnWalk = &PrintOnWalk
 	err := LoadSettings()
 	if err != nil {
 		return
