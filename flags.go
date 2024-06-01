@@ -18,7 +18,7 @@ var (
 	Progress    bool
 	NoWarns     bool
 
-	// Shell completions
+	// Shell completions.
 
 	GenBashCompletion bool
 	GenFishCompletion bool
@@ -41,9 +41,9 @@ func InitFlags() {
 	)
 	flag.StringSliceVarP(&SettingsFlag, "config", "c", []string{},
 		`Configure the variables used for preferences
-		Example: "fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'".
+Example: "fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'".
 
-		To see the available variables and their values run "fsize --print-settings".
+To see the available variables and their values run "fsize --print-settings".
 		`,
 	)
 	flag.BoolVar(&PrintSettingsFlag, "print-settings", false,
@@ -52,7 +52,16 @@ func InitFlags() {
 	flag.BoolVar(&NoWarns, "no-warns", Settings.Bool(HideWarnings),
 		"Hide possible warnings.",
 	)
-	flag.BoolVar(&GenBashCompletion, "gen-bash-completion", false, "Generate a completion file for bash")
-	flag.BoolVar(&GenFishCompletion, "gen-fish-completion", false, "Generate a completion file for fish")
-	flag.BoolVar(&GenZshCompletion, "gen-zsh-completion", false, "Generate a completion file for zsh")
+	flag.BoolVar(&GenBashCompletion, "gen-bash-completion", false,
+		`Generate a completion file for bash
+if any, the first argument will be taken as output file.`,
+	)
+	flag.BoolVar(&GenFishCompletion, "gen-fish-completion", false,
+		`Generate a completion file for fish
+if any, the first argument will be taken as output file.`,
+	)
+	flag.BoolVar(&GenZshCompletion, "gen-zsh-completion", false,
+		`Generate a completion file for zsh
+if any, the first argument will be taken as output file.`,
+	)
 }
