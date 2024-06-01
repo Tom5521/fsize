@@ -1,37 +1,16 @@
 package main
 
 import (
-	"io/fs"
 	"os"
-	"os/user"
 	"path/filepath"
-	"time"
 
 	"github.com/Tom5521/fsize/checkos"
 	"github.com/Tom5521/fsize/filecount"
+	"github.com/Tom5521/fsize/flags"
 	"github.com/Tom5521/fsize/stat"
 )
 
-type File struct {
-	Size int64
-
-	Name    string
-	AbsPath string
-	ModTime time.Time
-	IsDir   bool
-	Perms   fs.FileMode
-
-	Group *user.Group
-	User  *user.User
-
-	CreationDate time.Time
-
-	// IsDir vars
-
-	FilesNumber int64
-}
-
-func Read(path string) (f File, err error) {
+func Read(path string) (f stat.File, err error) {
 	var (
 		finfo   os.FileInfo
 		absPath string
@@ -45,16 +24,16 @@ func Read(path string) (f File, err error) {
 		return
 	}
 
-	if Progress && finfo.IsDir() && !NoWalk {
+	if flags.Progress && finfo.IsDir() && !flags.NoWalk {
 		err = filecount.Progress(&f.FilesNumber, &f.Size, path)
-	} else if finfo.IsDir() && !NoWalk {
+	} else if finfo.IsDir() && !flags.NoWalk {
 		err = filecount.Print(&f.FilesNumber, &f.Size, path)
 	}
 
 	return
 }
 
-func BasicFile(finfo os.FileInfo, absPath string) (f File, err error) {
+func BasicFile(finfo os.FileInfo, absPath string) (f stat.File, err error) {
 	f.Size = finfo.Size()
 	f.Name = finfo.Name()
 	f.IsDir = finfo.IsDir()

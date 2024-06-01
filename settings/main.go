@@ -1,4 +1,4 @@
-package main
+package settings
 
 import (
 	"errors"
@@ -25,7 +25,7 @@ var Keys = []string{
 
 var Settings conf.Preferences
 
-func LoadSettings() (err error) {
+func Load() (err error) {
 	Settings, err = conf.New("fsize")
 	if err != nil {
 		return err
@@ -33,7 +33,7 @@ func LoadSettings() (err error) {
 	return nil
 }
 
-func ParseSettings(optionsArgs []string) error {
+func Parse(optionsArgs []string) error {
 	for _, option := range optionsArgs {
 		data := strings.SplitN(option, "=", 2)
 		if len(data) != 2 {

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/Tom5521/fsize/flags"
 	"github.com/spf13/cobra"
 )
 
@@ -19,19 +20,19 @@ func GenerateCompletions(cmd *cobra.Command, args []string) (err error) {
 	}
 
 	switch {
-	case GenZshCompletion:
+	case flags.GenZshCompletion:
 		if !customName {
 			filename += ".zsh"
 		}
 		completionFunc = cmd.GenZshCompletionFile
-	case GenFishCompletion:
+	case flags.GenFishCompletion:
 		if !customName {
 			filename += ".fish"
 		}
 		completionFunc = func(filename string) error {
 			return cmd.GenFishCompletionFile(filename, true)
 		}
-	case GenBashCompletion:
+	case flags.GenBashCompletion:
 		if !customName {
 			filename += ".sh"
 		}

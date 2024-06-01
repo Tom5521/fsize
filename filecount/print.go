@@ -6,9 +6,8 @@ import (
 	"path/filepath"
 
 	msg "github.com/Tom5521/GoNotes/pkg/messages"
+	"github.com/Tom5521/fsize/flags"
 )
-
-var PrintOnWalk *bool
 
 func Print(count, size *int64, path string) (err error) {
 	err = filepath.Walk(path, func(name string, info fs.FileInfo, err error) error {
@@ -16,7 +15,7 @@ func Print(count, size *int64, path string) (err error) {
 			Warning(err)
 			return nil
 		}
-		if *PrintOnWalk {
+		if flags.PrintOnWalk {
 			msg.Infof("Reading \"%s\"...", name)
 		}
 

@@ -1,66 +1,51 @@
 package main
 
 import (
+	"github.com/Tom5521/fsize/flags"
 	"github.com/Tom5521/fsize/meta"
+	"github.com/Tom5521/fsize/settings"
 	"github.com/spf13/cobra"
 )
 
-var (
-	root = cobra.Command{
-		Use:     "fsize",
-		Short:   "Displays the file/folder properties.",
-		RunE:    RunE,
-		Version: meta.Version,
-	}
-
-	PrintOnWalk bool
-	NoWalk      bool
-	Progress    bool
-	NoWarns     bool
-
-	// Shell completions.
-
-	GenBashCompletion bool
-	GenFishCompletion bool
-	GenZshCompletion  bool
-
-	PrintSettingsFlag bool
-	SettingsFlag      []string
-)
+var root = cobra.Command{
+	Use:     "fsize",
+	Short:   "Displays the file/folder properties.",
+	RunE:    RunE,
+	Version: meta.Version,
+}
 
 func InitFlags() {
 	flag := root.Flags()
-	flag.BoolVar(&PrintOnWalk, "print-on-walk", Settings.Bool(AlwaysPrintOnWalk),
+	flag.BoolVar(&flags.PrintOnWalk, "print-on-walk", Settings.Bool(settings.AlwaysPrintOnWalk),
 		"Prints the name of the file being walked if a directory has been selected.",
 	)
-	flag.BoolVar(&NoWalk, "no-walk", Settings.Bool(AlwaysSkipWalk),
+	flag.BoolVar(&flags.NoWalk, "no-walk", Settings.Bool(settings.AlwaysSkipWalk),
 		"Skips walking inside the directories.",
 	)
-	flag.BoolVarP(&Progress, "progress", "p", Settings.Bool(AlwaysShowProgress),
+	flag.BoolVarP(&flags.Progress, "progress", "p", Settings.Bool(settings.AlwaysShowProgress),
 		"Displays a file count and progress bar when counting and summing file sizes.",
 	)
-	flag.StringSliceVarP(&SettingsFlag, "config", "c", []string{},
+	flag.StringSliceVarP(&flags.SettingsFlag, "config", "c", []string{},
 		`Configure the variables used for preferences
 Example: "fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'".
 
-To see the available variables and their values run "fsize --print-settings".
-		`,
+To see the available variables and their values run "fsize --print-settings".`,
 	)
-	flag.BoolVar(&PrintSettingsFlag, "print-settings", false,
+	flag.BoolVar(&flags.PrintSettingsFlag, "print-settings", false,
 		"Prints the current configuration values.",
 	)
-	flag.BoolVar(&NoWarns, "no-warns", Settings.Bool(HideWarnings),
+	flag.BoolVar(&flags.NoWarns, "no-warns", Settings.Bool(settings.HideWarnings),
 		"Hide possible warnings.",
 	)
-	flag.BoolVar(&GenBashCompletion, "gen-bash-completion", false,
+	flag.BoolVar(&flags.GenBashCompletion, "gen-bash-completion", false,
 		`Generate a completion file for bash
 if any, the first argument will be taken as output file.`,
 	)
-	flag.BoolVar(&GenFishCompletion, "gen-fish-completion", false,
+	flag.BoolVar(&flags.GenFishCompletion, "gen-fish-completion", false,
 		`Generate a completion file for fish
 if any, the first argument will be taken as output file.`,
 	)
-	flag.BoolVar(&GenZshCompletion, "gen-zsh-completion", false,
+	flag.BoolVar(&flags.GenZshCompletion, "gen-zsh-completion", false,
 		`Generate a completion file for zsh
 if any, the first argument will be taken as output file.`,
 	)

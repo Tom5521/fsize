@@ -2,19 +2,24 @@ package main
 
 import (
 	msg "github.com/Tom5521/GoNotes/pkg/messages"
-	"github.com/Tom5521/fsize/filecount"
+	"github.com/Tom5521/fsize/echo"
+	"github.com/Tom5521/fsize/flags"
+	"github.com/Tom5521/fsize/settings"
+	"github.com/Tom5521/fsize/stat"
+	conf "github.com/Tom5521/goconf"
 	"github.com/gookit/color"
 	"github.com/spf13/cobra"
 )
 
+var Settings conf.Preferences
+
 func main() {
 	// Initialize variables
-	filecount.Warning = Warning
-	filecount.PrintOnWalk = &PrintOnWalk
-	err := LoadSettings()
+	err := settings.Load()
 	if err != nil {
 		return
 	}
+	Settings = settings.Settings
 	InitFlags()
 	root.SetErrPrefix(color.Red.Render("ERROR:"))
 	root.Execute()
@@ -27,28 +32,28 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 	}
 
 	switch {
-	case GenBashCompletion || GenFishCompletion || GenZshCompletion:
+	case flags.GenBashCompletion || flags.GenFishCompletion || flags.GenZshCompletion:
 		err = GenerateCompletions(cmd, args)
-	case PrintSettingsFlag:
-		PrintSettings()
-	case len(SettingsFlag) != 0:
-		err = ParseSettings(SettingsFlag)
+	case flags.PrintSettingsFlag:
+		echo.Settings(Settings)
+	case len(flags.SettingsFlag) != 0:
+		err = settings.Parse(flags.SettingsFlag)
 		if err != nil {
 			msg.Info("Available configuration keys:")
-			PrintSettings()
+			echo.Settings(Settings)
 		}
 	default:
 		if len(args) == 0 {
-			Warning("No file/directory was specified, the current directory will be used. (.)")
+			echo.Warning("No file/directory was specified, the current directory will be used. (.)")
 			args = append(args, ".")
 		}
 		for _, f := range args {
-			var file File
+			var file stat.File
 			file, err = Read(f)
 			if err != nil {
 				return
 			}
-			Print(file)
+			echo.File(file)
 		}
 	}
 

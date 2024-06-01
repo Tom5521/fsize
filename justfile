@@ -46,7 +46,7 @@ build-windows arch:
 build-darwin arch:
   @just build darwin {{arch}}
 clean:
-  @rm -rf builds
+  @rm -rf builds completions
 go-install:
   go install -v {{go-install-version-flag}} github.com/Tom5521/fsize@{{latest-tag}}
 go-uninstall:
