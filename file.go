@@ -27,6 +27,7 @@ type File struct {
 	CreationDate time.Time
 
 	// IsDir vars
+
 	FilesNumber int64
 }
 

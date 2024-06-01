@@ -37,7 +37,8 @@ func InitFlags() {
 		`Configure the variables used for preferences
 		Example: "fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'".
 
-		To see the available variables and their values run "fsize --print-settings".`,
+		To see the available variables and their values run "fsize --print-settings".
+		`,
 	)
 	flag.BoolVar(&PrintSettingsFlag, "print-settings", false,
 		"Prints the current configuration values.",

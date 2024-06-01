@@ -30,7 +30,13 @@ func Progress(count, size *int64, path string) (err error) {
 		setbar(int(*count), len(warnings))
 		return nil
 	})
-	countBar.Finish()
+	if err != nil {
+		warnings = append(warnings, err)
+	}
+	err = countBar.Finish()
+	if err != nil {
+		warnings = append(warnings, err)
+	}
 	for _, e := range warnings {
 		Warning(e.Error())
 	}
