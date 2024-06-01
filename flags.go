@@ -18,6 +18,12 @@ var (
 	Progress    bool
 	NoWarns     bool
 
+	// Shell completions
+
+	GenBashCompletion bool
+	GenFishCompletion bool
+	GenZshCompletion  bool
+
 	PrintSettingsFlag bool
 	SettingsFlag      []string
 )
@@ -46,4 +52,7 @@ func InitFlags() {
 	flag.BoolVar(&NoWarns, "no-warns", Settings.Bool(HideWarnings),
 		"Hide possible warnings.",
 	)
+	flag.BoolVar(&GenBashCompletion, "gen-bash-completion", false, "Generate a completion file for bash")
+	flag.BoolVar(&GenFishCompletion, "gen-fish-completion", false, "Generate a completion file for fish")
+	flag.BoolVar(&GenZshCompletion, "gen-zsh-completion", false, "Generate a completion file for zsh")
 }
