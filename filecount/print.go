@@ -12,7 +12,7 @@ import (
 func Print(count, size *int64, path string) (err error) {
 	err = filepath.Walk(path, func(name string, info fs.FileInfo, err error) error {
 		if err != nil {
-			Warning(err)
+			warning(err)
 			return nil
 		}
 		if flags.PrintOnWalk {

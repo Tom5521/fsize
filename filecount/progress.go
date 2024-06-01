@@ -5,11 +5,14 @@ import (
 	"io/fs"
 	"path/filepath"
 
+	_ "unsafe"
+
 	msg "github.com/Tom5521/GoNotes/pkg/messages"
 	"github.com/schollz/progressbar/v3"
 )
 
-var Warning func(...any)
+//go:linkname warning github.com/Tom5521/fsize/echo.Warning
+func warning(...any) // FUCK THE IMPORT CYCLE.
 
 func Progress(count, size *int64, path string) (err error) {
 	msg.Info("Counting the amount of files...")
@@ -38,7 +41,7 @@ func Progress(count, size *int64, path string) (err error) {
 		warnings = append(warnings, err)
 	}
 	for _, e := range warnings {
-		Warning(e.Error())
+		warning(e.Error())
 	}
 	if err != nil {
 		return
