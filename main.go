@@ -49,7 +49,7 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 		}
 		for _, f := range args {
 			var file stat.File
-			file, err = Read(f)
+			file, err = stat.NewFile(f)
 			if err != nil {
 				return
 			}
