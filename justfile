@@ -81,3 +81,9 @@ linux-uninstall:
   {{bash-completion-path}}fsize \
   {{fish-completion-path}}fsize.fish
   -rm {{zsh-completion-path}}_fsize
+generate-completions:
+  mkdir -p completions
+  just build-local
+  ./fsize --gen-bash-completion ./completions/fsize.sh
+  ./fsize --gen-fish-completion ./completions/fsize.fish
+  ./fsize --gen-zsh-completion ./completions/_fsize
