@@ -18,7 +18,7 @@ func Progress(count, size *int64, path string) (err error) {
 	msg.Info("Counting the amount of files...")
 	var warnings []error
 	countBar := progressbar.Default(-1)
-	setbar := func(files, errors int) {
+	setbar := func(files, errors int64) {
 		countBar.Describe(
 			fmt.Sprintf("%v files with %v errors", files, errors),
 		)
@@ -30,7 +30,7 @@ func Progress(count, size *int64, path string) (err error) {
 		}
 		*count++
 		*size += info.Size()
-		setbar(int(*count), len(warnings))
+		setbar(*count, int64(len(warnings)))
 		return nil
 	})
 	if err != nil {
