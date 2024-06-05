@@ -52,6 +52,9 @@ func NewFile(path string) (f File, err error) {
 
 func (f *File) Load(path string) (err error) {
 	_, f.info, f.AbsPath, err = RawInfo(path)
+	if err != nil {
+		return
+	}
 
 	f.Size = f.info.Size()
 	f.Name = f.info.Name()
