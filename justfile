@@ -151,3 +151,4 @@ generate-completions:
 commit:
     git add .
     meteor
+    git push
