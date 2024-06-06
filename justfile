@@ -27,7 +27,7 @@ release:
     # Linux
     just build-linux amd64
     just build-linux arm64
-    just build-linux "386"
+    just build-linux 386
     # Windows
     just build-windows amd64
     just build-windows arm64
@@ -147,3 +147,7 @@ generate-completions:
     ./fsize --gen-bash-completion ./completions/fsize.sh
     ./fsize --gen-fish-completion ./completions/fsize.fish
     ./fsize --gen-zsh-completion ./completions/_fsize
+
+commit:
+    git add .
+    meteor
