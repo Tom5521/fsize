@@ -1,7 +1,7 @@
 
 version-flag := '-ldflags "-X github.com/Tom5521/fsize/meta.Version=$(git describe --tags)"'
 go-install-version-flag := '-ldflags "-X github.com/Tom5521/fsize/meta.Version=$(git describe --tags --abbrev=0)"'
-latest-tag := "$(git describe --tags --abbrev=0)"
+latest-tag := `git describe --tags --abbrev=0`
 
 fish-completion-path := "/usr/share/fish/vendor_completions.d/"
 bash-completion-path := "/usr/share/bash-completion/completions/"
