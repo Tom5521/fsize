@@ -1,7 +1,11 @@
 
-version-flag := '-ldflags "-X github.com/Tom5521/fsize/meta.Version=$(git describe --tags)"'
-go-install-version-flag := '-ldflags "-X github.com/Tom5521/fsize/meta.Version=$(git describe --tags --abbrev=0)"'
-latest-tag := `git describe --tags --abbrev=0`
+
+short-latest-tag := `git describe --tags --abbrev=0`
+long-latest-tag := `git describe --tags`
+
+
+version-flag := '-ldflags "-X github.com/Tom5521/fsize/meta.Version=' / long-latest-tag / '"'
+go-install-version-flag := '-ldflags "-X github.com/Tom5521/fsize/meta.Version=' / short-latest-tag / '"'
 
 fish-completion-path := "/usr/share/fish/vendor_completions.d/"
 bash-completion-path := "/usr/share/bash-completion/completions/"
@@ -48,7 +52,7 @@ build-darwin arch:
 clean:
   @rm -rf builds completions ./fsize
 go-install:
-  go install -v {{go-install-version-flag}} github.com/Tom5521/fsize@{{latest-tag}}
+  go install -v {{go-install-version-flag}} github.com/Tom5521/fsize@{{short-latest-tag}}
 go-uninstall:
   rm ~/go/bin/fsize
 go-reinstall:
@@ -68,6 +72,9 @@ linux-local-uninstall:
   {{bash-local-completion-path}}fsize \
   {{fish-local-completion-path}}fsize.fish
   -rm {{zsh-local-completion-path}}_fsize
+linux-local-reinstall:
+  just linux-local-uninstall
+  just linux-local-install
 linux-install:
   just build-local
   cp fsize {{linux-install-path}}
