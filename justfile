@@ -69,6 +69,7 @@ build-darwin arch:
 [unix]
 clean:
     @rm -rf builds completions ./fsize
+
 [windows]
 clean:
     @del builds completions .\\fsize.exe
