@@ -66,8 +66,12 @@ build-windows arch:
 build-darwin arch:
     @just build darwin {{ arch }}
 
+[unix]
 clean:
     @rm -rf builds completions ./fsize
+[windows]
+clean:
+    @del builds completions .\\fsize.exe
 
 go-install:
     go install -v {{ go-install-version-flag }} github.com/Tom5521/fsize@{{ short-latest-tag }}
