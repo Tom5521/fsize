@@ -138,8 +138,8 @@ uninstall:
 
 [confirm]
 reinstall:
-    just uninstall
-    just install
+    just --yes uninstall
+    just --yes install
 
 generate-completions:
     mkdir -p completions
