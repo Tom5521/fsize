@@ -84,29 +84,6 @@ go-reinstall:
     @just go-uninstall
     @just go-install
 
-[unix]
-local-install:
-    just build-local
-    cp fsize {{ linux-local-install-path }}
-    -[ -d "{{ bash-local-completion-path }}" ] && \
-    fsize --gen-bash-completion {{ bash-local-completion-path }}fsize
-    -which fish && \
-    fsize --gen-fish-completion {{ fish-local-completion-path }}fsize.fish 
-    -which zsh && \
-    fsize --gen-zsh-completion {{ zsh-local-completion-path }}_fsize
-
-[unix]
-local-uninstall:
-    -rm {{ linux-local-install-path }} \
-    {{ bash-local-completion-path }}fsize \
-    {{ fish-local-completion-path }}fsize.fish
-    -rm {{ zsh-local-completion-path }}_fsize
-
-[unix]
-local-reinstall:
-    just linux-local-uninstall
-    just linux-local-install
-
 [confirm]
 [unix]
 install:

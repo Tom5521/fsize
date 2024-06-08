@@ -5,12 +5,10 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"os/exec"
 	"runtime"
 	"strings"
 
 	msg "github.com/Tom5521/GoNotes/pkg/messages"
-	"github.com/Tom5521/fsize/echo"
 	"github.com/Tom5521/fsize/meta"
 	"github.com/minio/selfupdate"
 	"github.com/schollz/progressbar/v3"
@@ -18,11 +16,8 @@ import (
 
 const UpdateURL string = "https://github.com/Tom5521/fsize/releases/latest"
 
-const updateCompletionsInstructions string = `bash|--gen-bash-completion /usr/share/bash-completion/completions/fsize
-fish|--gen-fish-completion /usr/share/fish/vendor_completions.d/fsize.fish
-zsh|--gen-zsh-completion /usr/share/zsh/site-functions/_fsize`
-
 func CheckUpdate() (tag string, latest bool, err error) {
+	msg.Info("Checking the latest version available...")
 	resp, err := http.Get(UpdateURL)
 	if err != nil {
 		return
@@ -82,27 +77,6 @@ func ApplyUpdate(tag string) (err error) {
 	err = updateCompletions()
 	if err == nil {
 		msg.Info("Upgrade completed successfully")
-	}
-
-	return
-}
-
-func updateCompletions() (err error) {
-	lines := strings.Split(updateCompletionsInstructions, "\n")
-	for _, line := range lines {
-		parts := strings.SplitN(line, "|", 2)
-		shell, args := parts[0], parts[1]
-
-		_, exists := exec.LookPath(shell)
-		if exists != nil {
-			echo.Warning(shell, "not found.")
-			continue
-		}
-		cmd := exec.Command("fsize", strings.Fields(args)...)
-		err = cmd.Run()
-		if err != nil {
-			return
-		}
 	}
 
 	return

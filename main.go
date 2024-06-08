@@ -1,9 +1,12 @@
 package main
 
 import (
+	"fmt"
+
 	msg "github.com/Tom5521/GoNotes/pkg/messages"
 	"github.com/Tom5521/fsize/echo"
 	"github.com/Tom5521/fsize/flags"
+	"github.com/Tom5521/fsize/meta"
 	"github.com/Tom5521/fsize/settings"
 	"github.com/Tom5521/fsize/stat"
 	"github.com/Tom5521/fsize/update"
@@ -45,18 +48,33 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 		}
 	case flags.Update:
 		var (
-			tag    string
-			latest bool
+			tag     string
+			updated bool
 		)
-		tag, latest, err = update.CheckUpdate()
+		tag, updated, err = update.CheckUpdate()
 		if err != nil {
 			return
 		}
-		if !latest {
+		if updated {
 			msg.Info("Already in latest version")
 			return
 		}
 		err = update.ApplyUpdate(tag)
+	case flags.BinInfo:
+		var (
+			tag     string
+			updated bool
+		)
+		tag, updated, err = update.CheckUpdate()
+		if err != nil {
+			return
+		}
+
+		fmt.Println("Version:", meta.Version)
+		fmt.Println("Updated:", updated)
+		if !updated {
+			fmt.Println("Latest version:", tag)
+		}
 	default:
 		if len(args) == 0 {
 			echo.Warning("No file/directory was specified, the current directory will be used. (.)")
