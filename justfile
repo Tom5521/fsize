@@ -132,4 +132,5 @@ commit:
     git push
 
 gh-release:
+    just release
     gh release create {{ short-latest-tag }} ./builds/* --generate-notes
