@@ -10,7 +10,7 @@ The project is focused to be simple and easy to read,
 so don't expect very advanced functions, but I will probably
 add more according to my needs.
 
-[![asciicast](https://asciinema.org/a/661870.svg)](https://asciinema.org/a/661870)
+[![asciicast](https://asciinema.org/a/663090.svg)](https://asciinema.org/a/663090)
 
 ## Install
 
@@ -39,6 +39,7 @@ Usage:
   fsize [flags]
 
 Flags:
+      --bin-info              Displays the information of the binary
   -c, --config strings        Configure the variables used for preferences
                               Example: "fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'".
 
@@ -55,6 +56,7 @@ Flags:
       --print-on-walk         Prints the name of the file being walked if a directory has been selected.
       --print-settings        Prints the current configuration values.
   -p, --progress              Displays a file count and progress bar when counting and summing file sizes. (default true)
+      --update                Automatically updates the program by overwriting the binary and regenerating the completions.
   -v, --version               version for fsize
 ```
 
