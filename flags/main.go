@@ -5,6 +5,11 @@ var (
 	NoWalk      bool
 	Progress    bool
 	NoWarns     bool
+	Update      bool
+
+	// Hidden flags
+
+	Test bool
 
 	// Shell completions.
 

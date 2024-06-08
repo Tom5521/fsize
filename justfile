@@ -5,8 +5,8 @@ long-latest-tag := `git describe --tags`
 
 # Flags
 
-version-flag := '-ldflags "-X github.com/Tom5521/fsize/meta.Version=' / long-latest-tag / '"'
-go-install-version-flag := '-ldflags "-X github.com/Tom5521/fsize/meta.Version=' / short-latest-tag / '"'
+version-flag := '-ldflags "-X github.com/Tom5521/fsize/meta.Version=' + short-latest-tag + '"'
+go-install-version-flag := '-ldflags "-X github.com/Tom5521/fsize/meta.Version=' + short-latest-tag + '"'
 
 # Paths
 
