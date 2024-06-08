@@ -27,7 +27,8 @@ And also this installs the completions
 
 ```bash
 git clone https://github.com/Tom5521/fsize.git
-just linux-install # or "sudo just linux-install" which will copy it to /usr/bin
+git checkout $(git describe --tags --abbrev=0) # Go to the latest tag
+sudo just install
 ```
 
 ## Documentation
