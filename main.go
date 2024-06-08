@@ -6,6 +6,7 @@ import (
 	"github.com/Tom5521/fsize/flags"
 	"github.com/Tom5521/fsize/settings"
 	"github.com/Tom5521/fsize/stat"
+	"github.com/Tom5521/fsize/update"
 	conf "github.com/Tom5521/goconf"
 	"github.com/gookit/color"
 	"github.com/spf13/cobra"
@@ -42,6 +43,20 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 			msg.Info("Available configuration keys:")
 			echo.Settings(Settings)
 		}
+	case flags.Update:
+		var (
+			tag    string
+			latest bool
+		)
+		tag, latest, err = update.CheckUpdate()
+		if err != nil {
+			return
+		}
+		if !latest {
+			msg.Info("Already in latest version")
+			return
+		}
+		err = update.ApplyUpdate(tag)
 	default:
 		if len(args) == 0 {
 			echo.Warning("No file/directory was specified, the current directory will be used. (.)")
