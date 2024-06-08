@@ -39,12 +39,18 @@ func CheckUpdate() (tag string, latest bool, err error) {
 func ApplyUpdate(tag string) (err error) {
 	const baseURL string = "https://github.com/Tom5521/fsize/releases/download/%s/fsize-%s-%s%s"
 
-	url := fmt.Sprintf(baseURL, tag, runtime.GOOS, runtime.GOARCH, func() (suffix string) {
-		if runtime.GOOS == "windows" {
-			suffix = ".exe"
-		}
-		return
-	}())
+	url := fmt.Sprintf(
+		baseURL,
+		tag,
+		runtime.GOOS,
+		runtime.GOARCH,
+		func() (suffix string) {
+			if runtime.GOOS == "windows" {
+				suffix = ".exe"
+			}
+			return
+		}(),
+	)
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
