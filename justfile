@@ -130,3 +130,6 @@ commit:
     git add .
     meteor
     git push
+
+gh-release:
+    gh release create {{ short-latest-tag }} ./builds/* --generate-notes
