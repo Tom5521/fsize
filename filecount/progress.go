@@ -40,6 +40,7 @@ func Progress(count, size *int64, path string) (err error) {
 	if err != nil {
 		warnings = append(warnings, err)
 	}
+	fmt.Println()
 	for _, e := range warnings {
 		warning(e.Error())
 	}
