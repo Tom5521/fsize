@@ -23,6 +23,7 @@ default:
     go build -v .
 
 release:
+    # Cleaning ./builds/
     just clean
     # Linux
     just build-linux amd64

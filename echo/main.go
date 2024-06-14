@@ -11,7 +11,7 @@ import (
 	"github.com/Tom5521/fsize/stat"
 	conf "github.com/Tom5521/goconf"
 	"github.com/gookit/color"
-	cbytes "github.com/labstack/gommon/bytes"
+	"github.com/labstack/gommon/bytes"
 )
 
 func Settings(s conf.Preferences) {
@@ -48,7 +48,7 @@ func Make(title string, content ...any) {
 
 func File(f stat.File) {
 	Make("Name:", f.Name)
-	Make("Size:", cbytes.New().Format(f.Size))
+	Make("Size:", bytes.New().Format(f.Size))
 	Make("Absolute Path:", f.AbsPath)
 	Make("Date Modified:", f.ModTime.Format(time.DateTime))
 	Make("Is directory:", f.IsDir)
