@@ -9,7 +9,7 @@ require (
 	github.com/labstack/gommon v0.4.2
 	github.com/minio/selfupdate v0.6.0
 	github.com/schollz/progressbar/v3 v3.14.3
-	github.com/spf13/cobra v1.8.0
+	github.com/spf13/cobra v1.8.1
 )
 
 require (
