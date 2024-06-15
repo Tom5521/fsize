@@ -25,7 +25,7 @@ func main() {
 	Settings = settings.Settings
 	InitFlags()
 	root.SetErrPrefix(color.Error.Render("ERROR:"))
-	root.Execute()
+	defer root.Execute()
 }
 
 func RunE(cmd *cobra.Command, args []string) (err error) {
