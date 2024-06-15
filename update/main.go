@@ -8,8 +8,8 @@ import (
 	"runtime"
 	"strings"
 
-	msg "github.com/Tom5521/GoNotes/pkg/messages"
 	"github.com/Tom5521/fsize/meta"
+	"github.com/gookit/color"
 	"github.com/minio/selfupdate"
 	"github.com/schollz/progressbar/v3"
 )
@@ -17,7 +17,7 @@ import (
 const UpdateURL string = "https://github.com/Tom5521/fsize/releases/latest"
 
 func CheckUpdate() (tag string, latest bool, err error) {
-	msg.Info("Checking the latest version available...")
+	color.Infoln("Checking the latest version available...")
 	resp, err := http.Get(UpdateURL)
 	if err != nil {
 		return
@@ -73,16 +73,16 @@ func ApplyUpdate(tag string) (err error) {
 	if err != nil {
 		return
 	}
-	msg.Info("Writing to binary...")
+	color.Infoln("Writing to binary...")
 	err = selfupdate.Apply(&buf, selfupdate.Options{})
 	if err != nil {
 		return
 	}
 
-	msg.Info("Updating completions...")
+	color.Infoln("Updating completions...")
 	err = updateCompletions()
 	if err == nil {
-		msg.Info("Upgrade completed successfully")
+		color.Infoln("Upgrade completed successfully")
 	}
 
 	return

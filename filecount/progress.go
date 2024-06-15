@@ -7,7 +7,7 @@ import (
 
 	_ "unsafe"
 
-	msg "github.com/Tom5521/GoNotes/pkg/messages"
+	"github.com/gookit/color"
 	"github.com/schollz/progressbar/v3"
 )
 
@@ -15,7 +15,7 @@ import (
 func warning(...any) // FUCK THE IMPORT CYCLE.
 
 func Progress(count, size *int64, path string) (err error) {
-	msg.Info("Counting the amount of files...")
+	color.Infoln("Counting the amount of files...")
 	var warnings []error
 	countBar := progressbar.Default(-1)
 	setbar := func(files, errors int64) {

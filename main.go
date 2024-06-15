@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 
-	msg "github.com/Tom5521/GoNotes/pkg/messages"
 	"github.com/Tom5521/fsize/echo"
 	"github.com/Tom5521/fsize/flags"
 	"github.com/Tom5521/fsize/meta"
@@ -25,7 +24,7 @@ func main() {
 	}
 	Settings = settings.Settings
 	InitFlags()
-	root.SetErrPrefix(color.Red.Render("ERROR:"))
+	root.SetErrPrefix(color.Error.Render("ERROR:"))
 	root.Execute()
 }
 
@@ -43,7 +42,7 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 	case len(flags.SettingsFlag) != 0:
 		err = settings.Parse(flags.SettingsFlag)
 		if err != nil {
-			msg.Info("Available configuration keys:")
+			color.Infoln("Available configuration keys:")
 			echo.Settings(Settings)
 		}
 	case flags.Update:
@@ -56,7 +55,7 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 			return
 		}
 		if updated {
-			msg.Info("Already in latest version")
+			color.Info.Println("Already in latest version")
 			return
 		}
 		err = update.ApplyUpdate(tag)
@@ -86,7 +85,7 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 			if err != nil {
 				return
 			}
-			echo.File(file)
+			fmt.Print(file)
 		}
 	}
 

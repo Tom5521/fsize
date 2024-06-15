@@ -5,8 +5,8 @@ import (
 
 	"path/filepath"
 
-	msg "github.com/Tom5521/GoNotes/pkg/messages"
 	"github.com/Tom5521/fsize/flags"
+	"github.com/gookit/color"
 )
 
 func Print(count, size *int64, path string) (err error) {
@@ -16,7 +16,7 @@ func Print(count, size *int64, path string) (err error) {
 			return nil
 		}
 		if flags.PrintOnWalk {
-			msg.Infof("Reading \"%s\"...", name)
+			color.Infof("Reading \"%s\"...", name)
 		}
 
 		*size += info.Size()

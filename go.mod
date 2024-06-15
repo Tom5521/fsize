@@ -3,7 +3,6 @@ module github.com/Tom5521/fsize
 go 1.22.4
 
 require (
-	github.com/Tom5521/GoNotes v1.3.0
 	github.com/Tom5521/goconf v1.1.0
 	github.com/gookit/color v1.5.4
 	github.com/labstack/gommon v0.4.2
@@ -14,6 +13,7 @@ require (
 
 require (
 	aead.dev/minisign v0.2.0 // indirect
+	github.com/Tom5521/GoNotes v1.3.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/mitchellh/colorstring v0.0.0-20190213212951-d06e56a500db // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect

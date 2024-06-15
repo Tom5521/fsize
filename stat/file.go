@@ -1,6 +1,7 @@
 package stat
 
 import (
+	"fmt"
 	"io/fs"
 	"os"
 	"os/user"
@@ -10,6 +11,8 @@ import (
 	"github.com/Tom5521/fsize/checkos"
 	"github.com/Tom5521/fsize/filecount"
 	"github.com/Tom5521/fsize/flags"
+	"github.com/gookit/color"
+	"github.com/labstack/gommon/bytes"
 )
 
 type File struct {
@@ -89,5 +92,32 @@ func RawInfo(name string) (file *os.File, stat os.FileInfo, abspath string, err 
 	if err != nil {
 		return
 	}
+	return
+}
+
+func (f File) String() (str string) {
+	render := func(title string, content ...any) {
+		str += color.Green.Render(title + " ")
+		str += fmt.Sprintln(content...)
+	}
+
+	render("Name:", f.Name)
+	render("Size:", bytes.New().Format(f.Size))
+	render("Absolute Path:", f.AbsPath)
+	render("Date Modified:", f.ModTime.Format(time.DateTime))
+	render("Is directory:", f.IsDir)
+	render("Permissions:", fmt.Sprintf("%v/%v", int(f.Perms), f.Perms))
+	if f.IsDir && !flags.NoWalk {
+		render("Number of files:", f.FilesNumber)
+	}
+
+	switch {
+	case checkos.Unix:
+		render("UID/Name:", fmt.Sprintf("%v/%v", f.User.Uid, f.User.Username))
+		render("GID/Name:", fmt.Sprintf("%v/%v", f.Group.Gid, f.Group.Name))
+	case checkos.Windows:
+		render("Creation Date:", f.CreationDate.Format(time.DateTime))
+	}
+
 	return
 }
