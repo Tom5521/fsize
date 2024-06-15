@@ -27,10 +27,7 @@ var Settings conf.Preferences
 
 func Load() (err error) {
 	Settings, err = conf.New("fsize")
-	if err != nil {
-		return err
-	}
-	return nil
+	return
 }
 
 func Parse(optionsArgs []string) error {

@@ -17,6 +17,12 @@ import (
 var Settings conf.Preferences
 
 func main() {
+	defer func() {
+		if r := recover(); r != nil {
+			color.Errorln(r)
+		}
+	}()
+
 	// Initialize variables
 	err := settings.Load()
 	if err != nil {
