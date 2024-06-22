@@ -2,8 +2,14 @@ package checkos
 
 import "runtime"
 
+const (
+	Linux   = runtime.GOOS == "linux"
+	Windows = runtime.GOOS == "windows"
+	Darwin  = runtime.GOOS == "darwin"
+)
+
 var (
-	UnixSystems = []string{
+	UnixSystems = [...]string{
 		"aix",
 		"android",
 		"darwin",
@@ -16,19 +22,14 @@ var (
 		"openbsd",
 		"solaris",
 	}
-	Unix = func() bool {
-		for _, os := range UnixSystems {
-			if os == runtime.GOOS {
-				return true
-			}
+	Unix bool
+)
+
+func init() {
+	for _, os := range UnixSystems {
+		if os == runtime.GOOS {
+			Unix = true
+			break
 		}
-
-		return false
-	}()
-)
-
-const (
-	Linux   = runtime.GOOS == "linux"
-	Windows = runtime.GOOS == "windows"
-	Darwin  = runtime.GOOS == "darwin"
-)
+	}
+}
