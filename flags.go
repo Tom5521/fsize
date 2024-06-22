@@ -56,4 +56,14 @@ if any, the first argument will be taken as output file.`,
 
 	flag.BoolVar(&flags.Test, "test", false, "---")
 	flag.MarkHidden("test")
+
+	root.MarkFlagsMutuallyExclusive(
+		"update",
+		"gen-zsh-completion",
+		"gen-bash-completion",
+		"gen-fish-completion",
+		"print-settings",
+		"bin-info",
+		"config",
+	)
 }
