@@ -100,7 +100,7 @@ install:
 [windows]
 install:
     just build-local
-    copy fsize.exe C:\\Windows\\System32\\
+    cp fsize.exe C:/Windows/System32/
 
 [confirm]
 [unix]
@@ -113,7 +113,7 @@ uninstall:
 [confirm]
 [windows]
 uninstall:
-    -del C:\\Windows\\System32\\fsize.exe
+    rm -rf C:/Windows/System32/fsize.exe
 
 [confirm]
 reinstall:
