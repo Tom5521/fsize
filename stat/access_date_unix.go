@@ -14,6 +14,7 @@ func AccessDate(info os.FileInfo) (t time.Time, err error) {
 	if !ok {
 		return t, ErrGettingStruct
 	}
+	// Make the conversion if having the 386 architecture.
 	t = time.Unix(int64(stat.Atim.Sec), int64(stat.Atim.Nsec))
 	return
 }
