@@ -135,3 +135,6 @@ commit:
 gh-release:
     just release
     gh release create {{ short-latest-tag }} ./builds/* --generate-notes
+
+test:
+    go test -v ./*/*_test.go

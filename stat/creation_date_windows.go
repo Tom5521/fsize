@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func CreationDate(info os.FileInfo) time.Time {
+func CreationDate(info os.FileInfo) (time.Time, error) {
 	d := info.Sys().(*syscall.Win32FileAttributeData)
-	return time.Unix(0, d.CreationTime.Nanoseconds())
+	return time.Unix(0, d.CreationTime.Nanoseconds()), nil
 }

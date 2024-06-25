@@ -1,6 +1,7 @@
 package stat
 
 import (
+	"errors"
 	"fmt"
 	"io/fs"
 	"os"
@@ -15,6 +16,8 @@ import (
 	"github.com/labstack/gommon/bytes"
 )
 
+var ErrGettingStruct = errors.New("error getting the corresponding structure from fileinfo.Sys()")
+
 type File struct {
 	Size int64
 
@@ -27,7 +30,8 @@ type File struct {
 	Group *user.Group
 	User  *user.User
 
-	CreationDate time.Time
+	CreationDate         time.Time
+	supportsCreationDate bool
 
 	// IsDir vars
 
@@ -67,13 +71,21 @@ func (f *File) Load(path string) (err error) {
 
 	// Values which do not work on some systems.
 
-	// Only on windows systems.
+	// Only on windows systems and optional on unix systems.
 	if checkos.Windows {
-		f.CreationDate = CreationDate(f.info)
+		f.CreationDate, err = CreationDate(f.info)
+		f.supportsCreationDate = true
 	}
 	// Only on unix systems.
 	if checkos.Unix {
 		f.User, f.Group, err = UsrAndGroup(f.info)
+
+		var cerr error
+		f.CreationDate, cerr = CreationDate(f.info)
+		f.supportsCreationDate = cerr == nil
+		if cerr != nil {
+			f.CreationDate = f.ModTime
+		}
 	}
 
 	return
@@ -104,19 +116,19 @@ func (f File) String() (str string) {
 	render("Name:", f.Name)
 	render("Size:", bytes.New().Format(f.Size))
 	render("Absolute Path:", f.AbsPath)
-	render("Date Modified:", f.ModTime.Format(time.DateTime))
+	render("Modify:", f.ModTime.Format(time.DateTime))
+	if f.supportsCreationDate {
+		render("Birth:", f.CreationDate.Format(time.DateTime))
+	}
 	render("Is directory:", f.IsDir)
 	render("Permissions:", fmt.Sprintf("%v/%v", int(f.Perms), f.Perms))
 	if f.IsDir && !flags.NoWalk {
 		render("Number of files:", f.FilesNumber)
 	}
 
-	switch {
-	case checkos.Unix:
+	if checkos.Unix {
 		render("UID/Name:", fmt.Sprintf("%v/%v", f.User.Uid, f.User.Username))
 		render("GID/Name:", fmt.Sprintf("%v/%v", f.Group.Gid, f.Group.Name))
-	case checkos.Windows:
-		render("Creation Date:", f.CreationDate.Format(time.DateTime))
 	}
 
 	return
