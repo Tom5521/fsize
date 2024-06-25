@@ -83,6 +83,7 @@ func ApplyUpdate(tag string) (err error) {
 	err = updateCompletions()
 	if err == nil {
 		color.Infoln("Upgrade completed successfully")
+		fmt.Printf("%s -> %s\n", color.Red.Render(meta.Version), color.Green.Render(tag))
 	}
 
 	return
