@@ -1,7 +1,7 @@
-//go:build unix && !darwin && (amd64 || arm64)
+//go:build unix && !darwin && (arm || 386)
 // +build unix
 // +build !darwin
-// +build amd64 arm64
+// +build arm 386
 
 package stat
 
@@ -16,6 +16,6 @@ func AccessDate(info os.FileInfo) (t time.Time, err error) {
 	if !ok {
 		return t, ErrGettingStruct
 	}
-	t = time.Unix(stat.Atim.Sec, stat.Atim.Nsec)
+	t = time.Unix(int64(stat.Atim.Sec), int64(stat.Atim.Nsec))
 	return
 }
