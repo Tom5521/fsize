@@ -19,19 +19,17 @@ import (
 var ErrGettingStruct = errors.New("error getting the corresponding structure from fileinfo.Sys()")
 
 type File struct {
+	FileTimes
+
 	Size int64
 
 	Name    string
 	AbsPath string
-	ModTime time.Time
 	IsDir   bool
 	Perms   fs.FileMode
 
 	Group *user.Group
 	User  *user.User
-
-	CreationDate         time.Time
-	supportsCreationDate bool
 
 	// IsDir vars
 
@@ -63,29 +61,22 @@ func (f *File) Load(path string) (err error) {
 		return
 	}
 
+	f.FileTimes, err = NewFileTimes(f.info)
+	if err != nil {
+		return
+	}
+
 	f.Size = f.info.Size()
 	f.Name = f.info.Name()
 	f.IsDir = f.info.IsDir()
-	f.ModTime = f.info.ModTime()
+	// f.ModTime = f.info.ModTime()
 	f.Perms = f.info.Mode().Perm()
 
 	// Values which do not work on some systems.
 
-	// Only on windows systems and optional on unix systems.
-	if checkos.Windows {
-		f.CreationDate, err = CreationDate(f.info)
-		f.supportsCreationDate = true
-	}
 	// Only on unix systems.
 	if checkos.Unix {
 		f.User, f.Group, err = UsrAndGroup(f.info)
-
-		var cerr error
-		f.CreationDate, cerr = CreationDate(f.info)
-		f.supportsCreationDate = cerr == nil
-		if cerr != nil {
-			f.CreationDate = f.ModTime
-		}
 	}
 
 	return
@@ -117,8 +108,9 @@ func (f File) String() (str string) {
 	render("Size:", bytes.New().Format(f.Size))
 	render("Absolute Path:", f.AbsPath)
 	render("Modify:", f.ModTime.Format(time.DateTime))
-	if f.supportsCreationDate {
-		render("Birth:", f.CreationDate.Format(time.DateTime))
+	render("Access:", f.AccessTime.Format(time.DateTime))
+	if f.SupportCreationDate {
+		render("Birth:", f.CreationTime.Format(time.DateTime))
 	}
 	render("Is directory:", f.IsDir)
 	render("Permissions:", fmt.Sprintf("%v/%v", int(f.Perms), f.Perms))
