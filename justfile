@@ -138,3 +138,7 @@ gh-release:
 
 test:
     go test -v ./*/*_test.go
+
+update-asciinema:
+    just build-local
+    asciinema rec --title "fsize {{ short-latest-tag }}" --command "./fsize /usr/share/"
