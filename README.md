@@ -10,7 +10,7 @@ The project is focused to be simple and easy to read,
 so don't expect very advanced functions, but I will probably
 add more according to my needs.
 
-[![asciicast](https://asciinema.org/a/663090.svg)](https://asciinema.org/a/663090)
+[![asciicast](https://asciinema.org/a/665591.svg)](https://asciinema.org/a/665591)
 
 ## Install
 
@@ -28,6 +28,7 @@ And also this installs the completions
 ```bash
 git clone https://github.com/Tom5521/fsize.git
 git checkout $(git describe --tags --abbrev=0) # Go to the latest tag
+# If you are in windows you run this as administrator, but anyway it works as is if you have gsudo or similar.
 sudo just install
 ```
 
@@ -62,4 +63,4 @@ Flags:
 ```
 
 Or by copying one of the
-[binaries](https://github.com/Tom5521/fsize/releases/latest) to your system to PATH
+[binaries](https://github.com/Tom5521/fsize/releases/latest) to your system PATH
