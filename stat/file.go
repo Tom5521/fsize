@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/user"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/Tom5521/fsize/checkos"
@@ -69,7 +70,6 @@ func (f *File) Load(path string) (err error) {
 	f.Size = f.info.Size()
 	f.Name = f.info.Name()
 	f.IsDir = f.info.IsDir()
-	// f.ModTime = f.info.ModTime()
 	f.Perms = f.info.Mode().Perm()
 
 	// Values which do not work on some systems.
@@ -98,10 +98,12 @@ func RawInfo(name string) (file *os.File, stat os.FileInfo, abspath string, err 
 	return
 }
 
-func (f File) String() (str string) {
+func (f File) String() string {
+	var builder strings.Builder
+
 	render := func(title string, content ...any) {
-		str += color.Green.Render(title + " ")
-		str += fmt.Sprintln(content...)
+		fmt.Fprint(&builder, color.Green.Render(title+" "))
+		fmt.Fprintln(&builder, content...)
 	}
 
 	render("Name:", f.Name)
@@ -123,5 +125,5 @@ func (f File) String() (str string) {
 		render("GID/Name:", fmt.Sprintf("%v/%v", f.Group.Gid, f.Group.Name))
 	}
 
-	return
+	return builder.String()
 }
