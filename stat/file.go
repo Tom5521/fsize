@@ -115,7 +115,7 @@ func (f File) String() string {
 		render("Birth:", f.CreationTime.Format(time.DateTime))
 	}
 	render("Is directory:", f.IsDir)
-	render("Permissions:", fmt.Sprintf("%v/%v", int(f.Perms), f.Perms))
+	render("Permissions:", fmt.Sprintf("%v/%v", int(f.Perms), f.Perms.String()))
 	if f.IsDir && !flags.NoWalk {
 		render("Number of files:", f.FilesNumber)
 	}

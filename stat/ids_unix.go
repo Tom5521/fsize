@@ -20,22 +20,24 @@ func UsrAndGroup(info os.FileInfo) (usr *user.User, group *user.Group, err error
 	return
 }
 
-func Usr(info os.FileInfo) (usr *user.User, err error) {
+func Usr(info os.FileInfo) (*user.User, error) {
 	stat, ok := info.Sys().(*syscall.Stat_t)
 	if !ok {
 		panic(ErrGettingStruct)
 	}
 
-	usr, err = user.LookupId(strconv.FormatUint(uint64(stat.Uid), 10))
-	return
+	return user.LookupId(formatUint(stat.Uid))
 }
 
-func Group(info os.FileInfo) (group *user.Group, err error) {
+func Group(info os.FileInfo) (*user.Group, error) {
 	stat, ok := info.Sys().(*syscall.Stat_t)
 	if !ok {
 		panic(ErrGettingStruct)
 	}
 
-	group, err = user.LookupGroupId(strconv.FormatUint(uint64(stat.Gid), 10))
-	return
+	return user.LookupGroupId(formatUint(stat.Gid))
+}
+
+func formatUint(v uint32) string {
+	return strconv.FormatUint(uint64(v), 10)
 }

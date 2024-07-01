@@ -12,14 +12,17 @@ import (
 
 func CreationDate(info os.FileInfo) (t time.Time, err error) {
 	cmd := exec.Command("stat", "-c", "%w", info.Name())
-	var out []byte
-	out, err = cmd.Output()
+	var builder strings.Builder
+	cmd.Stdout = &builder
+	err = cmd.Run()
 	if err != nil {
-		return
+		return t, err
 	}
-	date := string(out)
-	if strings.HasSuffix(date, "\x0a") {
-		date, _ = strings.CutSuffix(date, "\x0a")
+
+	date := builder.String()
+	const possibleSuffix = "\x0a"
+	if strings.HasSuffix(date, possibleSuffix) {
+		date, _ = strings.CutSuffix(date, possibleSuffix)
 	}
 	t, err = parseStatDate(date)
 

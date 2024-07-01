@@ -7,6 +7,7 @@ import (
 
 	_ "unsafe"
 
+	_ "github.com/Tom5521/fsize/echo"
 	"github.com/gookit/color"
 	"github.com/schollz/progressbar/v3"
 )
@@ -36,11 +37,12 @@ func Progress(count, size *int64, path string) (err error) {
 	if err != nil {
 		warnings = append(warnings, err)
 	}
+
 	err = countBar.Finish()
 	if err != nil {
 		warnings = append(warnings, err)
 	}
-	fmt.Println()
+
 	for _, e := range warnings {
 		warning(e.Error())
 	}

@@ -8,14 +8,8 @@ import (
 	"os/user"
 )
 
-func UsrAndGroup(info os.FileInfo) (usr *user.User, group *user.Group, err error) {
-	return nil, nil, nil
-}
+func UsrAndGroup(info os.FileInfo) (usr *user.User, group *user.Group, err error)
 
-func Usr(info os.FileInfo) (usr *user.User, err error) {
-	return nil, nil
-}
+func Usr(info os.FileInfo) (usr *user.User, err error)
 
-func Group(info os.FileInfo) (group *user.Group, err error) {
-	return nil, nil
-}
+func Group(info os.FileInfo) (group *user.Group, err error)
