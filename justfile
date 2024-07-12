@@ -10,14 +10,10 @@ go-install-version-flag := '-ldflags "-X github.com/Tom5521/fsize/meta.Version='
 
 # Paths
 
-fish-completion-path := "/usr/share/fish/vendor_completions.d/"
-bash-completion-path := "/usr/share/bash-completion/completions/"
-zsh-completion-path := "/usr/share/zsh/site-functions/"
-fish-local-completion-path := "~/.config/fish/completions/"
-bash-local-completion-path := "~/local/share/bash-completion/completions/"
-zsh-local-completion-path := "$fpath/"
-linux-install-path := "/usr/bin/fsize"
-linux-local-install-path := "~/.local/bin/fsize"
+fish-completion-path := "/usr/local/share/fish/vendor_completions.d/"
+bash-completion-path := "/usr/local/share/bash-completion/completions/"
+zsh-completion-path := "/usr/local/share/zsh/site-functions/"
+linux-install-path := "/usr/local/bin/fsize"
 
 default:
     go build -v .

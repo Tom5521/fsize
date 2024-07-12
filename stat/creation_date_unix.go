@@ -20,9 +20,9 @@ func CreationDate(info os.FileInfo) (t time.Time, err error) {
 	}
 
 	date := builder.String()
-	const possibleSuffix = "\x0a"
-	if strings.HasSuffix(date, possibleSuffix) {
-		date, _ = strings.CutSuffix(date, possibleSuffix)
+	const expectedSuffix = "\x0a"
+	if strings.HasSuffix(date, expectedSuffix) {
+		date, _ = strings.CutSuffix(date, expectedSuffix)
 	}
 	t, err = parseStatDate(date)
 
