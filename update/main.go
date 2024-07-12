@@ -77,10 +77,12 @@ func ApplyUpdate(tag string) (err error) {
 		return
 	}
 
-	color.Infoln("Updating completions...")
-	err = updateCompletions()
-	if err != nil {
-		return
+	if checkos.Unix {
+		color.Infoln("Updating completions...")
+		err = updateCompletions()
+		if err != nil {
+			return
+		}
 	}
 
 	color.Infoln("Upgrade completed successfully")
