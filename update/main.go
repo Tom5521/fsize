@@ -8,6 +8,7 @@ import (
 	"runtime"
 	"strings"
 
+	"github.com/Tom5521/fsize/checkos"
 	"github.com/Tom5521/fsize/meta"
 	"github.com/gookit/color"
 	"github.com/minio/selfupdate"
@@ -37,20 +38,17 @@ func CheckUpdate() (tag string, latest bool, err error) {
 }
 
 func ApplyUpdate(tag string) (err error) {
-	const baseURL string = "https://github.com/Tom5521/fsize/releases/download/%s/fsize-%s-%s%s"
+	const baseURL string = "https://github.com/Tom5521/fsize/releases/download/%s/fsize-%s-%s"
 
 	url := fmt.Sprintf(
 		baseURL,
 		tag,
 		runtime.GOOS,
 		runtime.GOARCH,
-		func() (suffix string) {
-			if runtime.GOOS == "windows" {
-				suffix = ".exe"
-			}
-			return
-		}(),
 	)
+	if checkos.Windows {
+		url += ".exe"
+	}
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
@@ -81,10 +79,12 @@ func ApplyUpdate(tag string) (err error) {
 
 	color.Infoln("Updating completions...")
 	err = updateCompletions()
-	if err == nil {
-		color.Infoln("Upgrade completed successfully")
-		fmt.Printf("%s -> %s\n", color.Red.Render(meta.Version), color.Green.Render(tag))
+	if err != nil {
+		return
 	}
+
+	color.Infoln("Upgrade completed successfully")
+	fmt.Printf("%s -> %s\n", color.Red.Render(meta.Version), color.Green.Render(tag))
 
 	return
 }
