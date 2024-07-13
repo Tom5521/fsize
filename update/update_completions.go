@@ -23,7 +23,6 @@ zsh|/usr/local/share/zsh/site-functions/_fsize`
 			continue
 		}
 		cmd := exec.Command("fsize", fmt.Sprintf("--gen-%s-completion", shell), path)
-		fmt.Println(cmd)
 		err = cmd.Run()
 		if err != nil {
 			return
