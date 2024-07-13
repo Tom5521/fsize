@@ -1,5 +1,3 @@
 package meta
 
-var (
-	Version string
-)
+var Version string

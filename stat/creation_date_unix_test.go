@@ -3,7 +3,6 @@ package stat_test
 import (
 	"fmt"
 	"testing"
-
 	"time"
 
 	_ "github.com/Tom5521/fsize/stat"

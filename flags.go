@@ -49,7 +49,10 @@ if any, the first argument will be taken as output file.`,
 		`Generate a completion file for zsh
 if any, the first argument will be taken as output file.`,
 	)
-	flag.BoolVar(&flags.Update, "update", false,
+	flag.BoolVar(
+		&flags.Update,
+		"update",
+		false,
 		`Automatically updates the program by overwriting the binary and regenerating the completions.`,
 	)
 	flag.BoolVar(&flags.BinInfo, "bin-info", false, "Displays the information of the binary")

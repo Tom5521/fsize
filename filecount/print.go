@@ -2,7 +2,6 @@ package filecount
 
 import (
 	"io/fs"
-
 	"path/filepath"
 
 	"github.com/Tom5521/fsize/flags"
