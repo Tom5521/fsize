@@ -99,7 +99,7 @@ compress bin:
         exit 0
     fi
 
-    upx --8mib-ram --color --best {{bin}}
+    upx --8mib-ram --color -9 {{bin}}
 
 [confirm]
 [unix]
