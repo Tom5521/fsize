@@ -23,6 +23,7 @@ default:
     go build -v .
 
 release:
+    #!/usr/bin/env -S bash -x
     # Cleaning ./builds/
     just clean
     # Linux
@@ -38,7 +39,7 @@ release:
     just build darwin arm64
 
 build os arch:
-    #!/bin/bash
+    #!/usr/bin/env -S bash -x
     bin=builds/fsize-{{os}}-{{arch}}
 
     if [[ "{{ os }}" == "windows" ]]; then
@@ -83,7 +84,7 @@ go-reinstall:
 
 [private]
 compress bin:
-    #!/bin/bash
+    #!/usr/bin/env -S bash -x
 
     if [[ {{skip-compress}} == 1 ]]; then
         echo skipping compression of {{bin}}...
