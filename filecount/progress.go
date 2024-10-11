@@ -17,7 +17,9 @@ func warning(...any) // FUCK THE IMPORT CYCLE.
 
 func Progress(count, size *int64, path string) (err error) {
 	color.Infoln("Counting the amount of files...")
+
 	var warnings []error
+
 	countBar := progressbar.Default(-1)
 	setbar := func(files, errors int64) {
 		countBar.Describe(

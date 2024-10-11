@@ -16,6 +16,7 @@ var root = cobra.Command{
 
 func InitFlags() {
 	flag := root.Flags()
+
 	flag.BoolVar(&flags.PrintOnWalk, "print-on-walk", Settings.Bool(settings.AlwaysPrintOnWalk),
 		"Prints the name of the file being walked if a directory has been selected.",
 	)
