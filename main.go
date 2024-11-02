@@ -14,7 +14,7 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var Settings conf.Preferences
+var Settings *conf.Preferences
 
 func main() {
 	defer func() {

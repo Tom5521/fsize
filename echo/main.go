@@ -9,9 +9,9 @@ import (
 	"github.com/gookit/color"
 )
 
-func Settings(s conf.Preferences) {
+func Settings(s *conf.Preferences) {
 	printSetting := func(key string) {
-		s := s.Read(key)
+		s := s.Get(key)
 		_, isBool := s.(bool)
 		if isBool {
 			switch s {

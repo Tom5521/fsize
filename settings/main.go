@@ -3,6 +3,7 @@ package settings
 import (
 	"errors"
 	"fmt"
+	"reflect"
 	"strconv"
 	"strings"
 
@@ -23,10 +24,13 @@ var Keys = []string{
 	HideWarnings,
 }
 
-var Settings conf.Preferences
+var Settings *conf.Preferences
 
 func Load() (err error) {
 	Settings, err = conf.New("fsize")
+	for _, k := range Keys {
+		Settings.CreateNewFields(false, conf.Field{Key: k, FieldType: reflect.TypeFor[bool]()})
+	}
 	return
 }
 
@@ -54,5 +58,5 @@ func Parse(optionsArgs []string) error {
 		}
 		Settings.SetBool(key, v)
 	}
-	return nil
+	return Settings.Save()
 }
