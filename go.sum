@@ -1,8 +1,8 @@
 aead.dev/minisign v0.2.0/go.mod h1:zdq6LdSd9TbuSxchxwhpA9zEb9YXcVGoE8JakuiGaIQ=
 aead.dev/minisign v0.3.0 h1:8Xafzy5PEVZqYDNP60yJHARlW1eOQtsKNp/Ph2c0vRA=
 aead.dev/minisign v0.3.0/go.mod h1:NLvG3Uoq3skkRMDuc3YHpWUTMTrSExqm+Ij73W13F6Y=
-github.com/Tom5521/goconf v1.5.0 h1:qsj7tWS6K9+hHE7LQktXlFyF527dlikQJSmb73k4JBI=
-github.com/Tom5521/goconf v1.5.0/go.mod h1:lZAjzEMrm0m+qGtwDmC+1bc5dLD4+GCgPtNNcBc5pOc=
+github.com/Tom5521/goconf v1.7.0 h1:QozQZ/FJkTmy2q5T2M5w0E0/cCcc+qsOhDnJTgVB5E0=
+github.com/Tom5521/goconf v1.7.0/go.mod h1:NAv8cW7zq0rV4lH6Uqo3uku0FQ0xgo4w0kEt8oOYIaQ=
 github.com/chengxilo/virtualterm v1.0.4 h1:Z6IpERbRVlfB8WkOmtbHiDbBANU7cimRIof7mk9/PwM=
 github.com/chengxilo/virtualterm v1.0.4/go.mod h1:DyxxBZz/x1iqJjFxTFcr6/x+jSpqN0iwWCOK1q10rlY=
 github.com/cpuguy83/go-md2man/v2 v2.0.4/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=

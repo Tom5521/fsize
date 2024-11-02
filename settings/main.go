@@ -58,5 +58,5 @@ func Parse(optionsArgs []string) error {
 		}
 		Settings.SetBool(key, v)
 	}
-	return Settings.Save()
+	return nil
 }

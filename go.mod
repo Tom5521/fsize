@@ -3,7 +3,7 @@ module github.com/Tom5521/fsize
 go 1.23
 
 require (
-	github.com/Tom5521/goconf v1.5.0
+	github.com/Tom5521/goconf v1.7.0
 	github.com/gookit/color v1.5.4
 	github.com/labstack/gommon v0.4.2
 	github.com/minio/selfupdate v0.6.0
