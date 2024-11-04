@@ -17,8 +17,6 @@ var (
 )
 
 func init() {
-	Po = gotext.NewPoFS(podir)
-
 	code, err := locale.GetLanguage()
 
 	if code == "en" || err != nil {
