@@ -1,0 +1,102 @@
+
+
+msgid "ERROR:"
+msgstr ""
+
+msgid "Available configuration keys:"
+msgstr ""
+
+msgid "Already in latest version"
+msgstr ""
+
+msgid "Version:"
+msgstr ""
+
+msgid "Updated:"
+msgstr ""
+
+msgid "Latest version:"
+msgstr ""
+
+msgid "No file/directory was specified, the current directory will be used. (.)"
+msgstr ""
+
+msgid "Displays the file/folder properties."
+msgstr ""
+
+msgid "Prints the name of the file being walked if a directory has been selected."
+msgstr ""
+
+msgid "Skips walking inside the directories."
+msgstr ""
+
+msgid "Displays a file count and progress bar when counting and summing file sizes."
+msgstr ""
+
+msgid "Configure the variables used for preferences\n"
+  "Example: \"fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n\n"
+  "To see the available variables and their values run \"fsize --print-settings\"."
+msgstr ""
+
+msgid "Prints the current configuration values."
+msgstr ""
+
+msgid "Hide possible warnings."
+msgstr ""
+
+msgid "Generate a completion file for bash\n"
+  "if any, the first argument will be taken as output file."
+msgstr ""
+
+msgid "Generate a completion file for fish\n"
+  "if any, the first argument will be taken as output file."
+msgstr ""
+
+msgid "Generate a completion file for zsh\n"
+  "if any, the first argument will be taken as output file."
+msgstr ""
+
+msgid "Automatically updates the program by overwriting the binary and regenerating the completions."
+msgstr ""
+
+msgid "Displays the information of the binary"
+msgstr ""
+
+msgid "Checking the latest version available..."
+msgstr ""
+
+msgid "Downloading latest version..."
+msgstr ""
+
+msgid "Writing to binary..."
+msgstr ""
+
+msgid "Updating completions..."
+msgstr ""
+
+msgid "Upgrade completed successfully"
+msgstr ""
+
+msgid "not found."
+msgstr ""
+
+msgid "error getting the corresponding structure from fileinfo.Sys()"
+msgstr ""
+
+msgid "syntax error"
+msgstr ""
+
+msgid "unrecognized value type \"%s\""
+msgstr ""
+
+msgid "unrecognized key \"%s\""
+msgstr ""
+
+msgid "Reading \"%s\"..."
+msgstr ""
+
+msgid "Counting the amount of files..."
+msgstr ""
+
+msgid "%v files with %v errors"
+msgstr ""

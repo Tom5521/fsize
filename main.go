@@ -5,6 +5,7 @@ import (
 
 	"github.com/Tom5521/fsize/echo"
 	"github.com/Tom5521/fsize/flags"
+	_ "github.com/Tom5521/fsize/locales"
 	"github.com/Tom5521/fsize/meta"
 	"github.com/Tom5521/fsize/settings"
 	"github.com/Tom5521/fsize/stat"

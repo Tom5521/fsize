@@ -1,0 +1,106 @@
+msgid "ERROR:"
+msgstr "ERROR:"
+
+msgid "Available configuration keys:"
+msgstr "Claves de configuración disponibles:"
+
+msgid "Already in latest version"
+msgstr "Ya está en la última versión"
+
+msgid "Version:"
+msgstr "Versión:"
+
+msgid "Updated:"
+msgstr "Actualizado:"
+
+msgid "Latest version:"
+msgstr "Última versión:"
+
+msgid "No file/directory was specified, the current directory will be used. (.)"
+msgstr "No se especificó ningún archivo/directorio, se utilizará el directorio actual. (.)"
+
+msgid "Displays the file/folder properties."
+msgstr "Muestra las propiedades del archivo/carpeta."
+
+msgid "Prints the name of the file being walked if a directory has been selected."
+msgstr "Imprime el nombre del archivo recorrido si se seleccionó un directorio."
+
+msgid "Skips walking inside the directories."
+msgstr "Evita recorrer dentro de los directorios."
+
+msgid "Displays a file count and progress bar when counting and summing file sizes."
+msgstr "Muestra el conteo de archivos y una barra de progreso al contar y sumar los tamaños de archivos."
+
+msgid "Configure the variables used for preferences\n"
+  "Example: \"fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n\n"
+  "To see the available variables and their values run \"fsize --print-settings\"."
+msgstr "Configura las variables usadas para preferencias\n"
+  "Ejemplo: \"fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n\n"
+  "Para ver las variables disponibles y sus valores ejecuta \"fsize --print-settings\"."
+
+msgid "Prints the current configuration values."
+msgstr "Imprime los valores de configuración actuales."
+
+msgid "Hide possible warnings."
+msgstr "Oculta posibles advertencias."
+
+msgid "Generate a completion file for bash\n"
+  "if any, the first argument will be taken as output file."
+msgstr "Genera un archivo de autocompletado para bash\n"
+  "si hay alguno, el primer argumento se tomará como archivo de salida."
+
+msgid "Generate a completion file for fish\n"
+  "if any, the first argument will be taken as output file."
+msgstr "Genera un archivo de autocompletado para fish\n"
+  "si hay alguno, el primer argumento se tomará como archivo de salida."
+
+msgid "Generate a completion file for zsh\n"
+  "if any, the first argument will be taken as output file."
+msgstr "Genera un archivo de autocompletado para zsh\n"
+  "si hay alguno, el primer argumento se tomará como archivo de salida."
+
+msgid "Automatically updates the program by overwriting the binary and regenerating the completions."
+msgstr "Actualiza automáticamente el programa sobrescribiendo el binario y regenerando las autocompletaciones."
+
+msgid "Displays the information of the binary"
+msgstr "Muestra la información del binario"
+
+msgid "Checking the latest version available..."
+msgstr "Comprobando la última versión disponible..."
+
+msgid "Downloading latest version..."
+msgstr "Descargando la última versión..."
+
+msgid "Writing to binary..."
+msgstr "Escribiendo en el binario..."
+
+msgid "Updating completions..."
+msgstr "Actualizando las autocompletaciones..."
+
+msgid "Upgrade completed successfully"
+msgstr "Actualización completada exitosamente"
+
+msgid "not found."
+msgstr "no encontrado."
+
+msgid "error getting the corresponding structure from fileinfo.Sys()"
+msgstr "error al obtener la estructura correspondiente de fileinfo.Sys()"
+
+msgid "syntax error"
+msgstr "error de sintaxis"
+
+msgid "unrecognized value type \"%s\""
+msgstr "tipo de valor no reconocido \"%s\""
+
+msgid "unrecognized key \"%s\""
+msgstr "clave no reconocida \"%s\""
+
+msgid "Reading \"%s\"..."
+msgstr "Leyendo \"%s\"..."
+
+msgid "Counting the amount of files..."
+msgstr "Contando la cantidad de archivos..."
+
+msgid "%v files with %v errors"
+msgstr "%v archivos con %v errores"
+

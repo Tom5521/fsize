@@ -1,0 +1,106 @@
+msgid "ERROR:"
+msgstr "ОШИБКА:"
+
+msgid "Available configuration keys:"
+msgstr "Доступные ключи конфигурации:"
+
+msgid "Already in latest version"
+msgstr "Уже установлена последняя версия"
+
+msgid "Version:"
+msgstr "Версия:"
+
+msgid "Updated:"
+msgstr "Обновлено:"
+
+msgid "Latest version:"
+msgstr "Последняя версия:"
+
+msgid "No file/directory was specified, the current directory will be used. (.)"
+msgstr "Файл/директория не указаны, будет использована текущая директория. (.)"
+
+msgid "Displays the file/folder properties."
+msgstr "Отображает свойства файла/папки."
+
+msgid "Prints the name of the file being walked if a directory has been selected."
+msgstr "Выводит имя файла, если выбрана директория."
+
+msgid "Skips walking inside the directories."
+msgstr "Пропускает просмотр содержимого директорий."
+
+msgid "Displays a file count and progress bar when counting and summing file sizes."
+msgstr "Отображает количество файлов и индикатор прогресса при подсчете и суммировании размеров файлов."
+
+msgid "Configure the variables used for preferences\n"
+  "Example: \"fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n\n"
+  "To see the available variables and their values run \"fsize --print-settings\"."
+msgstr "Настройка переменных для предпочтений\n"
+  "Пример: \"fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n\n"
+  "Чтобы увидеть доступные переменные и их значения, запустите \"fsize --print-settings\"."
+
+msgid "Prints the current configuration values."
+msgstr "Выводит текущие значения конфигурации."
+
+msgid "Hide possible warnings."
+msgstr "Скрыть возможные предупреждения."
+
+msgid "Generate a completion file for bash\n"
+  "if any, the first argument will be taken as output file."
+msgstr "Создает файл автозаполнения для bash\n"
+  "если есть, первый аргумент будет взят как файл вывода."
+
+msgid "Generate a completion file for fish\n"
+  "if any, the first argument will be taken as output file."
+msgstr "Создает файл автозаполнения для fish\n"
+  "если есть, первый аргумент будет взят как файл вывода."
+
+msgid "Generate a completion file for zsh\n"
+  "if any, the first argument will be taken as output file."
+msgstr "Создает файл автозаполнения для zsh\n"
+  "если есть, первый аргумент будет взят как файл вывода."
+
+msgid "Automatically updates the program by overwriting the binary and regenerating the completions."
+msgstr "Автоматически обновляет программу, перезаписывая бинарный файл и регенерируя автозаполнения."
+
+msgid "Displays the information of the binary"
+msgstr "Отображает информацию о бинарном файле"
+
+msgid "Checking the latest version available..."
+msgstr "Проверка доступной последней версии..."
+
+msgid "Downloading latest version..."
+msgstr "Загрузка последней версии..."
+
+msgid "Writing to binary..."
+msgstr "Запись в бинарный файл..."
+
+msgid "Updating completions..."
+msgstr "Обновление автозаполнений..."
+
+msgid "Upgrade completed successfully"
+msgstr "Обновление успешно завершено"
+
+msgid "not found."
+msgstr "не найдено."
+
+msgid "error getting the corresponding structure from fileinfo.Sys()"
+msgstr "ошибка получения соответствующей структуры от fileinfo.Sys()"
+
+msgid "syntax error"
+msgstr "синтаксическая ошибка"
+
+msgid "unrecognized value type \"%s\""
+msgstr "неопознанный тип значения \"%s\""
+
+msgid "unrecognized key \"%s\""
+msgstr "неопознанный ключ \"%s\""
+
+msgid "Reading \"%s\"..."
+msgstr "Чтение \"%s\"..."
+
+msgid "Counting the amount of files..."
+msgstr "Подсчет количества файлов..."
+
+msgid "%v files with %v errors"
+msgstr "%v файлов с %v ошибками"
+
