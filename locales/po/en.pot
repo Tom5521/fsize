@@ -100,3 +100,39 @@ msgstr ""
 
 msgid "%v files with %v errors"
 msgstr ""
+
+msgid "Name:"
+msgstr ""
+
+msgid "Size:"
+msgstr ""
+
+msgid "Absolute Path:"
+msgstr ""
+
+msgid "Modify:"
+msgstr ""
+
+msgid "Access:"
+msgstr ""
+
+msgid "Birth:"
+msgstr ""
+
+msgid "Is directory:"
+msgstr ""
+
+msgid "Permissions:"
+msgstr ""
+
+msgid "Number of files:"
+msgstr ""
+
+msgid "UID/Name:"
+msgstr ""
+
+msgid "GID/Group:"
+msgstr ""
+
+msgid "not supported on windows"
+msgstr ""

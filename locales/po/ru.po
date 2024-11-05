@@ -104,3 +104,38 @@ msgstr "Подсчет количества файлов..."
 msgid "%v files with %v errors"
 msgstr "%v файлов с %v ошибками"
 
+msgid "Name:"
+msgstr "Имя:"
+
+msgid "Size:"
+msgstr "Размер:"
+
+msgid "Absolute Path:"
+msgstr "Абсолютный путь:"
+
+msgid "Modify:"
+msgstr "Изменить:"
+
+msgid "Access:"
+msgstr "Доступ:"
+
+msgid "Birth:"
+msgstr "Создание:"
+
+msgid "Is directory:"
+msgstr "Это каталог:"
+
+msgid "Permissions:"
+msgstr "Разрешения:"
+
+msgid "Number of files:"
+msgstr "Количество файлов:"
+
+msgid "UID/Name:"
+msgstr "UID/Имя:"
+
+msgid "GID/Group:"
+msgstr "GID/Группа:"
+
+msgid "not supported on windows"
+msgstr "не поддерживается на windows"

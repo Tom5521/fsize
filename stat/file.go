@@ -13,11 +13,18 @@ import (
 	"github.com/Tom5521/fsize/checkos"
 	"github.com/Tom5521/fsize/filecount"
 	"github.com/Tom5521/fsize/flags"
+	"github.com/Tom5521/fsize/locales"
 	"github.com/gookit/color"
 	"github.com/labstack/gommon/bytes"
 )
 
-var ErrGettingStruct = errors.New("error getting the corresponding structure from fileinfo.Sys()")
+var (
+	po               = locales.Po
+	ErrGettingStruct = errors.New(
+		po.Get("error getting the corresponding structure from fileinfo.Sys()"),
+	)
+	ErrNotSupportedOnWindows = errors.New(po.Get("not supported on windows"))
+)
 
 type File struct {
 	FileTimes
@@ -106,23 +113,23 @@ func (f File) String() string {
 		fmt.Fprintln(&builder, content...)
 	}
 
-	render("Name:", f.Name)
-	render("Size:", bytes.New().Format(f.Size))
-	render("Absolute Path:", f.AbsPath)
-	render("Modify:", f.ModTime.Format(time.DateTime))
-	render("Access:", f.AccessTime.Format(time.DateTime))
+	render(po.Get("Name:"), f.Name)
+	render(po.Get("Size:"), bytes.New().Format(f.Size))
+	render(po.Get("Absolute Path:"), f.AbsPath)
+	render(po.Get("Modify:"), f.ModTime.Format(time.DateTime))
+	render(po.Get("Access:"), f.AccessTime.Format(time.DateTime))
 	if f.SupportCreationDate {
-		render("Birth:", f.CreationTime.Format(time.DateTime))
+		render(po.Get("Birth:"), f.CreationTime.Format(time.DateTime))
 	}
-	render("Is directory:", f.IsDir)
-	render("Permissions:", fmt.Sprintf("%v/%v", int(f.Perms), f.Perms.String()))
+	render(po.Get("Is directory:"), f.IsDir)
+	render(po.Get("Permissions:"), fmt.Sprintf("%v/%v", int(f.Perms), f.Perms.String()))
 	if f.IsDir && !flags.NoWalk {
-		render("Number of files:", f.FilesNumber)
+		render(po.Get("Number of files:"), f.FilesNumber)
 	}
 
 	if checkos.Unix {
-		render("UID/Name:", fmt.Sprintf("%v/%v", f.User.Uid, f.User.Username))
-		render("GID/Name:", fmt.Sprintf("%v/%v", f.Group.Gid, f.Group.Name))
+		render(po.Get("UID/Name:"), fmt.Sprintf("%v/%v", f.User.Uid, f.User.Username))
+		render(po.Get("GID/Group:"), fmt.Sprintf("%v/%v", f.Group.Gid, f.Group.Name))
 	}
 
 	return builder.String()

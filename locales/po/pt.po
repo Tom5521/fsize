@@ -104,3 +104,38 @@ msgstr "Contando a quantidade de arquivos..."
 msgid "%v files with %v errors"
 msgstr "%v arquivos com %v erros"
 
+msgid "Name:"
+msgstr "Nome:"
+
+msgid "Size:"
+msgstr "Tamanho:"
+
+msgid "Absolute Path:"
+msgstr "Caminho Absoluto:"
+
+msgid "Modify:"
+msgstr "Modificar:"
+
+msgid "Access:"
+msgstr "Acesso:"
+
+msgid "Birth:"
+msgstr "Criação:"
+
+msgid "Is directory:"
+msgstr "É diretório:"
+
+msgid "Permissions:"
+msgstr "Permissões:"
+
+msgid "Number of files:"
+msgstr "Número de arquivos:"
+
+msgid "UID/Name:"
+msgstr "UID/Nome:"
+
+msgid "GID/Group:"
+msgstr "GID/Grupo:"
+
+msgid "not supported on windows"
+msgstr "não suportado no windows"
