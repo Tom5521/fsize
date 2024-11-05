@@ -139,3 +139,6 @@ msgstr "GID/Grupo:"
 
 msgid "not supported on windows"
 msgstr "no compatible con windows"
+
+msgid "Source Code: %s"
+msgstr "Codigo Fuente: %s"

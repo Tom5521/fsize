@@ -136,3 +136,6 @@ msgstr ""
 
 msgid "not supported on windows"
 msgstr ""
+
+msgid "Source Code: %s"
+msgstr ""

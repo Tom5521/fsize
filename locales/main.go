@@ -2,7 +2,6 @@ package locales
 
 import (
 	"embed"
-	"errors"
 	"fmt"
 	"io/fs"
 
@@ -19,15 +18,16 @@ var (
 func init() {
 	code, err := locale.GetLanguage()
 
-	if code == "en" || err != nil {
-		Po.ParseFile("po/en.pot")
-	} else {
-		file := fmt.Sprintf("po/%s.po", code)
+	file := "po/en.pot" // Default language.
 
-		if _, err := fs.Stat(podir, file); errors.Is(err, fs.ErrNotExist) {
-			file = "po/en.pot"
+	if code != "en" && err == nil {
+		langFile := fmt.Sprintf("po/%s.po", code)
+
+		// Check if the language exists.
+		if _, err = fs.Stat(podir, langFile); err == nil {
+			file = langFile
 		}
-
-		Po.ParseFile(file)
 	}
+
+	Po.ParseFile(file)
 }

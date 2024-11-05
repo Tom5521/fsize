@@ -84,6 +84,8 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 		if !updated {
 			fmt.Println(po.Get("Latest version:"), tag)
 		}
+
+		fmt.Println(po.Get("Source Code: %s", "https://github.com/Tom5521/fsize"))
 	default:
 		if len(args) == 0 {
 			echo.Warning(
