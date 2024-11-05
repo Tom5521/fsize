@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/Tom5521/fsize/checkos"
+	"github.com/Tom5521/fsize/echo"
 	"github.com/Tom5521/fsize/locales"
 	"github.com/Tom5521/fsize/meta"
 	"github.com/gookit/color"
@@ -21,7 +22,7 @@ const UpdateURL string = "https://github.com/Tom5521/fsize/releases/latest"
 var po = locales.Po
 
 func CheckUpdate() (tag string, latest bool, err error) {
-	color.Infoln(po.Get("Checking the latest version available..."))
+	echo.Info("Checking the latest version available...")
 	resp, err := http.Get(UpdateURL)
 	if err != nil {
 		return
@@ -74,21 +75,21 @@ func ApplyUpdate(tag string) (err error) {
 	if err != nil {
 		return
 	}
-	color.Infoln(po.Get("Writing to binary..."))
+	echo.Info("Writing to binary...")
 	err = selfupdate.Apply(&buf, selfupdate.Options{})
 	if err != nil {
 		return
 	}
 
 	if checkos.Unix {
-		color.Infoln(po.Get("Updating completions..."))
+		echo.Info("Updating completions...")
 		err = updateCompletions()
 		if err != nil {
 			return
 		}
 	}
 
-	color.Infoln(po.Get("Upgrade completed successfully"))
+	echo.Info("Upgrade completed successfully")
 	fmt.Printf("%s -> %s\n", color.Red.Render(meta.Version), color.Green.Render(tag))
 
 	return

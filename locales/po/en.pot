@@ -77,7 +77,7 @@ msgstr ""
 msgid "Upgrade completed successfully"
 msgstr ""
 
-msgid "not found."
+msgid "%s not found."
 msgstr ""
 
 msgid "error getting the corresponding structure from fileinfo.Sys()"

@@ -6,16 +6,12 @@ import (
 
 	_ "unsafe"
 
-	_ "github.com/Tom5521/fsize/echo"
-	"github.com/gookit/color"
+	"github.com/Tom5521/fsize/echo"
 	"github.com/schollz/progressbar/v3"
 )
 
-//go:linkname warning github.com/Tom5521/fsize/echo.Warning
-func warning(...any) // FUCK THE IMPORT CYCLE.
-
 func Progress(count, size *int64, path string) (err error) {
-	color.Infoln(po.Get("Counting the amount of files..."))
+	echo.Info("Counting the amount of files...")
 
 	var warnings []error
 
@@ -45,7 +41,7 @@ func Progress(count, size *int64, path string) (err error) {
 	}
 
 	for _, e := range warnings {
-		warning(e.Error())
+		echo.Warning(e.Error())
 	}
 	if err != nil {
 		return

@@ -80,8 +80,8 @@ msgstr "Atualizando as conclusões..."
 msgid "Upgrade completed successfully"
 msgstr "Atualização concluída com sucesso"
 
-msgid "not found."
-msgstr "não encontrado."
+msgid "%s not found."
+msgstr "%s não encontrado."
 
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "erro ao obter a estrutura correspondente de fileinfo.Sys()"

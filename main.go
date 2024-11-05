@@ -52,7 +52,7 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 	case len(flags.SettingsFlag) != 0:
 		err = settings.Parse(flags.SettingsFlag)
 		if err != nil {
-			color.Infoln(po.Get("Available configuration keys:"))
+			echo.Info("Available configuration keys:")
 			echo.Settings(Settings)
 		}
 	case flags.Update:
@@ -65,7 +65,7 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 			return
 		}
 		if updated {
-			color.Info.Println(po.Get("Already in latest version"))
+			echo.Info("Already in latest version")
 			return
 		}
 		err = update.ApplyUpdate(tag)
@@ -79,18 +79,16 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 			return
 		}
 
-		fmt.Println(po.Get("Version:"), meta.Version)
-		fmt.Println(po.Get("Updated:"), updated)
+		echo.Println("Version:", meta.Version)
+		echo.Println("Updated:", updated)
 		if !updated {
-			fmt.Println(po.Get("Latest version:"), tag)
+			echo.Println("Latest version:", tag)
 		}
 
-		fmt.Println(po.Get("Source Code: %s", "https://github.com/Tom5521/fsize"))
+		echo.Printfln("Source Code: %s", "https://github.com/Tom5521/fsize")
 	default:
 		if len(args) == 0 {
-			echo.Warning(
-				po.Get("No file/directory was specified, the current directory will be used. (.)"),
-			)
+			echo.Warning("No file/directory was specified, the current directory will be used. (.)")
 			args = append(args, ".")
 		}
 		for _, f := range args {
