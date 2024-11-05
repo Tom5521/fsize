@@ -5,7 +5,7 @@ import (
 
 	"github.com/Tom5521/fsize/echo"
 	"github.com/Tom5521/fsize/flags"
-	_ "github.com/Tom5521/fsize/locales"
+	"github.com/Tom5521/fsize/locales"
 	"github.com/Tom5521/fsize/meta"
 	"github.com/Tom5521/fsize/settings"
 	"github.com/Tom5521/fsize/stat"
@@ -15,7 +15,10 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var Settings *conf.Preferences
+var (
+	Settings *conf.Preferences
+	po       = locales.Po
+)
 
 func main() {
 	defer func() {
@@ -31,7 +34,7 @@ func main() {
 	}
 	Settings = settings.Settings
 	InitFlags()
-	root.SetErrPrefix(color.Error.Render("ERROR:"))
+	root.SetErrPrefix(color.Error.Render(po.Get("ERROR:")))
 	defer root.Execute()
 }
 
@@ -49,7 +52,7 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 	case len(flags.SettingsFlag) != 0:
 		err = settings.Parse(flags.SettingsFlag)
 		if err != nil {
-			color.Infoln("Available configuration keys:")
+			color.Infoln(po.Get("Available configuration keys:"))
 			echo.Settings(Settings)
 		}
 	case flags.Update:
@@ -62,7 +65,7 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 			return
 		}
 		if updated {
-			color.Info.Println("Already in latest version")
+			color.Info.Println(po.Get("Already in latest version"))
 			return
 		}
 		err = update.ApplyUpdate(tag)
@@ -76,14 +79,16 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 			return
 		}
 
-		fmt.Println("Version:", meta.Version)
-		fmt.Println("Updated:", updated)
+		fmt.Println(po.Get("Version:"), meta.Version)
+		fmt.Println(po.Get("Updated:"), updated)
 		if !updated {
-			fmt.Println("Latest version:", tag)
+			fmt.Println(po.Get("Latest version:"), tag)
 		}
 	default:
 		if len(args) == 0 {
-			echo.Warning("No file/directory was specified, the current directory will be used. (.)")
+			echo.Warning(
+				po.Get("No file/directory was specified, the current directory will be used. (.)"),
+			)
 			args = append(args, ".")
 		}
 		for _, f := range args {

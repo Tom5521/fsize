@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/Tom5521/fsize/checkos"
+	"github.com/Tom5521/fsize/locales"
 	"github.com/Tom5521/fsize/meta"
 	"github.com/gookit/color"
 	"github.com/minio/selfupdate"
@@ -17,8 +18,10 @@ import (
 
 const UpdateURL string = "https://github.com/Tom5521/fsize/releases/latest"
 
+var po = locales.Po
+
 func CheckUpdate() (tag string, latest bool, err error) {
-	color.Infoln("Checking the latest version available...")
+	color.Infoln(po.Get("Checking the latest version available..."))
 	resp, err := http.Get(UpdateURL)
 	if err != nil {
 		return
@@ -61,7 +64,7 @@ func ApplyUpdate(tag string) (err error) {
 	defer resp.Body.Close()
 
 	var buf bytes.Buffer
-	bar := progressbar.DefaultBytes(resp.ContentLength, "Downloading latest version...")
+	bar := progressbar.DefaultBytes(resp.ContentLength, po.Get("Downloading latest version..."))
 
 	_, err = io.Copy(io.MultiWriter(bar, &buf), resp.Body)
 	if err != nil {
@@ -71,21 +74,21 @@ func ApplyUpdate(tag string) (err error) {
 	if err != nil {
 		return
 	}
-	color.Infoln("Writing to binary...")
+	color.Infoln(po.Get("Writing to binary..."))
 	err = selfupdate.Apply(&buf, selfupdate.Options{})
 	if err != nil {
 		return
 	}
 
 	if checkos.Unix {
-		color.Infoln("Updating completions...")
+		color.Infoln(po.Get("Updating completions..."))
 		err = updateCompletions()
 		if err != nil {
 			return
 		}
 	}
 
-	color.Infoln("Upgrade completed successfully")
+	color.Infoln(po.Get("Upgrade completed successfully"))
 	fmt.Printf("%s -> %s\n", color.Red.Render(meta.Version), color.Green.Render(tag))
 
 	return

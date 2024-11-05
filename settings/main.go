@@ -7,6 +7,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/Tom5521/fsize/locales"
 	conf "github.com/Tom5521/goconf"
 )
 
@@ -24,7 +25,10 @@ var Keys = []string{
 	HideWarnings,
 }
 
-var Settings *conf.Preferences
+var (
+	Settings *conf.Preferences
+	po       = locales.Po
+)
 
 func Load() (err error) {
 	Settings, err = conf.New("fsize")
@@ -38,13 +42,13 @@ func Parse(optionsArgs []string) error {
 	for _, option := range optionsArgs {
 		data := strings.SplitN(option, "=", 2)
 		if len(data) != 2 {
-			return errors.New("syntax error")
+			return errors.New(po.Get("syntax error"))
 		}
 		key, value := data[0], data[1]
 
 		v, err := strconv.ParseBool(value)
 		if err != nil {
-			return fmt.Errorf("unrecognized value type \"%s\"", value)
+			return fmt.Errorf(po.Get("unrecognized value type \"%s\"", value))
 		}
 		var exists bool
 		for _, k := range Keys {
@@ -54,7 +58,7 @@ func Parse(optionsArgs []string) error {
 			}
 		}
 		if !exists {
-			return fmt.Errorf("unrecognized key \"%s\"", key)
+			return fmt.Errorf(po.Get("unrecognized key \"%s\"", key))
 		}
 		Settings.SetBool(key, v)
 	}

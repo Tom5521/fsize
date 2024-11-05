@@ -1,7 +1,6 @@
 package filecount
 
 import (
-	"fmt"
 	"io/fs"
 	"path/filepath"
 
@@ -16,14 +15,14 @@ import (
 func warning(...any) // FUCK THE IMPORT CYCLE.
 
 func Progress(count, size *int64, path string) (err error) {
-	color.Infoln("Counting the amount of files...")
+	color.Infoln(po.Get("Counting the amount of files..."))
 
 	var warnings []error
 
 	countBar := progressbar.Default(-1)
 	setbar := func(files, errors int64) {
 		countBar.Describe(
-			fmt.Sprintf("%v files with %v errors", files, errors),
+			po.Get("%v files with %v errors", files, errors),
 		)
 	}
 	err = filepath.Walk(path, func(_ string, info fs.FileInfo, err error) error {

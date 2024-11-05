@@ -19,7 +19,7 @@ zsh|/usr/local/share/zsh/site-functions/_fsize`
 
 		_, exists := exec.LookPath(shell)
 		if exists != nil {
-			echo.Warning(shell, "not found.")
+			echo.Warning(shell, po.Get("not found."))
 			continue
 		}
 		cmd := exec.Command("fsize", fmt.Sprintf("--gen-%s-completion", shell), path)
