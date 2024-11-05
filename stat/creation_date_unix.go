@@ -21,7 +21,7 @@ func CreationDate(info os.FileInfo) (t time.Time, err error) {
 	}
 
 	date := builder.String()
-	date = regexp.MustCompile(`\x0a`).ReplaceAllString(date, "")
+	date = regexp.MustCompile(`\x0a`).ReplaceAllString(date, "") // Clean stat output.
 	t, err = parseStatDate(date)
 
 	return
