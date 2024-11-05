@@ -131,8 +131,8 @@ msgstr "Permissões:"
 msgid "Number of files:"
 msgstr "Número de arquivos:"
 
-msgid "UID/Name:"
-msgstr "UID/Nome:"
+msgid "UID/User:"
+msgstr "UID/Usuário:"
 
 msgid "GID/Group:"
 msgstr "GID/Grupo:"

@@ -131,8 +131,8 @@ msgstr "Разрешения:"
 msgid "Number of files:"
 msgstr "Количество файлов:"
 
-msgid "UID/Name:"
-msgstr "UID/Имя:"
+msgid "UID/User:"
+msgstr "UID/Пользователь:"
 
 msgid "GID/Group:"
 msgstr "GID/Группа:"

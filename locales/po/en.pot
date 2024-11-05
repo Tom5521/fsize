@@ -128,7 +128,7 @@ msgstr ""
 msgid "Number of files:"
 msgstr ""
 
-msgid "UID/Name:"
+msgid "UID/User:"
 msgstr ""
 
 msgid "GID/Group:"

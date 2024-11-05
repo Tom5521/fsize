@@ -2,3 +2,5 @@ fsize
 builds
 vendor
 completions
+*.exe
+*.bin

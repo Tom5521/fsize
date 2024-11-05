@@ -128,7 +128,7 @@ func (f File) String() string {
 	}
 
 	if checkos.Unix {
-		render(po.Get("UID/Name:"), fmt.Sprintf("%v/%v", f.User.Uid, f.User.Username))
+		render(po.Get("UID/User:"), fmt.Sprintf("%v/%v", f.User.Uid, f.User.Username))
 		render(po.Get("GID/Group:"), fmt.Sprintf("%v/%v", f.Group.Gid, f.Group.Name))
 	}
 
