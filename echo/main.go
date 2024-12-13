@@ -2,6 +2,7 @@ package echo
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/Tom5521/fsize/flags"
 	"github.com/Tom5521/fsize/locales"
@@ -52,7 +53,8 @@ func Warning(warn string) {
 	if flags.NoWarns {
 		return
 	}
-	color.Warnln(po.Get(warn))
+	warn = color.Warn.Render(po.Get(warn))
+	fmt.Fprintln(os.Stderr, warn)
 }
 
 func Info(format string, a ...any) {
@@ -60,5 +62,6 @@ func Info(format string, a ...any) {
 }
 
 func Error(format string, a ...any) {
-	color.Error.Println(po.Get(format, a...))
+	err := color.Error.Render(po.Get(format, a...))
+	fmt.Fprintln(os.Stderr, err)
 }

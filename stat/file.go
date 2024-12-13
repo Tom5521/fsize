@@ -109,27 +109,27 @@ func (f File) String() string {
 	var builder strings.Builder
 
 	render := func(title string, content ...any) {
-		fmt.Fprint(&builder, color.Green.Render(title+" "))
+		fmt.Fprint(&builder, color.Green.Render(po.Get(title)+" "))
 		fmt.Fprintln(&builder, content...)
 	}
 
-	render(po.Get("Name:"), f.Name)
-	render(po.Get("Size:"), bytes.New().Format(f.Size))
-	render(po.Get("Absolute Path:"), f.AbsPath)
-	render(po.Get("Modify:"), f.ModTime.Format(time.DateTime))
-	render(po.Get("Access:"), f.AccessTime.Format(time.DateTime))
+	render("Name:", f.Name)
+	render("Size:", bytes.New().Format(f.Size))
+	render("Absolute Path:", f.AbsPath)
+	render("Modify:", f.ModTime.Format(time.DateTime))
+	render("Access:", f.AccessTime.Format(time.DateTime))
 	if f.SupportCreationDate {
-		render(po.Get("Birth:"), f.CreationTime.Format(time.DateTime))
+		render("Birth:", f.CreationTime.Format(time.DateTime))
 	}
-	render(po.Get("Is directory:"), f.IsDir)
-	render(po.Get("Permissions:"), fmt.Sprintf("%v/%v", int(f.Perms), f.Perms.String()))
+	render("Is directory:", f.IsDir)
+	render("Permissions:", fmt.Sprintf("%v/%v", int(f.Perms), f.Perms.String()))
 	if f.IsDir && !flags.NoWalk {
-		render(po.Get("Number of files:"), f.FilesNumber)
+		render("Number of files:", f.FilesNumber)
 	}
 
 	if checkos.Unix {
-		render(po.Get("UID/User:"), fmt.Sprintf("%v/%v", f.User.Uid, f.User.Username))
-		render(po.Get("GID/Group:"), fmt.Sprintf("%v/%v", f.Group.Gid, f.Group.Name))
+		render("UID/User:", fmt.Sprintf("%v/%v", f.User.Uid, f.User.Username))
+		render("GID/Group:", fmt.Sprintf("%v/%v", f.Group.Gid, f.Group.Name))
 	}
 
 	return builder.String()

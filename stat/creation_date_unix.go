@@ -6,7 +6,6 @@ package stat
 import (
 	"os"
 	"os/exec"
-	"regexp"
 	"strings"
 	"time"
 )
@@ -21,7 +20,7 @@ func CreationDate(info os.FileInfo) (t time.Time, err error) {
 	}
 
 	date := builder.String()
-	date = regexp.MustCompile(`\x0a`).ReplaceAllString(date, "") // Clean stat output.
+	date = strings.ReplaceAll(date, `\x0a`, "") // Clean stat output.
 	t, err = parseStatDate(date)
 
 	return
