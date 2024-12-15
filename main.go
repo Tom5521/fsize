@@ -30,6 +30,7 @@ func main() {
 	// Initialize variables
 	err := settings.Load()
 	if err != nil {
+		echo.Error(err.Error())
 		return
 	}
 	Settings = settings.Settings
