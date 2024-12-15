@@ -36,6 +36,7 @@ func Settings(s *conf.Preferences) {
 func Println(txt string, args ...any) {
 	fmt.Print(po.Get(txt))
 	if len(args) > 0 {
+		fmt.Print(" ")
 		fmt.Print(args...)
 	}
 	fmt.Println()

@@ -108,9 +108,9 @@ install:
     just build-local
     cp fsize {{linux-install-path}}
     fsize --gen-bash-completion {{bash-completion-path}}fsize
-    -which fish && \
+    -command -v fish && \
     fsize --gen-fish-completion {{fish-completion-path}}fsize.fish 
-    -which zsh && \
+    -command -v zsh && \
     fsize --gen-zsh-completion {{zsh-completion-path}}_fsize
 
 [confirm]
