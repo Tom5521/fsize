@@ -2,27 +2,28 @@ package update
 
 import (
 	"fmt"
+	"os"
 	"os/exec"
-	"strings"
 
 	"github.com/Tom5521/fsize/echo"
 )
 
-func updateCompletions() (err error) {
-	const instructions = `bash|/usr/local/share/bash-completion/completions/fsize
-fish|/usr/local/share/fish/vendor_completions.d/fsize.fish
-zsh|/usr/local/share/zsh/site-functions/_fsize`
+func updateCompletions(executable string) (err error) {
+	instructions := map[string]string{
+		"bash": "/usr/local/share/bash-completion/completions/fsize",
+		"fish": "/usr/local/share/fish/vendor_completions.d/fsize.fish",
+		"zsh":  "/usr/local/share/zsh/site-functions/_fsize",
+	}
 
-	for _, line := range strings.Split(instructions, "\n") {
-		parts := strings.SplitN(line, "|", 2)
-		shell, path := parts[0], parts[1]
-
+	for shell, path := range instructions {
 		_, exists := exec.LookPath(shell)
 		if exists != nil {
 			echo.Warningf("%s not found.", shell)
 			continue
 		}
-		cmd := exec.Command("fsize", fmt.Sprintf("--gen-%s-completion", shell), path)
+		cmd := exec.Command(executable, fmt.Sprintf("--gen-%s-completion", shell), path)
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
 		err = cmd.Run()
 		if err != nil {
 			return
