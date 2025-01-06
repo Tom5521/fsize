@@ -142,3 +142,15 @@ msgstr "no compatible con windows"
 
 msgid "Source Code: %s"
 msgstr "Codigo Fuente: %s"
+
+msgid "NB! It seems that you are in a NixOS."
+msgstr "Atencion! Parece que estas en NixOS."
+
+msgid "Due to the non-standard filesystem implementation of the environment, the update command may not work as expected."
+msgstr "Debido a la implementacion de sistema de archivos no estandar del entorno, el comando de actualizar puede no funcionar como se espera."
+
+msgid "Do you want to proceed with the update?"
+msgstr "Quieres continuar con la actualizacion?"
+
+msgid "The command has been cancelled."
+msgstr "El comando ha sido cancelado."

@@ -139,3 +139,15 @@ msgstr ""
 
 msgid "Source Code: %s"
 msgstr ""
+
+msgid "NB! It seems that you are in a NixOS."
+msgstr ""
+
+msgid "Due to the non-standard filesystem implementation of the environment, the update command may not work as expected."
+msgstr ""
+
+msgid "Do you want to proceed with the update?"
+msgstr ""
+
+msgid "The command has been cancelled."
+msgstr ""

@@ -156,6 +156,16 @@ gh-release:
 test:
     go test -v ./*/*_test.go
 
+test-update:
+    #!/bin/bash
+    go build -v .
+    ./fsize --update
+    v=$(./fsize --version)
+    if [[ "$v" != "fsize version {{short-latest-tag}}" ]]; then
+        exit 1
+    fi
+
+
 update-asciinema:
     just build-local
     asciinema rec --title "fsize {{short-latest-tag}}" --command "./fsize /usr/share/"

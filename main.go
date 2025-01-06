@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 
 	"github.com/Tom5521/fsize/echo"
 	"github.com/Tom5521/fsize/flags"
@@ -21,6 +22,7 @@ var (
 )
 
 func main() {
+	runtime.GOMAXPROCS(runtime.NumCPU())
 	defer func() {
 		if r := recover(); r != nil {
 			color.Errorln(r)
