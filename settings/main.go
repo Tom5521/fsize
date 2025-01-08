@@ -27,7 +27,7 @@ func Load() error {
 	}
 	configPath += "/fsize"
 
-	viper.SetConfigName("config")
+	viper.SetConfigName("fsize")
 	viper.SetConfigType("json")
 	viper.AddConfigPath(configPath)
 	viper.AddConfigPath(".")
@@ -43,7 +43,7 @@ read:
 			if err = os.MkdirAll(configPath, os.ModePerm); err != nil {
 				return fmt.Errorf("error creating configuration directory: %v", err)
 			}
-			if err = viper.SafeWriteConfigAs(configPath + "/config.json"); err != nil {
+			if err = viper.SafeWriteConfigAs(configPath + "/fsize.json"); err != nil {
 				return fmt.Errorf("error writing to the default configuration file: %v", err)
 			}
 			goto read
