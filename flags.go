@@ -5,11 +5,15 @@ import (
 	"github.com/Tom5521/fsize/meta"
 	"github.com/Tom5521/fsize/settings"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 )
 
 var root = cobra.Command{
-	Use:     "fsize",
-	Short:   po.Get("Displays the file/folder properties."),
+	Use:   "fsize",
+	Short: po.Get("Displays the file/folder properties."),
+	PostRunE: func(cmd *cobra.Command, args []string) error {
+		return viper.WriteConfig()
+	},
 	RunE:    RunE,
 	Version: meta.Version,
 }
@@ -17,13 +21,13 @@ var root = cobra.Command{
 func InitFlags() {
 	flag := root.Flags()
 
-	flag.BoolVar(&flags.PrintOnWalk, "print-on-walk", Settings.Bool(settings.AlwaysPrintOnWalk),
+	flag.BoolVar(&flags.PrintOnWalk, "print-on-walk", viper.GetBool(settings.AlwaysPrintOnWalk),
 		po.Get("Prints the name of the file being walked if a directory has been selected."),
 	)
-	flag.BoolVar(&flags.NoWalk, "no-walk", Settings.Bool(settings.AlwaysSkipWalk),
+	flag.BoolVar(&flags.NoWalk, "no-walk", viper.GetBool(settings.AlwaysSkipWalk),
 		po.Get("Skips walking inside the directories."),
 	)
-	flag.BoolVarP(&flags.Progress, "progress", "p", Settings.Bool(settings.AlwaysShowProgress),
+	flag.BoolVarP(&flags.Progress, "progress", "p", viper.GetBool(settings.AlwaysShowProgress),
 		po.Get("Displays a file count and progress bar when counting and summing file sizes."),
 	)
 	flag.StringSliceVarP(&flags.SettingsFlag, "config", "c", []string{},
@@ -35,7 +39,7 @@ To see the available variables and their values run "fsize --print-settings".`,
 	flag.BoolVar(&flags.PrintSettingsFlag, "print-settings", false,
 		po.Get("Prints the current configuration values."),
 	)
-	flag.BoolVar(&flags.NoWarns, "no-warns", Settings.Bool(settings.HideWarnings),
+	flag.BoolVar(&flags.NoWarns, "no-warns", viper.GetBool(settings.HideWarnings),
 		po.Get("Hide possible warnings."),
 	)
 	flag.BoolVar(&flags.GenBashCompletion, "gen-bash-completion", false,

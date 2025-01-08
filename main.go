@@ -11,15 +11,11 @@ import (
 	"github.com/Tom5521/fsize/settings"
 	"github.com/Tom5521/fsize/stat"
 	"github.com/Tom5521/fsize/update"
-	conf "github.com/Tom5521/goconf"
 	"github.com/gookit/color"
 	"github.com/spf13/cobra"
 )
 
-var (
-	Settings *conf.Preferences
-	po       = locales.Po
-)
+var po = locales.Po
 
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
@@ -35,7 +31,6 @@ func main() {
 		echo.Error(err.Error())
 		return
 	}
-	Settings = settings.Settings
 	InitFlags()
 	root.SetErrPrefix(color.Error.Render(po.Get("ERROR:")))
 	defer root.Execute()
@@ -51,12 +46,12 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 	case flags.GenBashCompletion || flags.GenFishCompletion || flags.GenZshCompletion:
 		err = GenerateCompletions(cmd, args)
 	case flags.PrintSettingsFlag:
-		echo.Settings(Settings)
+		echo.Settings()
 	case len(flags.SettingsFlag) != 0:
 		err = settings.Parse(flags.SettingsFlag)
 		if err != nil {
 			echo.Info("Available configuration keys:")
-			echo.Settings(Settings)
+			echo.Settings()
 		}
 	case flags.Update:
 		var (

@@ -6,30 +6,25 @@ import (
 
 	"github.com/Tom5521/fsize/flags"
 	"github.com/Tom5521/fsize/locales"
-	"github.com/Tom5521/fsize/settings"
-	conf "github.com/Tom5521/goconf"
 	"github.com/gookit/color"
+	"github.com/spf13/viper"
 )
 
 var po = locales.Po
 
-func Settings(s *conf.Preferences) {
-	printSetting := func(key string) {
-		s := s.Get(key)
-		_, isBool := s.(bool)
-		if isBool {
-			switch s {
-			case true:
+func Settings() {
+	for _, key := range viper.AllKeys() {
+		s := viper.Get(key)
+		switch v := s.(type) {
+		case bool:
+			if v {
 				s = color.Green.Render(s)
-			default:
+			} else {
 				s = color.Red.Render(s)
 			}
 		}
 		fmt.Print(key + ": ")
 		fmt.Println(s)
-	}
-	for _, s := range settings.Keys {
-		printSetting(s)
 	}
 }
 
