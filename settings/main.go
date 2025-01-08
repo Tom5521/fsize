@@ -30,7 +30,6 @@ func Load() error {
 	viper.SetConfigName("fsize")
 	viper.SetConfigType("json")
 	viper.AddConfigPath(configPath)
-	viper.AddConfigPath(".")
 
 	viper.SetDefault(AlwaysPrintOnWalk, false)
 	viper.SetDefault(AlwaysSkipWalk, false)
