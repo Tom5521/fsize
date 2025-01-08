@@ -4,6 +4,7 @@
 package stat
 
 import (
+	"bytes"
 	"os"
 	"os/exec"
 	"strings"
@@ -11,15 +12,16 @@ import (
 )
 
 func CreationDate(info os.FileInfo) (t time.Time, err error) {
+	var buf bytes.Buffer
+
 	cmd := exec.Command("stat", "-c", "%w", info.Name())
-	var builder strings.Builder
-	cmd.Stdout = &builder
+	cmd.Stdout = &buf
 	err = cmd.Run()
 	if err != nil {
 		return t, err
 	}
 
-	date := builder.String()
+	date := buf.String()
 	date = strings.ReplaceAll(date, `\x0a`, "") // Clean stat output.
 	t, err = parseStatDate(date)
 
