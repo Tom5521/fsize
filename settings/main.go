@@ -27,22 +27,6 @@ func Load() error {
 	}
 	configPath += "/fsize"
 
-	if _, err = os.Stat(configPath); os.IsNotExist(err) {
-		if err = os.Mkdir(configPath, os.ModePerm); err != nil {
-			return fmt.Errorf("error creating configuration directory: %v", err)
-		}
-	}
-	if _, err = os.Stat(configPath + "/config.json"); os.IsNotExist(err) {
-		if file, err := os.Create(configPath + "/config.json"); err == nil {
-			defer file.Close()
-			if _, err = file.WriteString("{}"); err != nil {
-				return fmt.Errorf("error writing to the default configuration file: %v", err)
-			}
-		} else {
-			return fmt.Errorf("error creating configuration file: %v", err)
-		}
-	}
-
 	viper.SetConfigName("config")
 	viper.SetConfigType("json")
 	viper.AddConfigPath(configPath)
@@ -53,8 +37,19 @@ func Load() error {
 	viper.SetDefault(AlwaysShowProgress, true)
 	viper.SetDefault(HideWarnings, false)
 
+read:
 	if err = viper.ReadInConfig(); err != nil {
-		return fmt.Errorf("error reading config: %v", err)
+		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
+			if err = os.MkdirAll(configPath, os.ModePerm); err != nil {
+				return fmt.Errorf("error creating configuration directory: %v", err)
+			}
+			if err = viper.SafeWriteConfigAs(configPath + "/config.json"); err != nil {
+				return fmt.Errorf("error writing to the default configuration file: %v", err)
+			}
+			goto read
+		} else {
+			return fmt.Errorf("error reading configuration: %v", err)
+		}
 	}
 
 	return nil
