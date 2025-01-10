@@ -54,14 +54,14 @@ build os arch:
         exit 0
     fi
 
-    if [[ {{os}} == "windows" && {{arch}} == "arm64" || {{os}} == "darwin" ]]; then
+    if [[ {{os}} == "windows" && {{arch}} == "arm64" ]]; then
         echo ---------------------------------------------
         echo compression not supported for {{os}}-{{arch}}
         echo skipping compression process...
         echo ---------------------------------------------
         exit 0
     fi
-
+ 
     just compress $bin
 
 build-local:
@@ -99,7 +99,8 @@ compress bin:
         exit 0
     fi
 
-    upx --8mib-ram --color -9 {{bin}}
+    upx --force-macos --8mib-ram -9 {{bin}}
+    upx -t {{bin}}
 
 [confirm]
 [unix]
