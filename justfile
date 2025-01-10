@@ -26,13 +26,15 @@ release:
     # Cleaning ./builds/
     just clean
     # Linux
-    just build linux amd64
-    just build linux arm64
     just build linux 386
+    just build linux amd64
+    just build linux arm
+    just build linux arm64
     # Windows
-    just build windows amd64
-    just build windows arm64
     just build windows 386
+    just build windows amd64
+    just build windows arm
+    just build windows arm64
     # Darwin
     just build darwin amd64
     just build darwin arm64
