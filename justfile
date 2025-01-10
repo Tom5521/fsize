@@ -23,7 +23,6 @@ default:
     go build -v .
 
 release:
-    #!/usr/bin/env -S bash -x
     # Cleaning ./builds/
     just clean
     # Linux
