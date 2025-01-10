@@ -6,21 +6,32 @@ package stat
 import (
 	"os"
 	"os/user"
+	"runtime"
 	"strconv"
 	"syscall"
 )
 
-func UsrAndGroup(info os.FileInfo) (usr *user.User, group *user.Group, err error) {
-	usr, err = Usr(info)
+func NewFileIDs(info os.FileInfo) (fids FileIDs, err error) {
+	fids.SupportFileIDs = runtime.GOOS != "android"
+	if !fids.SupportFileIDs {
+		return
+	}
+	fids.User, fids.Group, err = usrAndGroup(info)
+
+	return
+}
+
+func usrAndGroup(info os.FileInfo) (usr *user.User, group *user.Group, err error) {
+	usr, err = fileUsr(info)
 	if err != nil {
 		return
 	}
 
-	group, err = Group(info)
+	group, err = fileGroup(info)
 	return
 }
 
-func Usr(info os.FileInfo) (*user.User, error) {
+func fileUsr(info os.FileInfo) (*user.User, error) {
 	stat, ok := info.Sys().(*syscall.Stat_t)
 	if !ok {
 		panic(ErrGettingStruct)
@@ -29,7 +40,7 @@ func Usr(info os.FileInfo) (*user.User, error) {
 	return user.LookupId(formatUint(stat.Uid))
 }
 
-func Group(info os.FileInfo) (*user.Group, error) {
+func fileGroup(info os.FileInfo) (*user.Group, error) {
 	stat, ok := info.Sys().(*syscall.Stat_t)
 	if !ok {
 		panic(ErrGettingStruct)

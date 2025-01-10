@@ -5,12 +5,10 @@ import (
 	"fmt"
 	"io/fs"
 	"os"
-	"os/user"
 	"path/filepath"
 	"strings"
 	"time"
 
-	"github.com/Tom5521/fsize/checkos"
 	"github.com/Tom5521/fsize/filecount"
 	"github.com/Tom5521/fsize/flags"
 	"github.com/Tom5521/fsize/locales"
@@ -28,6 +26,7 @@ var (
 
 type File struct {
 	FileTimes
+	FileIDs
 
 	Size int64
 
@@ -35,9 +34,6 @@ type File struct {
 	AbsPath string
 	IsDir   bool
 	Perms   fs.FileMode
-
-	Group *user.Group
-	User  *user.User
 
 	// IsDir vars
 
@@ -73,18 +69,15 @@ func (f *File) Load(path string) (err error) {
 	if err != nil {
 		return
 	}
+	f.FileIDs, err = NewFileIDs(f.info)
+	if err != nil {
+		return err
+	}
 
 	f.Size = f.info.Size()
 	f.Name = f.info.Name()
 	f.IsDir = f.info.IsDir()
 	f.Perms = f.info.Mode().Perm()
-
-	// Values which do not work on some systems.
-
-	// Only on unix systems.
-	if checkos.Unix {
-		f.User, f.Group, err = UsrAndGroup(f.info)
-	}
 
 	return
 }
@@ -127,7 +120,7 @@ func (f File) String() string {
 		render("Number of files:", f.FilesNumber)
 	}
 
-	if checkos.Unix {
+	if f.SupportFileIDs {
 		render("UID/User:", fmt.Sprintf("%v/%v", f.User.Uid, f.User.Username))
 		render("GID/Group:", fmt.Sprintf("%v/%v", f.Group.Gid, f.Group.Name))
 	}
