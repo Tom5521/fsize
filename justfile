@@ -39,15 +39,20 @@ release:
 build os arch:
     #!/usr/bin/env -S bash -x
     bin=builds/fsize-{{os}}-{{arch}}
+    compiler="garble -tiny"
 
     if [[ "{{ os }}" == "windows" ]]; then
         bin="$bin.exe"
+        
+        if [[ {{arch}} == "386" ]]; then
+            compiler="go"
+        fi
     fi
 
-    command -v garble || just install-garble
+    command -v garble || just install-garble 
 
     CC=gcc GOOS={{os}} GOARCH={{arch}} \
-    garble -tiny build -v -o $bin || exit $?
+    $compiler build -v -o $bin || exit $?
 
     if [[ {{skip-compress}} == 1 ]]; then
         exit 0
