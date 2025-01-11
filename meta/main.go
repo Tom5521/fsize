@@ -9,10 +9,5 @@ import (
 var (
 	//go:embed version.txt
 	LongVersion string
-	Version     string
+	Version     = strings.SplitN(LongVersion, "-", 2)[0]
 )
-
-func init() {
-	parts := strings.SplitN(LongVersion, "-", 2)
-	Version = parts[0]
-}
