@@ -47,16 +47,18 @@ build os arch:
         bin="$bin.exe"
     fi
 
-    GOOS={{os}} GOARCH={{arch}} \
-    go build -v \
+    command -v garble || just install-garble
+
+    CC=gcc GOOS={{os}} GOARCH={{arch}} \
+    garble -tiny build -v \
     {{version-flag}} \
-    -o $bin
+    -o $bin || exit $?
 
     if [[ {{skip-compress}} == 1 ]]; then
         exit 0
     fi
 
-    if [[ {{os}} == "windows" && {{arch}} == "arm64" ]]; then
+    if [[ {{os}} == "windows" && {{arch}} == "arm64" || {{arch}} == "arm" ]]; then
         echo ---------------------------------------------
         echo compression not supported for {{os}}-{{arch}}
         echo skipping compression process...
@@ -83,6 +85,9 @@ go-reinstall:
     @just go-uninstall
     @just go-install
 
+install-garble:
+    go install -v mvdan.cc/garble@latest
+
 [private]
 compress bin:
     #!/usr/bin/env -S bash -x
@@ -92,7 +97,7 @@ compress bin:
         exit 0
     fi
 
-    which upx > /dev/null 2>&1
+    command -v upx > /dev/null 2>&1
     if [[ $? != 0 ]]; then
         echo ---------------------------------
         echo upx binary not found in PATH
@@ -151,6 +156,10 @@ commit:
     meteor
     git push
 
+gh-update-assets:
+    just release
+    gh release upload {{short-latest-tag}} builds/* --clobber
+
 gh-release:
     just release
     gh release create {{short-latest-tag}} ./builds/* --generate-notes
@@ -164,6 +173,7 @@ test-update:
     ./fsize --update
     v=$(./fsize --version)
     if [[ "$v" != "fsize version {{short-latest-tag}}" ]]; then
+        echo -- FAIL --
         exit 1
     fi
 
