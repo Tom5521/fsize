@@ -46,10 +46,16 @@ func CheckUpdate() (tag string, latest bool, err error) {
 func ApplyUpdate(tag string) (err error) {
 	const baseURL string = "https://github.com/Tom5521/fsize/releases/download/%s/fsize-%s-%s"
 
+	// This is for the termux users.
+	goos := runtime.GOOS
+	if runtime.GOOS == "android" {
+		goos = "linux"
+	}
+
 	url := fmt.Sprintf(
 		baseURL,
 		tag,
-		runtime.GOOS,
+		goos,
 		runtime.GOARCH,
 	)
 	if checkos.Windows {
