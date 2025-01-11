@@ -15,6 +15,12 @@ func updateCompletions(executable string) (err error) {
 		"zsh":  "/usr/local/share/zsh/site-functions/_fsize",
 	}
 
+	if isMaybeRunningInTermux() {
+		for k, v := range instructions {
+			instructions[k] = os.Getenv("PREFIX") + v
+		}
+	}
+
 	for shell, path := range instructions {
 		_, exists := exec.LookPath(shell)
 		if exists != nil {

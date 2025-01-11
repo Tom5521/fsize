@@ -132,11 +132,14 @@ func ApplyUpdate(tag string) (err error) {
 	if err != nil {
 		return fmt.Errorf("error getting current user: %v", err)
 	}
-	if usr.Username != "root" && checkos.Unix {
+
+	runningOnTermux := isMaybeRunningInTermux()
+
+	if (usr.Username != "root" && checkos.Unix) && !runningOnTermux {
 		echo.Warning("The user is not root, the completions will not be updated")
 	}
 
-	if checkos.Unix && usr.Username == "root" {
+	if (usr.Username == "root" && checkos.Unix) || runningOnTermux {
 		echo.Info("Updating completions...")
 		err = updateCompletions(executable)
 		if err != nil {
