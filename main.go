@@ -77,7 +77,7 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 			return
 		}
 
-		echo.Println("Version:", meta.Version)
+		echo.Println("Version:", meta.LongVersion)
 		echo.Println("Updated:", updated)
 		if !updated {
 			echo.Println("Latest version:", tag)

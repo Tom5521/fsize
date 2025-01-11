@@ -93,7 +93,7 @@ compress bin:
         exit 0
     fi
 
-    command -v upx > /dev/null 2>&1
+    command -v upx > /dev/null
     if [[ $? != 0 ]]; then
         echo ---------------------------------
         echo upx binary not found in PATH

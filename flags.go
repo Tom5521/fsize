@@ -15,7 +15,7 @@ var root = cobra.Command{
 		return viper.WriteConfig()
 	},
 	RunE:    RunE,
-	Version: meta.Version,
+	Version: meta.LongVersion,
 }
 
 func InitFlags() {
