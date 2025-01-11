@@ -3,11 +3,6 @@
 short-latest-tag := `git describe --tags --abbrev=0`
 long-latest-tag := `git describe --tags`
 
-# Flags
-
-version-flag := '-ldflags "-X github.com/Tom5521/fsize/meta.Version=' + short-latest-tag + '"'
-go-install-version-flag := '-ldflags "-X github.com/Tom5521/fsize/meta.Version=' + short-latest-tag + '"'
-
 # Paths
 
 fish-completion-path := "/usr/local/share/fish/vendor_completions.d/"
@@ -25,6 +20,8 @@ default:
 release:
     # Cleaning ./builds/
     just clean
+    # Generate version
+    just generate
     # Linux
     just build linux 386
     just build linux amd64
@@ -50,33 +47,29 @@ build os arch:
     command -v garble || just install-garble
 
     CC=gcc GOOS={{os}} GOARCH={{arch}} \
-    garble -tiny build -v \
-    {{version-flag}} \
-    -o $bin || exit $?
+    garble -tiny build -v -o $bin || exit $?
 
     if [[ {{skip-compress}} == 1 ]]; then
         exit 0
     fi
 
     if [[ {{os}} == "windows" && {{arch}} == "arm64" || {{arch}} == "arm" ]]; then
-        echo ---------------------------------------------
         echo compression not supported for {{os}}-{{arch}}
         echo skipping compression process...
-        echo ---------------------------------------------
         exit 0
     fi
  
     just compress $bin
 
 build-local:
-    @ go build -v \
-    {{version-flag}} .
+    just generate
+    @ go build -v .
 
 clean:
     @rm -rf builds completions ./fsize
 
 go-install:
-    go install -v {{go-install-version-flag}} github.com/Tom5521/fsize@{{short-latest-tag}}
+    go install -v github.com/Tom5521/fsize@{{short-latest-tag}}
 
 go-uninstall:
     rm ~/go/bin/fsize
@@ -84,6 +77,9 @@ go-uninstall:
 go-reinstall:
     @just go-uninstall
     @just go-install
+
+generate:
+    go generate ./meta/
 
 install-garble:
     go install -v mvdan.cc/garble@latest
