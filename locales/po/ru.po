@@ -110,7 +110,7 @@ msgstr "Имя:"
 msgid "Size:"
 msgstr "Размер:"
 
-msgid "Absolute Path:"
+msgid "Absolute path:"
 msgstr "Абсолютный путь:"
 
 msgid "Modify:"
@@ -154,3 +154,6 @@ msgstr "Вы хотите продолжить обновление?"
 
 msgid "The command has been cancelled."
 msgstr "Команда была отменена."
+
+msgid "Physical path:"
+msgstr "Физический путь:"

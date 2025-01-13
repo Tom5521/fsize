@@ -107,7 +107,7 @@ msgstr ""
 msgid "Size:"
 msgstr ""
 
-msgid "Absolute Path:"
+msgid "Absolute path:"
 msgstr ""
 
 msgid "Modify:"
@@ -150,4 +150,7 @@ msgid "Do you want to proceed with the update?"
 msgstr ""
 
 msgid "The command has been cancelled."
+msgstr ""
+
+msgid "Physical path:"
 msgstr ""

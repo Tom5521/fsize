@@ -5,7 +5,7 @@ msgid "Available configuration keys:"
 msgstr "Chaves de configuração disponíveis:"
 
 msgid "Already in latest version"
-msgstr "Já está na versão mais recente"
+msgstr "Já está na versão mais recente."
 
 msgid "Version:"
 msgstr "Versão:"
@@ -17,19 +17,19 @@ msgid "Latest version:"
 msgstr "Última versão:"
 
 msgid "No file/directory was specified, the current directory will be used. (.)"
-msgstr "Nenhum arquivo/diretório foi especificado, o diretório atual será usado. (.)"
+msgstr "Nenhum arquivo/diretório foi especificado. O diretório atual será usado. (.)"
 
 msgid "Displays the file/folder properties."
-msgstr "Exibe as propriedades do arquivo/pasta."
+msgstr "Exibe as propriedades do arquivo/diretório."
 
 msgid "Prints the name of the file being walked if a directory has been selected."
-msgstr "Imprime o nome do arquivo sendo percorrido se um diretório foi selecionado."
+msgstr "Imprime o nome do arquivo processado se um diretório foi selecionado."
 
 msgid "Skips walking inside the directories."
 msgstr "Ignora a navegação dentro dos diretórios."
 
 msgid "Displays a file count and progress bar when counting and summing file sizes."
-msgstr "Exibe uma contagem de arquivos e uma barra de progresso ao contar e somar tamanhos de arquivos."
+msgstr "Exibe a contagem de arquivos e uma barra de progresso ao contar e somar os tamanhos dos arquivos."
 
 msgid "Configure the variables used for preferences\n"
   "Example: \"fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n\n"
@@ -39,46 +39,46 @@ msgstr "Configura as variáveis usadas para preferências\n"
   "Para ver as variáveis disponíveis e seus valores, execute \"fsize --print-settings\"."
 
 msgid "Prints the current configuration values."
-msgstr "Imprime os valores de configuração atuais."
+msgstr "Exibe os valores atuais de configuração."
 
 msgid "Hide possible warnings."
-msgstr "Oculta possíveis avisos."
+msgstr "Oculta avisos possíveis."
 
 msgid "Generate a completion file for bash\n"
   "if any, the first argument will be taken as output file."
-msgstr "Gera um arquivo de conclusão para bash\n"
-  "se houver, o primeiro argumento será considerado como arquivo de saída."
+msgstr "Gera um arquivo de conclusão para o bash\n"
+  "se fornecido, o primeiro argumento será usado como arquivo de saída."
 
 msgid "Generate a completion file for fish\n"
   "if any, the first argument will be taken as output file."
-msgstr "Gera um arquivo de conclusão para fish\n"
-  "se houver, o primeiro argumento será considerado como arquivo de saída."
+msgstr "Gera um arquivo de conclusão para o fish\n"
+  "se fornecido, o primeiro argumento será usado como arquivo de saída."
 
 msgid "Generate a completion file for zsh\n"
   "if any, the first argument will be taken as output file."
-msgstr "Gera um arquivo de conclusão para zsh\n"
-  "se houver, o primeiro argumento será considerado como arquivo de saída."
+msgstr "Gera um arquivo de conclusão para o zsh\n"
+  "se fornecido, o primeiro argumento será usado como arquivo de saída."
 
 msgid "Automatically updates the program by overwriting the binary and regenerating the completions."
-msgstr "Atualiza automaticamente o programa substituindo o binário e regenerando as conclusões."
+msgstr "Atualiza automaticamente o programa substituindo o binário e regenerando os arquivos de conclusão."
 
 msgid "Displays the information of the binary"
-msgstr "Exibe as informações do binário"
+msgstr "Exibe as informações do binário."
 
 msgid "Checking the latest version available..."
-msgstr "Verificando a última versão disponível..."
+msgstr "Verificando a versão mais recente disponível..."
 
 msgid "Downloading latest version..."
-msgstr "Baixando a última versão..."
+msgstr "Baixando a versão mais recente..."
 
 msgid "Writing to binary..."
-msgstr "Escrevendo no binário..."
+msgstr "Gravando no binário..."
 
 msgid "Updating completions..."
-msgstr "Atualizando as conclusões..."
+msgstr "Atualizando os arquivos de conclusão..."
 
 msgid "Upgrade completed successfully"
-msgstr "Atualização concluída com sucesso"
+msgstr "Atualização concluída com sucesso."
 
 msgid "%s not found."
 msgstr "%s não encontrado."
@@ -87,22 +87,22 @@ msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "erro ao obter a estrutura correspondente de fileinfo.Sys()"
 
 msgid "syntax error"
-msgstr "erro de sintaxe"
+msgstr "erro de sintaxe."
 
 msgid "unrecognized value type \"%s\""
-msgstr "tipo de valor não reconhecido \"%s\""
+msgstr "tipo de valor desconhecido \"%s\"."
 
 msgid "unrecognized key \"%s\""
-msgstr "chave não reconhecida \"%s\""
+msgstr "chave desconhecida \"%s\"."
 
 msgid "Reading \"%s\"..."
 msgstr "Lendo \"%s\"..."
 
 msgid "Counting the amount of files..."
-msgstr "Contando a quantidade de arquivos..."
+msgstr "Contando o número de arquivos..."
 
 msgid "%v files with %v errors"
-msgstr "%v arquivos com %v erros"
+msgstr "%v arquivos com %v erros."
 
 msgid "Name:"
 msgstr "Nome:"
@@ -110,11 +110,11 @@ msgstr "Nome:"
 msgid "Size:"
 msgstr "Tamanho:"
 
-msgid "Absolute Path:"
-msgstr "Caminho Absoluto:"
+msgid "Absolute path:"
+msgstr "Caminho absoluto:"
 
 msgid "Modify:"
-msgstr "Modificar:"
+msgstr "Modificado:"
 
 msgid "Access:"
 msgstr "Acesso:"
@@ -123,7 +123,7 @@ msgid "Birth:"
 msgstr "Criação:"
 
 msgid "Is directory:"
-msgstr "É diretório:"
+msgstr "É um diretório:"
 
 msgid "Permissions:"
 msgstr "Permissões:"
@@ -138,20 +138,22 @@ msgid "GID/Group:"
 msgstr "GID/Grupo:"
 
 msgid "not supported on windows"
-msgstr "não suportado no windows"
+msgstr "não é suportado no Windows."
 
 msgid "Source Code: %s"
-msgstr "Código fonte: %s"
+msgstr "Código-fonte: %s"
 
 msgid "NB! It seems that you are in a NixOS."
 msgstr "Atenção! Parece que você está em um NixOS."
 
 msgid "Due to the non-standard filesystem implementation of the environment, the update command may not work as expected."
-msgstr "Devido à implementação não padrão do sistema de arquivos do ambiente, o comando de atualização pode não funcionar como esperado."
+msgstr "Devido à implementação não padrão do sistema de arquivos, o comando de atualização pode não funcionar como esperado."
 
 msgid "Do you want to proceed with the update?"
-msgstr "Você deseja continuar com a atualização?"
+msgstr "Deseja continuar com a atualização?"
 
 msgid "The command has been cancelled."
 msgstr "O comando foi cancelado."
 
+msgid "Physical path:"
+msgstr "Caminho físico:"

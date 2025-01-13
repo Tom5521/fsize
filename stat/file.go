@@ -27,6 +27,7 @@ var (
 type File struct {
 	FileTimes
 	FileIDs
+	FileLink
 
 	Size int64
 
@@ -41,7 +42,8 @@ type File struct {
 
 	// Raw information.
 
-	info os.FileInfo
+	info  os.FileInfo
+	linfo os.FileInfo
 }
 
 func NewFile(path string) (f File, err error) {
@@ -60,7 +62,7 @@ func NewFile(path string) (f File, err error) {
 }
 
 func (f *File) Load(path string) (err error) {
-	_, f.info, f.AbsPath, err = RawInfo(path)
+	_, f.info, f.linfo, f.AbsPath, err = RawInfo(path)
 	if err != nil {
 		return
 	}
@@ -74,6 +76,11 @@ func (f *File) Load(path string) (err error) {
 		return err
 	}
 
+	f.FileLink, err = NewFileLink(f.linfo, f.AbsPath)
+	if err != nil {
+		return err
+	}
+
 	f.Size = f.info.Size()
 	f.Name = f.info.Name()
 	f.IsDir = f.info.IsDir()
@@ -82,12 +89,16 @@ func (f *File) Load(path string) (err error) {
 	return
 }
 
-func RawInfo(name string) (file *os.File, stat os.FileInfo, abspath string, err error) {
+func RawInfo(name string) (file *os.File, stat, lstat os.FileInfo, abspath string, err error) {
 	file, err = os.Open(name)
 	if err != nil {
 		return
 	}
 	stat, err = file.Stat()
+	if err != nil {
+		return
+	}
+	lstat, err = os.Lstat(name)
 	if err != nil {
 		return
 	}
@@ -108,7 +119,10 @@ func (f File) String() string {
 
 	render("Name:", f.Name)
 	render("Size:", bytes.New().Format(f.Size))
-	render("Absolute Path:", f.AbsPath)
+	render("Absolute path:", f.AbsPath)
+	if f.IsLink {
+		render("Physical path:", f.PhysicalPath)
+	}
 	render("Modify:", f.ModTime.Format(time.DateTime))
 	render("Access:", f.AccessTime.Format(time.DateTime))
 	if f.SupportCreationDate {
