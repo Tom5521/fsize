@@ -85,7 +85,9 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 	default:
 		if len(args) == 0 {
 			echo.Warning(
-				po.Get("No file/directory was specified, the current directory will be used. (.)"),
+				po.Get(
+					"No file/directory was specified, the current directory will be used. (.)",
+				),
 			)
 			args = append(args, ".")
 		}

@@ -182,3 +182,5 @@ test-update:
 update-asciinema:
     just build-local
     asciinema rec --title "fsize {{short-latest-tag}}" --command "./fsize /usr/share/"
+
+
