@@ -6,16 +6,14 @@ import (
 
 	"github.com/Tom5521/fsize/echo"
 	"github.com/Tom5521/fsize/flags"
-	"github.com/Tom5521/fsize/locales"
 	"github.com/Tom5521/fsize/meta"
 	"github.com/Tom5521/fsize/settings"
 	"github.com/Tom5521/fsize/stat"
 	"github.com/Tom5521/fsize/update"
 	"github.com/gookit/color"
+	po "github.com/leonelquinteros/gotext"
 	"github.com/spf13/cobra"
 )
-
-var po = locales.Po
 
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
@@ -28,7 +26,7 @@ func main() {
 	// Initialize variables
 	err := settings.Load()
 	if err != nil {
-		echo.Error(err.Error())
+		echo.Error(err)
 		return
 	}
 	InitFlags()
@@ -50,7 +48,7 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 	case len(flags.SettingsFlag) != 0:
 		err = settings.Parse(flags.SettingsFlag)
 		if err != nil {
-			echo.Info("Available configuration keys:")
+			echo.Info(po.Get("Available configuration keys:"))
 			echo.Settings()
 		}
 	case flags.Update:
@@ -63,7 +61,7 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 			return
 		}
 		if updated {
-			echo.Info("Already in latest version")
+			echo.Info(po.Get("Already in latest version"))
 			return
 		}
 		err = update.ApplyUpdate(tag)
@@ -77,16 +75,18 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 			return
 		}
 
-		echo.Println("Version:", meta.LongVersion)
-		echo.Println("Updated:", updated)
+		fmt.Println(po.Get("Version:"), meta.LongVersion)
+		fmt.Println(po.Get("Updated:"), updated)
 		if !updated {
-			echo.Println("Latest version:", tag)
+			fmt.Println(po.Get("Latest version:"), tag)
 		}
 
-		echo.Printfln("Source Code: %s", "https://github.com/Tom5521/fsize")
+		fmt.Println(po.Get("Source Code: %s", "https://github.com/Tom5521/fsize"))
 	default:
 		if len(args) == 0 {
-			echo.Warning("No file/directory was specified, the current directory will be used. (.)")
+			echo.Warning(
+				po.Get("No file/directory was specified, the current directory will be used. (.)"),
+			)
 			args = append(args, ".")
 		}
 		for _, f := range args {

@@ -1,5 +1,3 @@
-
-
 msgid "ERROR:"
 msgstr ""
 
@@ -18,24 +16,31 @@ msgstr ""
 msgid "Latest version:"
 msgstr ""
 
-msgid "No file/directory was specified, the current directory will be used. (.)"
+msgid ""
+"No file/directory was specified, the current directory will be used. (.)"
 msgstr ""
 
 msgid "Displays the file/folder properties."
 msgstr ""
 
-msgid "Prints the name of the file being walked if a directory has been selected."
+msgid ""
+"Prints the name of the file being walked if a directory has been selected."
 msgstr ""
 
 msgid "Skips walking inside the directories."
 msgstr ""
 
-msgid "Displays a file count and progress bar when counting and summing file sizes."
+msgid ""
+"Displays a file count and progress bar when counting and summing file sizes."
 msgstr ""
 
-msgid "Configure the variables used for preferences\n"
-  "Example: \"fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n\n"
-  "To see the available variables and their values run \"fsize --print-settings\"."
+msgid ""
+"Configure the variables used for preferences\n"
+"Example: \"fsize --config "
+"'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
+"\n"
+"To see the available variables and their values run \"fsize --print-"
+"settings\"."
 msgstr ""
 
 msgid "Prints the current configuration values."
@@ -44,19 +49,24 @@ msgstr ""
 msgid "Hide possible warnings."
 msgstr ""
 
-msgid "Generate a completion file for bash\n"
-  "if any, the first argument will be taken as output file."
+msgid ""
+"Generate a completion file for bash\n"
+"if any, the first argument will be taken as output file."
 msgstr ""
 
-msgid "Generate a completion file for fish\n"
-  "if any, the first argument will be taken as output file."
+msgid ""
+"Generate a completion file for fish\n"
+"if any, the first argument will be taken as output file."
 msgstr ""
 
-msgid "Generate a completion file for zsh\n"
-  "if any, the first argument will be taken as output file."
+msgid ""
+"Generate a completion file for zsh\n"
+"if any, the first argument will be taken as output file."
 msgstr ""
 
-msgid "Automatically updates the program by overwriting the binary and regenerating the completions."
+msgid ""
+"Automatically updates the program by overwriting the binary and regenerating "
+"the completions."
 msgstr ""
 
 msgid "Displays the information of the binary"
@@ -143,7 +153,9 @@ msgstr ""
 msgid "NB! It seems that you are in a NixOS."
 msgstr ""
 
-msgid "Due to the non-standard filesystem implementation of the environment, the update command may not work as expected."
+msgid ""
+"Due to the non-standard filesystem implementation of the environment, the "
+"update command may not work as expected."
 msgstr ""
 
 msgid "Do you want to proceed with the update?"

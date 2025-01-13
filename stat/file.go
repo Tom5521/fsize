@@ -11,13 +11,12 @@ import (
 
 	"github.com/Tom5521/fsize/filecount"
 	"github.com/Tom5521/fsize/flags"
-	"github.com/Tom5521/fsize/locales"
 	"github.com/gookit/color"
 	"github.com/labstack/gommon/bytes"
+	po "github.com/leonelquinteros/gotext"
 )
 
 var (
-	po               = locales.Po
 	ErrGettingStruct = errors.New(
 		po.Get("error getting the corresponding structure from fileinfo.Sys()"),
 	)
@@ -113,30 +112,30 @@ func (f File) String() string {
 	var builder strings.Builder
 
 	render := func(title string, content ...any) {
-		fmt.Fprint(&builder, color.Green.Render(po.Get(title)+" "))
+		fmt.Fprint(&builder, color.Green.Render(title+" "))
 		fmt.Fprintln(&builder, content...)
 	}
 
-	render("Name:", f.Name)
-	render("Size:", bytes.New().Format(f.Size))
-	render("Absolute path:", f.AbsPath)
+	render(po.Get("Name:"), f.Name)
+	render(po.Get("Size:"), bytes.New().Format(f.Size))
+	render(po.Get("Absolute path:"), f.AbsPath)
 	if f.IsLink {
-		render("Physical path:", f.PhysicalPath)
+		render(po.Get("Physical path:"), f.PhysicalPath)
 	}
-	render("Modify:", f.ModTime.Format(time.DateTime))
-	render("Access:", f.AccessTime.Format(time.DateTime))
+	render(po.Get("Modify:"), f.ModTime.Format(time.DateTime))
+	render(po.Get("Access:"), f.AccessTime.Format(time.DateTime))
 	if f.SupportCreationDate {
-		render("Birth:", f.CreationTime.Format(time.DateTime))
+		render(po.Get("Birth:"), f.CreationTime.Format(time.DateTime))
 	}
-	render("Is directory:", f.IsDir)
-	render("Permissions:", fmt.Sprintf("%v/%v", int(f.Perms), f.Perms.String()))
+	render(po.Get("Is directory:"), f.IsDir)
+	render(po.Get("Permissions:"), fmt.Sprintf("%v/%v", int(f.Perms), f.Perms.String()))
 	if f.IsDir && !flags.NoWalk {
-		render("Number of files:", f.FilesNumber)
+		render(po.Get("Number of files:"), f.FilesNumber)
 	}
 
 	if f.SupportFileIDs {
-		render("UID/User:", fmt.Sprintf("%v/%v", f.User.Uid, f.User.Username))
-		render("GID/Group:", fmt.Sprintf("%v/%v", f.Group.Gid, f.Group.Name))
+		render(po.Get("UID/User:"), fmt.Sprintf("%v/%v", f.User.Uid, f.User.Username))
+		render(po.Get("GID/Group:"), fmt.Sprintf("%v/%v", f.Group.Gid, f.Group.Name))
 	}
 
 	return builder.String()

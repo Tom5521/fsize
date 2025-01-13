@@ -7,11 +7,12 @@ import (
 	_ "unsafe"
 
 	"github.com/Tom5521/fsize/echo"
+	po "github.com/leonelquinteros/gotext"
 	"github.com/schollz/progressbar/v3"
 )
 
 func Progress(count, size *int64, path string) (err error) {
-	echo.Info("Counting the amount of files...")
+	echo.Info(po.Get("Counting the amount of files..."))
 
 	var warnings []error
 

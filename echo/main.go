@@ -5,12 +5,9 @@ import (
 	"os"
 
 	"github.com/Tom5521/fsize/flags"
-	"github.com/Tom5521/fsize/locales"
 	"github.com/gookit/color"
 	"github.com/spf13/viper"
 )
-
-var po = locales.Po
 
 func Settings() {
 	for _, key := range viper.AllKeys() {
@@ -28,36 +25,23 @@ func Settings() {
 	}
 }
 
-func Println(txt string, args ...any) {
-	fmt.Print(po.Get(txt))
-	if len(args) > 0 {
-		fmt.Print(" ")
-		fmt.Print(args...)
-	}
-	fmt.Println()
-}
-
-func Printfln(format string, a ...any) {
-	fmt.Println(po.Get(format, a...))
-}
-
 func Warningf(format string, arg ...any) {
-	Warning(po.Get(format, arg...))
+	Warning(fmt.Sprintf(format, arg...))
 }
 
 func Warning(warn string) {
 	if flags.NoWarns {
 		return
 	}
-	warn = color.Warn.Render(po.Get(warn))
+	warn = color.Warn.Render(warn)
 	fmt.Fprintln(os.Stderr, warn)
 }
 
-func Info(format string, a ...any) {
-	color.Info.Println(po.Get(format, a...))
+func Info(a ...any) {
+	color.Info.Println(a...)
 }
 
-func Error(format string, a ...any) {
-	err := color.Error.Render(po.Get(format, a...))
+func Error(a ...any) {
+	err := color.Error.Render(a...)
 	fmt.Fprintln(os.Stderr, err)
 }

@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 
 	"github.com/Tom5521/fsize/echo"
+	po "github.com/leonelquinteros/gotext"
 )
 
 func updateCompletions(executable string) (err error) {
@@ -25,7 +26,7 @@ func updateCompletions(executable string) (err error) {
 	for shell, path := range instructions {
 		_, exists := exec.LookPath(shell)
 		if exists != nil {
-			echo.Warningf("%s not found.", shell)
+			echo.Warning(po.Get("%s not found.", shell))
 			continue
 		}
 		cmd := exec.Command(executable, fmt.Sprintf("--gen-%s-completion", shell), path)

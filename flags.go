@@ -4,13 +4,14 @@ import (
 	"github.com/Tom5521/fsize/flags"
 	"github.com/Tom5521/fsize/meta"
 	"github.com/Tom5521/fsize/settings"
+	"github.com/leonelquinteros/gotext"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
 var root = cobra.Command{
 	Use:   "fsize",
-	Short: po.Get("Displays the file/folder properties."),
+	Short: gotext.Get("Displays the file/folder properties."),
 	PostRunE: func(cmd *cobra.Command, args []string) error {
 		return viper.WriteConfig()
 	},
@@ -22,43 +23,43 @@ func InitFlags() {
 	flag := root.Flags()
 
 	flag.BoolVar(&flags.PrintOnWalk, "print-on-walk", viper.GetBool(settings.AlwaysPrintOnWalk),
-		po.Get("Prints the name of the file being walked if a directory has been selected."),
+		gotext.Get("Prints the name of the file being walked if a directory has been selected."),
 	)
 	flag.BoolVar(&flags.NoWalk, "no-walk", viper.GetBool(settings.AlwaysSkipWalk),
-		po.Get("Skips walking inside the directories."),
+		gotext.Get("Skips walking inside the directories."),
 	)
 	flag.BoolVarP(&flags.Progress, "progress", "p", viper.GetBool(settings.AlwaysShowProgress),
-		po.Get("Displays a file count and progress bar when counting and summing file sizes."),
+		gotext.Get("Displays a file count and progress bar when counting and summing file sizes."),
 	)
 	flag.StringSliceVarP(&flags.SettingsFlag, "config", "c", []string{},
-		po.Get(`Configure the variables used for preferences
+		gotext.Get(`Configure the variables used for preferences
 Example: "fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'".
 
 To see the available variables and their values run "fsize --print-settings".`,
 		))
 	flag.BoolVar(&flags.PrintSettingsFlag, "print-settings", false,
-		po.Get("Prints the current configuration values."),
+		gotext.Get("Prints the current configuration values."),
 	)
 	flag.BoolVar(&flags.NoWarns, "no-warns", viper.GetBool(settings.HideWarnings),
-		po.Get("Hide possible warnings."),
+		gotext.Get("Hide possible warnings."),
 	)
 	flag.BoolVar(&flags.GenBashCompletion, "gen-bash-completion", false,
-		po.Get(`Generate a completion file for bash
+		gotext.Get(`Generate a completion file for bash
 if any, the first argument will be taken as output file.`),
 	)
 	flag.BoolVar(&flags.GenFishCompletion, "gen-fish-completion", false,
-		po.Get(`Generate a completion file for fish
+		gotext.Get(`Generate a completion file for fish
 if any, the first argument will be taken as output file.`),
 	)
 	flag.BoolVar(&flags.GenZshCompletion, "gen-zsh-completion", false,
-		po.Get(`Generate a completion file for zsh
+		gotext.Get(`Generate a completion file for zsh
 if any, the first argument will be taken as output file.`),
 	)
 	flag.BoolVar(
 		&flags.Update,
 		"update",
 		false,
-		po.Get(
+		gotext.Get(
 			`Automatically updates the program by overwriting the binary and regenerating the completions.`,
 		),
 	)
@@ -66,7 +67,7 @@ if any, the first argument will be taken as output file.`),
 		&flags.BinInfo,
 		"bin-info",
 		false,
-		po.Get("Displays the information of the binary"),
+		gotext.Get("Displays the information of the binary"),
 	)
 
 	flag.BoolVar(&flags.Test, "test", false, "---")

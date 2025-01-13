@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/Tom5521/fsize/locales"
+	po "github.com/leonelquinteros/gotext"
 	"github.com/spf13/viper"
 )
 
@@ -18,8 +18,6 @@ const (
 	AlwaysShowProgress = "Always-Show-Progress"
 	HideWarnings       = "Hide-Warnings"
 )
-
-var po = locales.Po
 
 func Load() error {
 	configPath, err := os.UserConfigDir()

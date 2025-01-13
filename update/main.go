@@ -1,6 +1,7 @@
 package update
 
 import (
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -12,18 +13,16 @@ import (
 	"github.com/AlecAivazis/survey/v2"
 	"github.com/Tom5521/fsize/checkos"
 	"github.com/Tom5521/fsize/echo"
-	"github.com/Tom5521/fsize/locales"
 	"github.com/Tom5521/fsize/meta"
 	"github.com/gookit/color"
+	po "github.com/leonelquinteros/gotext"
 	"github.com/schollz/progressbar/v3"
 )
 
 const UpdateURL string = "https://github.com/Tom5521/fsize/releases/latest"
 
-var po = locales.Po
-
 func CheckUpdate() (tag string, latest bool, err error) {
-	echo.Info("Checking the latest version available...")
+	echo.Info(po.Get("Checking the latest version available..."))
 	resp, err := http.Get(UpdateURL)
 	if err != nil {
 		err = fmt.Errorf("error getting http response: %v", err)
@@ -65,10 +64,10 @@ func ApplyUpdate(tag string) (err error) {
 	var needConfirm bool
 	if isMaybeRunningInNixOS() {
 		needConfirm = true
-		echo.Warning("NB! It seems that you are in a NixOS.")
-		echo.Warning(
+		echo.Warning(po.Get("NB! It seems that you are in a NixOS."))
+		echo.Warning(po.Get(
 			"Due to the non-standard filesystem implementation of the environment, the update command may not work as expected.",
-		)
+		))
 	}
 
 	if needConfirm {
@@ -78,7 +77,7 @@ func ApplyUpdate(tag string) (err error) {
 		}
 		survey.AskOne(prompt, &confirm)
 		if !confirm {
-			echo.Info("The command has been cancelled.")
+			echo.Info(po.Get("The command has been cancelled."))
 			return nil
 		}
 	}
@@ -90,64 +89,66 @@ func ApplyUpdate(tag string) (err error) {
 	oldExec := executable + ".old"
 
 	if err = os.Rename(executable, oldExec); err != nil {
-		return fmt.Errorf("error renaming the old executable [%s] to: %v", executable, err)
+		return errors.New(po.Get("error renaming the old executable [%s] to: %v", executable, err))
 	}
 
 	req, err := http.NewRequest("GET", url, nil)
 	if err != nil {
-		return fmt.Errorf("error creating a new http request: %v", err)
+		return errors.New(po.Get("error creating a new http request: %v", err))
 	}
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
-		return fmt.Errorf("error getting http response: %v", err)
+		return errors.New(po.Get("error getting http response: %v", err))
 	}
 	defer resp.Body.Close()
 
 	bar := progressbar.DefaultBytes(resp.ContentLength, po.Get("Downloading latest version..."))
 
 	if err = download(executable, resp, bar); err != nil {
-		echo.Error("Error downloading binary to %s: %v", executable, err)
-		echo.Warning("Reversing changes...")
+		echo.Error(po.Get("Error downloading binary to %s: %v", executable, err))
+		echo.Warning(po.Get("Reversing changes..."))
 		err = os.Rename(oldExec, executable)
 		if err != nil {
-			return fmt.Errorf(
-				"error reversing changes: falied to rename %s to %s: %v",
-				oldExec,
-				executable,
-				err,
+			return errors.New(
+				po.Get(
+					"error reversing changes: falied to rename %s to %s: %v",
+					oldExec,
+					executable,
+					err,
+				),
 			)
 		}
 		return
 	}
 
 	if err = bar.Finish(); err != nil {
-		return fmt.Errorf("error finishing the progress bar")
+		return errors.New(po.Get("error finishing the progress bar"))
 	}
 
 	if err = os.Remove(oldExec); err != nil {
-		return fmt.Errorf("error removing old executable: %v", err)
+		return errors.New(po.Get("error removing old executable: %v", err))
 	}
 
 	usr, err := user.Current()
 	if err != nil {
-		return fmt.Errorf("error getting current user: %v", err)
+		return errors.New(po.Get("error getting current user: %v", err))
 	}
 
 	runningOnTermux := isMaybeRunningInTermux()
 
 	if (usr.Username != "root" && checkos.Unix) && !runningOnTermux {
-		echo.Warning("The user is not root, the completions will not be updated")
+		echo.Warning(po.Get("The user is not root, the completions will not be updated"))
 	}
 
 	if (usr.Username == "root" && checkos.Unix) || runningOnTermux {
-		echo.Info("Updating completions...")
+		echo.Info(po.Get("Updating completions..."))
 		err = updateCompletions(executable)
 		if err != nil {
 			return fmt.Errorf("error updating the completions: %v", err)
 		}
 	}
 
-	echo.Info("Upgrade completed successfully")
+	echo.Info(po.Get("Upgrade completed successfully"))
 	fmt.Printf("%s -> %s\n", color.Red.Render(meta.Version), color.Green.Render(tag))
 
 	return
