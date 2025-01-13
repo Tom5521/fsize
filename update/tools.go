@@ -17,7 +17,10 @@ func isMaybeRunningInTermux() (ok bool) {
 	if runtime.GOOS != "android" {
 		return
 	}
-	prefix := os.Getenv("PREFIX")
+	prefix, ok := os.LookupEnv("PREFIX")
+	if !ok {
+		return
+	}
 	ok = strings.Contains(prefix, "com.termux")
 	if !ok {
 		_, err := exec.LookPath("termux-setup-storage")

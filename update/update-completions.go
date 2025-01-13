@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"path/filepath"
 
 	"github.com/Tom5521/fsize/echo"
 )
@@ -17,7 +18,7 @@ func updateCompletions(executable string) (err error) {
 
 	if isMaybeRunningInTermux() {
 		for k, v := range instructions {
-			instructions[k] = os.Getenv("PREFIX") + v
+			instructions[k] = filepath.Join(os.Getenv("PREFIX"), v)
 		}
 	}
 
