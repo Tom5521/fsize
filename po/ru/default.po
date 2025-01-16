@@ -10,86 +10,72 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "ERROR:"
-msgstr "ОШИБКА:"
+#: filecount/print.go:19
+msgid "Reading \"%s\"..."
+msgstr "Чтение \"%s\"..."
 
-msgid "Available configuration keys:"
-msgstr "Доступные ключи конфигурации:"
+#: filecount/progress.go:15
+msgid "Counting the amount of files..."
+msgstr "Подсчет количества файлов..."
 
-msgid "Already in latest version"
-msgstr "Уже установлена последняя версия"
+#: filecount/progress.go:22
+msgid "%v files with %v errors"
+msgstr "%v файлов с %v ошибками"
 
-msgid "Version:"
-msgstr "Версия:"
-
-msgid "Updated:"
-msgstr "Обновлено:"
-
-msgid "Latest version:"
-msgstr "Последняя версия:"
-
-msgid ""
-"No file/directory was specified, the current directory will be used. (.)"
-msgstr "Файл/директория не указаны, будет использована текущая директория. (.)"
-
+#: flags.go:14
 msgid "Displays the file/folder properties."
 msgstr "Отображает свойства файла/папки."
 
+#: flags.go:26
 msgid ""
 "Prints the name of the file being walked if a directory has been selected."
 msgstr "Выводит имя файла, если выбрана директория."
 
+#: flags.go:29
 msgid "Skips walking inside the directories."
 msgstr "Пропускает просмотр содержимого директорий."
 
+#: flags.go:32
 msgid ""
 "Displays a file count and progress bar when counting and summing file sizes."
 msgstr ""
 "Отображает количество файлов и индикатор прогресса при подсчете и "
 "суммировании размеров файлов."
 
+#: flags.go:35
 msgid ""
-"Configure the variables used for preferences\n"
-"Example: \"fsize --config "
-"'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
-"\n"
-"To see the available variables and their values run \"fsize --print-"
-"settings\"."
+"Configure the variables used for preferencesExample: \"fsize --config "
+"'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".To see the available "
+"variables and their values run \"fsize --print-settings\"."
 msgstr ""
-"Настройка переменных для предпочтений\n"
-"Пример: \"fsize --config "
-"'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
-"\n"
-"Чтобы увидеть доступные переменные и их значения, запустите \"fsize --print-"
-"settings\"."
 
+#: flags.go:41
 msgid "Prints the current configuration values."
 msgstr "Выводит текущие значения конфигурации."
 
+#: flags.go:44
 msgid "Hide possible warnings."
 msgstr "Скрыть возможные предупреждения."
 
+#: flags.go:47
 msgid ""
-"Generate a completion file for bash\n"
-"if any, the first argument will be taken as output file."
+"Generate a completion file for bashif any, the first argument will be taken "
+"as output file."
 msgstr ""
-"Создает файл автозаполнения для bash\n"
-"если есть, первый аргумент будет взят как файл вывода."
 
+#: flags.go:51
 msgid ""
-"Generate a completion file for fish\n"
-"if any, the first argument will be taken as output file."
+"Generate a completion file for fishif any, the first argument will be taken "
+"as output file."
 msgstr ""
-"Создает файл автозаполнения для fish\n"
-"если есть, первый аргумент будет взят как файл вывода."
 
+#: flags.go:55
 msgid ""
-"Generate a completion file for zsh\n"
-"if any, the first argument will be taken as output file."
+"Generate a completion file for zshif any, the first argument will be taken "
+"as output file."
 msgstr ""
-"Создает файл автозаполнения для zsh\n"
-"если есть, первый аргумент будет взят как файл вывода."
 
+#: flags.go:63
 msgid ""
 "Automatically updates the program by overwriting the binary and regenerating "
 "the completions."
@@ -97,90 +83,120 @@ msgstr ""
 "Автоматически обновляет программу, перезаписывая бинарный файл и регенерируя "
 "автозаполнения."
 
+#: flags.go:70
 msgid "Displays the information of the binary"
 msgstr "Отображает информацию о бинарном файле"
 
-msgid "Checking the latest version available..."
-msgstr "Проверка доступной последней версии..."
+#: main.go:33
+msgid "ERROR:"
+msgstr "ОШИБКА:"
 
-msgid "Downloading latest version..."
-msgstr "Загрузка последней версии..."
+#: main.go:51
+msgid "Available configuration keys:"
+msgstr "Доступные ключи конфигурации:"
 
-msgid "Writing to binary..."
-msgstr "Запись в бинарный файл..."
+#: main.go:64
+msgid "Already in latest version"
+msgstr "Уже установлена последняя версия"
 
-msgid "Updating completions..."
-msgstr "Обновление автозаполнений..."
+#: main.go:78
+msgid "Version:"
+msgstr "Версия:"
 
-msgid "Upgrade completed successfully"
-msgstr "Обновление успешно завершено"
+#: main.go:79
+msgid "Updated:"
+msgstr "Обновлено:"
 
-msgid "%s not found."
-msgstr "%s не найдено."
+#: main.go:81
+msgid "Latest version:"
+msgstr "Последняя версия:"
 
-msgid "error getting the corresponding structure from fileinfo.Sys()"
-msgstr "ошибка получения соответствующей структуры от fileinfo.Sys()"
-
-msgid "syntax error"
-msgstr "синтаксическая ошибка"
-
-msgid "unrecognized value type \"%s\""
-msgstr "неопознанный тип значения \"%s\""
-
-msgid "unrecognized key \"%s\""
-msgstr "неопознанный ключ \"%s\""
-
-msgid "Reading \"%s\"..."
-msgstr "Чтение \"%s\"..."
-
-msgid "Counting the amount of files..."
-msgstr "Подсчет количества файлов..."
-
-msgid "%v files with %v errors"
-msgstr "%v файлов с %v ошибками"
-
-msgid "Name:"
-msgstr "Имя:"
-
-msgid "Size:"
-msgstr "Размер:"
-
-msgid "Absolute path:"
-msgstr "Абсолютный путь:"
-
-msgid "Modify:"
-msgstr "Изменить:"
-
-msgid "Access:"
-msgstr "Доступ:"
-
-msgid "Birth:"
-msgstr "Создание:"
-
-msgid "Is directory:"
-msgstr "Это каталог:"
-
-msgid "Permissions:"
-msgstr "Разрешения:"
-
-msgid "Number of files:"
-msgstr "Количество файлов:"
-
-msgid "UID/User:"
-msgstr "UID/Пользователь:"
-
-msgid "GID/Group:"
-msgstr "GID/Группа:"
-
-msgid "not supported on windows"
-msgstr "не поддерживается на windows"
-
+#: main.go:84
 msgid "Source Code: %s"
 msgstr "Исходный код: %s"
 
+#: main.go:89
+msgid ""
+"No file/directory was specified, the current directory will be used. (.)"
+msgstr "Файл/директория не указаны, будет использована текущая директория. (.)"
+
+#: settings/main.go:60
+msgid "syntax error"
+msgstr "синтаксическая ошибка"
+
+#: settings/main.go:66
+msgid "unrecognized value type \"%s\""
+msgstr "неопознанный тип значения \"%s\""
+
+#: settings/main.go:69
+msgid "unrecognized key \"%s\""
+msgstr "неопознанный ключ \"%s\""
+
+#: stat/file.go:21
+msgid "error getting the corresponding structure from fileinfo.Sys()"
+msgstr "ошибка получения соответствующей структуры от fileinfo.Sys()"
+
+#: stat/file.go:23
+msgid "not supported on windows"
+msgstr "не поддерживается на windows"
+
+#: stat/file.go:119
+msgid "Name:"
+msgstr "Имя:"
+
+#: stat/file.go:120
+msgid "Size:"
+msgstr "Размер:"
+
+#: stat/file.go:121
+msgid "Absolute path:"
+msgstr "Абсолютный путь:"
+
+#: stat/file.go:123
+msgid "Physical path:"
+msgstr "Физический путь:"
+
+#: stat/file.go:125
+msgid "Modify:"
+msgstr "Изменить:"
+
+#: stat/file.go:126
+msgid "Access:"
+msgstr "Доступ:"
+
+#: stat/file.go:128
+msgid "Birth:"
+msgstr "Создание:"
+
+#: stat/file.go:130
+msgid "Is directory:"
+msgstr "Это каталог:"
+
+#: stat/file.go:131
+msgid "Permissions:"
+msgstr "Разрешения:"
+
+#: stat/file.go:133
+msgid "Number of files:"
+msgstr "Количество файлов:"
+
+#: stat/file.go:137
+msgid "UID/User:"
+msgstr "UID/Пользователь:"
+
+#: stat/file.go:138
+msgid "GID/Group:"
+msgstr "GID/Группа:"
+
+#: update/main.go:25
+msgid "Checking the latest version available..."
+msgstr "Проверка доступной последней версии..."
+
+#: update/main.go:67
 msgid "NB! It seems that you are in a NixOS."
 msgstr "Внимание! Похоже, вы находитесь в NixOS."
 
+#: update/main.go:69
 msgid ""
 "Due to the non-standard filesystem implementation of the environment, the "
 "update command may not work as expected."
@@ -188,11 +204,105 @@ msgstr ""
 "Из-за нестандартной реализации файловой системы в этой среде команда "
 "обновления может не работать должным образом."
 
+#: update/main.go:76
 msgid "Do you want to proceed with the update?"
 msgstr "Вы хотите продолжить обновление?"
 
+#: update/main.go:80
 msgid "The command has been cancelled."
 msgstr "Команда была отменена."
 
-msgid "Physical path:"
-msgstr "Физический путь:"
+#: update/main.go:92
+msgid "error renaming the old executable [%s] to: %v"
+msgstr ""
+
+#: update/main.go:97
+msgid "error creating a new http request: %v"
+msgstr ""
+
+#: update/main.go:101
+msgid "error getting http response: %v"
+msgstr ""
+
+#: update/main.go:105
+msgid "Downloading latest version..."
+msgstr "Загрузка последней версии..."
+
+#: update/main.go:108
+msgid "Error downloading binary to %s: %v"
+msgstr ""
+
+#: update/main.go:109
+msgid "Reversing changes..."
+msgstr ""
+
+#: update/main.go:114
+msgid "error reversing changes: falied to rename %s to %s: %v"
+msgstr ""
+
+#: update/main.go:125
+msgid "error finishing the progress bar"
+msgstr ""
+
+#: update/main.go:129
+msgid "error removing old executable: %v"
+msgstr ""
+
+#: update/main.go:134
+msgid "error getting current user: %v"
+msgstr ""
+
+#: update/main.go:140
+msgid "The user is not root, the completions will not be updated"
+msgstr ""
+
+#: update/main.go:144
+msgid "Updating completions..."
+msgstr "Обновление автозаполнений..."
+
+#: update/main.go:151
+msgid "Upgrade completed successfully"
+msgstr "Обновление успешно завершено"
+
+#: update/update-completions.go:29
+msgid "%s not found."
+msgstr "%s не найдено."
+
+#~ msgid ""
+#~ "Configure the variables used for preferences\n"
+#~ "Example: \"fsize --config "
+#~ "'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
+#~ "\n"
+#~ "To see the available variables and their values run \"fsize --print-"
+#~ "settings\"."
+#~ msgstr ""
+#~ "Настройка переменных для предпочтений\n"
+#~ "Пример: \"fsize --config "
+#~ "'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
+#~ "\n"
+#~ "Чтобы увидеть доступные переменные и их значения, запустите \"fsize --"
+#~ "print-settings\"."
+
+#~ msgid ""
+#~ "Generate a completion file for bash\n"
+#~ "if any, the first argument will be taken as output file."
+#~ msgstr ""
+#~ "Создает файл автозаполнения для bash\n"
+#~ "если есть, первый аргумент будет взят как файл вывода."
+
+#~ msgid ""
+#~ "Generate a completion file for fish\n"
+#~ "if any, the first argument will be taken as output file."
+#~ msgstr ""
+#~ "Создает файл автозаполнения для fish\n"
+#~ "если есть, первый аргумент будет взят как файл вывода."
+
+#~ msgid ""
+#~ "Generate a completion file for zsh\n"
+#~ "if any, the first argument will be taken as output file."
+#~ msgstr ""
+#~ "Создает файл автозаполнения для zsh\n"
+#~ "если есть, первый аргумент будет взят как файл вывода."
+
+#~ msgid "Writing to binary..."
+#~ msgstr "Запись в бинарный файл..."

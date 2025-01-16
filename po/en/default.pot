@@ -1,180 +1,253 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"PO-Revision-Date: 2025-01-13 15:45-0300\n"
-"Last-Translator:  <thomas.bored5521@gmail.com>\n"
-"Language-Team: Spanish <es@tp.org.es>\n"
-"Language: es\n"
+"Project-Id-Version: v1.15.1-7-g6b325e1\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "ERROR:"
-msgstr ""
-
-msgid "Available configuration keys:"
-msgstr ""
-
-msgid "Already in latest version"
-msgstr ""
-
-msgid "Version:"
-msgstr ""
-
-msgid "Updated:"
-msgstr ""
-
-msgid "Latest version:"
-msgstr ""
-
-msgid ""
-"No file/directory was specified, the current directory will be used. (.)"
-msgstr ""
-
-msgid "Displays the file/folder properties."
-msgstr ""
-
-msgid ""
-"Prints the name of the file being walked if a directory has been selected."
-msgstr ""
-
-msgid "Skips walking inside the directories."
-msgstr ""
-
-msgid ""
-"Displays a file count and progress bar when counting and summing file sizes."
-msgstr ""
-
-msgid ""
-"Configure the variables used for preferences\n"
-"Example: \"fsize --config "
-"'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
-"\n"
-"To see the available variables and their values run \"fsize --print-"
-"settings\"."
-msgstr ""
-
-msgid "Prints the current configuration values."
-msgstr ""
-
-msgid "Hide possible warnings."
-msgstr ""
-
-msgid ""
-"Generate a completion file for bash\n"
-"if any, the first argument will be taken as output file."
-msgstr ""
-
-msgid ""
-"Generate a completion file for fish\n"
-"if any, the first argument will be taken as output file."
-msgstr ""
-
-msgid ""
-"Generate a completion file for zsh\n"
-"if any, the first argument will be taken as output file."
-msgstr ""
-
-msgid ""
-"Automatically updates the program by overwriting the binary and regenerating "
-"the completions."
-msgstr ""
-
-msgid "Displays the information of the binary"
-msgstr ""
-
-msgid "Checking the latest version available..."
-msgstr ""
-
-msgid "Downloading latest version..."
-msgstr ""
-
-msgid "Writing to binary..."
-msgstr ""
-
-msgid "Updating completions..."
-msgstr ""
-
-msgid "Upgrade completed successfully"
-msgstr ""
-
-msgid "%s not found."
-msgstr ""
-
-msgid "error getting the corresponding structure from fileinfo.Sys()"
-msgstr ""
-
-msgid "syntax error"
-msgstr ""
-
-msgid "unrecognized value type \"%s\""
-msgstr ""
-
-msgid "unrecognized key \"%s\""
-msgstr ""
-
+#: filecount/print.go:19
 msgid "Reading \"%s\"..."
 msgstr ""
 
+#: filecount/progress.go:15
 msgid "Counting the amount of files..."
 msgstr ""
 
+#: filecount/progress.go:22
 msgid "%v files with %v errors"
 msgstr ""
 
-msgid "Name:"
+#: flags.go:14
+msgid "Displays the file/folder properties."
 msgstr ""
 
-msgid "Size:"
+#: flags.go:26
+msgid "Prints the name of the file being walked if a directory has been selected."
 msgstr ""
 
-msgid "Absolute path:"
+#: flags.go:29
+msgid "Skips walking inside the directories."
 msgstr ""
 
-msgid "Modify:"
+#: flags.go:32
+msgid "Displays a file count and progress bar when counting and summing file sizes."
 msgstr ""
 
-msgid "Access:"
+#: flags.go:35
+msgid "Configure the variables used for preferences"
+"Example: \"fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\"."
+""
+"To see the available variables and their values run \"fsize --print-settings\"."
 msgstr ""
 
-msgid "Birth:"
+#: flags.go:41
+msgid "Prints the current configuration values."
 msgstr ""
 
-msgid "Is directory:"
+#: flags.go:44
+msgid "Hide possible warnings."
 msgstr ""
 
-msgid "Permissions:"
+#: flags.go:47
+msgid "Generate a completion file for bash"
+"if any, the first argument will be taken as output file."
 msgstr ""
 
-msgid "Number of files:"
+#: flags.go:51
+msgid "Generate a completion file for fish"
+"if any, the first argument will be taken as output file."
 msgstr ""
 
-msgid "UID/User:"
+#: flags.go:55
+msgid "Generate a completion file for zsh"
+"if any, the first argument will be taken as output file."
 msgstr ""
 
-msgid "GID/Group:"
+#: flags.go:63
+msgid "Automatically updates the program by overwriting the binary and regenerating the completions."
 msgstr ""
 
-msgid "not supported on windows"
+#: flags.go:70
+msgid "Displays the information of the binary"
 msgstr ""
 
+#: main.go:33
+msgid "ERROR:"
+msgstr ""
+
+#: main.go:51
+msgid "Available configuration keys:"
+msgstr ""
+
+#: main.go:64
+msgid "Already in latest version"
+msgstr ""
+
+#: main.go:78
+msgid "Version:"
+msgstr ""
+
+#: main.go:79
+msgid "Updated:"
+msgstr ""
+
+#: main.go:81
+msgid "Latest version:"
+msgstr ""
+
+#: main.go:84
 msgid "Source Code: %s"
 msgstr ""
 
+#: main.go:89
+msgid "No file/directory was specified, the current directory will be used. (.)"
+msgstr ""
+
+#: settings/main.go:60
+msgid "syntax error"
+msgstr ""
+
+#: settings/main.go:66
+msgid "unrecognized value type \"%s\""
+msgstr ""
+
+#: settings/main.go:69
+msgid "unrecognized key \"%s\""
+msgstr ""
+
+#: stat/file.go:21
+msgid "error getting the corresponding structure from fileinfo.Sys()"
+msgstr ""
+
+#: stat/file.go:23
+msgid "not supported on windows"
+msgstr ""
+
+#: stat/file.go:119
+msgid "Name:"
+msgstr ""
+
+#: stat/file.go:120
+msgid "Size:"
+msgstr ""
+
+#: stat/file.go:121
+msgid "Absolute path:"
+msgstr ""
+
+#: stat/file.go:123
+msgid "Physical path:"
+msgstr ""
+
+#: stat/file.go:125
+msgid "Modify:"
+msgstr ""
+
+#: stat/file.go:126
+msgid "Access:"
+msgstr ""
+
+#: stat/file.go:128
+msgid "Birth:"
+msgstr ""
+
+#: stat/file.go:130
+msgid "Is directory:"
+msgstr ""
+
+#: stat/file.go:131
+msgid "Permissions:"
+msgstr ""
+
+#: stat/file.go:133
+msgid "Number of files:"
+msgstr ""
+
+#: stat/file.go:137
+msgid "UID/User:"
+msgstr ""
+
+#: stat/file.go:138
+msgid "GID/Group:"
+msgstr ""
+
+#: update/main.go:25
+msgid "Checking the latest version available..."
+msgstr ""
+
+#: update/main.go:67
 msgid "NB! It seems that you are in a NixOS."
 msgstr ""
 
-msgid ""
-"Due to the non-standard filesystem implementation of the environment, the "
-"update command may not work as expected."
+#: update/main.go:69
+msgid "Due to the non-standard filesystem implementation of the environment, the update command may not work as expected."
 msgstr ""
 
+#: update/main.go:76
 msgid "Do you want to proceed with the update?"
 msgstr ""
 
+#: update/main.go:80
 msgid "The command has been cancelled."
 msgstr ""
 
-msgid "Physical path:"
+#: update/main.go:92
+msgid "error renaming the old executable [%s] to: %v"
 msgstr ""
+
+#: update/main.go:97
+msgid "error creating a new http request: %v"
+msgstr ""
+
+#: update/main.go:101
+msgid "error getting http response: %v"
+msgstr ""
+
+#: update/main.go:105
+msgid "Downloading latest version..."
+msgstr ""
+
+#: update/main.go:108
+msgid "Error downloading binary to %s: %v"
+msgstr ""
+
+#: update/main.go:109
+msgid "Reversing changes..."
+msgstr ""
+
+#: update/main.go:114
+msgid "error reversing changes: falied to rename %s to %s: %v"
+msgstr ""
+
+#: update/main.go:125
+msgid "error finishing the progress bar"
+msgstr ""
+
+#: update/main.go:129
+msgid "error removing old executable: %v"
+msgstr ""
+
+#: update/main.go:134
+msgid "error getting current user: %v"
+msgstr ""
+
+#: update/main.go:140
+msgid "The user is not root, the completions will not be updated"
+msgstr ""
+
+#: update/main.go:144
+msgid "Updating completions..."
+msgstr ""
+
+#: update/main.go:151
+msgid "Upgrade completed successfully"
+msgstr ""
+
+#: update/update-completions.go:29
+msgid "%s not found."
+msgstr ""
+

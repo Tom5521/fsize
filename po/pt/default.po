@@ -10,87 +10,72 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-msgid "ERROR:"
-msgstr "ERRO:"
+#: filecount/print.go:19
+msgid "Reading \"%s\"..."
+msgstr "Lendo \"%s\"..."
 
-msgid "Available configuration keys:"
-msgstr "Chaves de configuração disponíveis:"
+#: filecount/progress.go:15
+msgid "Counting the amount of files..."
+msgstr "Contando o número de arquivos..."
 
-msgid "Already in latest version"
-msgstr "Já está na versão mais recente."
+#: filecount/progress.go:22
+msgid "%v files with %v errors"
+msgstr "%v arquivos com %v erros."
 
-msgid "Version:"
-msgstr "Versão:"
-
-msgid "Updated:"
-msgstr "Atualizado:"
-
-msgid "Latest version:"
-msgstr "Última versão:"
-
-msgid ""
-"No file/directory was specified, the current directory will be used. (.)"
-msgstr ""
-"Nenhum arquivo/diretório foi especificado. O diretório atual será usado. (.)"
-
+#: flags.go:14
 msgid "Displays the file/folder properties."
 msgstr "Exibe as propriedades do arquivo/diretório."
 
+#: flags.go:26
 msgid ""
 "Prints the name of the file being walked if a directory has been selected."
 msgstr "Imprime o nome do arquivo processado se um diretório foi selecionado."
 
+#: flags.go:29
 msgid "Skips walking inside the directories."
 msgstr "Ignora a navegação dentro dos diretórios."
 
+#: flags.go:32
 msgid ""
 "Displays a file count and progress bar when counting and summing file sizes."
 msgstr ""
 "Exibe a contagem de arquivos e uma barra de progresso ao contar e somar os "
 "tamanhos dos arquivos."
 
+#: flags.go:35
 msgid ""
-"Configure the variables used for preferences\n"
-"Example: \"fsize --config "
-"'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
-"\n"
-"To see the available variables and their values run \"fsize --print-"
-"settings\"."
+"Configure the variables used for preferencesExample: \"fsize --config "
+"'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".To see the available "
+"variables and their values run \"fsize --print-settings\"."
 msgstr ""
-"Configura as variáveis usadas para preferências\n"
-"Exemplo: \"fsize --config "
-"'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
-"\n"
-"Para ver as variáveis disponíveis e seus valores, execute \"fsize --print-"
-"settings\"."
 
+#: flags.go:41
 msgid "Prints the current configuration values."
 msgstr "Exibe os valores atuais de configuração."
 
+#: flags.go:44
 msgid "Hide possible warnings."
 msgstr "Oculta avisos possíveis."
 
+#: flags.go:47
 msgid ""
-"Generate a completion file for bash\n"
-"if any, the first argument will be taken as output file."
+"Generate a completion file for bashif any, the first argument will be taken "
+"as output file."
 msgstr ""
-"Gera um arquivo de conclusão para o bash\n"
-"se fornecido, o primeiro argumento será usado como arquivo de saída."
 
+#: flags.go:51
 msgid ""
-"Generate a completion file for fish\n"
-"if any, the first argument will be taken as output file."
+"Generate a completion file for fishif any, the first argument will be taken "
+"as output file."
 msgstr ""
-"Gera um arquivo de conclusão para o fish\n"
-"se fornecido, o primeiro argumento será usado como arquivo de saída."
 
+#: flags.go:55
 msgid ""
-"Generate a completion file for zsh\n"
-"if any, the first argument will be taken as output file."
+"Generate a completion file for zshif any, the first argument will be taken "
+"as output file."
 msgstr ""
-"Gera um arquivo de conclusão para o zsh\n"
-"se fornecido, o primeiro argumento será usado como arquivo de saída."
 
+#: flags.go:63
 msgid ""
 "Automatically updates the program by overwriting the binary and regenerating "
 "the completions."
@@ -98,90 +83,121 @@ msgstr ""
 "Atualiza automaticamente o programa substituindo o binário e regenerando os "
 "arquivos de conclusão."
 
+#: flags.go:70
 msgid "Displays the information of the binary"
 msgstr "Exibe as informações do binário."
 
-msgid "Checking the latest version available..."
-msgstr "Verificando a versão mais recente disponível..."
+#: main.go:33
+msgid "ERROR:"
+msgstr "ERRO:"
 
-msgid "Downloading latest version..."
-msgstr "Baixando a versão mais recente..."
+#: main.go:51
+msgid "Available configuration keys:"
+msgstr "Chaves de configuração disponíveis:"
 
-msgid "Writing to binary..."
-msgstr "Gravando no binário..."
+#: main.go:64
+msgid "Already in latest version"
+msgstr "Já está na versão mais recente."
 
-msgid "Updating completions..."
-msgstr "Atualizando os arquivos de conclusão..."
+#: main.go:78
+msgid "Version:"
+msgstr "Versão:"
 
-msgid "Upgrade completed successfully"
-msgstr "Atualização concluída com sucesso."
+#: main.go:79
+msgid "Updated:"
+msgstr "Atualizado:"
 
-msgid "%s not found."
-msgstr "%s não encontrado."
+#: main.go:81
+msgid "Latest version:"
+msgstr "Última versão:"
 
-msgid "error getting the corresponding structure from fileinfo.Sys()"
-msgstr "erro ao obter a estrutura correspondente de fileinfo.Sys()"
-
-msgid "syntax error"
-msgstr "erro de sintaxe."
-
-msgid "unrecognized value type \"%s\""
-msgstr "tipo de valor desconhecido \"%s\"."
-
-msgid "unrecognized key \"%s\""
-msgstr "chave desconhecida \"%s\"."
-
-msgid "Reading \"%s\"..."
-msgstr "Lendo \"%s\"..."
-
-msgid "Counting the amount of files..."
-msgstr "Contando o número de arquivos..."
-
-msgid "%v files with %v errors"
-msgstr "%v arquivos com %v erros."
-
-msgid "Name:"
-msgstr "Nome:"
-
-msgid "Size:"
-msgstr "Tamanho:"
-
-msgid "Absolute path:"
-msgstr "Caminho absoluto:"
-
-msgid "Modify:"
-msgstr "Modificado:"
-
-msgid "Access:"
-msgstr "Acesso:"
-
-msgid "Birth:"
-msgstr "Criação:"
-
-msgid "Is directory:"
-msgstr "É um diretório:"
-
-msgid "Permissions:"
-msgstr "Permissões:"
-
-msgid "Number of files:"
-msgstr "Número de arquivos:"
-
-msgid "UID/User:"
-msgstr "UID/Usuário:"
-
-msgid "GID/Group:"
-msgstr "GID/Grupo:"
-
-msgid "not supported on windows"
-msgstr "não é suportado no Windows."
-
+#: main.go:84
 msgid "Source Code: %s"
 msgstr "Código-fonte: %s"
 
+#: main.go:89
+msgid ""
+"No file/directory was specified, the current directory will be used. (.)"
+msgstr ""
+"Nenhum arquivo/diretório foi especificado. O diretório atual será usado. (.)"
+
+#: settings/main.go:60
+msgid "syntax error"
+msgstr "erro de sintaxe."
+
+#: settings/main.go:66
+msgid "unrecognized value type \"%s\""
+msgstr "tipo de valor desconhecido \"%s\"."
+
+#: settings/main.go:69
+msgid "unrecognized key \"%s\""
+msgstr "chave desconhecida \"%s\"."
+
+#: stat/file.go:21
+msgid "error getting the corresponding structure from fileinfo.Sys()"
+msgstr "erro ao obter a estrutura correspondente de fileinfo.Sys()"
+
+#: stat/file.go:23
+msgid "not supported on windows"
+msgstr "não é suportado no Windows."
+
+#: stat/file.go:119
+msgid "Name:"
+msgstr "Nome:"
+
+#: stat/file.go:120
+msgid "Size:"
+msgstr "Tamanho:"
+
+#: stat/file.go:121
+msgid "Absolute path:"
+msgstr "Caminho absoluto:"
+
+#: stat/file.go:123
+msgid "Physical path:"
+msgstr "Caminho físico:"
+
+#: stat/file.go:125
+msgid "Modify:"
+msgstr "Modificado:"
+
+#: stat/file.go:126
+msgid "Access:"
+msgstr "Acesso:"
+
+#: stat/file.go:128
+msgid "Birth:"
+msgstr "Criação:"
+
+#: stat/file.go:130
+msgid "Is directory:"
+msgstr "É um diretório:"
+
+#: stat/file.go:131
+msgid "Permissions:"
+msgstr "Permissões:"
+
+#: stat/file.go:133
+msgid "Number of files:"
+msgstr "Número de arquivos:"
+
+#: stat/file.go:137
+msgid "UID/User:"
+msgstr "UID/Usuário:"
+
+#: stat/file.go:138
+msgid "GID/Group:"
+msgstr "GID/Grupo:"
+
+#: update/main.go:25
+msgid "Checking the latest version available..."
+msgstr "Verificando a versão mais recente disponível..."
+
+#: update/main.go:67
 msgid "NB! It seems that you are in a NixOS."
 msgstr "Atenção! Parece que você está em um NixOS."
 
+#: update/main.go:69
 msgid ""
 "Due to the non-standard filesystem implementation of the environment, the "
 "update command may not work as expected."
@@ -189,11 +205,105 @@ msgstr ""
 "Devido à implementação não padrão do sistema de arquivos, o comando de "
 "atualização pode não funcionar como esperado."
 
+#: update/main.go:76
 msgid "Do you want to proceed with the update?"
 msgstr "Deseja continuar com a atualização?"
 
+#: update/main.go:80
 msgid "The command has been cancelled."
 msgstr "O comando foi cancelado."
 
-msgid "Physical path:"
-msgstr "Caminho físico:"
+#: update/main.go:92
+msgid "error renaming the old executable [%s] to: %v"
+msgstr ""
+
+#: update/main.go:97
+msgid "error creating a new http request: %v"
+msgstr ""
+
+#: update/main.go:101
+msgid "error getting http response: %v"
+msgstr ""
+
+#: update/main.go:105
+msgid "Downloading latest version..."
+msgstr "Baixando a versão mais recente..."
+
+#: update/main.go:108
+msgid "Error downloading binary to %s: %v"
+msgstr ""
+
+#: update/main.go:109
+msgid "Reversing changes..."
+msgstr ""
+
+#: update/main.go:114
+msgid "error reversing changes: falied to rename %s to %s: %v"
+msgstr ""
+
+#: update/main.go:125
+msgid "error finishing the progress bar"
+msgstr ""
+
+#: update/main.go:129
+msgid "error removing old executable: %v"
+msgstr ""
+
+#: update/main.go:134
+msgid "error getting current user: %v"
+msgstr ""
+
+#: update/main.go:140
+msgid "The user is not root, the completions will not be updated"
+msgstr ""
+
+#: update/main.go:144
+msgid "Updating completions..."
+msgstr "Atualizando os arquivos de conclusão..."
+
+#: update/main.go:151
+msgid "Upgrade completed successfully"
+msgstr "Atualização concluída com sucesso."
+
+#: update/update-completions.go:29
+msgid "%s not found."
+msgstr "%s não encontrado."
+
+#~ msgid ""
+#~ "Configure the variables used for preferences\n"
+#~ "Example: \"fsize --config "
+#~ "'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
+#~ "\n"
+#~ "To see the available variables and their values run \"fsize --print-"
+#~ "settings\"."
+#~ msgstr ""
+#~ "Configura as variáveis usadas para preferências\n"
+#~ "Exemplo: \"fsize --config "
+#~ "'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
+#~ "\n"
+#~ "Para ver as variáveis disponíveis e seus valores, execute \"fsize --print-"
+#~ "settings\"."
+
+#~ msgid ""
+#~ "Generate a completion file for bash\n"
+#~ "if any, the first argument will be taken as output file."
+#~ msgstr ""
+#~ "Gera um arquivo de conclusão para o bash\n"
+#~ "se fornecido, o primeiro argumento será usado como arquivo de saída."
+
+#~ msgid ""
+#~ "Generate a completion file for fish\n"
+#~ "if any, the first argument will be taken as output file."
+#~ msgstr ""
+#~ "Gera um arquivo de conclusão para o fish\n"
+#~ "se fornecido, o primeiro argumento será usado como arquivo de saída."
+
+#~ msgid ""
+#~ "Generate a completion file for zsh\n"
+#~ "if any, the first argument will be taken as output file."
+#~ msgstr ""
+#~ "Gera um arquivo de conclusão para o zsh\n"
+#~ "se fornecido, o primeiro argumento será usado como arquivo de saída."
+
+#~ msgid "Writing to binary..."
+#~ msgstr "Gravando no binário..."

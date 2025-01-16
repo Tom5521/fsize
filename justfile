@@ -86,6 +86,17 @@ go-reinstall:
 generate:
     go generate ./meta/
 
+update-locales:
+    #!/usr/bin/env -S bash -x
+    command -v xgotext || go install -v github.com/Tom5521/xgotext@latest
+    xgotext --input . --output ./po/en/default.pot --lang en --project-version {{long-latest-tag}}
+
+    for dir in ./po/*; do
+        if [[ "$dir" != "en" ]]; then
+            msgmerge -U --no-fuzzy-matching $dir/default.po ./po/en/default.pot
+        fi
+    done
+
 install-garble:
     go install -v mvdan.cc/garble@latest
 
