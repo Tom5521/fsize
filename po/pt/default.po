@@ -1,14 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"PO-Revision-Date: 2025-01-13 14:18-0300\n"
-"Last-Translator:  <thomas.bored5521@gmail.com>\n"
-"Language-Team: Spanish <es@tp.org.es>\n"
-"Language: es\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2025-01-16 00:38-0300\n"
+"Last-Translator: <thomas.bored5521@gmail.com>\n"
+"Language-Team: \n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.5\n"
 
 #: filecount/print.go:19
 msgid "Reading \"%s\"..."
@@ -20,7 +22,7 @@ msgstr "Contando o número de arquivos..."
 
 #: filecount/progress.go:22
 msgid "%v files with %v errors"
-msgstr "%v arquivos com %v erros."
+msgstr "%v arquivos com %v erros"
 
 #: flags.go:14
 msgid "Displays the file/folder properties."
@@ -44,10 +46,19 @@ msgstr ""
 
 #: flags.go:35
 msgid ""
-"Configure the variables used for preferencesExample: \"fsize --config "
-"'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".To see the available "
-"variables and their values run \"fsize --print-settings\"."
+"Configure the variables used for preferences\n"
+"Example: \"fsize --config "
+"'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
+"\n"
+"To see the available variables and their values run \"fsize --print-"
+"settings\"."
 msgstr ""
+"Configura as variáveis usadas para preferências\n"
+"Exemplo: \"fsize --config "
+"'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
+"\n"
+"Para ver as variáveis disponíveis e seus valores, execute \"fsize --print-"
+"settings\"."
 
 #: flags.go:41
 msgid "Prints the current configuration values."
@@ -59,21 +70,27 @@ msgstr "Oculta avisos possíveis."
 
 #: flags.go:47
 msgid ""
-"Generate a completion file for bashif any, the first argument will be taken "
-"as output file."
+"Generate a completion file for bash\n"
+"if any, the first argument will be taken as output file."
 msgstr ""
+"Gera um arquivo de conclusão para o bash\n"
+"se fornecido, o primeiro argumento será usado como arquivo de saída."
 
 #: flags.go:51
 msgid ""
-"Generate a completion file for fishif any, the first argument will be taken "
-"as output file."
+"Generate a completion file for fish\n"
+"if any, the first argument will be taken as output file."
 msgstr ""
+"Gera um arquivo de conclusão para o fish\n"
+"se fornecido, o primeiro argumento será usado como arquivo de saída."
 
 #: flags.go:55
 msgid ""
-"Generate a completion file for zshif any, the first argument will be taken "
-"as output file."
+"Generate a completion file for zsh\n"
+"if any, the first argument will be taken as output file."
 msgstr ""
+"Gera um arquivo de conclusão para o zsh\n"
+"se fornecido, o primeiro argumento será usado como arquivo de saída."
 
 #: flags.go:63
 msgid ""
@@ -85,7 +102,7 @@ msgstr ""
 
 #: flags.go:70
 msgid "Displays the information of the binary"
-msgstr "Exibe as informações do binário."
+msgstr "Exibe as informações do binário"
 
 #: main.go:33
 msgid "ERROR:"
@@ -97,7 +114,7 @@ msgstr "Chaves de configuração disponíveis:"
 
 #: main.go:64
 msgid "Already in latest version"
-msgstr "Já está na versão mais recente."
+msgstr "Já está na versão mais recente"
 
 #: main.go:78
 msgid "Version:"
@@ -123,7 +140,7 @@ msgstr ""
 
 #: settings/main.go:60
 msgid "syntax error"
-msgstr "erro de sintaxe."
+msgstr "erro de sintaxe"
 
 #: settings/main.go:66
 msgid "unrecognized value type \"%s\""
@@ -139,7 +156,7 @@ msgstr "erro ao obter a estrutura correspondente de fileinfo.Sys()"
 
 #: stat/file.go:23
 msgid "not supported on windows"
-msgstr "não é suportado no Windows."
+msgstr "não é suportado no Windows"
 
 #: stat/file.go:119
 msgid "Name:"
@@ -215,7 +232,7 @@ msgstr "O comando foi cancelado."
 
 #: update/main.go:92
 msgid "error renaming the old executable [%s] to: %v"
-msgstr ""
+msgstr "erro ao renomear o executável antigo [%s] para: %v"
 
 #: update/main.go:97
 msgid "error creating a new http request: %v"
@@ -263,47 +280,8 @@ msgstr "Atualizando os arquivos de conclusão..."
 
 #: update/main.go:151
 msgid "Upgrade completed successfully"
-msgstr "Atualização concluída com sucesso."
+msgstr "Atualização concluída com sucesso"
 
 #: update/update-completions.go:29
 msgid "%s not found."
 msgstr "%s não encontrado."
-
-#~ msgid ""
-#~ "Configure the variables used for preferences\n"
-#~ "Example: \"fsize --config "
-#~ "'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
-#~ "\n"
-#~ "To see the available variables and their values run \"fsize --print-"
-#~ "settings\"."
-#~ msgstr ""
-#~ "Configura as variáveis usadas para preferências\n"
-#~ "Exemplo: \"fsize --config "
-#~ "'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
-#~ "\n"
-#~ "Para ver as variáveis disponíveis e seus valores, execute \"fsize --print-"
-#~ "settings\"."
-
-#~ msgid ""
-#~ "Generate a completion file for bash\n"
-#~ "if any, the first argument will be taken as output file."
-#~ msgstr ""
-#~ "Gera um arquivo de conclusão para o bash\n"
-#~ "se fornecido, o primeiro argumento será usado como arquivo de saída."
-
-#~ msgid ""
-#~ "Generate a completion file for fish\n"
-#~ "if any, the first argument will be taken as output file."
-#~ msgstr ""
-#~ "Gera um arquivo de conclusão para o fish\n"
-#~ "se fornecido, o primeiro argumento será usado como arquivo de saída."
-
-#~ msgid ""
-#~ "Generate a completion file for zsh\n"
-#~ "if any, the first argument will be taken as output file."
-#~ msgstr ""
-#~ "Gera um arquivo de conclusão para o zsh\n"
-#~ "se fornecido, o primeiro argumento será usado como arquivo de saída."
-
-#~ msgid "Writing to binary..."
-#~ msgstr "Gravando no binário..."

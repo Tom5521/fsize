@@ -1,14 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"PO-Revision-Date: 2025-01-13 14:09-0300\n"
-"Last-Translator:  <thomas.bored5521@gmail.com>\n"
-"Language-Team: Spanish <es@tp.org.es>\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2025-01-16 00:33-0300\n"
+"Last-Translator: thomas.bored5521@gmail.com\n"
+"Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.5\n"
 
 #: filecount/print.go:19
 msgid "Reading \"%s\"..."
@@ -27,20 +29,37 @@ msgid "Displays the file/folder properties."
 msgstr "Muestra las propiedades del archivo/carpeta."
 
 #: flags.go:26
-msgid "Prints the name of the file being walked if a directory has been selected."
-msgstr "Imprime el nombre del archivo recorrido si se seleccionó un directorio."
+msgid ""
+"Prints the name of the file being walked if a directory has been selected."
+msgstr ""
+"Imprime el nombre del archivo recorrido si se seleccionó un directorio."
 
 #: flags.go:29
 msgid "Skips walking inside the directories."
 msgstr "Evita recorrer dentro de los directorios."
 
 #: flags.go:32
-msgid "Displays a file count and progress bar when counting and summing file sizes."
-msgstr "Muestra el conteo de archivos y una barra de progreso al contar y sumar los tamaños de archivos."
+msgid ""
+"Displays a file count and progress bar when counting and summing file sizes."
+msgstr ""
+"Muestra el conteo de archivos y una barra de progreso al contar y sumar los "
+"tamaños de archivos."
 
 #: flags.go:35
-msgid "Configure the variables used for preferencesExample: \"fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".To see the available variables and their values run \"fsize --print-settings\"."
+msgid ""
+"Configure the variables used for preferences\n"
+"Example: \"fsize --config "
+"'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
+"\n"
+"To see the available variables and their values run \"fsize --print-"
+"settings\"."
 msgstr ""
+"Configura las variables usadas para preferencias\n"
+"Ejemplo: \"fsize --config "
+"'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
+"\n"
+"Para ver las variables disponibles y sus valores ejecuta \"fsize --print-"
+"settings\"."
 
 #: flags.go:41
 msgid "Prints the current configuration values."
@@ -51,20 +70,36 @@ msgid "Hide possible warnings."
 msgstr "Oculta posibles advertencias."
 
 #: flags.go:47
-msgid "Generate a completion file for bashif any, the first argument will be taken as output file."
+msgid ""
+"Generate a completion file for bash\n"
+"if any, the first argument will be taken as output file."
 msgstr ""
+"Genera un archivo de autocompletado para bash\n"
+"si hay alguno, el primer argumento se tomará como archivo de salida."
 
 #: flags.go:51
-msgid "Generate a completion file for fishif any, the first argument will be taken as output file."
+msgid ""
+"Generate a completion file for fish\n"
+"if any, the first argument will be taken as output file."
 msgstr ""
+"Genera un archivo de autocompletado para fish\n"
+"si hay alguno, el primer argumento se tomará como archivo de salida."
 
 #: flags.go:55
-msgid "Generate a completion file for zshif any, the first argument will be taken as output file."
+msgid ""
+"Generate a completion file for zsh\n"
+"if any, the first argument will be taken as output file."
 msgstr ""
+"Genera un archivo de autocompletado para zsh\n"
+"si hay alguno, el primer argumento se tomará como archivo de salida."
 
 #: flags.go:63
-msgid "Automatically updates the program by overwriting the binary and regenerating the completions."
-msgstr "Actualiza automáticamente el programa sobrescribiendo el binario y regenerando las autocompletaciones."
+msgid ""
+"Automatically updates the program by overwriting the binary and regenerating "
+"the completions."
+msgstr ""
+"Actualiza automáticamente el programa sobrescribiendo el binario y "
+"regenerando las autocompletaciones."
 
 #: flags.go:70
 msgid "Displays the information of the binary"
@@ -99,8 +134,11 @@ msgid "Source Code: %s"
 msgstr "Código Fuente: %s"
 
 #: main.go:89
-msgid "No file/directory was specified, the current directory will be used. (.)"
-msgstr "No se especificó ningún archivo/directorio, se utilizará el directorio actual. (.)"
+msgid ""
+"No file/directory was specified, the current directory will be used. (.)"
+msgstr ""
+"No se especificó ningún archivo/directorio, se utilizará el directorio "
+"actual. (.)"
 
 #: settings/main.go:60
 msgid "syntax error"
@@ -179,8 +217,12 @@ msgid "NB! It seems that you are in a NixOS."
 msgstr "¡Atención! Parece que estás en NixOS."
 
 #: update/main.go:69
-msgid "Due to the non-standard filesystem implementation of the environment, the update command may not work as expected."
-msgstr "Debido a la implementación de sistema de archivos no estándar del entorno, el comando de actualizar puede no funcionar como se espera."
+msgid ""
+"Due to the non-standard filesystem implementation of the environment, the "
+"update command may not work as expected."
+msgstr ""
+"Debido a la implementación de sistema de archivos no estándar del entorno, "
+"el comando de actualizar puede no funcionar como se espera."
 
 #: update/main.go:76
 msgid "Do you want to proceed with the update?"
@@ -192,15 +234,15 @@ msgstr "El comando ha sido cancelado."
 
 #: update/main.go:92
 msgid "error renaming the old executable [%s] to: %v"
-msgstr ""
+msgstr "error renombrando el ejecutable viejo [%s] a: %v"
 
 #: update/main.go:97
 msgid "error creating a new http request: %v"
-msgstr ""
+msgstr "error creando una nueva solicitud http: %v"
 
 #: update/main.go:101
 msgid "error getting http response: %v"
-msgstr ""
+msgstr "error consiguiendo respuesta http: %v"
 
 #: update/main.go:105
 msgid "Downloading latest version..."
@@ -208,31 +250,31 @@ msgstr "Descargando la última versión..."
 
 #: update/main.go:108
 msgid "Error downloading binary to %s: %v"
-msgstr ""
+msgstr "Error descargando binario a %s: %v"
 
 #: update/main.go:109
 msgid "Reversing changes..."
-msgstr ""
+msgstr "Revirtiendo cambios..."
 
 #: update/main.go:114
 msgid "error reversing changes: falied to rename %s to %s: %v"
-msgstr ""
+msgstr "error revirtiendo cambios: fallo al renombrar %s a %s: %v"
 
 #: update/main.go:125
 msgid "error finishing the progress bar"
-msgstr ""
+msgstr "error terminando la barra de progreso"
 
 #: update/main.go:129
 msgid "error removing old executable: %v"
-msgstr ""
+msgstr "error removiendo ejecutable viejo: %v"
 
 #: update/main.go:134
 msgid "error getting current user: %v"
-msgstr ""
+msgstr "error obteniendo el usuario actual: %v"
 
 #: update/main.go:140
 msgid "The user is not root, the completions will not be updated"
-msgstr ""
+msgstr "El usuario no es root, las autocompletaciones no serán actualizadas"
 
 #: update/main.go:144
 msgid "Updating completions..."
@@ -245,38 +287,3 @@ msgstr "Actualización completada exitosamente"
 #: update/update-completions.go:29
 msgid "%s not found."
 msgstr "%s no encontrado."
-
-#~ msgid ""
-#~ "Configure the variables used for preferences\n"
-#~ "Example: \"fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
-#~ "\n"
-#~ "To see the available variables and their values run \"fsize --print-settings\"."
-#~ msgstr ""
-#~ "Configura las variables usadas para preferencias\n"
-#~ "Ejemplo: \"fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n"
-#~ "\n"
-#~ "Para ver las variables disponibles y sus valores ejecuta \"fsize --print-settings\"."
-
-#~ msgid ""
-#~ "Generate a completion file for bash\n"
-#~ "if any, the first argument will be taken as output file."
-#~ msgstr ""
-#~ "Genera un archivo de autocompletado para bash\n"
-#~ "si hay alguno, el primer argumento se tomará como archivo de salida."
-
-#~ msgid ""
-#~ "Generate a completion file for fish\n"
-#~ "if any, the first argument will be taken as output file."
-#~ msgstr ""
-#~ "Genera un archivo de autocompletado para fish\n"
-#~ "si hay alguno, el primer argumento se tomará como archivo de salida."
-
-#~ msgid ""
-#~ "Generate a completion file for zsh\n"
-#~ "if any, the first argument will be taken as output file."
-#~ msgstr ""
-#~ "Genera un archivo de autocompletado para zsh\n"
-#~ "si hay alguno, el primer argumento se tomará como archivo de salida."
-
-#~ msgid "Writing to binary..."
-#~ msgstr "Escribiendo en el binario..."

@@ -6,3 +6,4 @@ completions
 *.bin
 *.log
 *~
+*.mo

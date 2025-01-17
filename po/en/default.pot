@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: v1.15.1-7-g6b325e1\n"
+"Project-Id-Version: v1.15.1-8-gdfa8dcf\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -38,10 +38,7 @@ msgid "Displays a file count and progress bar when counting and summing file siz
 msgstr ""
 
 #: flags.go:35
-msgid "Configure the variables used for preferences"
-"Example: \"fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\"."
-""
-"To see the available variables and their values run \"fsize --print-settings\"."
+msgid "Configure the variables used for preferences\nExample: \"fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n\nTo see the available variables and their values run \"fsize --print-settings\"."
 msgstr ""
 
 #: flags.go:41
@@ -53,18 +50,15 @@ msgid "Hide possible warnings."
 msgstr ""
 
 #: flags.go:47
-msgid "Generate a completion file for bash"
-"if any, the first argument will be taken as output file."
+msgid "Generate a completion file for bash\nif any, the first argument will be taken as output file."
 msgstr ""
 
 #: flags.go:51
-msgid "Generate a completion file for fish"
-"if any, the first argument will be taken as output file."
+msgid "Generate a completion file for fish\nif any, the first argument will be taken as output file."
 msgstr ""
 
 #: flags.go:55
-msgid "Generate a completion file for zsh"
-"if any, the first argument will be taken as output file."
+msgid "Generate a completion file for zsh\nif any, the first argument will be taken as output file."
 msgstr ""
 
 #: flags.go:63
