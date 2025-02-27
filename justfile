@@ -39,32 +39,12 @@ release:
 build os arch:
     #!/usr/bin/env -S bash -x
     bin=builds/fsize-{{os}}-{{arch}}
-    compiler="garble -tiny"
 
     if [[ "{{ os }}" == "windows" ]]; then
         bin="$bin.exe"
-        
-        if [[ {{arch}} == "386" ]]; then
-            compiler="go"
-        fi
     fi
 
-    command -v garble || just install-garble 
-
-    CC=gcc GOOS={{os}} GOARCH={{arch}} \
-    $compiler build -v -o $bin || exit $?
-
-    if [[ {{skip-compress}} == 1 ]]; then
-        exit 0
-    fi
-
-    if [[ {{os}} == "windows" && {{arch}} == "arm64" || {{arch}} == "arm" ]]; then
-        echo compression not supported for {{os}}-{{arch}}
-        echo skipping compression process...
-        exit 0
-    fi
- 
-    just compress $bin
+    go build -v -o $bin || exit $?
 
 build-local:
     just generate
@@ -88,8 +68,7 @@ generate:
 
 update-locales:
     #!/usr/bin/env -S bash -x
-    command -v xgotext || go install -v github.com/Tom5521/xgotext@v1.2.0
-    xgotext --input . --output ./po/en/default.pot --lang en --project-version {{long-latest-tag}}
+    go tool xgotext --input . --output ./po/en/default.pot --lang en --project-version {{long-latest-tag}}
 
     for dir in ./po/*; do
         if [[ "$dir" != "en" ]]; then
@@ -98,30 +77,6 @@ update-locales:
             msgmerge -U --lang $lang --no-fuzzy-matching $file ./po/en/default.pot
         fi
     done
-
-install-garble:
-    go install -v mvdan.cc/garble@latest
-
-[private]
-compress bin:
-    #!/usr/bin/env -S bash -x
-
-    if [[ {{skip-compress}} == 1 ]]; then
-        echo skipping compression of {{bin}}...
-        exit 0
-    fi
-
-    command -v upx > /dev/null
-    if [[ $? != 0 ]]; then
-        echo ---------------------------------
-        echo upx binary not found in PATH
-        echo skipping compression process...
-        echo ---------------------------------
-        exit 0
-    fi
-
-    upx --force-macos --8mib-ram -9 {{bin}}
-    upx -t {{bin}}
 
 [confirm]
 [unix]

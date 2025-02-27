@@ -102,50 +102,50 @@ msgstr ""
 msgid "Displays the information of the binary"
 msgstr "Отображает информацию о бинарном файле"
 
-#: main.go:33
+#: main.go:32
 msgid "ERROR:"
 msgstr "ОШИБКА:"
 
-#: main.go:51
+#: main.go:50
 msgid "Available configuration keys:"
 msgstr "Доступные ключи конфигурации:"
 
-#: main.go:64
+#: main.go:63
 msgid "Already in latest version"
 msgstr "Уже установлена последняя версия"
 
-#: main.go:78
+#: main.go:77
 msgid "Version:"
 msgstr "Версия:"
 
-#: main.go:79
+#: main.go:78
 msgid "Updated:"
 msgstr "Обновлено:"
 
-#: main.go:81
+#: main.go:80
 msgid "Latest version:"
 msgstr "Последняя версия:"
 
-#: main.go:84
+#: main.go:83
 msgid "Source Code: %s"
 msgstr "Исходный код: %s"
 
-#: main.go:89
+#: main.go:88
 msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr "Файл/директория не указаны, будет использована текущая директория. (.)"
 
-#: settings/main.go:60
+#: settings/main.go:66
 msgid "syntax error"
 msgstr "синтаксическая ошибка"
 
-#: settings/main.go:66
-msgid "unrecognized value type \"%s\""
-msgstr "неопознанный тип значения \"%s\""
-
-#: settings/main.go:69
+#: settings/main.go:71
 msgid "unrecognized key \"%s\""
 msgstr "неопознанный ключ \"%s\""
+
+#: settings/main.go:85
+msgid "unrecognized value type \"%s\""
+msgstr "неопознанный тип значения \"%s\""
 
 #: stat/file.go:21
 msgid "error getting the corresponding structure from fileinfo.Sys()"

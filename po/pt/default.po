@@ -104,51 +104,51 @@ msgstr ""
 msgid "Displays the information of the binary"
 msgstr "Exibe as informações do binário"
 
-#: main.go:33
+#: main.go:32
 msgid "ERROR:"
 msgstr "ERRO:"
 
-#: main.go:51
+#: main.go:50
 msgid "Available configuration keys:"
 msgstr "Chaves de configuração disponíveis:"
 
-#: main.go:64
+#: main.go:63
 msgid "Already in latest version"
 msgstr "Já está na versão mais recente"
 
-#: main.go:78
+#: main.go:77
 msgid "Version:"
 msgstr "Versão:"
 
-#: main.go:79
+#: main.go:78
 msgid "Updated:"
 msgstr "Atualizado:"
 
-#: main.go:81
+#: main.go:80
 msgid "Latest version:"
 msgstr "Última versão:"
 
-#: main.go:84
+#: main.go:83
 msgid "Source Code: %s"
 msgstr "Código-fonte: %s"
 
-#: main.go:89
+#: main.go:88
 msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr ""
 "Nenhum arquivo/diretório foi especificado. O diretório atual será usado. (.)"
 
-#: settings/main.go:60
+#: settings/main.go:66
 msgid "syntax error"
 msgstr "erro de sintaxe"
 
-#: settings/main.go:66
-msgid "unrecognized value type \"%s\""
-msgstr "tipo de valor desconhecido \"%s\"."
-
-#: settings/main.go:69
+#: settings/main.go:71
 msgid "unrecognized key \"%s\""
 msgstr "chave desconhecida \"%s\"."
+
+#: settings/main.go:85
+msgid "unrecognized value type \"%s\""
+msgstr "tipo de valor desconhecido \"%s\"."
 
 #: stat/file.go:21
 msgid "error getting the corresponding structure from fileinfo.Sys()"
