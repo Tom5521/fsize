@@ -24,9 +24,8 @@ func main() {
 	}()
 
 	// Initialize variables
-	err := settings.Load()
-	if err != nil {
-		echo.Error(err)
+	if settings.InitError != nil {
+		echo.Error(settings.InitError)
 		return
 	}
 	InitFlags()
