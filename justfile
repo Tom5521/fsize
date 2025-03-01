@@ -74,7 +74,7 @@ update-locales:
         if [[ "$dir" != "en" ]]; then
             file=$dir/default.po
             lang=$(basename $(dirname $file))
-            msgmerge -U --lang $lang --no-fuzzy-matching $file ./po/en/default.pot
+            msgmerge -U --lang $lang $file ./po/en/default.pot
         fi
     done
 
