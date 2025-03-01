@@ -43,7 +43,7 @@ Usage:
 Flags:
       --bin-info              Displays the information of the binary
   -c, --config strings        Configure the variables used for preferences
-                              Example: "fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'".
+                              Example: "fsize --config 'always-show-progress=true,always-print-on-walk=false'".
 
                               To see the available variables and their values run "fsize --print-settings".
       --gen-bash-completion   Generate a completion file for bash

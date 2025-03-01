@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: v1.15.1-9-ga3a0f1f\n"
+"Project-Id-Version: v1.16.0\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: en\n"
@@ -38,7 +38,7 @@ msgid "Displays a file count and progress bar when counting and summing file siz
 msgstr ""
 
 #: flags.go:35
-msgid "Configure the variables used for preferences\nExample: \"fsize --config 'AlwaysShowProgress=true,AlwaysPrintOnWalk=false'\".\n\nTo see the available variables and their values run \"fsize --print-settings\"."
+msgid "Configure the variables used for preferences\nExample: \"fsize --config 'always-show-progress=true,always-print-on-walk=false'\".\n\nTo see the available variables and their values run \"fsize --print-settings\"."
 msgstr ""
 
 #: flags.go:41
