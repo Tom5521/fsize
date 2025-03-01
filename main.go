@@ -74,6 +74,8 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 			return
 		}
 
+		fmt.Println("GOOS:", runtime.GOOS)
+		fmt.Println("GOARCH:", runtime.GOARCH)
 		fmt.Println(po.Get("Version:"), meta.LongVersion)
 		fmt.Println(po.Get("Updated:"), updated)
 		if !updated {

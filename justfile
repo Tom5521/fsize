@@ -21,7 +21,7 @@ release:
     # Cleaning ./builds/
     just clean
     # Generate version
-    just generate
+    just update-version
     # Linux
     just build linux 386
     just build linux amd64
@@ -77,6 +77,10 @@ update-locales:
             msgmerge -U --lang $lang $file ./po/en/default.pot
         fi
     done
+
+
+update-version:
+    echo {{long-latest-tag}} > ./meta/version.txt
 
 [confirm]
 [unix]

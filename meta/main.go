@@ -1,4 +1,3 @@
-//go:generate go run -v ./gen-version/main.go
 package meta
 
 import (
@@ -9,5 +8,10 @@ import (
 var (
 	//go:embed version.txt
 	LongVersion string
-	Version     = strings.SplitN(LongVersion, "-", 2)[0]
+	Version     string
 )
+
+func init() {
+	LongVersion = strings.Replace(LongVersion, "\n", "", 1) // Cut newline
+	Version = strings.SplitN(LongVersion, "-", 2)[0]
+}
