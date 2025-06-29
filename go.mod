@@ -1,6 +1,8 @@
 module github.com/Tom5521/fsize
 
-go 1.24
+go 1.23.5
+
+toolchain go1.24.4
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.7
@@ -14,7 +16,6 @@ require (
 )
 
 require (
-	github.com/Tom5521/xgotext v1.2.0 // indirect
 	github.com/fsnotify/fsnotify v1.8.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
@@ -43,5 +44,3 @@ require (
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
-
-tool github.com/Tom5521/xgotext

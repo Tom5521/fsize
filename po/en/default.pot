@@ -1,13 +1,18 @@
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: v1.16.0\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"Project-Id-Version: v1.16.0-5-g657a03e\n"
+"PO-Revision-Date: YEAR-MO-DA HO: MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: xgotext\n"
 
 #: filecount/print.go:19
 msgid "Reading \"%s\"..."
@@ -81,23 +86,23 @@ msgstr ""
 msgid "Already in latest version"
 msgstr ""
 
-#: main.go:77
+#: main.go:79
 msgid "Version:"
 msgstr ""
 
-#: main.go:78
+#: main.go:80
 msgid "Updated:"
 msgstr ""
 
-#: main.go:80
+#: main.go:82
 msgid "Latest version:"
 msgstr ""
 
-#: main.go:83
+#: main.go:85
 msgid "Source Code: %s"
 msgstr ""
 
-#: main.go:88
+#: main.go:90
 msgid "No file/directory was specified, the current directory will be used. (.)"
 msgstr ""
 

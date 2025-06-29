@@ -10,10 +10,6 @@ bash-completion-path := "/usr/local/share/bash-completion/completions/"
 zsh-completion-path := "/usr/local/share/zsh/site-functions/"
 linux-install-path := "/usr/local/bin/fsize"
 
-# Parameters
-
-skip-compress := env_var_or_default("SKIP_COMPRESS", "0")
-
 default:
     go build -v .
 
@@ -66,10 +62,22 @@ go-reinstall:
 generate:
     go generate ./meta/
 
+install-xgotext:
+    #!/usr/bin/env -S bash -x
+    filename=gotext-tools_$(uname -s)_$(uname -m).tar.gz
+
+    cd /tmp
+    wget https://github.com/Tom5521/gotext-tools/releases/latest/download/"$filename"
+    tar -xzf "$filename"
+    cp ./xgotext ~/.local/bin/
 update-locales:
     #!/usr/bin/env -S bash -x
-    go tool xgotext --input . --output ./po/en/default.pot --lang en --project-version {{long-latest-tag}}
 
+    if ! command -v xgotext; then
+        just install-xgotext
+    fi
+
+    xgotext . -o ./po/en/default.pot --lang en --package-version {{long-latest-tag}}
     for dir in ./po/*; do
         if [[ "$dir" != "en" ]]; then
             file=$dir/default.po
@@ -138,7 +146,7 @@ gh-release:
     gh release create {{short-latest-tag}} ./builds/* --generate-notes
 
 test:
-    go test -v ./*/*_test.go
+    go test -v ./...
 
 test-update:
     #!/bin/bash

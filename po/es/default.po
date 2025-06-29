@@ -55,8 +55,8 @@ msgid ""
 "settings\"."
 msgstr ""
 "Configura las variables usadas para preferencias\n"
-"Ejemplo: \"fsize --config "
-"'always-show-progress=true,always-print-on-walk=false'\".\n"
+"Ejemplo: \"fsize --config 'always-show-progress=true,always-print-on-"
+"walk=false'\".\n"
 "\n"
 "Para ver las variables disponibles y sus valores ejecuta \"fsize --print-"
 "settings\"."
@@ -117,23 +117,23 @@ msgstr "Claves de configuración disponibles:"
 msgid "Already in latest version"
 msgstr "Ya está en la última versión"
 
-#: main.go:77
+#: main.go:79
 msgid "Version:"
 msgstr "Versión:"
 
-#: main.go:78
+#: main.go:80
 msgid "Updated:"
 msgstr "Actualizado:"
 
-#: main.go:80
+#: main.go:82
 msgid "Latest version:"
 msgstr "Última versión:"
 
-#: main.go:83
+#: main.go:85
 msgid "Source Code: %s"
 msgstr "Código Fuente: %s"
 
-#: main.go:88
+#: main.go:90
 msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr ""

@@ -53,8 +53,8 @@ msgid ""
 "settings\"."
 msgstr ""
 "Настройка переменных для предпочтений\n"
-"Пример: \"fsize --config "
-"'always-show-progress=true,always-print-on-walk=false'\".\n"
+"Пример: \"fsize --config 'always-show-progress=true,always-print-on-"
+"walk=false'\".\n"
 "\n"
 "Чтобы увидеть доступные переменные и их значения, запустите \"fsize --print-"
 "settings\"."
@@ -115,23 +115,23 @@ msgstr "Доступные ключи конфигурации:"
 msgid "Already in latest version"
 msgstr "Уже установлена последняя версия"
 
-#: main.go:77
+#: main.go:79
 msgid "Version:"
 msgstr "Версия:"
 
-#: main.go:78
+#: main.go:80
 msgid "Updated:"
 msgstr "Обновлено:"
 
-#: main.go:80
+#: main.go:82
 msgid "Latest version:"
 msgstr "Последняя версия:"
 
-#: main.go:83
+#: main.go:85
 msgid "Source Code: %s"
 msgstr "Исходный код: %s"
 
-#: main.go:88
+#: main.go:90
 msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr "Файл/директория не указаны, будет использована текущая директория. (.)"
