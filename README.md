@@ -3,7 +3,7 @@
 This is a project of mine, basically to end my problem with
 the damn stat command that is unreadable.
 
-Also because I had free time and a desire to do something different
+Also, because I had free time and a desire to do something different
 that does not focus on Microsoft Windows.
 
 The project is focused to be simple and easy to read,
