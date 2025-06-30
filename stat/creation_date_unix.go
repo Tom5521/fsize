@@ -22,7 +22,7 @@ func CreationDate(info os.FileInfo) (t time.Time, err error) {
 	}
 
 	date := buf.String()
-	date = strings.ReplaceAll(date, `\x0a`, "") // Clean stat output.
+	date = strings.ReplaceAll(date, "\x0a", "") // Clean stat output.
 	t, err = parseStatDate(date)
 
 	return

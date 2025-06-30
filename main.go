@@ -98,7 +98,7 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 			if err != nil {
 				return
 			}
-			fmt.Print(file)
+			fmt.Println(file)
 		}
 	}
 

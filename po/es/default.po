@@ -152,59 +152,55 @@ msgstr "clave no reconocida \"%s\""
 msgid "unrecognized value type \"%s\""
 msgstr "tipo de valor no reconocido \"%s\""
 
-#: stat/file.go:21
+#: stat/file.go:16
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "error al obtener la estructura correspondiente de fileinfo.Sys()"
 
-#: stat/file.go:23
+#: stat/file.go:18
 msgid "not supported on windows"
 msgstr "no compatible con windows"
 
-#: stat/file.go:119
+#: stat/format.go:19
 msgid "Name:"
 msgstr "Nombre:"
 
-#: stat/file.go:120
+#: stat/format.go:20
 msgid "Size:"
 msgstr "Tamaño:"
 
-#: stat/file.go:121
+#: stat/format.go:21
 msgid "Absolute path:"
 msgstr "Ruta absoluta:"
 
-#: stat/file.go:123
+#: stat/format.go:22
 msgid "Physical path:"
 msgstr "Ruta física:"
 
-#: stat/file.go:125
+#: stat/format.go:23
 msgid "Modify:"
 msgstr "Modificación:"
 
-#: stat/file.go:126
+#: stat/format.go:24
 msgid "Access:"
 msgstr "Acceso:"
 
-#: stat/file.go:128
+#: stat/format.go:25
 msgid "Birth:"
 msgstr "Creación:"
 
-#: stat/file.go:130
+#: stat/format.go:26
 msgid "Is directory:"
 msgstr "Es directorio:"
 
-#: stat/file.go:131
+#: stat/format.go:27
 msgid "Permissions:"
 msgstr "Permisos:"
 
-#: stat/file.go:133
-msgid "Number of files:"
-msgstr "Número de archivos:"
-
-#: stat/file.go:137
+#: stat/format.go:28
 msgid "UID/User:"
 msgstr "UID/Usuario:"
 
-#: stat/file.go:138
+#: stat/format.go:29
 msgid "GID/Group:"
 msgstr "GID/Grupo:"
 

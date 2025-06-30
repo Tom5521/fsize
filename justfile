@@ -48,6 +48,9 @@ build-local:
 
 clean:
     @rm -rf builds completions ./fsize
+    @find . -name "*.mo" -delete
+    @find . -name "*.po*~" -delete
+    @find . -name "*.log" -delete
 
 go-install:
     go install -v github.com/Tom5521/fsize@{{short-latest-tag}}

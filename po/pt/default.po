@@ -151,59 +151,55 @@ msgstr "chave desconhecida \"%s\"."
 msgid "unrecognized value type \"%s\""
 msgstr "tipo de valor desconhecido \"%s\"."
 
-#: stat/file.go:21
+#: stat/file.go:16
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "erro ao obter a estrutura correspondente de fileinfo.Sys()"
 
-#: stat/file.go:23
+#: stat/file.go:18
 msgid "not supported on windows"
 msgstr "não é suportado no Windows"
 
-#: stat/file.go:119
+#: stat/format.go:19
 msgid "Name:"
 msgstr "Nome:"
 
-#: stat/file.go:120
+#: stat/format.go:20
 msgid "Size:"
 msgstr "Tamanho:"
 
-#: stat/file.go:121
+#: stat/format.go:21
 msgid "Absolute path:"
 msgstr "Caminho absoluto:"
 
-#: stat/file.go:123
+#: stat/format.go:22
 msgid "Physical path:"
 msgstr "Caminho físico:"
 
-#: stat/file.go:125
+#: stat/format.go:23
 msgid "Modify:"
 msgstr "Modificado:"
 
-#: stat/file.go:126
+#: stat/format.go:24
 msgid "Access:"
 msgstr "Acesso:"
 
-#: stat/file.go:128
+#: stat/format.go:25
 msgid "Birth:"
 msgstr "Criação:"
 
-#: stat/file.go:130
+#: stat/format.go:26
 msgid "Is directory:"
 msgstr "É um diretório:"
 
-#: stat/file.go:131
+#: stat/format.go:27
 msgid "Permissions:"
 msgstr "Permissões:"
 
-#: stat/file.go:133
-msgid "Number of files:"
-msgstr "Número de arquivos:"
-
-#: stat/file.go:137
+#: stat/format.go:28
 msgid "UID/User:"
 msgstr "UID/Usuário:"
 
-#: stat/file.go:138
+#: stat/format.go:29
 msgid "GID/Group:"
 msgstr "GID/Grupo:"
 
