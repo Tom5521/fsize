@@ -111,7 +111,7 @@ func ApplyUpdate(tag string) (err error) {
 		if err != nil {
 			return errors.New(
 				po.Get(
-					"error reversing changes: falied to rename %s to %s: %v",
+					"error reversing changes: failed to rename %s to %s: %v",
 					oldExec,
 					executable,
 					err,

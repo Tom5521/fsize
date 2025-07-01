@@ -19,6 +19,7 @@ import (
 
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
+
 	defer func() {
 		if r := recover(); r != nil {
 			color.Errorln(r)
@@ -26,10 +27,14 @@ func main() {
 	}()
 
 	// Initialize variables
-	if settings.InitError != nil {
-		echo.Error(settings.InitError)
+
+	if err := settings.InitSettings(); err != nil {
+		echo.Error(err)
 		return
 	}
+
+	initLocales()
+
 	InitFlags()
 	root.SetErrPrefix(color.Error.Render(po.Get("ERROR:")))
 	defer root.Execute()

@@ -12,40 +12,27 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.5\n"
 
-#: filecount/print.go:19
-msgid "Reading \"%s\"..."
-msgstr "Lendo \"%s\"..."
-
-#: filecount/progress.go:15
-msgid "Counting the amount of files..."
-msgstr "Contando o número de arquivos..."
-
-#: filecount/progress.go:22
-msgid "%v files with %v errors"
-msgstr "%v arquivos com %v erros"
-
-#: flags.go:14
+#: flags.go:15
 msgid "Displays the file/folder properties."
 msgstr "Exibe as propriedades do arquivo/diretório."
 
-#: flags.go:26
+#: flags.go:27
 msgid ""
 "Prints the name of the file being walked if a directory has been selected."
 msgstr "Imprime o nome do arquivo processado se um diretório foi selecionado."
 
-#: flags.go:29
+#: flags.go:30
 msgid "Skips walking inside the directories."
 msgstr "Ignora a navegação dentro dos diretórios."
 
-#: flags.go:32
+#: flags.go:33
 msgid ""
 "Displays a file count and progress bar when counting and summing file sizes."
 msgstr ""
 "Exibe a contagem de arquivos e uma barra de progresso ao contar e somar os "
 "tamanhos dos arquivos."
 
-#: flags.go:35
-#, fuzzy
+#: flags.go:36
 msgid ""
 "Configure the variables used for preferences\n"
 "Example: \"fsize --config 'always-show-progress=true,always-print-on-"
@@ -61,15 +48,15 @@ msgstr ""
 "Para ver as variáveis disponíveis e seus valores, execute \"fsize --print-"
 "settings\"."
 
-#: flags.go:41
+#: flags.go:42
 msgid "Prints the current configuration values."
 msgstr "Exibe os valores atuais de configuração."
 
-#: flags.go:44
+#: flags.go:45
 msgid "Hide possible warnings."
 msgstr "Oculta avisos possíveis."
 
-#: flags.go:47
+#: flags.go:48
 msgid ""
 "Generate a completion file for bash\n"
 "if any, the first argument will be taken as output file."
@@ -77,7 +64,7 @@ msgstr ""
 "Gera um arquivo de conclusão para o bash\n"
 "se fornecido, o primeiro argumento será usado como arquivo de saída."
 
-#: flags.go:51
+#: flags.go:52
 msgid ""
 "Generate a completion file for fish\n"
 "if any, the first argument will be taken as output file."
@@ -85,7 +72,7 @@ msgstr ""
 "Gera um arquivo de conclusão para o fish\n"
 "se fornecido, o primeiro argumento será usado como arquivo de saída."
 
-#: flags.go:55
+#: flags.go:56
 msgid ""
 "Generate a completion file for zsh\n"
 "if any, the first argument will be taken as output file."
@@ -93,7 +80,7 @@ msgstr ""
 "Gera um arquivo de conclusão para o zsh\n"
 "se fornecido, o primeiro argumento será usado como arquivo de saída."
 
-#: flags.go:63
+#: flags.go:64
 msgid ""
 "Automatically updates the program by overwriting the binary and regenerating "
 "the completions."
@@ -101,39 +88,43 @@ msgstr ""
 "Atualiza automaticamente o programa substituindo o binário e regenerando os "
 "arquivos de conclusão."
 
-#: flags.go:70
+#: flags.go:71
 msgid "Displays the information of the binary"
 msgstr "Exibe as informações do binário"
 
-#: main.go:32
+#: flags.go:83
+msgid "Disable any progress bar/indicator."
+msgstr "Desativa qualquer barra/indicador de progresso."
+
+#: main.go:39
 msgid "ERROR:"
 msgstr "ERRO:"
 
-#: main.go:50
+#: main.go:56
 msgid "Available configuration keys:"
 msgstr "Chaves de configuração disponíveis:"
 
-#: main.go:63
+#: main.go:69
 msgid "Already in latest version"
 msgstr "Já está na versão mais recente"
 
-#: main.go:79
+#: main.go:85
 msgid "Version:"
 msgstr "Versão:"
 
-#: main.go:80
+#: main.go:86
 msgid "Updated:"
 msgstr "Atualizado:"
 
-#: main.go:82
+#: main.go:88
 msgid "Latest version:"
 msgstr "Última versão:"
 
-#: main.go:85
+#: main.go:91
 msgid "Source Code: %s"
 msgstr "Código-fonte: %s"
 
-#: main.go:90
+#: main.go:96
 msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr ""
@@ -151,55 +142,63 @@ msgstr "chave desconhecida \"%s\"."
 msgid "unrecognized value type \"%s\""
 msgstr "tipo de valor desconhecido \"%s\"."
 
-#: stat/file.go:16
+#: stat/file.go:18
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "erro ao obter a estrutura correspondente de fileinfo.Sys()"
 
-#: stat/file.go:18
+#: stat/file.go:20
 msgid "not supported on windows"
 msgstr "não é suportado no Windows"
 
-#: stat/format.go:19
+#: stat/file.go:57 stat/file.go:95
+msgid "Reading \"%s\"..."
+msgstr "Lendo \"%s\"..."
+
+#: stat/file.go:78
+msgid "%v files read, %v errors, total size: %s"
+msgstr "%v arquivos lidos, %v erros, tamanho total: %s"
+
+#: stat/format.go:18
 msgid "Name:"
 msgstr "Nome:"
 
-#: stat/format.go:20
+#: stat/format.go:19
 msgid "Size:"
 msgstr "Tamanho:"
 
-#: stat/format.go:21
+#: stat/format.go:20
 msgid "Absolute path:"
 msgstr "Caminho absoluto:"
 
-#: stat/format.go:22
+#: stat/format.go:21
 msgid "Physical path:"
 msgstr "Caminho físico:"
 
-#: stat/format.go:23
+#: stat/format.go:22
 msgid "Modify:"
 msgstr "Modificado:"
 
-#: stat/format.go:24
+#: stat/format.go:23
 msgid "Access:"
 msgstr "Acesso:"
 
-#: stat/format.go:25
+#: stat/format.go:24
 msgid "Birth:"
 msgstr "Criação:"
 
-#: stat/format.go:26
+#: stat/format.go:25
 msgid "Is directory:"
 msgstr "É um diretório:"
 
-#: stat/format.go:27
+#: stat/format.go:26
 msgid "Permissions:"
 msgstr "Permissões:"
 
-#: stat/format.go:28
+#: stat/format.go:27
 msgid "UID/User:"
 msgstr "UID/Usuário:"
 
-#: stat/format.go:29
+#: stat/format.go:28
 msgid "GID/Group:"
 msgstr "GID/Grupo:"
 
@@ -233,11 +232,11 @@ msgstr "erro ao renomear o executável antigo [%s] para: %v"
 
 #: update/main.go:97
 msgid "error creating a new http request: %v"
-msgstr ""
+msgstr "erro ao criar uma nova requisição HTTP: %v"
 
 #: update/main.go:101
 msgid "error getting http response: %v"
-msgstr ""
+msgstr "erro ao obter resposta HTTP: %v"
 
 #: update/main.go:105
 msgid "Downloading latest version..."
@@ -245,31 +244,31 @@ msgstr "Baixando a versão mais recente..."
 
 #: update/main.go:108
 msgid "Error downloading binary to %s: %v"
-msgstr ""
+msgstr "Erro ao baixar o binário para %s: %v"
 
 #: update/main.go:109
 msgid "Reversing changes..."
-msgstr ""
+msgstr "Revertendo alterações..."
 
 #: update/main.go:114
-msgid "error reversing changes: falied to rename %s to %s: %v"
-msgstr ""
+msgid "error reversing changes: failed to rename %s to %s: %v"
+msgstr "erro ao reverter alterações: falha ao renomear %s para %s: %v"
 
 #: update/main.go:125
 msgid "error finishing the progress bar"
-msgstr ""
+msgstr "erro ao finalizar a barra de progresso"
 
 #: update/main.go:129
 msgid "error removing old executable: %v"
-msgstr ""
+msgstr "erro ao remover o executável antigo: %v"
 
 #: update/main.go:134
 msgid "error getting current user: %v"
-msgstr ""
+msgstr "erro ao obter o usuário atual: %v"
 
 #: update/main.go:140
 msgid "The user is not root, the completions will not be updated"
-msgstr ""
+msgstr "O usuário não é root, as conclusões não serão atualizadas"
 
 #: update/main.go:144
 msgid "Updating completions..."

@@ -70,8 +70,18 @@ if any, the first argument will be taken as output file.`),
 		false,
 		gotext.Get("Displays the information of the binary"),
 	)
-	flag.BoolVar(&color.Enable, "color", true, "enable or disable the color")
-
+	flag.BoolVar(
+		&color.Enable,
+		"color",
+		!viper.GetBool(settings.NoColor),
+		"enable or disable the color",
+	)
+	flag.BoolVar(
+		&flags.NoProgress,
+		"no-progress",
+		viper.GetBool(settings.HideProgress),
+		gotext.Get("Disable any progress bar/indicator."),
+	)
 	flag.BoolVar(&flags.Test, "test", false, "---")
 	flag.MarkHidden("test")
 

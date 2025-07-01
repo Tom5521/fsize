@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: v1.16.0-7-g2e55b60\n"
+"Project-Id-Version: v1.16.0-11-g8f36ab0\n"
 "PO-Revision-Date: YEAR-MO-DA HO: MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,95 +14,87 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: xgotext\n"
 
-#: filecount/print.go:19
-msgid "Reading \"%s\"..."
-msgstr ""
-
-#: filecount/progress.go:15
-msgid "Counting the amount of files..."
-msgstr ""
-
-#: filecount/progress.go:22
-msgid "%v files with %v errors"
-msgstr ""
-
-#: flags.go:14
+#: flags.go:15
 msgid "Displays the file/folder properties."
 msgstr ""
 
-#: flags.go:26
+#: flags.go:27
 msgid "Prints the name of the file being walked if a directory has been selected."
 msgstr ""
 
-#: flags.go:29
+#: flags.go:30
 msgid "Skips walking inside the directories."
 msgstr ""
 
-#: flags.go:32
+#: flags.go:33
 msgid "Displays a file count and progress bar when counting and summing file sizes."
 msgstr ""
 
-#: flags.go:35
+#: flags.go:36
 msgid "Configure the variables used for preferences\nExample: \"fsize --config 'always-show-progress=true,always-print-on-walk=false'\".\n\nTo see the available variables and their values run \"fsize --print-settings\"."
 msgstr ""
 
-#: flags.go:41
+#: flags.go:42
 msgid "Prints the current configuration values."
 msgstr ""
 
-#: flags.go:44
+#: flags.go:45
 msgid "Hide possible warnings."
 msgstr ""
 
-#: flags.go:47
+#: flags.go:48
 msgid "Generate a completion file for bash\nif any, the first argument will be taken as output file."
 msgstr ""
 
-#: flags.go:51
+#: flags.go:52
 msgid "Generate a completion file for fish\nif any, the first argument will be taken as output file."
 msgstr ""
 
-#: flags.go:55
+#: flags.go:56
 msgid "Generate a completion file for zsh\nif any, the first argument will be taken as output file."
 msgstr ""
 
-#: flags.go:63
+#: flags.go:64
 msgid "Automatically updates the program by overwriting the binary and regenerating the completions."
 msgstr ""
 
-#: flags.go:70
+#: flags.go:71
 msgid "Displays the information of the binary"
 msgstr ""
 
-#: main.go:32
+#: flags.go:83
+msgid "Disable any progress bar/indicator."
+msgstr ""
+
+#: main.go:39
 msgid "ERROR:"
 msgstr ""
 
-#: main.go:50
+#: main.go:56
 msgid "Available configuration keys:"
 msgstr ""
 
-#: main.go:63
+#: main.go:69
 msgid "Already in latest version"
 msgstr ""
 
-#: main.go:79
+#: main.go:85
 msgid "Version:"
 msgstr ""
 
-#: main.go:80
+#: main.go:86
 msgid "Updated:"
 msgstr ""
 
-#: main.go:82
+#: main.go:88
 msgid "Latest version:"
 msgstr ""
 
-#: main.go:85
+#: main.go:91
 msgid "Source Code: %s"
 msgstr ""
 
-#: main.go:90
+#: main.go:96
 msgid "No file/directory was specified, the current directory will be used. (.)"
 msgstr ""
 
@@ -118,55 +110,64 @@ msgstr ""
 msgid "unrecognized value type \"%s\""
 msgstr ""
 
-#: stat/file.go:16
+#: stat/file.go:18
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr ""
 
-#: stat/file.go:18
+#: stat/file.go:20
 msgid "not supported on windows"
 msgstr ""
 
-#: stat/format.go:19
+#: stat/file.go:57
+#: stat/file.go:95
+msgid "Reading \"%s\"..."
+msgstr ""
+
+#: stat/file.go:78
+msgid "%v files read, %v errors, total size: %s"
+msgstr ""
+
+#: stat/format.go:18
 msgid "Name:"
 msgstr ""
 
-#: stat/format.go:20
+#: stat/format.go:19
 msgid "Size:"
 msgstr ""
 
-#: stat/format.go:21
+#: stat/format.go:20
 msgid "Absolute path:"
 msgstr ""
 
-#: stat/format.go:22
+#: stat/format.go:21
 msgid "Physical path:"
 msgstr ""
 
-#: stat/format.go:23
+#: stat/format.go:22
 msgid "Modify:"
 msgstr ""
 
-#: stat/format.go:24
+#: stat/format.go:23
 msgid "Access:"
 msgstr ""
 
-#: stat/format.go:25
+#: stat/format.go:24
 msgid "Birth:"
 msgstr ""
 
-#: stat/format.go:26
+#: stat/format.go:25
 msgid "Is directory:"
 msgstr ""
 
-#: stat/format.go:27
+#: stat/format.go:26
 msgid "Permissions:"
 msgstr ""
 
-#: stat/format.go:28
+#: stat/format.go:27
 msgid "UID/User:"
 msgstr ""
 
-#: stat/format.go:29
+#: stat/format.go:28
 msgid "GID/Group:"
 msgstr ""
 
@@ -215,7 +216,7 @@ msgid "Reversing changes..."
 msgstr ""
 
 #: update/main.go:114
-msgid "error reversing changes: falied to rename %s to %s: %v"
+msgid "error reversing changes: failed to rename %s to %s: %v"
 msgstr ""
 
 #: update/main.go:125

@@ -7,6 +7,7 @@ var (
 	NoWarns     bool
 	Update      bool
 	BinInfo     bool
+	NoProgress  bool
 
 	// Hidden flags.
 

@@ -17,16 +17,15 @@ const (
 	AlwaysSkipWalk     = "Always-Skip-Walk"
 	AlwaysShowProgress = "Always-Show-Progress"
 	HideWarnings       = "Hide-Warnings"
+	HideProgress       = "Hide-Progress"
+	NoColor            = "No-Color"
 	Language           = "Language"
 )
 
-var InitError error
-
-func init() {
+func InitSettings() error {
 	configPath, err := os.UserConfigDir()
 	if err != nil {
-		InitError = fmt.Errorf("error getting user config path: %v", err)
-		return
+		return fmt.Errorf("error getting user config path: %w", err)
 	}
 	configPath = filepath.Join(configPath, "fsize")
 
@@ -39,24 +38,25 @@ func init() {
 	viper.SetDefault(AlwaysShowProgress, true)
 	viper.SetDefault(HideWarnings, false)
 	viper.SetDefault(Language, "default")
+	viper.SetDefault(HideProgress, false)
+	viper.SetDefault(NoColor, false)
 
 read:
 	if err = viper.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
 			if err = os.MkdirAll(configPath, os.ModePerm); err != nil {
-				InitError = fmt.Errorf("error creating configuration directory: %v", err)
-				return
+				return fmt.Errorf("error creating configuration directory: %w", err)
 			}
 			if err = viper.SafeWriteConfigAs(filepath.Join(configPath, "fsize.json")); err != nil {
-				InitError = fmt.Errorf("error writing to the default configuration file: %v", err)
-				return
+				return fmt.Errorf("error writing to the default configuration file: %w", err)
 			}
 			goto read
 		} else {
-			InitError = fmt.Errorf("error reading configuration: %v", err)
-			return
+			return fmt.Errorf("error reading configuration: %w", err)
 		}
 	}
+
+	return nil
 }
 
 func Parse(optionsArgs []string) error {

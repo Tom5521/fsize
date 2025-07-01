@@ -89,6 +89,7 @@ update-locales:
             msgmerge -U --lang $lang $file ./po/en/default.pot
         fi
     done
+    find po -name "*.po~" -delete
 
 update-version:
     echo {{ long-latest-tag }} > ./meta/version.txt

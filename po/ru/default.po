@@ -10,40 +10,27 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: filecount/print.go:19
-msgid "Reading \"%s\"..."
-msgstr "Чтение \"%s\"..."
-
-#: filecount/progress.go:15
-msgid "Counting the amount of files..."
-msgstr "Подсчет количества файлов..."
-
-#: filecount/progress.go:22
-msgid "%v files with %v errors"
-msgstr "%v файлов с %v ошибками"
-
-#: flags.go:14
+#: flags.go:15
 msgid "Displays the file/folder properties."
 msgstr "Отображает свойства файла/папки."
 
-#: flags.go:26
+#: flags.go:27
 msgid ""
 "Prints the name of the file being walked if a directory has been selected."
 msgstr "Выводит имя файла, если выбрана директория."
 
-#: flags.go:29
+#: flags.go:30
 msgid "Skips walking inside the directories."
 msgstr "Пропускает просмотр содержимого директорий."
 
-#: flags.go:32
+#: flags.go:33
 msgid ""
 "Displays a file count and progress bar when counting and summing file sizes."
 msgstr ""
 "Отображает количество файлов и индикатор прогресса при подсчете и "
 "суммировании размеров файлов."
 
-#: flags.go:35
-#, fuzzy
+#: flags.go:36
 msgid ""
 "Configure the variables used for preferences\n"
 "Example: \"fsize --config 'always-show-progress=true,always-print-on-"
@@ -59,15 +46,15 @@ msgstr ""
 "Чтобы увидеть доступные переменные и их значения, запустите \"fsize --print-"
 "settings\"."
 
-#: flags.go:41
+#: flags.go:42
 msgid "Prints the current configuration values."
 msgstr "Выводит текущие значения конфигурации."
 
-#: flags.go:44
+#: flags.go:45
 msgid "Hide possible warnings."
 msgstr "Скрыть возможные предупреждения."
 
-#: flags.go:47
+#: flags.go:48
 msgid ""
 "Generate a completion file for bash\n"
 "if any, the first argument will be taken as output file."
@@ -75,7 +62,7 @@ msgstr ""
 "Создает файл автозаполнения для bash\n"
 "если есть, первый аргумент будет взят как файл вывода."
 
-#: flags.go:51
+#: flags.go:52
 msgid ""
 "Generate a completion file for fish\n"
 "if any, the first argument will be taken as output file."
@@ -83,7 +70,7 @@ msgstr ""
 "Создает файл автозаполнения для fish\n"
 "если есть, первый аргумент будет взят как файл вывода."
 
-#: flags.go:55
+#: flags.go:56
 msgid ""
 "Generate a completion file for zsh\n"
 "if any, the first argument will be taken as output file."
@@ -91,7 +78,7 @@ msgstr ""
 "Создает файл автозаполнения для zsh\n"
 "если есть, первый аргумент будет взят как файл вывода."
 
-#: flags.go:63
+#: flags.go:64
 msgid ""
 "Automatically updates the program by overwriting the binary and regenerating "
 "the completions."
@@ -99,39 +86,43 @@ msgstr ""
 "Автоматически обновляет программу, перезаписывая бинарный файл и регенерируя "
 "автозаполнения."
 
-#: flags.go:70
+#: flags.go:71
 msgid "Displays the information of the binary"
 msgstr "Отображает информацию о бинарном файле"
 
-#: main.go:32
+#: flags.go:83
+msgid "Disable any progress bar/indicator."
+msgstr "Отключить любой индикатор прогресса."
+
+#: main.go:39
 msgid "ERROR:"
 msgstr "ОШИБКА:"
 
-#: main.go:50
+#: main.go:56
 msgid "Available configuration keys:"
 msgstr "Доступные ключи конфигурации:"
 
-#: main.go:63
+#: main.go:69
 msgid "Already in latest version"
 msgstr "Уже установлена последняя версия"
 
-#: main.go:79
+#: main.go:85
 msgid "Version:"
 msgstr "Версия:"
 
-#: main.go:80
+#: main.go:86
 msgid "Updated:"
 msgstr "Обновлено:"
 
-#: main.go:82
+#: main.go:88
 msgid "Latest version:"
 msgstr "Последняя версия:"
 
-#: main.go:85
+#: main.go:91
 msgid "Source Code: %s"
 msgstr "Исходный код: %s"
 
-#: main.go:90
+#: main.go:96
 msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr "Файл/директория не указаны, будет использована текущая директория. (.)"
@@ -148,55 +139,63 @@ msgstr "неопознанный ключ \"%s\""
 msgid "unrecognized value type \"%s\""
 msgstr "неопознанный тип значения \"%s\""
 
-#: stat/file.go:16
+#: stat/file.go:18
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "ошибка получения соответствующей структуры от fileinfo.Sys()"
 
-#: stat/file.go:18
+#: stat/file.go:20
 msgid "not supported on windows"
 msgstr "не поддерживается на windows"
 
-#: stat/format.go:19
+#: stat/file.go:57 stat/file.go:95
+msgid "Reading \"%s\"..."
+msgstr "Чтение \"%s\"..."
+
+#: stat/file.go:78
+msgid "%v files read, %v errors, total size: %s"
+msgstr "%v файлов прочитано, %v ошибок, общий размер: %s"
+
+#: stat/format.go:18
 msgid "Name:"
 msgstr "Имя:"
 
-#: stat/format.go:20
+#: stat/format.go:19
 msgid "Size:"
 msgstr "Размер:"
 
-#: stat/format.go:21
+#: stat/format.go:20
 msgid "Absolute path:"
 msgstr "Абсолютный путь:"
 
-#: stat/format.go:22
+#: stat/format.go:21
 msgid "Physical path:"
 msgstr "Физический путь:"
 
-#: stat/format.go:23
+#: stat/format.go:22
 msgid "Modify:"
 msgstr "Изменить:"
 
-#: stat/format.go:24
+#: stat/format.go:23
 msgid "Access:"
 msgstr "Доступ:"
 
-#: stat/format.go:25
+#: stat/format.go:24
 msgid "Birth:"
 msgstr "Создание:"
 
-#: stat/format.go:26
+#: stat/format.go:25
 msgid "Is directory:"
 msgstr "Это каталог:"
 
-#: stat/format.go:27
+#: stat/format.go:26
 msgid "Permissions:"
 msgstr "Разрешения:"
 
-#: stat/format.go:28
+#: stat/format.go:27
 msgid "UID/User:"
 msgstr "UID/Пользователь:"
 
-#: stat/format.go:29
+#: stat/format.go:28
 msgid "GID/Group:"
 msgstr "GID/Группа:"
 
@@ -226,15 +225,15 @@ msgstr "Команда была отменена."
 
 #: update/main.go:92
 msgid "error renaming the old executable [%s] to: %v"
-msgstr ""
+msgstr "ошибка переименования старого исполняемого файла [%s] в: %v"
 
 #: update/main.go:97
 msgid "error creating a new http request: %v"
-msgstr ""
+msgstr "ошибка создания нового http запроса: %v"
 
 #: update/main.go:101
 msgid "error getting http response: %v"
-msgstr ""
+msgstr "ошибка получения http ответа: %v"
 
 #: update/main.go:105
 msgid "Downloading latest version..."
@@ -242,31 +241,31 @@ msgstr "Загрузка последней версии..."
 
 #: update/main.go:108
 msgid "Error downloading binary to %s: %v"
-msgstr ""
+msgstr "Ошибка загрузки бинарного файла в %s: %v"
 
 #: update/main.go:109
 msgid "Reversing changes..."
-msgstr ""
+msgstr "Отмена изменений..."
 
 #: update/main.go:114
-msgid "error reversing changes: falied to rename %s to %s: %v"
-msgstr ""
+msgid "error reversing changes: failed to rename %s to %s: %v"
+msgstr "ошибка отмены изменений: не удалось переименовать %s в %s: %v"
 
 #: update/main.go:125
 msgid "error finishing the progress bar"
-msgstr ""
+msgstr "ошибка завершения индикатора прогресса"
 
 #: update/main.go:129
 msgid "error removing old executable: %v"
-msgstr ""
+msgstr "ошибка удаления старого исполняемого файла: %v"
 
 #: update/main.go:134
 msgid "error getting current user: %v"
-msgstr ""
+msgstr "ошибка получения текущего пользователя: %v"
 
 #: update/main.go:140
 msgid "The user is not root, the completions will not be updated"
-msgstr ""
+msgstr "Пользователь не root, автозаполнения не будут обновлены"
 
 #: update/main.go:144
 msgid "Updating completions..."

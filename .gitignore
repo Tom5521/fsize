@@ -7,3 +7,5 @@ completions
 *.log
 *~
 *.mo
+*.diff
+*.orig

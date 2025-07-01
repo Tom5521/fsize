@@ -12,7 +12,7 @@ import (
 //go:embed po
 var podir embed.FS
 
-func init() {
+func initLocales() {
 	code := viper.GetString(settings.Language)
 	if code == "default" {
 		var err error
