@@ -4,6 +4,7 @@ import (
 	"github.com/Tom5521/fsize/flags"
 	"github.com/Tom5521/fsize/meta"
 	"github.com/Tom5521/fsize/settings"
+	"github.com/gookit/color"
 	"github.com/leonelquinteros/gotext"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -69,6 +70,7 @@ if any, the first argument will be taken as output file.`),
 		false,
 		gotext.Get("Displays the information of the binary"),
 	)
+	flag.BoolVar(&color.Enable, "color", true, "enable or disable the color")
 
 	flag.BoolVar(&flags.Test, "test", false, "---")
 	flag.MarkHidden("test")

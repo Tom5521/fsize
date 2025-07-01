@@ -34,7 +34,7 @@ release:
 
 build os arch:
     #!/usr/bin/env -S bash -x
-    bin=builds/fsize-{{os}}-{{arch}}
+    bin=builds/fsize-{{ os }}-{{ arch }}
 
     if [[ "{{ os }}" == "windows" ]]; then
         bin="$bin.exe"
@@ -53,7 +53,7 @@ clean:
     @find . -name "*.log" -delete
 
 go-install:
-    go install -v github.com/Tom5521/fsize@{{short-latest-tag}}
+    go install -v github.com/Tom5521/fsize@{{ short-latest-tag }}
 
 go-uninstall:
     rm ~/go/bin/fsize
@@ -73,6 +73,7 @@ install-xgotext:
     wget https://github.com/Tom5521/gotext-tools/releases/latest/download/"$filename"
     tar -xzf "$filename"
     cp ./xgotext ~/.local/bin/
+
 update-locales:
     #!/usr/bin/env -S bash -x
 
@@ -80,7 +81,7 @@ update-locales:
         just install-xgotext
     fi
 
-    xgotext . -o ./po/en/default.pot --lang en --package-version {{long-latest-tag}}
+    xgotext . -o ./po/en/default.pot --lang en --package-version {{ long-latest-tag }}
     for dir in ./po/*; do
         if [[ "$dir" != "en" ]]; then
             file=$dir/default.po
@@ -89,20 +90,19 @@ update-locales:
         fi
     done
 
-
 update-version:
-    echo {{long-latest-tag}} > ./meta/version.txt
+    echo {{ long-latest-tag }} > ./meta/version.txt
 
 [confirm]
 [unix]
 install:
     just build-local
-    cp fsize {{linux-install-path}}
-    fsize --gen-bash-completion {{bash-completion-path}}fsize
+    cp fsize {{ linux-install-path }}
+    fsize --gen-bash-completion {{ bash-completion-path }}fsize
     -command -v fish && \
-    fsize --gen-fish-completion {{fish-completion-path}}fsize.fish 
+    fsize --gen-fish-completion {{ fish-completion-path }}fsize.fish 
     -command -v zsh && \
-    fsize --gen-zsh-completion {{zsh-completion-path}}_fsize
+    fsize --gen-zsh-completion {{ zsh-completion-path }}_fsize
 
 [confirm]
 [windows]
@@ -113,10 +113,10 @@ install:
 [confirm]
 [unix]
 uninstall:
-    -rm {{linux-install-path}} \
-    {{bash-completion-path}}fsize \
-    {{fish-completion-path}}fsize.fish
-    -rm {{zsh-completion-path}}_fsize
+    -rm {{ linux-install-path }} \
+    {{ bash-completion-path }}fsize \
+    {{ fish-completion-path }}fsize.fish
+    -rm {{ zsh-completion-path }}_fsize
 
 [confirm]
 [windows]
@@ -142,11 +142,11 @@ commit:
 
 gh-update-assets:
     just release
-    gh release upload {{short-latest-tag}} builds/* --clobber
+    gh release upload {{ short-latest-tag }} builds/* --clobber
 
 gh-release:
     just release
-    gh release create {{short-latest-tag}} ./builds/* --generate-notes
+    gh release create {{ short-latest-tag }} ./builds/* --generate-notes
 
 test:
     go test -v ./...
@@ -156,14 +156,11 @@ test-update:
     go build -v .
     ./fsize --update
     v=$(./fsize --version)
-    if [[ "$v" != "fsize version {{short-latest-tag}}" ]]; then
+    if [[ "$v" != "fsize version {{ short-latest-tag }}" ]]; then
         echo -- FAIL --
         exit 1
     fi
 
-
 update-asciinema:
     just build-local
-    asciinema rec --title "fsize {{short-latest-tag}}" --command "./fsize /usr/share/"
-
-
+    asciinema rec --title "fsize {{ short-latest-tag }}" --command "./fsize /usr/share/"

@@ -8,7 +8,6 @@ import (
 	"text/template"
 	"time"
 
-	"github.com/Tom5521/fsize/flags"
 	"github.com/gookit/color"
 	"github.com/labstack/gommon/bytes"
 	"github.com/leonelquinteros/gotext"
@@ -59,9 +58,9 @@ var funcMap = template.FuncMap{
 	},
 	"formatBool": func(v bool) string {
 		if v {
-			return color.Green.Render(v)
+			return color.Green.Render(color.Bold.Render(v))
 		}
-		return color.Red.Render(v)
+		return color.Red.Render(color.Bold.Render(v))
 	},
 	"formatPerms": func(perms fs.FileMode) string {
 		return fmt.Sprintf("%d/%s", int(perms), perms.String())
@@ -72,7 +71,6 @@ var funcMap = template.FuncMap{
 	"formatGroup": func(grp *user.Group) string {
 		return fmt.Sprintf("%s/%s", grp.Gid, grp.Name)
 	},
-	"walkEnabled": func() bool { return !flags.NoWalk },
 }
 
 func (f File) String() string {

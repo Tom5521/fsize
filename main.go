@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"runtime"
 
 	"github.com/Tom5521/fsize/echo"
@@ -13,6 +14,7 @@ import (
 	"github.com/gookit/color"
 	po "github.com/leonelquinteros/gotext"
 	"github.com/spf13/cobra"
+	"golang.org/x/term"
 )
 
 func main() {
@@ -34,9 +36,8 @@ func main() {
 }
 
 func RunE(cmd *cobra.Command, args []string) (err error) {
-	err = cmd.Flags().Parse(args)
-	if err != nil {
-		return
+	if !term.IsTerminal(int(os.Stdout.Fd())) {
+		color.Enable = false
 	}
 
 	switch {
