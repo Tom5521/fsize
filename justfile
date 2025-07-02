@@ -43,7 +43,6 @@ build os arch:
     go build -v -o $bin || exit $?
 
 build-local:
-    just generate
     @ go build -v .
 
 clean:
@@ -61,9 +60,6 @@ go-uninstall:
 go-reinstall:
     @just go-uninstall
     @just go-install
-
-generate:
-    go generate ./meta/
 
 install-xgotext:
     #!/usr/bin/env -S bash -x
@@ -164,4 +160,5 @@ test-update:
 
 update-asciinema:
     just build-local
-    asciinema rec --title "fsize {{ short-latest-tag }}" --command "./fsize /usr/share/"
+    asciinema rec --title "fsize {{ short-latest-tag }}" \
+    --command "./fsize /usr/share/" ./screenshots/demo.cast --overwrite
