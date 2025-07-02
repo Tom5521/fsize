@@ -142,19 +142,19 @@ msgstr "chave desconhecida \"%s\"."
 msgid "unrecognized value type \"%s\""
 msgstr "tipo de valor desconhecido \"%s\"."
 
-#: stat/file.go:18
+#: stat/file.go:19
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "erro ao obter a estrutura correspondente de fileinfo.Sys()"
 
-#: stat/file.go:20
+#: stat/file.go:21
 msgid "not supported on windows"
 msgstr "não é suportado no Windows"
 
-#: stat/file.go:57 stat/file.go:95
+#: stat/file.go:58 stat/file.go:96
 msgid "Reading \"%s\"..."
 msgstr "Lendo \"%s\"..."
 
-#: stat/file.go:78
+#: stat/file.go:79
 msgid "%v files read, %v errors, total size: %s"
 msgstr "%v arquivos lidos, %v erros, tamanho total: %s"
 

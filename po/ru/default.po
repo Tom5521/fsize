@@ -139,19 +139,19 @@ msgstr "неопознанный ключ \"%s\""
 msgid "unrecognized value type \"%s\""
 msgstr "неопознанный тип значения \"%s\""
 
-#: stat/file.go:18
+#: stat/file.go:19
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "ошибка получения соответствующей структуры от fileinfo.Sys()"
 
-#: stat/file.go:20
+#: stat/file.go:21
 msgid "not supported on windows"
 msgstr "не поддерживается на windows"
 
-#: stat/file.go:57 stat/file.go:95
+#: stat/file.go:58 stat/file.go:96
 msgid "Reading \"%s\"..."
 msgstr "Чтение \"%s\"..."
 
-#: stat/file.go:78
+#: stat/file.go:79
 msgid "%v files read, %v errors, total size: %s"
 msgstr "%v файлов прочитано, %v ошибок, общий размер: %s"
 
