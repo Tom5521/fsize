@@ -68,7 +68,7 @@ func Parse(optionsArgs []string) error {
 		key, value := data[0], data[1]
 
 		if !viper.IsSet(key) {
-			return fmt.Errorf(po.Get("unrecognized key \"%s\"", key))
+			return errors.New(po.Get("unrecognized key \"%s\"", key))
 		}
 
 		var (
@@ -82,7 +82,7 @@ func Parse(optionsArgs []string) error {
 		case bool:
 			v, err = strconv.ParseBool(value)
 			if err != nil {
-				return fmt.Errorf(po.Get("unrecognized value type \"%s\"", value))
+				return errors.New(po.Get("unrecognized value type \"%s\"", value))
 			}
 		}
 

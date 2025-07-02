@@ -199,15 +199,15 @@ msgstr "UID/Пользователь:"
 msgid "GID/Group:"
 msgstr "GID/Группа:"
 
-#: update/main.go:25
+#: update/main.go:26
 msgid "Checking the latest version available..."
 msgstr "Проверка доступной последней версии..."
 
-#: update/main.go:67
+#: update/main.go:68
 msgid "NB! It seems that you are in a NixOS."
 msgstr "Внимание! Похоже, вы находитесь в NixOS."
 
-#: update/main.go:69
+#: update/main.go:70
 msgid ""
 "Due to the non-standard filesystem implementation of the environment, the "
 "update command may not work as expected."
@@ -215,65 +215,65 @@ msgstr ""
 "Из-за нестандартной реализации файловой системы в этой среде команда "
 "обновления может не работать должным образом."
 
-#: update/main.go:76
+#: update/main.go:77
 msgid "Do you want to proceed with the update?"
 msgstr "Вы хотите продолжить обновление?"
 
-#: update/main.go:80
+#: update/main.go:81
 msgid "The command has been cancelled."
 msgstr "Команда была отменена."
 
-#: update/main.go:92
+#: update/main.go:93
 msgid "error renaming the old executable [%s] to: %v"
 msgstr "ошибка переименования старого исполняемого файла [%s] в: %v"
 
-#: update/main.go:97
-msgid "error creating a new http request: %v"
-msgstr "ошибка создания нового http запроса: %v"
-
-#: update/main.go:101
+#: update/main.go:98
 msgid "error getting http response: %v"
 msgstr "ошибка получения http ответа: %v"
 
-#: update/main.go:105
+#: update/main.go:107
 msgid "Downloading latest version..."
 msgstr "Загрузка последней версии..."
 
-#: update/main.go:108
+#: update/main.go:110
 msgid "Error downloading binary to %s: %v"
 msgstr "Ошибка загрузки бинарного файла в %s: %v"
 
-#: update/main.go:109
+#: update/main.go:111
 msgid "Reversing changes..."
 msgstr "Отмена изменений..."
 
-#: update/main.go:114
+#: update/main.go:116
 msgid "error reversing changes: failed to rename %s to %s: %v"
 msgstr "ошибка отмены изменений: не удалось переименовать %s в %s: %v"
 
-#: update/main.go:125
+#: update/main.go:130
 msgid "error finishing the progress bar"
 msgstr "ошибка завершения индикатора прогресса"
 
-#: update/main.go:129
+#: update/main.go:134
 msgid "error removing old executable: %v"
 msgstr "ошибка удаления старого исполняемого файла: %v"
 
-#: update/main.go:134
+#: update/main.go:139
 msgid "error getting current user: %v"
 msgstr "ошибка получения текущего пользователя: %v"
 
-#: update/main.go:140
+#: update/main.go:145
 msgid "The user is not root, the completions will not be updated"
 msgstr "Пользователь не root, автозаполнения не будут обновлены"
 
-#: update/main.go:144
+#: update/main.go:149
 msgid "Updating completions..."
 msgstr "Обновление автозаполнений..."
 
-#: update/main.go:151
+#: update/main.go:156
 msgid "Upgrade completed successfully"
 msgstr "Обновление успешно завершено"
+
+#: update/main.go:170
+msgid "%s detected, reversing changes before finishing program..."
+msgstr ""
 
 #: update/update-completions.go:29
 msgid "%s not found."

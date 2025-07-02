@@ -202,15 +202,15 @@ msgstr "UID/Usuário:"
 msgid "GID/Group:"
 msgstr "GID/Grupo:"
 
-#: update/main.go:25
+#: update/main.go:26
 msgid "Checking the latest version available..."
 msgstr "Verificando a versão mais recente disponível..."
 
-#: update/main.go:67
+#: update/main.go:68
 msgid "NB! It seems that you are in a NixOS."
 msgstr "Atenção! Parece que você está em um NixOS."
 
-#: update/main.go:69
+#: update/main.go:70
 msgid ""
 "Due to the non-standard filesystem implementation of the environment, the "
 "update command may not work as expected."
@@ -218,65 +218,65 @@ msgstr ""
 "Devido à implementação não padrão do sistema de arquivos, o comando de "
 "atualização pode não funcionar como esperado."
 
-#: update/main.go:76
+#: update/main.go:77
 msgid "Do you want to proceed with the update?"
 msgstr "Deseja continuar com a atualização?"
 
-#: update/main.go:80
+#: update/main.go:81
 msgid "The command has been cancelled."
 msgstr "O comando foi cancelado."
 
-#: update/main.go:92
+#: update/main.go:93
 msgid "error renaming the old executable [%s] to: %v"
 msgstr "erro ao renomear o executável antigo [%s] para: %v"
 
-#: update/main.go:97
-msgid "error creating a new http request: %v"
-msgstr "erro ao criar uma nova requisição HTTP: %v"
-
-#: update/main.go:101
+#: update/main.go:98
 msgid "error getting http response: %v"
 msgstr "erro ao obter resposta HTTP: %v"
 
-#: update/main.go:105
+#: update/main.go:107
 msgid "Downloading latest version..."
 msgstr "Baixando a versão mais recente..."
 
-#: update/main.go:108
+#: update/main.go:110
 msgid "Error downloading binary to %s: %v"
 msgstr "Erro ao baixar o binário para %s: %v"
 
-#: update/main.go:109
+#: update/main.go:111
 msgid "Reversing changes..."
 msgstr "Revertendo alterações..."
 
-#: update/main.go:114
+#: update/main.go:116
 msgid "error reversing changes: failed to rename %s to %s: %v"
 msgstr "erro ao reverter alterações: falha ao renomear %s para %s: %v"
 
-#: update/main.go:125
+#: update/main.go:130
 msgid "error finishing the progress bar"
 msgstr "erro ao finalizar a barra de progresso"
 
-#: update/main.go:129
+#: update/main.go:134
 msgid "error removing old executable: %v"
 msgstr "erro ao remover o executável antigo: %v"
 
-#: update/main.go:134
+#: update/main.go:139
 msgid "error getting current user: %v"
 msgstr "erro ao obter o usuário atual: %v"
 
-#: update/main.go:140
+#: update/main.go:145
 msgid "The user is not root, the completions will not be updated"
 msgstr "O usuário não é root, as conclusões não serão atualizadas"
 
-#: update/main.go:144
+#: update/main.go:149
 msgid "Updating completions..."
 msgstr "Atualizando os arquivos de conclusão..."
 
-#: update/main.go:151
+#: update/main.go:156
 msgid "Upgrade completed successfully"
 msgstr "Atualização concluída com sucesso"
+
+#: update/main.go:170
+msgid "%s detected, reversing changes before finishing program..."
+msgstr ""
 
 #: update/update-completions.go:29
 msgid "%s not found."

@@ -6,7 +6,6 @@ package stat
 import (
 	"os"
 	"syscall"
-
 	"time"
 )
 

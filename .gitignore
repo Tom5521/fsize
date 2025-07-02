@@ -9,3 +9,4 @@ completions
 *.mo
 *.diff
 *.orig
+*.old

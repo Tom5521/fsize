@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"os/signal"
 	"os/user"
 	"runtime"
 	"strings"
@@ -92,15 +93,16 @@ func ApplyUpdate(tag string) (err error) {
 		return errors.New(po.Get("error renaming the old executable [%s] to: %v", executable, err))
 	}
 
-	req, err := http.NewRequest("GET", url, nil)
-	if err != nil {
-		return errors.New(po.Get("error creating a new http request: %v", err))
-	}
-	resp, err := http.DefaultClient.Do(req)
+	resp, err := http.Get(url)
 	if err != nil {
 		return errors.New(po.Get("error getting http response: %v", err))
 	}
+
 	defer resp.Body.Close()
+
+	sigchan := make(chan os.Signal, 1)
+	signal.Notify(sigchan, os.Interrupt)
+	go catchSIGINT(resp, sigchan)
 
 	bar := progressbar.DefaultBytes(resp.ContentLength, po.Get("Downloading latest version..."))
 
@@ -120,6 +122,9 @@ func ApplyUpdate(tag string) (err error) {
 		}
 		return
 	}
+
+	signal.Stop(sigchan)
+	close(sigchan)
 
 	if err = bar.Finish(); err != nil {
 		return errors.New(po.Get("error finishing the progress bar"))
@@ -154,8 +159,20 @@ func ApplyUpdate(tag string) (err error) {
 	return
 }
 
+func catchSIGINT(
+	resp *http.Response,
+	sigchan chan os.Signal,
+) {
+	c := <-sigchan
+	if c == nil {
+		return
+	}
+	echo.Info(po.Get("%s detected, reversing changes before finishing program...", c.String()))
+	resp.Body.Close()
+}
+
 func download(executable string, resp *http.Response, bar *progressbar.ProgressBar) (err error) {
-	file, err := os.OpenFile(executable, os.O_RDWR|os.O_CREATE, os.ModePerm)
+	file, err := os.OpenFile(executable, os.O_RDWR|os.O_CREATE|os.O_TRUNC, os.ModePerm)
 	if err != nil {
 		return
 	}
