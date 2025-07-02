@@ -4,32 +4,27 @@
 package stat
 
 import (
-	"bytes"
 	"os"
 	"os/exec"
+	"strconv"
 	"strings"
 	"time"
 )
 
-func CreationDate(info os.FileInfo) (t time.Time, err error) {
-	var buf bytes.Buffer
-
-	cmd := exec.Command("stat", "-c", "%w", info.Name())
-	cmd.Stdout = &buf
-	err = cmd.Run()
+func CreationDate(info os.FileInfo) (time.Time, error) {
+	cmd := exec.Command("stat", "-c", "%W", info.Name())
+	data, err := cmd.CombinedOutput()
 	if err != nil {
-		return t, err
+		return time.Time{}, err
 	}
 
-	date := buf.String()
+	date := string(data)
 	date = strings.ReplaceAll(date, "\x0a", "") // Clean stat output.
-	t, err = parseStatDate(date)
 
-	return
-}
+	sec, err := strconv.ParseInt(date, 10, 64)
+	if err != nil {
+		return time.Time{}, err
+	}
 
-func parseStatDate(date string) (time.Time, error) {
-	// EXAMPLE INPUT: "2024-06-16 21:01:08.044029927 -0400"
-	const layout = "2006-01-02 15:04:05.999999999 -0700"
-	return time.Parse(layout, date)
+	return time.Unix(sec, 0), nil
 }

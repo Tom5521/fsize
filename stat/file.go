@@ -6,6 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/Tom5521/fsize/checkos"
 	"github.com/Tom5521/fsize/echo"
 	"github.com/Tom5521/fsize/flags"
 	"github.com/labstack/gommon/bytes"
@@ -135,9 +136,16 @@ func (f *File) Load(path string) (err error) {
 		return
 	}
 
-	f.FileTimes, err = NewFileTimes(f.info)
-	if err != nil {
-		return
+	{
+		cinfo := f.info
+		if checkos.Unix {
+			// wrap f.info to return absolute location in .Name
+			cinfo = newAbsFileInfo(cinfo, f.AbsPath)
+		}
+		f.FileTimes, err = NewFileTimes(cinfo)
+		if err != nil {
+			return
+		}
 	}
 	f.FileIDs, err = NewFileIDs(f.info)
 	if err != nil {
