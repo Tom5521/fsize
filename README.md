@@ -41,6 +41,7 @@ Usage:
 
 Flags:
       --bin-info              Displays the information of the binary
+      --color                 enable or disable the color (default true)
   -c, --config strings        Configure the variables used for preferences
                               Example: "fsize --config 'always-show-progress=true,always-print-on-walk=false'".
 
@@ -52,6 +53,7 @@ Flags:
       --gen-zsh-completion    Generate a completion file for zsh
                               if any, the first argument will be taken as output file.
   -h, --help                  help for fsize
+      --no-progress           Disable any progress bar/indicator.
       --no-walk               Skips walking inside the directories.
       --no-warns              Hide possible warnings.
       --print-on-walk         Prints the name of the file being walked if a directory has been selected.
