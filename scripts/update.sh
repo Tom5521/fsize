@@ -1,7 +1,9 @@
 #!/usr/bin/env -S bash -x
 
+long_latest_version=$(git describe --tags)
+
 version() {
-  echo $(git describe --tags) >./meta/version.txt
+  echo "$long_latest_version" >./meta/version.txt
 }
 
 locales() {
@@ -15,9 +17,10 @@ locales() {
       continue
     fi
 
-    file=$dir/default.po
+    local file=$dir/default.po
+    local lang
     lang=$(basename "$(dirname "$file")")
-    msgmerge -U --lang $lang "$file" ./po/en/default.pot
+    msgmerge -U --lang "$lang" "$file" ./po/en/default.pot
   done
   find po -name "*.po~" -delete
 }

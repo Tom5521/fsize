@@ -11,19 +11,20 @@ binaries() {
   ./do clean
   ./do update version
 
-  oses=(
+  local oses=(
     linux
     windows
     darwin
   )
-  archs=(
+  local archs=(
     386
     amd64
     arm
     arm64
   )
 
-  valid=$(go tool dist list)
+  local valid
+  valid="$(go tool dist list)"
 
   for os in "${oses[@]}"; do
     for arch in "${archs[@]}"; do

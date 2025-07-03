@@ -1,11 +1,13 @@
 #!/usr/bin/env -S bash -x
 
 go-install() {
-  go install -v github.com/Tom5521/fsize@$(git describe --tags --abbrev=0)
+  local tag
+  tag=$(git describe --tags --abbrev=0)
+  go install -v github.com/Tom5521/fsize@$tag
 }
 
 _install() {
-  prefix=$1
+  local prefix=$1
 
   ./do generate completions
   install -D "./fsize" "$prefix/bin/"
@@ -18,8 +20,9 @@ _install() {
 }
 
 _xgotext() {
-  filename=gotext-tools_$(uname -s)_$(uname -m).tar.gz
-  cd /tmp
+  local filename
+  filename="gotext-tools_$(uname -s)_$(uname -m).tar.gz"
+  cd /tmp || exit $?
   wget https://github.com/Tom5521/gotext-tools/releases/latest/download/"$filename"
   tar -xzf "$filename"
   install -D ./xgotext "$HOME/.local/bin/xgotext"

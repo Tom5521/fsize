@@ -5,7 +5,7 @@ go-uninstall() {
 }
 
 uninstall() {
-  prefix=$1
+  local prefix=$1
 
   rm -f "$prefix/bin/fsize"
   rm -f "$prefix/share/fish/vendor_completions.d/fsize.fish"
