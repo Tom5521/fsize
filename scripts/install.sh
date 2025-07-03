@@ -30,4 +30,5 @@ case "$1" in
 "local") _install "$HOME/.local" ;;
 "system") _install "/usr/local" ;;
 "xgotext") _xgotext ;;
+*) echo "Unrecognized option ($1)" ;;
 esac

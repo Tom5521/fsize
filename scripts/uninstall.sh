@@ -17,4 +17,5 @@ case "$1" in
 "go") go-uninstall ;;
 "local") uninstall "$HOME/.local" ;;
 "system") uninstall "/usr/local" ;;
+*) echo "Unrecognized option ($1)" ;;
 esac

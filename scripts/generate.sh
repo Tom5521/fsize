@@ -38,5 +38,5 @@ binaries() {
 case "$1" in
 "completions") completions ;;
 "binaries") binaries ;;
-
+*) echo "Unrecognized option ($1)" ;;
 esac

@@ -33,4 +33,5 @@ case "$1" in
 "version") version ;;
 "locales") locales ;;
 "asciinema") _asciinema ;;
+*) echo "Unrecognized option ($1)" ;;
 esac

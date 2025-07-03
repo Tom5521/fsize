@@ -7,8 +7,9 @@ case "$1" in
   ./do generate binaries
   gh release upload "$latest_tag" ./builds/* --generate-notes
   ;;
-*)
+"")
   ./do generate binaries
   gh release create "$latest_tag" ./builds/* --generate-notes
   ;;
+*) echo "Unrecognized option ($1)" ;;
 esac
