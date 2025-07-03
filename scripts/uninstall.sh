@@ -1,7 +1,7 @@
 #!/usr/bin/env -S bash -x
 
 go-uninstall() {
-  rm -rf ~/$(go env GOPATH)/bin/fsize
+  rm -f "$(go env GOPATH)/bin/fsize"
 }
 
 uninstall() {
