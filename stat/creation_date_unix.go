@@ -4,6 +4,7 @@
 package stat
 
 import (
+	"errors"
 	"os"
 	"os/exec"
 	"strconv"
@@ -20,6 +21,9 @@ func CreationDate(info os.FileInfo) (time.Time, error) {
 
 	date := string(data)
 	date = strings.ReplaceAll(date, "\x0a", "") // Clean stat output.
+	if date == "0" {
+		return time.Time{}, errors.New("unsupported")
+	}
 
 	sec, err := strconv.ParseInt(date, 10, 64)
 	if err != nil {
