@@ -33,6 +33,7 @@ override NATIVE_BIN := $(call BIN,$(NATIVE_GOOS),$(NATIVE_GOARCH))
 .PHONY: test all clean default run build build-all \
 	%-completions-install %-completions-uninstall go-install \
 	go-uninstall %-install %-uninstall release update-assets
+.ONESHELL: po changelog.md build-all
 .DEFAULT_GOAL := default
 
 default: test
@@ -45,54 +46,61 @@ clean:
 	find . -name "*.mo" -delete
 	find . -name "*.po~" -delete
 	find . -name "*.log" -delete
+	find . -name "*.diff" -delete
 screenshots/demo.cast: build
 	LANG=en asciinema rec --title "fsize $(LATEST_TAG)" \
 		--command "$(NATIVE_BIN) /usr/share" ./screenshots/demo.cast \
 		--overwrite
 meta/version.txt:
 	$(LATEST_TAG) > meta/version.txt
+
 po:
-ifeq ($(shell command -v xgotext),)
-	mkdir -p builds $(HOME)/.local/bin
-	wget -O $(HOME)/.local/bin/xgotext$(call MWIN_EXT,$(NATIVE_GOOS)) \
-	https://github.com/Tom5521/gotext-tools/releases/latest/download/\
-	xgotext-$(NATIVE_GOOS)-$(NATIVE_GOARCH)$(call MWIN_EXT,$(NATIVE_GOOS))
-	chmod +x $(HOME)/.local/bin/xgotext$(call MWIN_EXT,$(NATIVE_GOOS))
-endif
+	if ! command -v xgotext; then
+		bin=$(HOME)/.local/bin/xgotext$(call MWIN_EXT,$(NATIVE_GOOS))
+		mkdir -p builds "$$(dirname $$bin)"
+		wget -O "$$bin" \
+			"https://github.com/Tom5521/gotext-tools/releases/latest/download/xgotext-$(NATIVE_GOOS)-$(NATIVE_GOARCH)$(call MWIN_EXT,$(NATIVE_GOOS))"
+		chmod +x "$$bin"
+	fi
 	xgotext . -o ./po/en/default.pot --lang en --package-version \
 		$(LATEST_TAG)
-	for dir in ./po/*; do \
-		if [[ "$$dir" == "./po/en" ]]; then \
-			continue;\
-		fi;\
-		\
-		file=$$dir/default.po;\
-		lang=$$(basename "$$(dirname "$$file")");\
-		\
-		msgmerge -U --lang "$$lang" "$$file" ./po/en/default.pot;\
+	for dir in ./po/*; do
+		if [[ "$$dir" == "./po/en" ]]; then
+			continue
+		fi
+		
+		file=$$dir/default.po
+		lang=$$(basename "$$(dirname "$$file")")
+		
+		msgmerge -U --lang "$$lang" "$$file" ./po/en/default.pot
 	done
 	find po -name "*.po~" -delete
+
+log.diff:
+	git diff --staged > log.diff
+
 changelog.md:
 	echo '## Changelog' > changelog.md
 	echo >> changelog.md
 
-	latest_tag=$$(git describe --tags --abbrev=0);\
-	penultimate_tag=$$(git describe --tags --abbrev=0 "$$latest_tag^");\
-	\
+	latest_tag=$$(git describe --tags --abbrev=0)
+	penultimate_tag=$$(git describe --tags --abbrev=0 "$$latest_tag^")
+
 	git log --pretty=format:'- [%h](https://github.com/Tom5521/fsize/commit/%H): %s' \
 		$$penultimate_tag..$$latest_tag >> changelog.md
 build:
 	$(CMD) build $(V_FLAG) -o ./builds/fsize-$(GOOS)-$(GOARCH) \
 	-ldflags '-s -w' .
+
 build-all: clean
-	valid=$$($(CMD) tool dist list);\
-	for os in $(SUPPORTED_OSES); do \
-		for arch in $(SUPPORTED_ARCHITECTURES); do \
-			if ! echo $$valid | grep -qw "$$os/$$arch"; then \
-				continue;\
-			fi;\
-			$(MAKE) build GOOS=$$os GOARCH=$$arch;\
-		done;\
+	valid=$$($(CMD) tool dist list)
+	for os in $(SUPPORTED_OSES); do
+		for arch in $(SUPPORTED_ARCHITECTURES); do
+			if ! echo $$valid | grep -qw "$$os/$$arch"; then 
+				continue
+			fi
+			$(MAKE) build GOOS=$$os GOARCH=$$arch
+		done
 	done
 release: build-all changelog.md
 	gh release create $(LATEST_TAG_SHORT) --notes-file \
