@@ -10,3 +10,4 @@ completions
 *.diff
 *.orig
 *.old
+changelog.md

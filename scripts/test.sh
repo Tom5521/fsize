@@ -1,3 +1,0 @@
-#!/usr/bin/env -S bash -x
-
-go test -v ./...

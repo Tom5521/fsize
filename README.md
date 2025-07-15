@@ -28,7 +28,7 @@ And also this installs the completions
 ```bash
 git clone https://github.com/Tom5521/fsize.git
 git checkout $(git describe --tags --abbrev=0) # Go to the latest tag
-./do install local # Or it can be "system"
+make local-install # Or it can be "root-install"
 ```
 
 ## Documentation
