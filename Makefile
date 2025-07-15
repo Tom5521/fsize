@@ -9,6 +9,8 @@ ROOT_PREFIX := /usr/local
 LOCAL_PREFIX := $(HOME)/.local
 PREFIX = $(if $(filter local,$(1)),$(LOCAL_PREFIX),$(ROOT_PREFIX))
 
+SUDO = $(if $(and $(filter root,$(1)),$(filter-out root,$(USER))),sudo)
+
 LATEST_TAG := $(shell git describe --tags)
 LATEST_TAG_SHORT := $(shell git describe --tags --abbrev=0)
 
@@ -33,7 +35,7 @@ override NATIVE_BIN := $(call BIN,$(NATIVE_GOOS),$(NATIVE_GOARCH))
 	go-uninstall %-install %-uninstall release update-assets
 .DEFAULT_GOAL := default
 
-default:
+default: test
 test:
 	go test $(V_FLAG) ./...
 run:
@@ -51,7 +53,7 @@ meta/version.txt:
 	$(LATEST_TAG) > meta/version.txt
 po:
 ifeq ($(shell command -v xgotext),)
-	mkdir -p builds
+	mkdir -p builds $(HOME)/.local/bin
 	wget -O $(HOME)/.local/bin/xgotext$(call MWIN_EXT,$(NATIVE_GOOS)) \
 	https://github.com/Tom5521/gotext-tools/releases/latest/download/\
 	xgotext-$(NATIVE_GOOS)-$(NATIVE_GOARCH)$(call MWIN_EXT,$(NATIVE_GOOS))
@@ -104,16 +106,16 @@ completions: build
 	$(NATIVE_BIN) --gen-fish-completion ./completions/fsize.fish
 	$(NATIVE_BIN) --gen-zsh-completion ./completions/fsize.zsh
 %-completions-install: completions
-	install -D ./completions/fsize.fish \
+	$(call SUDO,$*) install -D ./completions/fsize.fish \
 		$(call PREFIX,$*)/share/fish/vendor_completions.d/fsize.fish
-	install -D ./completions/fsize.bash \
+	$(call SUDO,$*) install -D ./completions/fsize.bash \
 		$(call PREFIX,$*)/share/bash-completion/completions/fsize
-	install -D ./completions/fsize.zsh \
+	$(call SUDO,$*) install -D ./completions/fsize.zsh \
 		$(call PREFIX,$*)/share/zsh/site-functions/_fsize
 %-completions-uninstall:
-	rm -f $(call PREFIX,$*)/share/fish/vendor_completions.d/fsize.fish
-	rm -f $(call PREFIX,$*)/share/bash-completion/completions/fsize
-	rm -f $(call PREFIX,$*)/share/zsh/site-functions/_fsize
+	$(call SUDO,$*) rm -f $(call PREFIX,$*)/share/fish/vendor_completions.d/fsize.fish
+	$(call SUDO,$*) rm -f $(call PREFIX,$*)/share/bash-completion/completions/fsize
+	$(call SUDO,$*) rm -f $(call PREFIX,$*)/share/zsh/site-functions/_fsize
 install:
 	$(MAKE) local-install
 go-install:
@@ -124,7 +126,7 @@ go-uninstall:
 	$(MAKE) local-completions-uninstall
 %-install:
 	$(MAKE) $*-completions-install
-	install -D $(NATIVE_BIN) $(call PREFIX,$*)/bin/fsize$(call MWIN_EXT,$(NATIVE_GOOS))
+	$(call SUDO,$*) install -D $(NATIVE_BIN) $(call PREFIX,$*)/bin/fsize$(call MWIN_EXT,$(NATIVE_GOOS))
 %-uninstall:
-	rm -f $(call PREFIX,$*)/bin/fsize$(call MWIN_EXT,$(NATIVE_GOOS))
+	$(call SUDO,$*) rm -f $(call PREFIX,$*)/bin/fsize$(call MWIN_EXT,$(NATIVE_GOOS))
 	$(MAKE) $*-completions-uninstall
