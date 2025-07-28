@@ -38,7 +38,8 @@ func Warning(warn string) {
 }
 
 func Info(a ...any) {
-	color.Info.Println(a...)
+	info := color.Info.Render(a...)
+	fmt.Fprintln(os.Stderr, info)
 }
 
 func Error(a ...any) {
