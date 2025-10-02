@@ -63,11 +63,11 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 		)
 		tag, updated, err = update.CheckUpdate()
 		if err != nil {
-			return
+			return err
 		}
 		if updated {
 			echo.Info(po.Get("Already in latest version"))
-			return
+			return err
 		}
 		err = update.ApplyUpdate(tag)
 	case flags.BinInfo:
@@ -77,7 +77,7 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 		)
 		tag, updated, err = update.CheckUpdate()
 		if err != nil {
-			return
+			return err
 		}
 
 		fmt.Println("GOOS:", runtime.GOOS)
@@ -102,11 +102,11 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 			var file stat.File
 			file, err = stat.NewFile(f)
 			if err != nil {
-				return
+				return err
 			}
 			fmt.Println(file)
 		}
 	}
 
-	return
+	return err
 }
