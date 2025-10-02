@@ -132,8 +132,10 @@ build-all: clean
 	done
 
 release: build-all changelog.md
-	gh release create $(LATEST_TAG_SHORT) --notes-file \
-		./changelog.md --fail-on-no-commits builds/*
+	gh release create $(LATEST_TAG_SHORT) \
+		--notes-file ./changelog.md \
+		--title $(LATEST_TAG_SHORT) \
+		--fail-on-no-commits builds/*
 
 update-assets: build-all changelog.md
 	gh release upload "$(LATEST_TAG_SHORT)" --notes-file \
