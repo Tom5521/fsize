@@ -82,6 +82,7 @@ func (f *File) progressCount() {
 				bytes.New().Format(f.Size),
 			),
 		)
+		bar.Add(1)
 	}
 
 	err := processFiles(&f.FilesNumber, &f.Size, f.AbsPath,
@@ -118,7 +119,7 @@ func (f *File) progressCount() {
 func NewFile(path string) (f File, err error) {
 	err = f.Load(path)
 	if err != nil {
-		return
+		return f, err
 	}
 
 	if flags.Progress && f.info.IsDir() && !flags.NoWalk {
@@ -127,13 +128,13 @@ func NewFile(path string) (f File, err error) {
 		f.printedCount()
 	}
 
-	return
+	return f, err
 }
 
 func (f *File) Load(path string) (err error) {
 	f.info, f.linfo, f.AbsPath, err = RawInfo(path)
 	if err != nil {
-		return
+		return err
 	}
 
 	{
@@ -144,7 +145,7 @@ func (f *File) Load(path string) (err error) {
 		}
 		f.FileTimes, err = NewFileTimes(cinfo)
 		if err != nil {
-			return
+			return err
 		}
 	}
 	f.FileIDs, err = NewFileIDs(f.info)
@@ -162,27 +163,27 @@ func (f *File) Load(path string) (err error) {
 	f.IsDir = f.info.IsDir()
 	f.Perms = f.info.Mode().Perm()
 
-	return
+	return err
 }
 
 func RawInfo(name string) (stat, lstat os.FileInfo, abspath string, err error) {
 	var file *os.File
 	file, err = os.Open(name)
 	if err != nil {
-		return
+		return stat, lstat, abspath, err
 	}
 	defer file.Close()
 	stat, err = file.Stat()
 	if err != nil {
-		return
+		return stat, lstat, abspath, err
 	}
 	lstat, err = os.Lstat(name)
 	if err != nil {
-		return
+		return stat, lstat, abspath, err
 	}
 	abspath, err = filepath.Abs(name)
 	if err != nil {
-		return
+		return stat, lstat, abspath, err
 	}
-	return
+	return stat, lstat, abspath, err
 }

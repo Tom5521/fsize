@@ -127,15 +127,15 @@ msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr "Файл/директория не указаны, будет использована текущая директория. (.)"
 
-#: settings/main.go:66
+#: settings/main.go:63
 msgid "syntax error"
 msgstr "синтаксическая ошибка"
 
-#: settings/main.go:71
+#: settings/main.go:68
 msgid "unrecognized key \"%s\""
 msgstr "неопознанный ключ \"%s\""
 
-#: settings/main.go:85
+#: settings/main.go:82
 msgid "unrecognized value type \"%s\""
 msgstr "неопознанный тип значения \"%s\""
 
@@ -147,7 +147,7 @@ msgstr "ошибка получения соответствующей стру�
 msgid "not supported on windows"
 msgstr "не поддерживается на windows"
 
-#: stat/file.go:58 stat/file.go:96
+#: stat/file.go:58 stat/file.go:97
 msgid "Reading \"%s\"..."
 msgstr "Чтение \"%s\"..."
 

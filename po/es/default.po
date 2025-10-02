@@ -132,15 +132,15 @@ msgstr ""
 "No se especificó ningún archivo/directorio, se utilizará el directorio "
 "actual. (.)"
 
-#: settings/main.go:66
+#: settings/main.go:63
 msgid "syntax error"
 msgstr "error de sintaxis"
 
-#: settings/main.go:71
+#: settings/main.go:68
 msgid "unrecognized key \"%s\""
 msgstr "clave no reconocida \"%s\""
 
-#: settings/main.go:85
+#: settings/main.go:82
 msgid "unrecognized value type \"%s\""
 msgstr "tipo de valor no reconocido \"%s\""
 
@@ -152,7 +152,7 @@ msgstr "error al obtener la estructura correspondiente de fileinfo.Sys()"
 msgid "not supported on windows"
 msgstr "no compatible con windows"
 
-#: stat/file.go:58 stat/file.go:96
+#: stat/file.go:58 stat/file.go:97
 msgid "Reading \"%s\"..."
 msgstr "Leyendo \"%s\"..."
 

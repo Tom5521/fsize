@@ -6,6 +6,7 @@ toolchain go1.24.4
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.7
+	github.com/adrg/xdg v0.5.3
 	github.com/gookit/color v1.5.4
 	github.com/jeandeaual/go-locale v0.0.0-20250612000132-0ef82f21eade
 	github.com/labstack/gommon v0.4.2

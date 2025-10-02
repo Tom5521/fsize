@@ -8,6 +8,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/adrg/xdg"
 	po "github.com/leonelquinteros/gotext"
 	"github.com/spf13/viper"
 )
@@ -23,11 +24,7 @@ const (
 )
 
 func InitSettings() error {
-	configPath, err := os.UserConfigDir()
-	if err != nil {
-		return fmt.Errorf("error getting user config path: %w", err)
-	}
-	configPath = filepath.Join(configPath, "fsize")
+	configPath := filepath.Join(xdg.ConfigHome, "fsize")
 
 	viper.SetConfigName("fsize")
 	viper.SetConfigType("json")
@@ -42,7 +39,7 @@ func InitSettings() error {
 	viper.SetDefault(NoColor, false)
 
 read:
-	if err = viper.ReadInConfig(); err != nil {
+	if err := viper.ReadInConfig(); err != nil {
 		if _, ok := err.(viper.ConfigFileNotFoundError); ok {
 			if err = os.MkdirAll(configPath, os.ModePerm); err != nil {
 				return fmt.Errorf("error creating configuration directory: %w", err)
