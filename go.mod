@@ -2,7 +2,7 @@ module github.com/Tom5521/fsize
 
 go 1.23.5
 
-toolchain go1.24.4
+toolchain go1.25.1
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.7
