@@ -1,13 +1,16 @@
 package flags
 
+import "time"
+
 var (
-	PrintOnWalk bool
-	NoWalk      bool
-	Progress    bool
-	NoWarns     bool
-	Update      bool
-	BinInfo     bool
-	NoProgress  bool
+	PrintOnWalk   bool
+	NoWalk        bool
+	Progress      bool
+	NoWarns       bool
+	Update        bool
+	BinInfo       bool
+	NoProgress    bool
+	ProgressDelay time.Duration
 
 	// Hidden flags.
 

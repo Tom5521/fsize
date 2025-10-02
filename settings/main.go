@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/adrg/xdg"
 	po "github.com/leonelquinteros/gotext"
@@ -21,6 +22,7 @@ const (
 	HideProgress       = "Hide-Progress"
 	NoColor            = "No-Color"
 	Language           = "Language"
+	ProgressDelay      = "Progress-Delay"
 )
 
 func InitSettings() error {
@@ -37,6 +39,7 @@ func InitSettings() error {
 	viper.SetDefault(Language, "default")
 	viper.SetDefault(HideProgress, false)
 	viper.SetDefault(NoColor, false)
+	viper.SetDefault(ProgressDelay, "1s")
 
 read:
 	if err := viper.ReadInConfig(); err != nil {
@@ -69,21 +72,27 @@ func Parse(optionsArgs []string) error {
 		}
 
 		var (
-			v   any
-			err error
+			newValue any
+			err      error
 		)
 
 		switch viper.Get(key).(type) {
 		case string:
-			v = value
+			if key == ProgressDelay {
+				_, err = time.ParseDuration(value)
+				if err != nil {
+					return errors.New(po.Get("invalid time duration(%s): %s", value, err.Error()))
+				}
+			}
+			newValue = value
 		case bool:
-			v, err = strconv.ParseBool(value)
+			newValue, err = strconv.ParseBool(value)
 			if err != nil {
 				return errors.New(po.Get("unrecognized value type \"%s\"", value))
 			}
 		}
 
-		viper.Set(key, v)
+		viper.Set(key, newValue)
 	}
 	return nil
 }

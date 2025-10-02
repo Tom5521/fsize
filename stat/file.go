@@ -5,6 +5,7 @@ import (
 	"io/fs"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/Tom5521/fsize/checkos"
 	"github.com/Tom5521/fsize/echo"
@@ -64,20 +65,23 @@ func (f *File) printedCount() {
 }
 
 func (f *File) progressCount() {
+	started := time.Now()
 	var warns []error
 	var bar *progressbar.ProgressBar
 
-	if !flags.NoProgress {
-		bar = progressbar.Default(-1)
-	}
 	updateBar := func() {
 		if flags.NoProgress {
 			return
 		}
+		if time.Since(started) <= flags.ProgressDelay {
+			return
+		}
+		if bar == nil {
+			bar = progressbar.Default(-1)
+		}
 		bar.Describe(
 			po.Get(
-				"%v files read, %v errors, total size: %s",
-				f.FilesNumber,
+				"%v errors, total size: %s",
 				int64(len(warns)),
 				bytes.New().Format(f.Size),
 			),
@@ -104,7 +108,7 @@ func (f *File) progressCount() {
 		warns = append(warns, err)
 	}
 
-	if !flags.NoProgress {
+	if !flags.NoProgress && bar != nil {
 		err = bar.Finish()
 		if err != nil {
 			warns = append(warns, err)

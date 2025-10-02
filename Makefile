@@ -68,7 +68,7 @@ screenshots/demo.cast: build
 .ONESHELL:
 .SILENT:
 po:
-	if ! command -v xgotext; then
+	if ! command -v xgotext &> /dev/null; then
 		$(call WARN,xgotext isn't installed.)
 		$(call WARN,installing xgotext...)
 		bin=$(HOME)/.local/bin/xgotext$(call MWIN_EXT,$(NATIVE_GOOS))

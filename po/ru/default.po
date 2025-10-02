@@ -91,8 +91,16 @@ msgid "Displays the information of the binary"
 msgstr "Отображает информацию о бинарном файле"
 
 #: flags.go:83
-msgid "Disable any progress bar/indicator."
-msgstr "Отключить любой индикатор прогресса."
+msgid "Disable any progress indicator."
+msgstr "Отключить отображение индикатора прогресса."
+
+#: flags.go:90
+msgid ""
+"Specifies how long the program should be counting files\n"
+"before a progress indicator appears"
+msgstr ""
+"Указывает, как долго программа должна подсчитывать файлы,\n"
+"прежде чем появится индикатор прогресса"
 
 #: main.go:39
 msgid "ERROR:"
@@ -127,33 +135,37 @@ msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr "Файл/директория не указаны, будет использована текущая директория. (.)"
 
-#: settings/main.go:63
+#: settings/main.go:66
 msgid "syntax error"
 msgstr "синтаксическая ошибка"
 
-#: settings/main.go:68
+#: settings/main.go:71
 msgid "unrecognized key \"%s\""
 msgstr "неопознанный ключ \"%s\""
 
-#: settings/main.go:82
+#: settings/main.go:84
+msgid "invalid time duration(%s): %s"
+msgstr "Неверная продолжительность времени(%s): %s"
+
+#: settings/main.go:91
 msgid "unrecognized value type \"%s\""
 msgstr "неопознанный тип значения \"%s\""
 
-#: stat/file.go:19
+#: stat/file.go:20
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "ошибка получения соответствующей структуры от fileinfo.Sys()"
 
-#: stat/file.go:21
+#: stat/file.go:22
 msgid "not supported on windows"
 msgstr "не поддерживается на windows"
 
-#: stat/file.go:58 stat/file.go:97
+#: stat/file.go:59 stat/file.go:101
 msgid "Reading \"%s\"..."
 msgstr "Чтение \"%s\"..."
 
-#: stat/file.go:79
-msgid "%v files read, %v errors, total size: %s"
-msgstr "%v файлов прочитано, %v ошибок, общий размер: %s"
+#: stat/file.go:84
+msgid "%v errors, total size: %s"
+msgstr "%v ошибок, общий размер: %s"
 
 #: stat/format.go:18
 msgid "Name:"

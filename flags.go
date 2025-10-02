@@ -80,8 +80,17 @@ if any, the first argument will be taken as output file.`),
 		&flags.NoProgress,
 		"no-progress",
 		viper.GetBool(settings.HideProgress),
-		gotext.Get("Disable any progress bar/indicator."),
+		gotext.Get("Disable any progress indicator."),
 	)
+
+	flag.DurationVar(
+		&flags.ProgressDelay,
+		"progress-delay",
+		viper.GetDuration(settings.ProgressDelay),
+		gotext.Get(`Specifies how long the program should be counting files
+before a progress indicator appears`),
+	)
+
 	flag.BoolVar(&flags.Test, "test", false, "---")
 	flag.MarkHidden("test")
 

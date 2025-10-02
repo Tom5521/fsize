@@ -94,8 +94,16 @@ msgid "Displays the information of the binary"
 msgstr "Muestra la información del binario"
 
 #: flags.go:83
-msgid "Disable any progress bar/indicator."
-msgstr "Desactiva cualquier barra de progreso/indicador."
+msgid "Disable any progress indicator."
+msgstr "Desactiva cualquier indicador de progreso."
+
+#: flags.go:90
+msgid ""
+"Specifies how long the program should be counting files\n"
+"before a progress indicator appears"
+msgstr ""
+"Especifica cuanto tiempo el programa debería estár contando archivos\n"
+"antes de que aparezca un indicador de progreso"
 
 #: main.go:39
 msgid "ERROR:"
@@ -132,33 +140,37 @@ msgstr ""
 "No se especificó ningún archivo/directorio, se utilizará el directorio "
 "actual. (.)"
 
-#: settings/main.go:63
+#: settings/main.go:66
 msgid "syntax error"
 msgstr "error de sintaxis"
 
-#: settings/main.go:68
+#: settings/main.go:71
 msgid "unrecognized key \"%s\""
 msgstr "clave no reconocida \"%s\""
 
-#: settings/main.go:82
+#: settings/main.go:84
+msgid "invalid time duration(%s): %s"
+msgstr "duración de tiempo invalida(%s): %s"
+
+#: settings/main.go:91
 msgid "unrecognized value type \"%s\""
 msgstr "tipo de valor no reconocido \"%s\""
 
-#: stat/file.go:19
+#: stat/file.go:20
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "error al obtener la estructura correspondiente de fileinfo.Sys()"
 
-#: stat/file.go:21
+#: stat/file.go:22
 msgid "not supported on windows"
 msgstr "no compatible con windows"
 
-#: stat/file.go:58 stat/file.go:97
+#: stat/file.go:59 stat/file.go:101
 msgid "Reading \"%s\"..."
 msgstr "Leyendo \"%s\"..."
 
-#: stat/file.go:79
-msgid "%v files read, %v errors, total size: %s"
-msgstr "%v archivos leídos, %v errores, tamaño total: %s"
+#: stat/file.go:84
+msgid "%v errors, total size: %s"
+msgstr "%v errores, tamaño total: %s"
 
 #: stat/format.go:18
 msgid "Name:"

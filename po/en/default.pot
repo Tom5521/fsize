@@ -1,6 +1,6 @@
 #, fuzzy
 msgid ""
-msgstr "\nProject-Id-Version: v1.16.1-16-g3cef6a8\n\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\n\nLanguage-Team: LANGUAGE <LL@li.org>\n\nLanguage: en\n\nMIME-Version: 1.0\n\nContent-Type: text/plain; charset=CHARSET\n\nContent-Transfer-Encoding: 8bit\n\nX-Generator: xgotext\n"
+msgstr "\nProject-Id-Version: v1.16.1-17-g8840f6d\n\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\n\nLanguage-Team: LANGUAGE <LL@li.org>\n\nLanguage: en\n\nMIME-Version: 1.0\n\nContent-Type: text/plain; charset=CHARSET\n\nContent-Transfer-Encoding: 8bit\n\nX-Generator: xgotext\n"
 
 #: flags.go:15
 msgid "Displays the file/folder properties."
@@ -51,7 +51,11 @@ msgid "Displays the information of the binary"
 msgstr ""
 
 #: flags.go:83
-msgid "Disable any progress bar/indicator."
+msgid "Disable any progress indicator."
+msgstr ""
+
+#: flags.go:90
+msgid "Specifies how long the program should be counting files\nbefore a progress indicator appears"
 msgstr ""
 
 #: main.go:39
@@ -86,33 +90,37 @@ msgstr ""
 msgid "No file/directory was specified, the current directory will be used. (.)"
 msgstr ""
 
-#: settings/main.go:63
+#: settings/main.go:66
 msgid "syntax error"
 msgstr ""
 
-#: settings/main.go:68
+#: settings/main.go:71
 msgid "unrecognized key \"%s\""
 msgstr ""
 
-#: settings/main.go:82
+#: settings/main.go:84
+msgid "invalid time duration(%s): %s"
+msgstr ""
+
+#: settings/main.go:91
 msgid "unrecognized value type \"%s\""
 msgstr ""
 
-#: stat/file.go:19
+#: stat/file.go:20
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr ""
 
-#: stat/file.go:21
+#: stat/file.go:22
 msgid "not supported on windows"
 msgstr ""
 
-#: stat/file.go:58
-#: stat/file.go:97
+#: stat/file.go:59
+#: stat/file.go:101
 msgid "Reading \"%s\"..."
 msgstr ""
 
-#: stat/file.go:79
-msgid "%v files read, %v errors, total size: %s"
+#: stat/file.go:84
+msgid "%v errors, total size: %s"
 msgstr ""
 
 #: stat/format.go:18
