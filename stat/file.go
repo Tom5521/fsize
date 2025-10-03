@@ -111,8 +111,13 @@ func (f *File) progressCount() {
 		if flags.NoProgress {
 			return
 		}
-		time.Sleep(flags.ProgressDelay)
-		f.progressUpdater(finished, finishedProgress, &warns, &mu)
+		select {
+		case <-time.After(flags.ProgressDelay):
+			f.progressUpdater(finished, finishedProgress, &warns, &mu)
+		case <-finished:
+			close(finishedProgress)
+			return
+		}
 	}()
 
 	err := processFiles(&f.FilesNumber, &f.Size, f.AbsPath,
