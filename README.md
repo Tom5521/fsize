@@ -41,27 +41,29 @@ Usage:
   fsize [flags]
 
 Flags:
-      --bin-info              Displays the information of the binary
-      --color                 enable or disable the color (default true)
-  -c, --config strings        Configure the variables used for preferences
-                              Example: "fsize --config 'always-show-progress=true,always-print-on-walk=false'".
+      --bin-info                  Displays the information of the binary
+      --color                     enable or disable the color (default true)
+  -c, --config strings            Configure the variables used for preferences
+                                  Example: "fsize --config 'always-show-progress=true,always-print-on-walk=false'".
 
-                              To see the available variables and their values run "fsize --print-settings".
-      --gen-bash-completion   Generate a completion file for bash
-                              if any, the first argument will be taken as output file.
-      --gen-fish-completion   Generate a completion file for fish
-                              if any, the first argument will be taken as output file.
-      --gen-zsh-completion    Generate a completion file for zsh
-                              if any, the first argument will be taken as output file.
-  -h, --help                  help for fsize
-      --no-progress           Disable any progress bar/indicator.
-      --no-walk               Skips walking inside the directories.
-      --no-warns              Hide possible warnings.
-      --print-on-walk         Prints the name of the file being walked if a directory has been selected.
-      --print-settings        Prints the current configuration values.
-  -p, --progress              Displays a file count and progress bar when counting and summing file sizes. (default true)
-      --update                Automatically updates the program by overwriting the binary and regenerating the completions.
-  -v, --version               version for fsize
+                                  To see the available variables and their values run "fsize --print-settings".
+      --gen-bash-completion       Generate a completion file for bash
+                                  if any, the first argument will be taken as output file.
+      --gen-fish-completion       Generate a completion file for fish
+                                  if any, the first argument will be taken as output file.
+      --gen-zsh-completion        Generate a completion file for zsh
+                                  if any, the first argument will be taken as output file.
+  -h, --help                      help for fsize
+      --no-progress               Disable any progress indicator.
+      --no-walk                   Skips walking inside the directories.
+      --no-warns                  Hide possible warnings.
+      --print-on-walk             Prints the name of the file being walked if a directory has been selected.
+      --print-settings            Prints the current configuration values.
+  -p, --progress                  Displays a file count and progress bar when counting and summing file sizes. (default true)
+      --progress-delay duration   Specifies how long the program should be counting files
+                                  before a progress indicator appears (default 1s)
+      --update                    Automatically updates the program by overwriting the binary and regenerating the completions.
+  -v, --version                   version for fsize
 ```
 
 Or by copying one of the
