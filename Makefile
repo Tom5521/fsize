@@ -61,8 +61,12 @@ clean:
 	find . -name "*.diff" -delete
 
 screenshots/demo.cast: build
-	LANG=en asciinema rec --title "fsize $(LATEST_TAG)" \
+	LANG=en asciinema rec --title "fsize $(LATEST_TAG_SHORT)" \
 		--command "$(NATIVE_BIN) /usr/share" ./screenshots/demo.cast \
+		--overwrite
+screenshots/demo2.cast: build
+	LANG=en asciinema rec --title "fsize $(LATEST_TAG_SHORT)" \
+		--command "$(NATIVE_BIN) ." ./screenshots/demo2.cast \
 		--overwrite
 
 .ONESHELL:

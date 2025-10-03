@@ -2,9 +2,11 @@ package stat
 
 import (
 	"errors"
+	"fmt"
 	"io/fs"
 	"os"
 	"path/filepath"
+	"sync"
 	"time"
 
 	"github.com/Tom5521/fsize/checkos"
@@ -64,55 +66,77 @@ func (f *File) printedCount() {
 	)
 }
 
-func (f *File) progressCount() {
-	started := time.Now()
-	var warns []error
-	var bar *progressbar.ProgressBar
+func (f *File) progressUpdater(
+	finished, terminatedProgress chan struct{},
+	warns *[]error,
+	mu *sync.Mutex,
+) {
+	bar := progressbar.New64(-1)
 
-	updateBar := func() {
-		if flags.NoProgress {
-			return
-		}
-		if time.Since(started) <= flags.ProgressDelay {
-			return
-		}
-		if bar == nil {
-			bar = progressbar.Default(-1)
-		}
+	set := func() {
+		mu.Lock()
 		bar.Describe(
 			po.Get(
-				"%v errors, total size: %s",
-				int64(len(warns)),
+				"%d files, %d errors, total size: %s",
+				f.FilesNumber,
+				int64(len(*warns)),
 				bytes.New().Format(f.Size),
 			),
 		)
-		bar.Add(1)
+		bar.Set64(f.FilesNumber)
+		mu.Unlock()
 	}
+	for {
+		select {
+		case <-time.After(time.Second / 3):
+			set()
+		case <-finished:
+			set()
+			bar.Finish()
+			fmt.Fprintf(os.Stderr, "\n")
+			close(terminatedProgress)
+			return
+		}
+	}
+}
+
+func (f *File) progressCount() {
+	var warns []error
+
+	finished := make(chan struct{})
+	finishedProgress := make(chan struct{})
+	var mu sync.Mutex
+
+	go func() {
+		if flags.NoProgress {
+			return
+		}
+		time.Sleep(flags.ProgressDelay)
+		f.progressUpdater(finished, finishedProgress, &warns, &mu)
+	}()
 
 	err := processFiles(&f.FilesNumber, &f.Size, f.AbsPath,
 		func(path string, info fs.FileInfo, err error) error {
 			if err != nil {
+				mu.Lock()
+				defer mu.Unlock()
 				warns = append(warns, err)
 				return nil
 			}
-
-			updateBar()
 			if flags.PrintOnWalk && !flags.NoProgress {
 				echo.Info(po.Get("Reading \"%s\"...", path))
 			}
 
 			return nil
-		},
+		}, &mu,
 	)
-	if err != nil {
-		warns = append(warns, err)
+	if !flags.NoProgress {
+		close(finished)
+		<-finishedProgress
 	}
 
-	if !flags.NoProgress && bar != nil {
-		err = bar.Finish()
-		if err != nil {
-			warns = append(warns, err)
-		}
+	if err != nil {
+		warns = append(warns, err)
 	}
 
 	for _, err2 := range warns {
