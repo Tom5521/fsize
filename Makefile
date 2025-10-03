@@ -118,7 +118,7 @@ changelog.md:
 .SILENT:
 build:
 	$(CMD) build $(V_FLAG) -o ./builds/fsize-$(GOOS)-$(GOARCH) \
-	-ldflags '-s -w -X meta.LongVersion=$(LATEST_TAG)' .
+	-ldflags="-s -w -X 'github.com/Tom5521/fsize/meta.LongVersion=$(LATEST_TAG)'" .
 
 .ONESHELL:
 .SILENT:
