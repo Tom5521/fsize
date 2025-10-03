@@ -154,21 +154,21 @@ msgstr "duração de tempo inválida(%s): %s"
 msgid "unrecognized value type \"%s\""
 msgstr "tipo de valor desconhecido \"%s\"."
 
-#: stat/file.go:20
+#: stat/file.go:22
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "erro ao obter a estrutura correspondente de fileinfo.Sys()"
 
-#: stat/file.go:22
+#: stat/file.go:24
 msgid "not supported on windows"
 msgstr "não é suportado no Windows"
 
-#: stat/file.go:59 stat/file.go:101
+#: stat/file.go:61 stat/file.go:127
 msgid "Reading \"%s\"..."
 msgstr "Lendo \"%s\"..."
 
-#: stat/file.go:84
-msgid "%v errors, total size: %s"
-msgstr "%v erros, tamanho total: %s"
+#: stat/file.go:80
+msgid "%d files, %d errors, total size: %s"
+msgstr "%d ficheiros, %d erros, tamanho total: %s"
 
 #: stat/format.go:18
 msgid "Name:"

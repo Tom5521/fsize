@@ -156,21 +156,21 @@ msgstr "duración de tiempo invalida(%s): %s"
 msgid "unrecognized value type \"%s\""
 msgstr "tipo de valor no reconocido \"%s\""
 
-#: stat/file.go:20
+#: stat/file.go:22
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "error al obtener la estructura correspondiente de fileinfo.Sys()"
 
-#: stat/file.go:22
+#: stat/file.go:24
 msgid "not supported on windows"
 msgstr "no compatible con windows"
 
-#: stat/file.go:59 stat/file.go:101
+#: stat/file.go:61 stat/file.go:127
 msgid "Reading \"%s\"..."
 msgstr "Leyendo \"%s\"..."
 
-#: stat/file.go:84
-msgid "%v errors, total size: %s"
-msgstr "%v errores, tamaño total: %s"
+#: stat/file.go:80
+msgid "%d files, %d errors, total size: %s"
+msgstr "%d archivos, %d errores, tamaño total: %s"
 
 #: stat/format.go:18
 msgid "Name:"

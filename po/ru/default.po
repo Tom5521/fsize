@@ -151,21 +151,21 @@ msgstr "Неверная продолжительность времени(%s): 
 msgid "unrecognized value type \"%s\""
 msgstr "неопознанный тип значения \"%s\""
 
-#: stat/file.go:20
+#: stat/file.go:22
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "ошибка получения соответствующей структуры от fileinfo.Sys()"
 
-#: stat/file.go:22
+#: stat/file.go:24
 msgid "not supported on windows"
 msgstr "не поддерживается на windows"
 
-#: stat/file.go:59 stat/file.go:101
+#: stat/file.go:61 stat/file.go:127
 msgid "Reading \"%s\"..."
 msgstr "Чтение \"%s\"..."
 
-#: stat/file.go:84
-msgid "%v errors, total size: %s"
-msgstr "%v ошибок, общий размер: %s"
+#: stat/file.go:80
+msgid "%d files, %d errors, total size: %s"
+msgstr "%d файлов, %d ошибок, общий размер: %s"
 
 #: stat/format.go:18
 msgid "Name:"

@@ -1,6 +1,6 @@
 #, fuzzy
 msgid ""
-msgstr "\nProject-Id-Version: v1.16.1-17-g8840f6d\n\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\n\nLanguage-Team: LANGUAGE <LL@li.org>\n\nLanguage: en\n\nMIME-Version: 1.0\n\nContent-Type: text/plain; charset=CHARSET\n\nContent-Transfer-Encoding: 8bit\n\nX-Generator: xgotext\n"
+msgstr "\nProject-Id-Version: v1.17.0-3-g8309941\n\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\n\nLanguage-Team: LANGUAGE <LL@li.org>\n\nLanguage: en\n\nMIME-Version: 1.0\n\nContent-Type: text/plain; charset=CHARSET\n\nContent-Transfer-Encoding: 8bit\n\nX-Generator: xgotext\n"
 
 #: flags.go:15
 msgid "Displays the file/folder properties."
@@ -106,21 +106,21 @@ msgstr ""
 msgid "unrecognized value type \"%s\""
 msgstr ""
 
-#: stat/file.go:20
+#: stat/file.go:22
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr ""
 
-#: stat/file.go:22
+#: stat/file.go:24
 msgid "not supported on windows"
 msgstr ""
 
-#: stat/file.go:59
-#: stat/file.go:101
+#: stat/file.go:61
+#: stat/file.go:127
 msgid "Reading \"%s\"..."
 msgstr ""
 
-#: stat/file.go:84
-msgid "%v errors, total size: %s"
+#: stat/file.go:80
+msgid "%d files, %d errors, total size: %s"
 msgstr ""
 
 #: stat/format.go:18
