@@ -1,14 +1,6 @@
 package meta
 
-import (
-	"strings"
-)
-
 var (
 	LongVersion string = "go_installed"
-	Version     string
+	Version     string = "go_installed"
 )
-
-func init() {
-	Version = strings.SplitN(LongVersion, "-", 2)[0]
-}

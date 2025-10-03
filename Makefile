@@ -35,6 +35,11 @@ TITLE = @echo "$(BOLD)$(GREEN)$(1)$(NC)"
 override CMD := $(GOFLAGS) go
 override V_FLAG := $(if $(filter 1,$(VERBOSE)),-v)
 override WIN_EXT := $(call MWIN_EXT,$(GOOS))
+override PKG_PREFIX := github.com/Tom5521/fsize
+
+LD_FLAGS := -s -w
+LD_FLAGS += -X '$(PKG_PREFIX)/meta.LongVersion=$(LATEST_TAG)'
+LD_FLAGS += -X '$(PKG_PREFIX)/meta.Version=$(LATEST_TAG_SHORT)'
 
 BIN = ./builds/fsize-$(1)-$(2)$(call WIN_EXT,$(1))
 override NATIVE_GOOS := $(shell go env GOOS)
@@ -117,8 +122,9 @@ changelog.md:
 
 .SILENT:
 build:
-	$(CMD) build $(V_FLAG) -o ./builds/fsize-$(GOOS)-$(GOARCH) \
-	-ldflags="-s -w -X 'github.com/Tom5521/fsize/meta.LongVersion=$(LATEST_TAG)'" .
+	$(CMD) build $(V_FLAG) \
+	-o ./builds/fsize-$(GOOS)-$(GOARCH) \
+	-ldflags="$(LD_FLAGS)" .
 
 .ONESHELL:
 .SILENT:
@@ -141,9 +147,8 @@ release: build-all changelog.md
 		--title $(LATEST_TAG_SHORT) \
 		--fail-on-no-commits builds/*
 
-update-assets: build-all changelog.md
-	gh release upload "$(LATEST_TAG_SHORT)" --notes-file \
-		./changelog.md ./builds/*
+update-assets: build-all
+	gh release upload --clobber "$(LATEST_TAG_SHORT)" ./builds/*
 
 completions: build
 	@mkdir -p completions
