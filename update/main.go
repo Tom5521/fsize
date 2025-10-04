@@ -7,7 +7,6 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
-	"os/user"
 	"runtime"
 	"strings"
 
@@ -27,7 +26,7 @@ func CheckUpdate() (tag string, latest bool, err error) {
 	resp, err := http.Get(UpdateURL)
 	if err != nil {
 		err = fmt.Errorf("error getting http response: %v", err)
-		return
+		return tag, latest, err
 	}
 	defer resp.Body.Close()
 
@@ -40,7 +39,7 @@ func CheckUpdate() (tag string, latest bool, err error) {
 		latest = true
 	}
 
-	return
+	return tag, latest, err
 }
 
 func ApplyUpdate(tag string) (err error) {
@@ -85,7 +84,7 @@ func ApplyUpdate(tag string) (err error) {
 
 	executable, err := os.Executable()
 	if err != nil {
-		return
+		return err
 	}
 	oldExec := executable + ".old"
 
@@ -120,7 +119,7 @@ func ApplyUpdate(tag string) (err error) {
 				),
 			)
 		}
-		return
+		return err
 	}
 
 	signal.Stop(sigchan)
@@ -134,18 +133,7 @@ func ApplyUpdate(tag string) (err error) {
 		return errors.New(po.Get("error removing old executable: %v", err))
 	}
 
-	usr, err := user.Current()
-	if err != nil {
-		return errors.New(po.Get("error getting current user: %v", err))
-	}
-
-	runningOnTermux := isMaybeRunningInTermux()
-
-	if (usr.Username != "root" && checkos.Unix) && !runningOnTermux {
-		echo.Warning(po.Get("The user is not root, the completions will not be updated"))
-	}
-
-	if (usr.Username == "root" && checkos.Unix) || runningOnTermux {
+	if checkos.Unix {
 		echo.Info(po.Get("Updating completions..."))
 		err = updateCompletions(executable)
 		if err != nil {
@@ -156,7 +144,7 @@ func ApplyUpdate(tag string) (err error) {
 	echo.Info(po.Get("Upgrade completed successfully"))
 	fmt.Printf("%s -> %s\n", color.Red.Render(meta.Version), color.Green.Render(tag))
 
-	return
+	return err
 }
 
 func catchSIGINT(
@@ -174,7 +162,7 @@ func catchSIGINT(
 func download(executable string, resp *http.Response, bar *progressbar.ProgressBar) (err error) {
 	file, err := os.OpenFile(executable, os.O_RDWR|os.O_CREATE|os.O_TRUNC, os.ModePerm)
 	if err != nil {
-		return
+		return err
 	}
 	defer file.Close()
 
@@ -183,5 +171,5 @@ func download(executable string, resp *http.Response, bar *progressbar.ProgressB
 		return err
 	}
 
-	return
+	return err
 }
