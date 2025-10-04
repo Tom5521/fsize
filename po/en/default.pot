@@ -1,6 +1,6 @@
 #, fuzzy
 msgid ""
-msgstr "\nProject-Id-Version: v1.17.0-3-g8309941\n\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\n\nLanguage-Team: LANGUAGE <LL@li.org>\n\nLanguage: en\n\nMIME-Version: 1.0\n\nContent-Type: text/plain; charset=CHARSET\n\nContent-Transfer-Encoding: 8bit\n\nX-Generator: xgotext\n"
+msgstr "\nProject-Id-Version: v1.17.4-3-g72da3e5\n\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\n\nLanguage-Team: LANGUAGE <LL@li.org>\n\nLanguage: en\n\nMIME-Version: 1.0\n\nContent-Type: text/plain; charset=CHARSET\n\nContent-Transfer-Encoding: 8bit\n\nX-Generator: xgotext\n"
 
 #: flags.go:15
 msgid "Displays the file/folder properties."
@@ -115,7 +115,7 @@ msgid "not supported on windows"
 msgstr ""
 
 #: stat/file.go:61
-#: stat/file.go:127
+#: stat/file.go:132
 msgid "Reading \"%s\"..."
 msgstr ""
 
@@ -167,79 +167,79 @@ msgstr ""
 msgid "GID/Group:"
 msgstr ""
 
-#: update/main.go:26
+#: update/main.go:25
 msgid "Checking the latest version available..."
 msgstr ""
 
-#: update/main.go:68
+#: update/main.go:67
 msgid "NB! It seems that you are in a NixOS."
 msgstr ""
 
-#: update/main.go:70
+#: update/main.go:69
 msgid "Due to the non-standard filesystem implementation of the environment, the update command may not work as expected."
 msgstr ""
 
-#: update/main.go:77
+#: update/main.go:76
 msgid "Do you want to proceed with the update?"
 msgstr ""
 
-#: update/main.go:81
+#: update/main.go:80
 msgid "The command has been cancelled."
 msgstr ""
 
-#: update/main.go:93
+#: update/main.go:92
 msgid "error renaming the old executable [%s] to: %v"
 msgstr ""
 
-#: update/main.go:98
+#: update/main.go:97
 msgid "error getting http response: %v"
 msgstr ""
 
-#: update/main.go:107
+#: update/main.go:106
 msgid "Downloading latest version..."
 msgstr ""
 
-#: update/main.go:110
+#: update/main.go:109
 msgid "Error downloading binary to %s: %v"
 msgstr ""
 
-#: update/main.go:111
+#: update/main.go:110
 msgid "Reversing changes..."
 msgstr ""
 
-#: update/main.go:116
+#: update/main.go:115
 msgid "error reversing changes: failed to rename %s to %s: %v"
 msgstr ""
 
-#: update/main.go:130
+#: update/main.go:129
 msgid "error finishing the progress bar"
 msgstr ""
 
-#: update/main.go:134
+#: update/main.go:133
 msgid "error removing old executable: %v"
 msgstr ""
 
-#: update/main.go:139
-msgid "error getting current user: %v"
-msgstr ""
-
-#: update/main.go:145
-msgid "The user is not root, the completions will not be updated"
-msgstr ""
-
-#: update/main.go:149
+#: update/main.go:137
 msgid "Updating completions..."
 msgstr ""
 
-#: update/main.go:156
+#: update/main.go:144
 msgid "Upgrade completed successfully"
 msgstr ""
 
-#: update/main.go:170
+#: update/main.go:158
 msgid "%s detected, reversing changes before finishing program..."
 msgstr ""
 
-#: update/update-completions.go:29
+#: update/update-completions.go:28
+msgid "error removing %s completions: %s"
+msgstr ""
+
+#: update/update-completions.go:46
 msgid "%s not found."
+msgstr ""
+
+#: update/update-completions.go:51
+msgid "error creating completion directory: %s"
 msgstr ""
 

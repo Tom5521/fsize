@@ -164,7 +164,7 @@ msgstr "error al obtener la estructura correspondiente de fileinfo.Sys()"
 msgid "not supported on windows"
 msgstr "no compatible con windows"
 
-#: stat/file.go:61 stat/file.go:127
+#: stat/file.go:61 stat/file.go:132
 msgid "Reading \"%s\"..."
 msgstr "Leyendo \"%s\"..."
 
@@ -216,15 +216,15 @@ msgstr "UID/Usuario:"
 msgid "GID/Group:"
 msgstr "GID/Grupo:"
 
-#: update/main.go:26
+#: update/main.go:25
 msgid "Checking the latest version available..."
 msgstr "Comprobando la última versión disponible..."
 
-#: update/main.go:68
+#: update/main.go:67
 msgid "NB! It seems that you are in a NixOS."
 msgstr "¡Atención! Parece que estás en NixOS."
 
-#: update/main.go:70
+#: update/main.go:69
 msgid ""
 "Due to the non-standard filesystem implementation of the environment, the "
 "update command may not work as expected."
@@ -232,66 +232,71 @@ msgstr ""
 "Debido a la implementación de sistema de archivos no estándar del entorno, "
 "el comando de actualizar puede no funcionar como se espera."
 
-#: update/main.go:77
+#: update/main.go:76
 msgid "Do you want to proceed with the update?"
 msgstr "¿Quieres continuar con la actualización?"
 
-#: update/main.go:81
+#: update/main.go:80
 msgid "The command has been cancelled."
 msgstr "El comando ha sido cancelado."
 
-#: update/main.go:93
+#: update/main.go:92
 msgid "error renaming the old executable [%s] to: %v"
 msgstr "error renombrando el ejecutable viejo [%s] a: %v"
 
-#: update/main.go:98
+#: update/main.go:97
 msgid "error getting http response: %v"
 msgstr "error consiguiendo respuesta http: %v"
 
-#: update/main.go:107
+#: update/main.go:106
 msgid "Downloading latest version..."
 msgstr "Descargando la última versión..."
 
-#: update/main.go:110
+#: update/main.go:109
 msgid "Error downloading binary to %s: %v"
 msgstr "Error descargando binario a %s: %v"
 
-#: update/main.go:111
+#: update/main.go:110
 msgid "Reversing changes..."
 msgstr "Revirtiendo cambios..."
 
-#: update/main.go:116
+#: update/main.go:115
 msgid "error reversing changes: failed to rename %s to %s: %v"
 msgstr "error revirtiendo cambios: fallo al renombrar %s a %s: %v"
 
-#: update/main.go:130
+#: update/main.go:129
 msgid "error finishing the progress bar"
 msgstr "error terminando la barra de progreso"
 
-#: update/main.go:134
+#: update/main.go:133
 msgid "error removing old executable: %v"
 msgstr "error removiendo ejecutable viejo: %v"
 
-#: update/main.go:139
-msgid "error getting current user: %v"
-msgstr "error obteniendo el usuario actual: %v"
-
-#: update/main.go:145
-msgid "The user is not root, the completions will not be updated"
-msgstr "El usuario no es root, las autocompletaciones no serán actualizadas"
-
-#: update/main.go:149
+#: update/main.go:137
 msgid "Updating completions..."
 msgstr "Actualizando las autocompletaciones..."
 
-#: update/main.go:156
+#: update/main.go:144
 msgid "Upgrade completed successfully"
 msgstr "Actualización completada exitosamente"
 
-#: update/main.go:170
+#: update/main.go:158
 msgid "%s detected, reversing changes before finishing program..."
 msgstr "%s detectado, revirtiendo cambios antes de terminar el programa..."
 
-#: update/update-completions.go:29
+#: update/update-completions.go:28
+#, fuzzy
+msgid "error removing %s completions: %s"
+msgstr "error removiendo ejecutable viejo: %v"
+
+#: update/update-completions.go:46
 msgid "%s not found."
 msgstr "%s no encontrado."
+
+#: update/update-completions.go:51
+#, fuzzy
+msgid "error creating completion directory: %s"
+msgstr "error obteniendo el usuario actual: %v"
+
+#~ msgid "The user is not root, the completions will not be updated"
+#~ msgstr "El usuario no es root, las autocompletaciones no serán actualizadas"
