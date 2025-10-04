@@ -3,7 +3,7 @@ SHELL=/usr/bin/bash
 GOOS := $(shell go env GOOS)
 GOARCH := $(shell go env GOARCH)
 GOPATH := $(shell go env GOPATH)
-GOFLAGS := GOOS=$(GOOS) GOARCH=$(GOARCH)
+GOENV := GOOS=$(GOOS) GOARCH=$(GOARCH)
 
 ROOT_PREFIX := /usr/local
 LOCAL_PREFIX := $(HOME)/.local
@@ -32,14 +32,14 @@ WARN = @echo "$(YELLOW)WARNING:$(NC) $(1)"
 INFO = @echo "$(BOLD)$(GREEN)INFO:$(NC) $(1)"
 TITLE = @echo "$(BOLD)$(GREEN)$(1)$(NC)"
 
-override CMD := $(GOFLAGS) go
+override CMD := $(GOENV) go
 override V_FLAG := $(if $(filter 1,$(VERBOSE)),-v)
 override WIN_EXT := $(call MWIN_EXT,$(GOOS))
-override PKG_PREFIX := github.com/Tom5521/fsize
+override GO_PACKAGE := github.com/Tom5521/fsize
 
 LD_FLAGS := -s -w
-LD_FLAGS += -X '$(PKG_PREFIX)/meta.LongVersion=$(LATEST_TAG)'
-LD_FLAGS += -X '$(PKG_PREFIX)/meta.Version=$(LATEST_TAG_SHORT)'
+LD_FLAGS += -X '$(GO_PACKAGE)/meta.LongVersion=$(LATEST_TAG)'
+LD_FLAGS += -X '$(GO_PACKAGE)/meta.Version=$(LATEST_TAG_SHORT)'
 
 BIN = ./builds/fsize-$(1)-$(2)$(call WIN_EXT,$(1))
 override NATIVE_GOOS := $(shell go env GOOS)
