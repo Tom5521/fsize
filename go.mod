@@ -2,8 +2,6 @@ module github.com/Tom5521/fsize
 
 go 1.24.0
 
-toolchain go1.25.1
-
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.7
 	github.com/adrg/xdg v0.5.3
