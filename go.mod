@@ -15,6 +15,8 @@ require (
 	golang.org/x/term v0.35.0
 )
 
+replace github.com/jeandeaual/go-locale => github.com/Tom5521/go-locale v0.0.0-20251005012820-56ae3d3943e2
+
 require (
 	github.com/fsnotify/fsnotify v1.9.0 // indirect
 	github.com/go-viper/mapstructure/v2 v2.4.0 // indirect

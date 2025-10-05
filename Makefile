@@ -14,8 +14,18 @@ SUDO = $(if $(and $(filter root,$(1)),$(filter-out root,$(USER))),sudo)
 LATEST_TAG := $(shell git describe --tags)
 LATEST_TAG_SHORT := $(shell git describe --tags --abbrev=0)
 
-SUPPORTED_OSES := windows linux darwin
-SUPPORTED_ARCHITECTURES := 386 amd64 arm arm64
+define SUPPORTED_PLATFORMS
+windows/amd64
+windows/386
+windows/arm64
+linux/amd64
+linux/386
+linux/arm64
+linux/arm
+darwin/amd64
+darwin/arm64
+android/arm64
+endef
 
 VERBOSE ?= 0
 
@@ -24,6 +34,7 @@ MWIN_EXT = $(if $(filter windows,$(1)),.exe)
 RED = $(shell tput setaf 1)
 GREEN = $(shell tput setaf 2)
 YELLOW = $(shell tput setaf 3)
+BLUE = $(shell tput setaf 4)
 BOLD = $(shell tput bold)
 NC = $(shell tput sgr0)
 
@@ -129,16 +140,16 @@ build:
 .ONESHELL:
 .SILENT:
 build-all: clean
-	valid=$$($(CMD) tool dist list)
-	for os in $(SUPPORTED_OSES); do
-		$(call TITLE,Building for $$os operative system...)
-		for arch in $(SUPPORTED_ARCHITECTURES); do
-			if ! echo $$valid | grep -qw "$$os/$$arch"; then 
-				continue
-			fi
-			$(call INFO,building for $$arch architecture...)
-			$(MAKE) -s build GOOS=$$os GOARCH=$$arch
-		done
+	platforms=(
+	$(SUPPORTED_PLATFORMS)
+	)
+	$(call TITLE,Building...)
+	for platform in $${platforms[@]}; do
+		os=$$(echo "$$platform"| cut -d'/' -f1)
+		arch=$$(echo "$$platform"| cut -d'/' -f2-)
+
+		$(call INFO,$(BLUE)$$os$(NC)/$(BOLD)$$arch$(NC))
+		$(MAKE) -s build GOOS=$$os GOARCH=$$arch
 	done
 
 release: build-all changelog.md
