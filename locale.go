@@ -7,7 +7,8 @@ import (
 	"path/filepath"
 
 	"github.com/Tom5521/fsize/settings"
-	"github.com/jeandeaual/go-locale"
+	"github.com/Tom5521/go-locale"
+
 	"github.com/leonelquinteros/gotext"
 	"github.com/spf13/viper"
 )

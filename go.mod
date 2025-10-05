@@ -4,9 +4,9 @@ go 1.24.0
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.7
+	github.com/Tom5521/go-locale v0.0.0-20251005201537-e1473417e984
 	github.com/adrg/xdg v0.5.3
 	github.com/gookit/color v1.6.0
-	github.com/jeandeaual/go-locale v0.0.0-20250612000132-0ef82f21eade
 	github.com/labstack/gommon v0.4.2
 	github.com/leonelquinteros/gotext v1.7.2
 	github.com/schollz/progressbar/v3 v3.18.0
@@ -14,8 +14,6 @@ require (
 	github.com/spf13/viper v1.21.0
 	golang.org/x/term v0.35.0
 )
-
-replace github.com/jeandeaual/go-locale => github.com/Tom5521/go-locale v0.0.0-20251005012820-56ae3d3943e2
 
 require (
 	github.com/fsnotify/fsnotify v1.9.0 // indirect

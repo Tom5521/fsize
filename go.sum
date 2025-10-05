@@ -2,8 +2,8 @@ github.com/AlecAivazis/survey/v2 v2.3.7 h1:6I/u8FvytdGsgonrYsVn2t8t4QiRnh6QSTqkk
 github.com/AlecAivazis/survey/v2 v2.3.7/go.mod h1:xUTIdE4KCOIjsBAE1JYsUPoCqYdZ1reCfTwbto0Fduo=
 github.com/Netflix/go-expect v0.0.0-20220104043353-73e0943537d2 h1:+vx7roKuyA63nhn5WAunQHLTznkw5W8b1Xc0dNjp83s=
 github.com/Netflix/go-expect v0.0.0-20220104043353-73e0943537d2/go.mod h1:HBCaDeC1lPdgDeDbhX8XFpy1jqjK0IBG8W5K+xYqA0w=
-github.com/Tom5521/go-locale v0.0.0-20251005012820-56ae3d3943e2 h1:ZE+igWXmICLL/fj/U3KERsEMqvEIL3FOjcZFU18aSNg=
-github.com/Tom5521/go-locale v0.0.0-20251005012820-56ae3d3943e2/go.mod h1:ZDXo8KHryOWSIqnsb/CiDq7hQUYryCgdVnxbj8tDG7o=
+github.com/Tom5521/go-locale v0.0.0-20251005201537-e1473417e984 h1:qA0kZGRWYxHFhHcs2BwzC2JNx+pxZbZ8s9fn41Fr4T8=
+github.com/Tom5521/go-locale v0.0.0-20251005201537-e1473417e984/go.mod h1:ewTys2VrV10aQ4q9mrrxq2tqFVuDiYxK1ffkMaydVY4=
 github.com/adrg/xdg v0.5.3 h1:xRnxJXne7+oWDatRhR1JLnvuccuIeCoBu2rtuLqQB78=
 github.com/adrg/xdg v0.5.3/go.mod h1:nlTsY+NNiCBGCK2tpm09vRqfVzrc2fLmXGpBLF0zlTQ=
 github.com/chengxilo/virtualterm v1.0.4 h1:Z6IpERbRVlfB8WkOmtbHiDbBANU7cimRIof7mk9/PwM=
