@@ -54,6 +54,7 @@ LD_FLAGS += -X '$(GO_PACKAGE)/meta.LongVersion=$(LATEST_TAG)'
 LD_FLAGS += -X '$(GO_PACKAGE)/meta.Version=$(LATEST_TAG_SHORT)'
 
 BIN = ./builds/fsize-$(1)-$(2)$(call WIN_EXT,$(1))
+override CURRENT_BIN := $(call BIN,$(GOOS),$(GOARCH))
 override NATIVE_GOOS := $(shell go env GOOS)
 override NATIVE_GOARCH := $(shell go env GOARCH)
 override NATIVE_BIN := $(call BIN,$(NATIVE_GOOS),$(NATIVE_GOARCH))
@@ -136,7 +137,7 @@ changelog.md:
 .SILENT:
 build:
 	$(CMD) build $(V_FLAG) \
-	-o ./builds/fsize-$(GOOS)-$(GOARCH) \
+	-o $(CURRENT_BIN) \
 	-ldflags="$(LD_FLAGS)" .
 
 .ONESHELL:
