@@ -17,6 +17,7 @@ LATEST_TAG_SHORT := $(shell git describe --tags --abbrev=0)
 define SUPPORTED_PLATFORMS
 windows/amd64
 windows/386
+windows/arm
 windows/arm64
 linux/amd64
 linux/386
@@ -59,7 +60,8 @@ override NATIVE_BIN := $(call BIN,$(NATIVE_GOOS),$(NATIVE_GOARCH))
 
 .PHONY: test all clean default run build build-all \
 	%-completions-install %-completions-uninstall go-install \
-	go-uninstall %-install %-uninstall release update-assets
+	go-uninstall %-install %-uninstall release update-assets \
+	install uninstall
 .DEFAULT_GOAL := default
 
 default: test
@@ -77,11 +79,11 @@ clean:
 	find . -name "*.diff" -delete
 
 screenshots/demo.cast: build
-	LANG=en asciinema rec --title "fsize $(LATEST_TAG_SHORT)" \
+	LANG=en asciinema rec --title "$(NATIVE_BIN) $(LATEST_TAG_SHORT)" \
 		--command "$(NATIVE_BIN) /usr/share" ./screenshots/demo.cast \
 		--overwrite
 screenshots/demo2.cast: build
-	LANG=en asciinema rec --title "fsize $(LATEST_TAG_SHORT)" \
+	LANG=en asciinema rec --title "$(NATIVE_BIN) $(LATEST_TAG_SHORT)" \
 		--command "$(NATIVE_BIN) ." ./screenshots/demo2.cast \
 		--overwrite
 
@@ -180,22 +182,27 @@ completions: build
 	$(call SUDO,$*) rm -f $(call PREFIX,$*)/share/bash-completion/completions/fsize
 	$(call SUDO,$*) rm -f $(call PREFIX,$*)/share/zsh/site-functions/_fsize
 
-install:
-	$(MAKE) local-install
+install: local-install
+uninstall: local-uninstall
 
 go-install:
 	go install $(V_FLAG) .
-	$(MAKE) local-completions-install
+	$(MAKE) -s local-completions-install
 
 go-uninstall:
 	rm -f $(GOPATH)/bin/fsize
-	$(MAKE) local-completions-uninstall
+	$(MAKE) -s local-completions-uninstall
 
 %-install:
-	$(MAKE) $*-completions-install
+	$(MAKE) -s $*-completions-install
 	$(call SUDO,$*) install -D $(NATIVE_BIN) $(call PREFIX,$*)/bin/fsize$(call MWIN_EXT,$(NATIVE_GOOS))
 
 %-uninstall:
 	$(call SUDO,$*) rm -f $(call PREFIX,$*)/bin/fsize$(call MWIN_EXT,$(NATIVE_GOOS))
-	$(MAKE) $*-completions-uninstall
+	$(MAKE) -s $*-completions-uninstall
 
+.ONESHELL:
+builds/fsize-%$(WIN_EXT):
+	os=$(word 1,$(subst -, ,$*))
+	arch=$(word 1,$(subst ., ,$(word 2,$(subst -, ,$*))))
+	$(MAKE) build -s GOOS=$$os GOARCH=$$arch
