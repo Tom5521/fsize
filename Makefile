@@ -78,11 +78,11 @@ clean:
 	find . -name "*.log" -delete
 	find . -name "*.diff" -delete
 
-screenshots/demo.cast: build
+screenshots/demo.cast: $(NATIVE_BIN)
 	LANG=en asciinema rec --title "$(NATIVE_BIN) $(LATEST_TAG_SHORT)" \
 		--command "$(NATIVE_BIN) /usr/share" ./screenshots/demo.cast \
 		--overwrite
-screenshots/demo2.cast: build
+screenshots/demo2.cast: $(NATIVE_BIN)
 	LANG=en asciinema rec --title "$(NATIVE_BIN) $(LATEST_TAG_SHORT)" \
 		--command "$(NATIVE_BIN) ." ./screenshots/demo2.cast \
 		--overwrite
@@ -143,7 +143,7 @@ build:
 .SILENT:
 build-all: clean
 	platforms=(
-	$(SUPPORTED_PLATFORMS)
+		$(SUPPORTED_PLATFORMS)
 	)
 	$(call TITLE,Building...)
 	for platform in $${platforms[@]}; do
@@ -163,7 +163,7 @@ release: build-all changelog.md
 update-assets: build-all
 	gh release upload --clobber "$(LATEST_TAG_SHORT)" ./builds/*
 
-completions: build
+completions: $(NATIVE_BIN)
 	@mkdir -p completions
 	$(NATIVE_BIN) --gen-bash-completion ./completions/fsize.bash
 	$(NATIVE_BIN) --gen-fish-completion ./completions/fsize.fish
