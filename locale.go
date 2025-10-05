@@ -8,7 +8,6 @@ import (
 
 	"github.com/Tom5521/fsize/settings"
 	"github.com/Tom5521/go-locale"
-
 	"github.com/leonelquinteros/gotext"
 	"github.com/spf13/viper"
 )

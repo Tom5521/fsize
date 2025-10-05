@@ -12,27 +12,27 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.6\n"
 
-#: flags.go:15
+#: flags.go:18
 msgid "Displays the file/folder properties."
 msgstr "Exibe as propriedades do arquivo/diretório."
 
-#: flags.go:27
+#: flags.go:31
 msgid ""
 "Prints the name of the file being walked if a directory has been selected."
 msgstr "Imprime o nome do arquivo processado se um diretório foi selecionado."
 
-#: flags.go:30
+#: flags.go:34
 msgid "Skips walking inside the directories."
 msgstr "Ignora a navegação dentro dos diretórios."
 
-#: flags.go:33
+#: flags.go:37
 msgid ""
 "Displays a file count and progress bar when counting and summing file sizes."
 msgstr ""
 "Exibe a contagem de arquivos e uma barra de progresso ao contar e somar os "
 "tamanhos dos arquivos."
 
-#: flags.go:36
+#: flags.go:40
 msgid ""
 "Configure the variables used for preferences\n"
 "Example: \"fsize --config 'always-show-progress=true,always-print-on-"
@@ -48,15 +48,15 @@ msgstr ""
 "Para ver as variáveis disponíveis e seus valores, execute \"fsize --print-"
 "settings\"."
 
-#: flags.go:42
+#: flags.go:46
 msgid "Prints the current configuration values."
 msgstr "Exibe os valores atuais de configuração."
 
-#: flags.go:45
+#: flags.go:49
 msgid "Hide possible warnings."
 msgstr "Oculta avisos possíveis."
 
-#: flags.go:48
+#: flags.go:52
 msgid ""
 "Generate a completion file for bash\n"
 "if any, the first argument will be taken as output file."
@@ -64,7 +64,7 @@ msgstr ""
 "Gera um arquivo de conclusão para o bash\n"
 "se fornecido, o primeiro argumento será usado como arquivo de saída."
 
-#: flags.go:52
+#: flags.go:56
 msgid ""
 "Generate a completion file for fish\n"
 "if any, the first argument will be taken as output file."
@@ -72,7 +72,7 @@ msgstr ""
 "Gera um arquivo de conclusão para o fish\n"
 "se fornecido, o primeiro argumento será usado como arquivo de saída."
 
-#: flags.go:56
+#: flags.go:60
 msgid ""
 "Generate a completion file for zsh\n"
 "if any, the first argument will be taken as output file."
@@ -80,7 +80,7 @@ msgstr ""
 "Gera um arquivo de conclusão para o zsh\n"
 "se fornecido, o primeiro argumento será usado como arquivo de saída."
 
-#: flags.go:64
+#: flags.go:68
 msgid ""
 "Automatically updates the program by overwriting the binary and regenerating "
 "the completions."
@@ -88,15 +88,15 @@ msgstr ""
 "Atualiza automaticamente o programa substituindo o binário e regenerando os "
 "arquivos de conclusão."
 
-#: flags.go:71
+#: flags.go:75
 msgid "Displays the information of the binary"
 msgstr "Exibe as informações do binário"
 
-#: flags.go:83
+#: flags.go:87
 msgid "Disable any progress indicator."
 msgstr "Desativa qualquer indicador de progresso."
 
-#: flags.go:90
+#: flags.go:94
 msgid ""
 "Specifies how long the program should be counting files\n"
 "before a progress indicator appears"
@@ -104,53 +104,72 @@ msgstr ""
 "Especifica por quanto tempo o programa deve contar os arquivos\n"
 "antes que um indicador de progresso apareça"
 
-#: main.go:39
+#: flags.go:102
+msgid ""
+"If the pattern is not \"\", only files that match it will be included in the "
+"count.\n"
+"The pattern must be a regular expression unless the --wildcard flag on"
+msgstr ""
+
+#: flags.go:111
+msgid ""
+"If ignore is not \"\", the files that match it will be excluded from the "
+"count.\n"
+"The pattern must be a regular expression unless the --wildcard flag is on"
+msgstr ""
+
+#: flags.go:120
+msgid ""
+"Switches --ignore & --pattern from regular expressions to wildcard patterns"
+msgstr ""
+
+#: main.go:40
 msgid "ERROR:"
 msgstr "ERRO:"
 
-#: main.go:56
+#: main.go:57
 msgid "Available configuration keys:"
 msgstr "Chaves de configuração disponíveis:"
 
-#: main.go:69
+#: main.go:70
 msgid "Already in latest version"
 msgstr "Já está na versão mais recente"
 
-#: main.go:85
+#: main.go:86
 msgid "Version:"
 msgstr "Versão:"
 
-#: main.go:86
+#: main.go:87
 msgid "Updated:"
 msgstr "Atualizado:"
 
-#: main.go:88
+#: main.go:89
 msgid "Latest version:"
 msgstr "Última versão:"
 
-#: main.go:91
+#: main.go:92
 msgid "Source Code: %s"
 msgstr "Código-fonte: %s"
 
-#: main.go:96
+#: main.go:97
 msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr ""
 "Nenhum arquivo/diretório foi especificado. O diretório atual será usado. (.)"
 
-#: settings/main.go:66
+#: settings/main.go:72
 msgid "syntax error"
 msgstr "erro de sintaxe"
 
-#: settings/main.go:71
+#: settings/main.go:77
 msgid "unrecognized key \"%s\""
 msgstr "chave desconhecida \"%s\"."
 
-#: settings/main.go:84
+#: settings/main.go:90
 msgid "invalid time duration(%s): %s"
 msgstr "duração de tempo inválida(%s): %s"
 
-#: settings/main.go:91
+#: settings/main.go:97
 msgid "unrecognized value type \"%s\""
 msgstr "tipo de valor desconhecido \"%s\"."
 

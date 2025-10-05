@@ -94,6 +94,32 @@ if any, the first argument will be taken as output file.`),
 		gotext.Get(`Specifies how long the program should be counting files
 before a progress indicator appears`),
 	)
+	flag.StringVarP(
+		&flags.Pattern,
+		"pattern", "f",
+		viper.GetString(settings.Pattern),
+		gotext.Get(
+			`If the pattern is not "", only files that match it will be included in the count.
+The pattern must be a regular expression unless the --wildcard flag on`,
+		),
+	)
+
+	flag.StringVarP(
+		&flags.IgnorePattern,
+		"ignore", "i",
+		viper.GetString(settings.IgnorePattern),
+		gotext.Get(`If ignore is not "", the files that match it will be excluded from the count.
+The pattern must be a regular expression unless the --wildcard flag is on`),
+	)
+	flag.BoolVarP(
+		&flags.Wildcard,
+		"wildcard",
+		"w",
+		viper.GetBool(settings.Wildcard),
+		gotext.Get(
+			`Switches --ignore & --pattern from regular expressions to wildcard patterns`,
+		),
+	)
 
 	flag.BoolVar(&flags.Test, "test", false, "---")
 	flag.MarkHidden("test")

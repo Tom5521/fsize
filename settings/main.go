@@ -23,6 +23,9 @@ const (
 	NoColor            = "No-Color"
 	Language           = "Language"
 	ProgressDelay      = "Progress-Delay"
+	Pattern            = "Pattern"
+	IgnorePattern      = "Ignore-Pattern"
+	Wildcard           = "Wildcard"
 )
 
 func InitSettings() error {
@@ -40,6 +43,9 @@ func InitSettings() error {
 	viper.SetDefault(HideProgress, false)
 	viper.SetDefault(NoColor, false)
 	viper.SetDefault(ProgressDelay, "1s")
+	viper.SetDefault(Pattern, "")
+	viper.SetDefault(IgnorePattern, "")
+	viper.SetDefault(Wildcard, false)
 
 read:
 	if err := viper.ReadInConfig(); err != nil {

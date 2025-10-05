@@ -1,108 +1,120 @@
 #, fuzzy
 msgid ""
-msgstr "\nProject-Id-Version: v1.17.4-3-g72da3e5\n\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\n\nLanguage-Team: LANGUAGE <LL@li.org>\n\nLanguage: en\n\nMIME-Version: 1.0\n\nContent-Type: text/plain; charset=CHARSET\n\nContent-Transfer-Encoding: 8bit\n\nX-Generator: xgotext\n"
+msgstr "\nProject-Id-Version: v1.17.6\n\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\n\nLanguage-Team: LANGUAGE <LL@li.org>\n\nLanguage: en\n\nMIME-Version: 1.0\n\nContent-Type: text/plain; charset=CHARSET\n\nContent-Transfer-Encoding: 8bit\n\nX-Generator: xgotext\n"
 
-#: flags.go:15
+#: flags.go:18
 msgid "Displays the file/folder properties."
 msgstr ""
 
-#: flags.go:27
+#: flags.go:31
 msgid "Prints the name of the file being walked if a directory has been selected."
 msgstr ""
 
-#: flags.go:30
+#: flags.go:34
 msgid "Skips walking inside the directories."
 msgstr ""
 
-#: flags.go:33
+#: flags.go:37
 msgid "Displays a file count and progress bar when counting and summing file sizes."
 msgstr ""
 
-#: flags.go:36
+#: flags.go:40
 msgid "Configure the variables used for preferences\nExample: \"fsize --config 'always-show-progress=true,always-print-on-walk=false'\".\n\nTo see the available variables and their values run \"fsize --print-settings\"."
 msgstr ""
 
-#: flags.go:42
+#: flags.go:46
 msgid "Prints the current configuration values."
 msgstr ""
 
-#: flags.go:45
+#: flags.go:49
 msgid "Hide possible warnings."
 msgstr ""
 
-#: flags.go:48
+#: flags.go:52
 msgid "Generate a completion file for bash\nif any, the first argument will be taken as output file."
 msgstr ""
 
-#: flags.go:52
+#: flags.go:56
 msgid "Generate a completion file for fish\nif any, the first argument will be taken as output file."
 msgstr ""
 
-#: flags.go:56
+#: flags.go:60
 msgid "Generate a completion file for zsh\nif any, the first argument will be taken as output file."
 msgstr ""
 
-#: flags.go:64
+#: flags.go:68
 msgid "Automatically updates the program by overwriting the binary and regenerating the completions."
 msgstr ""
 
-#: flags.go:71
+#: flags.go:75
 msgid "Displays the information of the binary"
 msgstr ""
 
-#: flags.go:83
+#: flags.go:87
 msgid "Disable any progress indicator."
 msgstr ""
 
-#: flags.go:90
+#: flags.go:94
 msgid "Specifies how long the program should be counting files\nbefore a progress indicator appears"
 msgstr ""
 
-#: main.go:39
+#: flags.go:102
+msgid "If the pattern is not \"\", only files that match it will be included in the count.\nThe pattern must be a regular expression unless the --wildcard flag on"
+msgstr ""
+
+#: flags.go:111
+msgid "If ignore is not \"\", the files that match it will be excluded from the count.\nThe pattern must be a regular expression unless the --wildcard flag is on"
+msgstr ""
+
+#: flags.go:120
+msgid "Switches --ignore & --pattern from regular expressions to wildcard patterns"
+msgstr ""
+
+#: main.go:40
 msgid "ERROR:"
 msgstr ""
 
-#: main.go:56
+#: main.go:57
 msgid "Available configuration keys:"
 msgstr ""
 
-#: main.go:69
+#: main.go:70
 msgid "Already in latest version"
 msgstr ""
 
-#: main.go:85
+#: main.go:86
 msgid "Version:"
 msgstr ""
 
-#: main.go:86
+#: main.go:87
 msgid "Updated:"
 msgstr ""
 
-#: main.go:88
+#: main.go:89
 msgid "Latest version:"
 msgstr ""
 
-#: main.go:91
+#: main.go:92
 msgid "Source Code: %s"
 msgstr ""
 
-#: main.go:96
+#: main.go:97
 msgid "No file/directory was specified, the current directory will be used. (.)"
 msgstr ""
 
-#: settings/main.go:66
+#: settings/main.go:72
 msgid "syntax error"
 msgstr ""
 
-#: settings/main.go:71
+#: settings/main.go:77
 msgid "unrecognized key \"%s\""
 msgstr ""
 
-#: settings/main.go:84
+#: settings/main.go:90
 msgid "invalid time duration(%s): %s"
 msgstr ""
 
-#: settings/main.go:91
+#: settings/main.go:97
 msgid "unrecognized value type \"%s\""
 msgstr ""
 

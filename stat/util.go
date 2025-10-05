@@ -4,7 +4,10 @@ import (
 	"io/fs"
 	"os"
 	"path/filepath"
+	"regexp"
 	"sync"
+
+	"github.com/Tom5521/fsize/flags"
 )
 
 func processFiles(
@@ -14,7 +17,38 @@ func processFiles(
 	mu ...*sync.Mutex,
 ) (err error) {
 	return filepath.Walk(path,
-		func(path string, info fs.FileInfo, err error) error {
+		func(path string, info fs.FileInfo, err2 error) error {
+			var (
+				wd    string
+				rel   string
+				cmp   = regexp.MatchString
+				match bool
+				err   error
+			)
+			if flags.Wildcard {
+				cmp = filepath.Match
+			}
+			wd, err = os.Getwd()
+			if err != nil {
+				return err
+			}
+			rel, err = filepath.Rel(wd, path)
+			if err != nil {
+				return err
+			}
+
+			if flags.Pattern != "" {
+				match, err = cmp(flags.Pattern, rel)
+				if err != nil || !match {
+					return err
+				}
+			}
+			if flags.IgnorePattern != "" {
+				match, err = cmp(flags.IgnorePattern, rel)
+				if err != nil || match {
+					return err
+				}
+			}
 			if err == nil {
 				hasMutex := len(mu) > 0
 				if hasMutex {

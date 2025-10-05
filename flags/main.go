@@ -11,6 +11,9 @@ var (
 	BinInfo       bool
 	NoProgress    bool
 	ProgressDelay time.Duration
+	Wildcard      bool
+	Pattern       string
+	IgnorePattern string
 
 	// Hidden flags.
 
