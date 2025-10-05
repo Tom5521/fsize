@@ -2,15 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-01-16 00:38-0300\n"
-"Last-Translator: <thomas.bored5521@gmail.com>\n"
+"PO-Revision-Date: 2025-10-05 00:36-0300\n"
+"Last-Translator: thomas.bored5521@gmail.com\n"
 "Language-Team: \n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #: flags.go:15
 msgid "Displays the file/folder properties."
@@ -280,21 +280,16 @@ msgstr "Atualização concluída com sucesso"
 
 #: update/main.go:158
 msgid "%s detected, reversing changes before finishing program..."
-msgstr ""
+msgstr "%s detetado, revertendo alterações antes de terminar o programa..."
 
 #: update/update-completions.go:28
-#, fuzzy
 msgid "error removing %s completions: %s"
-msgstr "erro ao remover o executável antigo: %v"
+msgstr "erro ao remover %s sugestão: %s"
 
 #: update/update-completions.go:46
 msgid "%s not found."
 msgstr "%s não encontrado."
 
 #: update/update-completions.go:51
-#, fuzzy
 msgid "error creating completion directory: %s"
-msgstr "erro ao obter o usuário atual: %v"
-
-#~ msgid "The user is not root, the completions will not be updated"
-#~ msgstr "O usuário não é root, as conclusões não serão atualizadas"
+msgstr "erro ao criar diretório de sugestões: %s"

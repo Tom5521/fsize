@@ -1,14 +1,16 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"PO-Revision-Date: 2025-01-13 14:19-0300\n"
-"Last-Translator:  <thomas.bored5521@gmail.com>\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2025-10-05 00:38-0300\n"
+"Last-Translator: thomas.bored5521@gmail.com\n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.6\n"
 
 #: flags.go:15
 msgid "Displays the file/folder properties."
@@ -145,7 +147,7 @@ msgstr "неопознанный ключ \"%s\""
 
 #: settings/main.go:84
 msgid "invalid time duration(%s): %s"
-msgstr "Неверная продолжительность времени(%s): %s"
+msgstr "недействительная продолжительность времени (%s): %s"
 
 #: settings/main.go:91
 msgid "unrecognized value type \"%s\""
@@ -277,21 +279,16 @@ msgstr "Обновление успешно завершено"
 
 #: update/main.go:158
 msgid "%s detected, reversing changes before finishing program..."
-msgstr ""
+msgstr "Обнаружено %s, отмена изменений перед завершением программы..."
 
 #: update/update-completions.go:28
-#, fuzzy
 msgid "error removing %s completions: %s"
-msgstr "ошибка удаления старого исполняемого файла: %v"
+msgstr "ошибка при удалении завершений %s: %s"
 
 #: update/update-completions.go:46
 msgid "%s not found."
 msgstr "%s не найдено."
 
 #: update/update-completions.go:51
-#, fuzzy
 msgid "error creating completion directory: %s"
-msgstr "ошибка получения текущего пользователя: %v"
-
-#~ msgid "The user is not root, the completions will not be updated"
-#~ msgstr "Пользователь не root, автозаполнения не будут обновлены"
+msgstr "ошибка при создании каталога завершения: %s"
