@@ -10,14 +10,18 @@ import (
 	"github.com/spf13/viper"
 )
 
-var root = cobra.Command{
-	Use:   "fsize",
-	Short: gotext.Get("Displays the file/folder properties."),
-	PostRunE: func(cmd *cobra.Command, args []string) error {
-		return viper.WriteConfig()
-	},
-	RunE:    RunE,
-	Version: meta.LongVersion,
+var root cobra.Command
+
+func initRoot() {
+	root = cobra.Command{
+		Use:   "fsize",
+		Short: gotext.Get("Displays the file/folder properties."),
+		PostRunE: func(cmd *cobra.Command, args []string) error {
+			return viper.WriteConfig()
+		},
+		RunE:    RunE,
+		Version: meta.LongVersion,
+	}
 }
 
 func InitFlags() {

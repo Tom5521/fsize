@@ -34,6 +34,7 @@ func main() {
 	}
 
 	initLocales()
+	initRoot()
 
 	InitFlags()
 	root.SetErrPrefix(color.Error.Render(po.Get("ERROR:")))
