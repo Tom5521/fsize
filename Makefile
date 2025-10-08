@@ -5,6 +5,7 @@ GOARCH := $(shell go env GOARCH)
 GOPATH := $(shell go env GOPATH)
 GOENV := GOOS=$(GOOS) GOARCH=$(GOARCH)
 BUILD_TAGS :=
+BUILD_ARGS :=
 
 ROOT_PREFIX := /usr/local
 LOCAL_PREFIX := $(HOME)/.local
@@ -97,16 +98,31 @@ LD_FLAGS := -s -w
 LD_FLAGS += -X '$(GO_PACKAGE)/meta.LongVersion=$(LATEST_TAG)'
 LD_FLAGS += -X '$(GO_PACKAGE)/meta.Version=$(LATEST_TAG_SHORT)'
 
+XGOTEXT_SUFFIX := $(if $(WIN_EXT),.exe,.bin)
+XGOTEXT_PATH := $(if $(shell command -v xgotext),\
+	xgotext,./xgotext$(XGOTEXT_SUFFIX))
+
+define CLEAN_TARGETS
+*.mo
+*.po~
+*.log
+*.diff
+completions
+builds
+fsize
+changelog.md
+endef
+
 BIN = ./builds/fsize-$(1)-$(2)$(call WIN_EXT,$(1))
 override CURRENT_BIN := $(call BIN,$(GOOS),$(GOARCH))
 override NATIVE_GOOS := $(shell go env GOOS)
 override NATIVE_GOARCH := $(shell go env GOARCH)
 override NATIVE_BIN := $(call BIN,$(NATIVE_GOOS),$(NATIVE_GOARCH))
 
-.PHONY: test all clean default run build build-all \
+.PHONY: test all clean default run build build-all install uninstall \
 	%-completions-install %-completions-uninstall go-install \
-	go-uninstall %-install %-uninstall release update-assets \
-	install uninstall
+	go-uninstall %-install %-uninstall release update-assets po/en/default.pot \
+	xgotext$(XGOTEXT_SUFFIX)
 .DEFAULT_GOAL := default
 
 default: test
@@ -116,46 +132,52 @@ test:
 run:
 	$(CMD) run $(V_FLAG) .
 
+.ONESHELL:
 clean:
-	rm -rf completions builds fsize changelog.md
-	find . -name "*.mo" -delete
-	find . -name "*.po~" -delete
-	find . -name "*.log" -delete
-	find . -name "*.diff" -delete
+	targets=($(CLEAN_TARGETS))
+	for target in $${targets[@]}; do
+		find . -name "$$target" | xargs rm -rf
+	done
 
 screenshots/demo.gif:
 	vhs ./screenshots/demo.tape
 
 .ONESHELL:
 .SILENT:
-po:
-	if ! command -v xgotext &> /dev/null; then
-		$(call WARN,xgotext isn't installed.)
-		$(call WARN,installing xgotext...)
-		bin=$(HOME)/.local/bin/xgotext$(call MWIN_EXT,$(NATIVE_GOOS))
-		mkdir -p builds "$$(dirname $$bin)"
-		wget -O "$$bin" \
-			"https://github.com/Tom5521/gotext-tools/releases/latest/download/xgotext-$(NATIVE_GOOS)-$(NATIVE_GOARCH)$(call MWIN_EXT,$(NATIVE_GOOS))" 2> /dev/null
-		chmod +x "$$bin"
-		$(call TITLE,xgotext installed successfully!)
+xgotext$(XGOTEXT_SUFFIX):
+	if stat ./xgotext$(XGOTEXT_SUFFIX) &> /dev/null; then
+		exit
 	fi
+	if command -v xgotext &> /dev/null; then
+		exit
+	fi
+	$(call WARN,xgotext isn't installed.)
+	$(call WARN,downloading xgotext...)
+	wget -O "$(XGOTEXT_PATH)" \
+		"https://github.com/Tom5521/gotext-tools/releases/latest/download/xgotext-$(NATIVE_GOOS)-$(NATIVE_GOARCH)$(call MWIN_EXT,$(NATIVE_GOOS))" 2> /dev/null
+	chmod +x "$(XGOTEXT_PATH)"
+	$(call TITLE,xgotext downloaded successfully!)
+
+po/en/default.pot: xgotext$(XGOTEXT_SUFFIX)
 	$(call INFO,Updating english template...)
-	xgotext . -o ./po/en/default.pot --lang en --package-version \
+	$(XGOTEXT_PATH) . -o ./po/en/default.pot --lang en --package-version \
 		$(LATEST_TAG)
+
+.ONESHELL:
+.SILENT:
+po: po/en/default.pot
 	$(call TITLE,Updating translations...)
 	for dir in ./po/*; do
 		if [[ "$$dir" == "./po/en" ]]; then
 			continue
 		fi
-		
 		file=$$dir/default.po
 		lang=$$(basename "$$(dirname "$$file")")
-	
 		$(call INFO,Updating $$lang...)
 		msgmerge -U --lang "$$lang" "$$file" ./po/en/default.pot 2> /dev/null
 	done
 	$(call INFO,Deleting intermediate files...)
-	find po -name "*.po~" -delete
+	$(MAKE) -s clean
 	$(call INFO,po generations finished successfully!)
 
 log.diff:
@@ -175,6 +197,7 @@ changelog.md:
 .SILENT:
 build:
 	$(CMD) build $(V_FLAG) \
+	$(BUILD_ARGS) \
 	$(if $(BUILD_TAGS),-tags "$(BUILD_TAGS)") \
 	-o $(CURRENT_BIN) \
 	-ldflags="$(LD_FLAGS)" .
