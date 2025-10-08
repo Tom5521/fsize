@@ -44,8 +44,8 @@ func InitSettings() error {
 	viper.SetDefault(HideProgress, false)
 	viper.SetDefault(NoColor, false)
 	viper.SetDefault(ProgressDelay, "1s")
-	viper.SetDefault(Pattern, "")
-	viper.SetDefault(IgnorePattern, "")
+	viper.SetDefault(Pattern, []string(nil))
+	viper.SetDefault(IgnorePattern, []string(nil))
 	viper.SetDefault(Wildcard, false)
 
 read:

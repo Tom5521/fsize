@@ -5,6 +5,7 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"sync"
 
 	"github.com/Tom5521/fsize/flags"
@@ -14,7 +15,7 @@ func processFiles(
 	count, size *int64,
 	path string,
 	fn filepath.WalkFunc,
-	mu ...*sync.Mutex,
+	mu *sync.Mutex,
 ) (err error) {
 	return filepath.Walk(path,
 		func(path string, info fs.FileInfo, err2 error) error {
@@ -36,32 +37,32 @@ func processFiles(
 			if err != nil {
 				return err
 			}
+			preferredPath := rel
+			if strings.HasPrefix(rel, "..") {
+				preferredPath = path
+			}
 
-			if flags.Pattern != "" {
-				match, err = cmp(flags.Pattern, rel)
+			for _, pattern := range flags.Patterns {
+				match, err = cmp(pattern, preferredPath)
 				if err != nil || !match {
-					return err
+					return filepath.SkipDir
 				}
 			}
-			if flags.IgnorePattern != "" {
-				match, err = cmp(flags.IgnorePattern, rel)
+			for _, pattern := range flags.IgnorePatterns {
+				match, err = cmp(pattern, preferredPath)
 				if err != nil || match {
-					return err
+					return filepath.SkipDir
 				}
 			}
-			if err == nil {
-				hasMutex := len(mu) > 0
-				if hasMutex {
-					mu[0].Lock()
-				}
+
+			if err2 == nil {
+				mu.Lock()
 				*count++
 				*size += info.Size()
-				if hasMutex {
-					mu[0].Unlock()
-				}
+				mu.Unlock()
 			}
 
-			return fn(path, info, err)
+			return fn(preferredPath, info, err)
 		},
 	)
 }

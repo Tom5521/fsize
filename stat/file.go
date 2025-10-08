@@ -46,26 +46,7 @@ type File struct {
 	linfo os.FileInfo
 }
 
-func (f *File) printedCount() {
-	processFiles(
-		&f.FilesNumber,
-		&f.Size,
-		f.AbsPath,
-		func(path string, info fs.FileInfo, err error) error {
-			if err != nil {
-				log.Warn(err.Error())
-				return nil
-			}
-
-			if flags.PrintOnWalk && !flags.NoProgress {
-				log.Info(po.Get("Reading \"%s\"...", path))
-			}
-
-			return nil
-		},
-	)
-}
-
+// NOTE: Here's a race condition.
 func (f *File) progressUpdater(
 	finished, terminatedProgress chan struct{},
 	warns *[]error,
@@ -108,7 +89,7 @@ func (f *File) progressCount() {
 	var mu sync.Mutex
 
 	go func() {
-		if flags.NoProgress {
+		if flags.NoProgress || flags.PrintOnWalk {
 			return
 		}
 		select {
@@ -124,8 +105,8 @@ func (f *File) progressCount() {
 		func(path string, info fs.FileInfo, err error) error {
 			if err != nil {
 				mu.Lock()
-				defer mu.Unlock()
 				warns = append(warns, err)
+				mu.Unlock()
 				return nil
 			}
 			if flags.PrintOnWalk && !flags.NoProgress {
@@ -157,8 +138,6 @@ func NewFile(path string) (f File, err error) {
 
 	if flags.Progress && f.info.IsDir() && !flags.NoWalk {
 		f.progressCount()
-	} else if f.info.IsDir() && !flags.NoWalk {
-		f.printedCount()
 	}
 
 	return f, err
