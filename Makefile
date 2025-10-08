@@ -31,7 +31,7 @@ android/arm64
 endef
 
 # These are just the platforms that fsize is compatible with.
-define COMPLATIBLE_PLATFORMS
+define COMPATIBLE_PLATFORMS
 windows/amd64
 windows/386
 windows/arm
@@ -196,7 +196,7 @@ build-all: clean
 .SILENT:
 build-for-all: clean
 	platforms=(
-		$(COMPLATIBLE_PLATFORMS)
+		$(COMPATIBLE_PLATFORMS)
 	)
 	$(call TITLE,Building...)
 	for platform in $${platforms[@]}; do
