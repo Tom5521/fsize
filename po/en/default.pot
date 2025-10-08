@@ -1,6 +1,6 @@
 #, fuzzy
 msgid ""
-msgstr "\nProject-Id-Version: v1.17.6\n\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\n\nLanguage-Team: LANGUAGE <LL@li.org>\n\nLanguage: en\n\nMIME-Version: 1.0\n\nContent-Type: text/plain; charset=CHARSET\n\nContent-Transfer-Encoding: 8bit\n\nX-Generator: xgotext\n"
+msgstr "\nProject-Id-Version: v1.18.0-6-g2929875\n\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\n\nLanguage-Team: LANGUAGE <LL@li.org>\n\nLanguage: en\n\nMIME-Version: 1.0\n\nContent-Type: text/plain; charset=CHARSET\n\nContent-Transfer-Encoding: 8bit\n\nX-Generator: xgotext\n"
 
 #: flags.go:18
 msgid "Displays the file/folder properties."
@@ -70,51 +70,51 @@ msgstr ""
 msgid "Switches --ignore & --pattern from regular expressions to wildcard patterns"
 msgstr ""
 
-#: main.go:40
+#: main.go:54
 msgid "ERROR:"
 msgstr ""
 
-#: main.go:57
+#: main.go:71
 msgid "Available configuration keys:"
 msgstr ""
 
-#: main.go:70
+#: main.go:84
 msgid "Already in latest version"
 msgstr ""
 
-#: main.go:86
+#: main.go:100
 msgid "Version:"
 msgstr ""
 
-#: main.go:87
+#: main.go:101
 msgid "Updated:"
 msgstr ""
 
-#: main.go:89
+#: main.go:103
 msgid "Latest version:"
 msgstr ""
 
-#: main.go:92
+#: main.go:106
 msgid "Source Code: %s"
 msgstr ""
 
-#: main.go:97
+#: main.go:111
 msgid "No file/directory was specified, the current directory will be used. (.)"
 msgstr ""
 
-#: settings/main.go:72
+#: settings/main.go:73
 msgid "syntax error"
 msgstr ""
 
-#: settings/main.go:77
+#: settings/main.go:78
 msgid "unrecognized key \"%s\""
 msgstr ""
 
-#: settings/main.go:90
+#: settings/main.go:91
 msgid "invalid time duration(%s): %s"
 msgstr ""
 
-#: settings/main.go:97
+#: settings/main.go:98
 msgid "unrecognized value type \"%s\""
 msgstr ""
 
@@ -195,51 +195,65 @@ msgstr ""
 msgid "Do you want to proceed with the update?"
 msgstr ""
 
-#: update/main.go:80
+#: update/main.go:77
+#: update/update-completions.go:37
+msgid "Yes"
+msgstr ""
+
+#: update/main.go:86
+#: update/update-completions.go:45
+msgid "error running confirm dialog"
+msgstr ""
+
+#: update/main.go:88
 msgid "The command has been cancelled."
 msgstr ""
 
-#: update/main.go:92
+#: update/main.go:101
 msgid "error renaming the old executable [%s] to: %v"
 msgstr ""
 
-#: update/main.go:97
+#: update/main.go:106
 msgid "error getting http response: %v"
 msgstr ""
 
-#: update/main.go:106
+#: update/main.go:115
 msgid "Downloading latest version..."
 msgstr ""
 
-#: update/main.go:109
+#: update/main.go:118
 msgid "Error downloading binary to %s: %v"
 msgstr ""
 
-#: update/main.go:110
+#: update/main.go:119
 msgid "Reversing changes..."
 msgstr ""
 
-#: update/main.go:115
+#: update/main.go:124
 msgid "error reversing changes: failed to rename %s to %s: %v"
 msgstr ""
 
-#: update/main.go:129
-msgid "error finishing the progress bar"
+#: update/main.go:138
+msgid "error finishing the progress bar: %w"
 msgstr ""
 
-#: update/main.go:133
-msgid "error removing old executable: %v"
+#: update/main.go:142
+msgid "error removing old executable: %w"
 msgstr ""
 
-#: update/main.go:137
+#: update/main.go:146
 msgid "Updating completions..."
 msgstr ""
 
-#: update/main.go:144
+#: update/main.go:149
+msgid "error updating the completions: %w"
+msgstr ""
+
+#: update/main.go:153
 msgid "Upgrade completed successfully"
 msgstr ""
 
-#: update/main.go:158
+#: update/main.go:167
 msgid "%s detected, reversing changes before finishing program..."
 msgstr ""
 
@@ -247,11 +261,19 @@ msgstr ""
 msgid "error removing %s completions: %s"
 msgstr ""
 
-#: update/update-completions.go:46
+#: update/update-completions.go:36
+msgid "Do you want to update the completions?"
+msgstr ""
+
+#: update/update-completions.go:38
+msgid "No"
+msgstr ""
+
+#: update/update-completions.go:53
 msgid "%s not found."
 msgstr ""
 
-#: update/update-completions.go:51
+#: update/update-completions.go:58
 msgid "error creating completion directory: %s"
 msgstr ""
 

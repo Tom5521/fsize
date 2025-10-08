@@ -131,53 +131,53 @@ msgid ""
 "Switches --ignore & --pattern from regular expressions to wildcard patterns"
 msgstr "Muda --ignore e --pattern de expressões regulares para padrões curinga"
 
-#: main.go:40
+#: main.go:54
 msgid "ERROR:"
 msgstr "ERRO:"
 
-#: main.go:57
+#: main.go:71
 msgid "Available configuration keys:"
 msgstr "Chaves de configuração disponíveis:"
 
-#: main.go:70
+#: main.go:84
 msgid "Already in latest version"
 msgstr "Já está na versão mais recente"
 
-#: main.go:86
+#: main.go:100
 msgid "Version:"
 msgstr "Versão:"
 
-#: main.go:87
+#: main.go:101
 msgid "Updated:"
 msgstr "Atualizado:"
 
-#: main.go:89
+#: main.go:103
 msgid "Latest version:"
 msgstr "Última versão:"
 
-#: main.go:92
+#: main.go:106
 msgid "Source Code: %s"
 msgstr "Código-fonte: %s"
 
-#: main.go:97
+#: main.go:111
 msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr ""
 "Nenhum arquivo/diretório foi especificado. O diretório atual será usado. (.)"
 
-#: settings/main.go:72
+#: settings/main.go:73
 msgid "syntax error"
 msgstr "erro de sintaxe"
 
-#: settings/main.go:77
+#: settings/main.go:78
 msgid "unrecognized key \"%s\""
 msgstr "chave desconhecida \"%s\"."
 
-#: settings/main.go:90
+#: settings/main.go:91
 msgid "invalid time duration(%s): %s"
 msgstr "duração de tempo inválida(%s): %s"
 
-#: settings/main.go:97
+#: settings/main.go:98
 msgid "unrecognized value type \"%s\""
 msgstr "tipo de valor desconhecido \"%s\"."
 
@@ -261,51 +261,66 @@ msgstr ""
 msgid "Do you want to proceed with the update?"
 msgstr "Deseja continuar com a atualização?"
 
-#: update/main.go:80
+#: update/main.go:77 update/update-completions.go:37
+msgid "Yes"
+msgstr ""
+
+#: update/main.go:86 update/update-completions.go:45
+msgid "error running confirm dialog"
+msgstr ""
+
+#: update/main.go:88
 msgid "The command has been cancelled."
 msgstr "O comando foi cancelado."
 
-#: update/main.go:92
+#: update/main.go:101
 msgid "error renaming the old executable [%s] to: %v"
 msgstr "erro ao renomear o executável antigo [%s] para: %v"
 
-#: update/main.go:97
+#: update/main.go:106
 msgid "error getting http response: %v"
 msgstr "erro ao obter resposta HTTP: %v"
 
-#: update/main.go:106
+#: update/main.go:115
 msgid "Downloading latest version..."
 msgstr "Baixando a versão mais recente..."
 
-#: update/main.go:109
+#: update/main.go:118
 msgid "Error downloading binary to %s: %v"
 msgstr "Erro ao baixar o binário para %s: %v"
 
-#: update/main.go:110
+#: update/main.go:119
 msgid "Reversing changes..."
 msgstr "Revertendo alterações..."
 
-#: update/main.go:115
+#: update/main.go:124
 msgid "error reversing changes: failed to rename %s to %s: %v"
 msgstr "erro ao reverter alterações: falha ao renomear %s para %s: %v"
 
-#: update/main.go:129
-msgid "error finishing the progress bar"
+#: update/main.go:138
+#, fuzzy
+msgid "error finishing the progress bar: %w"
 msgstr "erro ao finalizar a barra de progresso"
 
-#: update/main.go:133
-msgid "error removing old executable: %v"
+#: update/main.go:142
+#, fuzzy
+msgid "error removing old executable: %w"
 msgstr "erro ao remover o executável antigo: %v"
 
-#: update/main.go:137
+#: update/main.go:146
 msgid "Updating completions..."
 msgstr "Atualizando os arquivos de conclusão..."
 
-#: update/main.go:144
+#: update/main.go:149
+#, fuzzy
+msgid "error updating the completions: %w"
+msgstr "erro ao remover %s sugestão: %s"
+
+#: update/main.go:153
 msgid "Upgrade completed successfully"
 msgstr "Atualização concluída com sucesso"
 
-#: update/main.go:158
+#: update/main.go:167
 msgid "%s detected, reversing changes before finishing program..."
 msgstr "%s detetado, revertendo alterações antes de terminar o programa..."
 
@@ -313,10 +328,19 @@ msgstr "%s detetado, revertendo alterações antes de terminar o programa..."
 msgid "error removing %s completions: %s"
 msgstr "erro ao remover %s sugestão: %s"
 
-#: update/update-completions.go:46
+#: update/update-completions.go:36
+#, fuzzy
+msgid "Do you want to update the completions?"
+msgstr "Deseja continuar com a atualização?"
+
+#: update/update-completions.go:38
+msgid "No"
+msgstr ""
+
+#: update/update-completions.go:53
 msgid "%s not found."
 msgstr "%s não encontrado."
 
-#: update/update-completions.go:51
+#: update/update-completions.go:58
 msgid "error creating completion directory: %s"
 msgstr "erro ao criar diretório de sugestões: %s"

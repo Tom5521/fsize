@@ -131,52 +131,52 @@ msgstr ""
 "Переключатели --ignore и --pattern из регулярных выражений на шаблоны с "
 "подстановочными знаками"
 
-#: main.go:40
+#: main.go:54
 msgid "ERROR:"
 msgstr "ОШИБКА:"
 
-#: main.go:57
+#: main.go:71
 msgid "Available configuration keys:"
 msgstr "Доступные ключи конфигурации:"
 
-#: main.go:70
+#: main.go:84
 msgid "Already in latest version"
 msgstr "Уже установлена последняя версия"
 
-#: main.go:86
+#: main.go:100
 msgid "Version:"
 msgstr "Версия:"
 
-#: main.go:87
+#: main.go:101
 msgid "Updated:"
 msgstr "Обновлено:"
 
-#: main.go:89
+#: main.go:103
 msgid "Latest version:"
 msgstr "Последняя версия:"
 
-#: main.go:92
+#: main.go:106
 msgid "Source Code: %s"
 msgstr "Исходный код: %s"
 
-#: main.go:97
+#: main.go:111
 msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr "Файл/директория не указаны, будет использована текущая директория. (.)"
 
-#: settings/main.go:72
+#: settings/main.go:73
 msgid "syntax error"
 msgstr "синтаксическая ошибка"
 
-#: settings/main.go:77
+#: settings/main.go:78
 msgid "unrecognized key \"%s\""
 msgstr "неопознанный ключ \"%s\""
 
-#: settings/main.go:90
+#: settings/main.go:91
 msgid "invalid time duration(%s): %s"
 msgstr "недействительная продолжительность времени (%s): %s"
 
-#: settings/main.go:97
+#: settings/main.go:98
 msgid "unrecognized value type \"%s\""
 msgstr "неопознанный тип значения \"%s\""
 
@@ -260,51 +260,66 @@ msgstr ""
 msgid "Do you want to proceed with the update?"
 msgstr "Вы хотите продолжить обновление?"
 
-#: update/main.go:80
+#: update/main.go:77 update/update-completions.go:37
+msgid "Yes"
+msgstr ""
+
+#: update/main.go:86 update/update-completions.go:45
+msgid "error running confirm dialog"
+msgstr ""
+
+#: update/main.go:88
 msgid "The command has been cancelled."
 msgstr "Команда была отменена."
 
-#: update/main.go:92
+#: update/main.go:101
 msgid "error renaming the old executable [%s] to: %v"
 msgstr "ошибка переименования старого исполняемого файла [%s] в: %v"
 
-#: update/main.go:97
+#: update/main.go:106
 msgid "error getting http response: %v"
 msgstr "ошибка получения http ответа: %v"
 
-#: update/main.go:106
+#: update/main.go:115
 msgid "Downloading latest version..."
 msgstr "Загрузка последней версии..."
 
-#: update/main.go:109
+#: update/main.go:118
 msgid "Error downloading binary to %s: %v"
 msgstr "Ошибка загрузки бинарного файла в %s: %v"
 
-#: update/main.go:110
+#: update/main.go:119
 msgid "Reversing changes..."
 msgstr "Отмена изменений..."
 
-#: update/main.go:115
+#: update/main.go:124
 msgid "error reversing changes: failed to rename %s to %s: %v"
 msgstr "ошибка отмены изменений: не удалось переименовать %s в %s: %v"
 
-#: update/main.go:129
-msgid "error finishing the progress bar"
+#: update/main.go:138
+#, fuzzy
+msgid "error finishing the progress bar: %w"
 msgstr "ошибка завершения индикатора прогресса"
 
-#: update/main.go:133
-msgid "error removing old executable: %v"
+#: update/main.go:142
+#, fuzzy
+msgid "error removing old executable: %w"
 msgstr "ошибка удаления старого исполняемого файла: %v"
 
-#: update/main.go:137
+#: update/main.go:146
 msgid "Updating completions..."
 msgstr "Обновление автозаполнений..."
 
-#: update/main.go:144
+#: update/main.go:149
+#, fuzzy
+msgid "error updating the completions: %w"
+msgstr "ошибка при удалении завершений %s: %s"
+
+#: update/main.go:153
 msgid "Upgrade completed successfully"
 msgstr "Обновление успешно завершено"
 
-#: update/main.go:158
+#: update/main.go:167
 msgid "%s detected, reversing changes before finishing program..."
 msgstr "Обнаружено %s, отмена изменений перед завершением программы..."
 
@@ -312,10 +327,19 @@ msgstr "Обнаружено %s, отмена изменений перед за
 msgid "error removing %s completions: %s"
 msgstr "ошибка при удалении завершений %s: %s"
 
-#: update/update-completions.go:46
+#: update/update-completions.go:36
+#, fuzzy
+msgid "Do you want to update the completions?"
+msgstr "Вы хотите продолжить обновление?"
+
+#: update/update-completions.go:38
+msgid "No"
+msgstr ""
+
+#: update/update-completions.go:53
 msgid "%s not found."
 msgstr "%s не найдено."
 
-#: update/update-completions.go:51
+#: update/update-completions.go:58
 msgid "error creating completion directory: %s"
 msgstr "ошибка при создании каталога завершения: %s"
