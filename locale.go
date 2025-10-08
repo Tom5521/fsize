@@ -8,6 +8,7 @@ import (
 
 	"github.com/Tom5521/fsize/settings"
 	"github.com/Tom5521/go-locale"
+	"github.com/charmbracelet/log"
 	"github.com/leonelquinteros/gotext"
 	"github.com/spf13/viper"
 )
@@ -45,10 +46,12 @@ func initLocales() {
 	}
 	tmpDir, err := os.MkdirTemp(os.TempDir(), "fsize-locales")
 	if err != nil {
+		log.Error("error creating temporary directory for locales", "err", err)
 		return
 	}
 	err = loadLocalesToTmp(tmpDir)
 	if err != nil {
+		log.Error("error dumping po FS into temporary directory", "err", err)
 		return
 	}
 	defer os.RemoveAll(tmpDir)

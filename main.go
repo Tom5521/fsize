@@ -4,13 +4,14 @@ import (
 	"fmt"
 	"os"
 	"runtime"
+	"time"
 
-	"github.com/Tom5521/fsize/echo"
 	"github.com/Tom5521/fsize/flags"
 	"github.com/Tom5521/fsize/meta"
 	"github.com/Tom5521/fsize/settings"
 	"github.com/Tom5521/fsize/stat"
 	"github.com/Tom5521/fsize/update"
+	"github.com/charmbracelet/log"
 	"github.com/gookit/color"
 	po "github.com/leonelquinteros/gotext"
 	"github.com/spf13/cobra"
@@ -20,16 +21,29 @@ import (
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 
+	// Initialize logger.
+	cfg := log.Options{
+		TimeFormat:      time.Kitchen,
+		ReportTimestamp: true,
+	}
+	if flags.Test {
+		cfg.ReportCaller = true
+		cfg.Level = log.DebugLevel
+	}
+
+	logger := log.NewWithOptions(os.Stderr, cfg)
+	log.SetDefault(logger)
+
 	defer func() {
 		if r := recover(); r != nil {
-			color.Errorln(r)
+			logger.Fatal(r)
 		}
 	}()
 
-	// Initialize variables
+	// Initialize variables.
 
 	if err := settings.InitSettings(); err != nil {
-		echo.Error(err)
+		log.Error(err)
 		return
 	}
 
@@ -50,12 +64,12 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 	case flags.GenBashCompletion || flags.GenFishCompletion || flags.GenZshCompletion:
 		err = GenerateCompletions(cmd, args)
 	case flags.PrintSettingsFlag:
-		echo.Settings()
+		settings.Print()
 	case len(flags.SettingsFlag) != 0:
 		err = settings.Parse(flags.SettingsFlag)
 		if err != nil {
-			echo.Info(po.Get("Available configuration keys:"))
-			echo.Settings()
+			log.Info(po.Get("Available configuration keys:"))
+			settings.Print()
 		}
 	case flags.Update:
 		var (
@@ -67,7 +81,7 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 			return err
 		}
 		if updated {
-			echo.Info(po.Get("Already in latest version"))
+			log.Info(po.Get("Already in latest version"))
 			return err
 		}
 		err = update.ApplyUpdate(tag)
@@ -92,7 +106,7 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 		fmt.Println(po.Get("Source Code: %s", "https://github.com/Tom5521/fsize"))
 	default:
 		if len(args) == 0 {
-			echo.Warning(
+			log.Warn(
 				po.Get(
 					"No file/directory was specified, the current directory will be used. (.)",
 				),

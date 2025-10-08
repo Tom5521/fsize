@@ -6,9 +6,9 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"github.com/Tom5521/fsize/echo"
 	"github.com/adrg/xdg"
 	"github.com/charmbracelet/huh"
+	"github.com/charmbracelet/log"
 	po "github.com/leonelquinteros/gotext"
 )
 
@@ -25,14 +25,14 @@ func removeCompletions() {
 		}
 		err := os.Remove(v)
 		if err != nil {
-			echo.Warning(po.Get("error removing %s completions: %s", k, err.Error()))
+			log.Warn(po.Get("error removing %s completions: %s", k, err.Error()))
 		}
 	}
 }
 
 func updateCompletions(executable string) (err error) {
 	var confirm bool
-	huh.NewConfirm().
+	err = huh.NewConfirm().
 		Title(po.Get("Do you want to update the completions?")).
 		Affirmative(po.Get("Yes")).
 		Negative(po.Get("No")).
@@ -40,19 +40,22 @@ func updateCompletions(executable string) (err error) {
 		WithTheme(huh.ThemeBase()).
 		WithAccessible(true).
 		Run()
-	if !confirm {
-		return nil
+	if !confirm || err != nil {
+		if err != nil {
+			log.Error(po.Get("error running confirm dialog"), "err", err)
+		}
+		return err
 	}
 	removeCompletions()
 	for shell, path := range completionPaths {
 		_, exists := exec.LookPath(shell)
 		if exists != nil {
-			echo.Warning(po.Get("%s not found.", shell))
+			log.Warn(po.Get("%s not found.", shell))
 			continue
 		}
 		err = os.MkdirAll(filepath.Dir(path), os.ModePerm)
 		if err != nil {
-			echo.Warning(po.Get("error creating completion directory: %s", err.Error()))
+			log.Warn(po.Get("error creating completion directory: %s", err.Error()))
 			continue
 		}
 		cmd := exec.Command(executable, fmt.Sprintf("--gen-%s-completion", shell), path)

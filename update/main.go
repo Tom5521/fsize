@@ -11,9 +11,9 @@ import (
 	"strings"
 
 	"github.com/Tom5521/fsize/checkos"
-	"github.com/Tom5521/fsize/echo"
 	"github.com/Tom5521/fsize/meta"
 	"github.com/charmbracelet/huh"
+	"github.com/charmbracelet/log"
 	"github.com/gookit/color"
 	po "github.com/leonelquinteros/gotext"
 	"github.com/schollz/progressbar/v3"
@@ -22,7 +22,7 @@ import (
 const UpdateURL string = "https://github.com/Tom5521/fsize/releases/latest"
 
 func CheckUpdate() (tag string, latest bool, err error) {
-	echo.Info(po.Get("Checking the latest version available..."))
+	log.Info(po.Get("Checking the latest version available..."))
 	resp, err := http.Get(UpdateURL)
 	if err != nil {
 		err = fmt.Errorf("error getting http response: %v", err)
@@ -64,15 +64,15 @@ func ApplyUpdate(tag string) (err error) {
 	var needConfirm bool
 	if isMaybeRunningInNixOS() {
 		needConfirm = true
-		echo.Warning(po.Get("NB! It seems that you are in a NixOS."))
-		echo.Warning(po.Get(
+		log.Warn(po.Get("NB! It seems that you are in a NixOS."))
+		log.Warn(po.Get(
 			"Due to the non-standard filesystem implementation of the environment, the update command may not work as expected.",
 		))
 	}
 
 	if needConfirm {
 		var confirm bool
-		huh.NewConfirm().
+		err = huh.NewConfirm().
 			Title(po.Get("Do you want to proceed with the update?")).
 			Affirmative(po.Get("Yes")).
 			Negative("No").
@@ -81,9 +81,13 @@ func ApplyUpdate(tag string) (err error) {
 			WithAccessible(true).
 			Run()
 
-		if !confirm {
-			echo.Info(po.Get("The command has been cancelled."))
-			return nil
+		if !confirm || err != nil {
+			if err != nil {
+				log.Error(po.Get("error running confirm dialog"), "err", err)
+			} else {
+				log.Info(po.Get("The command has been cancelled."))
+			}
+			return err
 		}
 	}
 
@@ -111,8 +115,8 @@ func ApplyUpdate(tag string) (err error) {
 	bar := progressbar.DefaultBytes(resp.ContentLength, po.Get("Downloading latest version..."))
 
 	if err = download(executable, resp, bar); err != nil {
-		echo.Error(po.Get("Error downloading binary to %s: %v", executable, err))
-		echo.Warning(po.Get("Reversing changes..."))
+		log.Error(po.Get("Error downloading binary to %s: %v", executable, err))
+		log.Warn(po.Get("Reversing changes..."))
 		err = os.Rename(oldExec, executable)
 		if err != nil {
 			return errors.New(
@@ -131,22 +135,22 @@ func ApplyUpdate(tag string) (err error) {
 	close(sigchan)
 
 	if err = bar.Finish(); err != nil {
-		return errors.New(po.Get("error finishing the progress bar"))
+		return fmt.Errorf(po.Get("error finishing the progress bar: %w"), err)
 	}
 
 	if err = os.Remove(oldExec); err != nil {
-		return errors.New(po.Get("error removing old executable: %v", err))
+		return fmt.Errorf(po.Get("error removing old executable: %w"), err)
 	}
 
 	if checkos.Unix {
-		echo.Info(po.Get("Updating completions..."))
+		log.Info(po.Get("Updating completions..."))
 		err = updateCompletions(executable)
 		if err != nil {
-			return fmt.Errorf("error updating the completions: %v", err)
+			return fmt.Errorf(po.Get("error updating the completions: %w"), err)
 		}
 	}
 
-	echo.Info(po.Get("Upgrade completed successfully"))
+	log.Info(po.Get("Upgrade completed successfully"))
 	fmt.Printf("%s -> %s\n", color.Red.Render(meta.Version), color.Green.Render(tag))
 
 	return err
@@ -160,7 +164,7 @@ func catchSIGINT(
 	if c == nil {
 		return
 	}
-	echo.Info(po.Get("%s detected, reversing changes before finishing program...", c.String()))
+	log.Warn(po.Get("%s detected, reversing changes before finishing program...", c.String()))
 	resp.Body.Close()
 }
 

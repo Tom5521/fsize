@@ -10,8 +10,8 @@ import (
 	"time"
 
 	"github.com/Tom5521/fsize/checkos"
-	"github.com/Tom5521/fsize/echo"
 	"github.com/Tom5521/fsize/flags"
+	"github.com/charmbracelet/log"
 	"github.com/dustin/go-humanize"
 	po "github.com/leonelquinteros/gotext"
 	"github.com/schollz/progressbar/v3"
@@ -53,12 +53,12 @@ func (f *File) printedCount() {
 		f.AbsPath,
 		func(path string, info fs.FileInfo, err error) error {
 			if err != nil {
-				echo.Warning(err.Error())
+				log.Warn(err.Error())
 				return nil
 			}
 
 			if flags.PrintOnWalk && !flags.NoProgress {
-				echo.Info(po.Get("Reading \"%s\"...", path))
+				log.Info(po.Get("Reading \"%s\"...", path))
 			}
 
 			return nil
@@ -129,7 +129,7 @@ func (f *File) progressCount() {
 				return nil
 			}
 			if flags.PrintOnWalk && !flags.NoProgress {
-				echo.Info(po.Get("Reading \"%s\"...", path))
+				log.Info(po.Get("Reading \"%s\"...", path))
 			}
 
 			return nil
@@ -145,7 +145,7 @@ func (f *File) progressCount() {
 	}
 
 	for _, err2 := range warns {
-		echo.Warning(err2.Error())
+		log.Warn(err2.Error())
 	}
 }
 

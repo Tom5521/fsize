@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/adrg/xdg"
+	"github.com/gookit/color"
 	po "github.com/leonelquinteros/gotext"
 	"github.com/spf13/viper"
 )
@@ -101,4 +102,20 @@ func Parse(optionsArgs []string) error {
 		viper.Set(key, newValue)
 	}
 	return nil
+}
+
+func Print() {
+	for _, key := range viper.AllKeys() {
+		s := viper.Get(key)
+		switch v := s.(type) {
+		case bool:
+			if v {
+				s = color.Green.Render(s)
+			} else {
+				s = color.Red.Render(s)
+			}
+		}
+		fmt.Print(key + ": ")
+		fmt.Println(s)
+	}
 }

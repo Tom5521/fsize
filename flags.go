@@ -121,9 +121,6 @@ The pattern must be a regular expression unless the --wildcard flag is on`),
 		),
 	)
 
-	flag.BoolVar(&flags.Test, "test", false, "---")
-	flag.MarkHidden("test")
-
 	root.MarkFlagsMutuallyExclusive(
 		"update",
 		"gen-zsh-completion",
