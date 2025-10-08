@@ -8,8 +8,8 @@ import (
 	"text/template"
 	"time"
 
+	"github.com/dustin/go-humanize"
 	"github.com/gookit/color"
-	"github.com/labstack/gommon/bytes"
 	"github.com/leonelquinteros/gotext"
 )
 
@@ -51,7 +51,7 @@ var funcMap = template.FuncMap{
 		return color.Green.Render(gotext.Get(id))
 	},
 	"formatSize": func(size int64) string {
-		return bytes.New().Format(size)
+		return humanize.Bytes(uint64(size))
 	},
 	"formatTime": func(t time.Time) string {
 		return t.Format(time.DateTime)

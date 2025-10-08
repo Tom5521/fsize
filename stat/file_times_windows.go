@@ -1,5 +1,4 @@
 //go:build windows
-// +build windows
 
 package stat
 
@@ -11,8 +10,8 @@ func NewFileTimes(info os.FileInfo) (times FileTimes, err error) {
 
 	times.AccessTime, err = AccessDate(info)
 	if err != nil {
-		return
+		return times, err
 	}
 	times.CreationTime, err = CreationDate(info)
-	return
+	return times, err
 }

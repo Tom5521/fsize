@@ -10,10 +10,10 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/AlecAivazis/survey/v2"
 	"github.com/Tom5521/fsize/checkos"
 	"github.com/Tom5521/fsize/echo"
 	"github.com/Tom5521/fsize/meta"
+	"github.com/charmbracelet/huh"
 	"github.com/gookit/color"
 	po "github.com/leonelquinteros/gotext"
 	"github.com/schollz/progressbar/v3"
@@ -72,10 +72,15 @@ func ApplyUpdate(tag string) (err error) {
 
 	if needConfirm {
 		var confirm bool
-		prompt := &survey.Confirm{
-			Message: po.Get("Do you want to proceed with the update?"),
-		}
-		survey.AskOne(prompt, &confirm)
+		huh.NewConfirm().
+			Title(po.Get("Do you want to proceed with the update?")).
+			Affirmative(po.Get("Yes")).
+			Negative("No").
+			Value(&confirm).
+			WithTheme(huh.ThemeBase()).
+			WithAccessible(true).
+			Run()
+
 		if !confirm {
 			echo.Info(po.Get("The command has been cancelled."))
 			return nil

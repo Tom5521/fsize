@@ -12,7 +12,7 @@ import (
 	"github.com/Tom5521/fsize/checkos"
 	"github.com/Tom5521/fsize/echo"
 	"github.com/Tom5521/fsize/flags"
-	"github.com/labstack/gommon/bytes"
+	"github.com/dustin/go-humanize"
 	po "github.com/leonelquinteros/gotext"
 	"github.com/schollz/progressbar/v3"
 )
@@ -80,7 +80,7 @@ func (f *File) progressUpdater(
 				"%d files, %d errors, total size: %s",
 				f.FilesNumber,
 				int64(len(*warns)),
-				bytes.New().Format(f.Size),
+				humanize.Bytes(uint64(f.Size)),
 			),
 		)
 		bar.Set64(f.FilesNumber)

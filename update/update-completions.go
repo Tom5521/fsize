@@ -6,9 +6,9 @@ import (
 	"os/exec"
 	"path/filepath"
 
-	"github.com/AlecAivazis/survey/v2"
 	"github.com/Tom5521/fsize/echo"
 	"github.com/adrg/xdg"
+	"github.com/charmbracelet/huh"
 	po "github.com/leonelquinteros/gotext"
 )
 
@@ -32,10 +32,14 @@ func removeCompletions() {
 
 func updateCompletions(executable string) (err error) {
 	var confirm bool
-	prompt := &survey.Confirm{
-		Message: "Do you want to update the completions?",
-	}
-	survey.AskOne(prompt, &confirm)
+	huh.NewConfirm().
+		Title(po.Get("Do you want to update the completions?")).
+		Affirmative(po.Get("Yes")).
+		Negative(po.Get("No")).
+		Value(&confirm).
+		WithTheme(huh.ThemeBase()).
+		WithAccessible(true).
+		Run()
 	if !confirm {
 		return nil
 	}
