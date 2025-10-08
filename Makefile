@@ -14,6 +14,8 @@ SUDO = $(if $(and $(filter root,$(1)),$(filter-out root,$(USER))),sudo)
 LATEST_TAG := $(shell git describe --tags)
 LATEST_TAG_SHORT := $(shell git describe --tags --abbrev=0)
 
+# These are the platforms that I want to maintain & support.
+# These are the ones that will be used as release binaries.
 define SUPPORTED_PLATFORMS
 windows/amd64
 windows/386
@@ -23,6 +25,47 @@ linux/amd64
 linux/386
 linux/arm64
 linux/arm
+darwin/amd64
+darwin/arm64
+android/arm64
+endef
+
+# These are just the platforms that fsize is compatible with.
+define COMPLATIBLE_PLATFORMS
+windows/amd64
+windows/386
+windows/arm
+windows/arm64
+dragonfly/amd64
+freebsd/386
+freebsd/amd64
+freebsd/arm
+freebsd/arm64
+freebsd/riscv64
+linux/amd64
+linux/386
+linux/arm64
+linux/arm
+linux/loong64
+linux/mips
+linux/mips64
+linux/mips64le
+linux/mipsle
+linux/ppc64
+linux/ppc64le
+linux/riscv64
+linux/s390x
+netbsd/386
+netbsd/amd64
+netbsd/arm
+netbsd/arm64
+openbsd/386
+openbsd/amd64
+openbsd/arm
+openbsd/arm64
+openbsd/ppc64
+openbsd/riscv64
+solaris/amd64
 darwin/amd64
 darwin/arm64
 android/arm64
@@ -79,14 +122,8 @@ clean:
 	find . -name "*.log" -delete
 	find . -name "*.diff" -delete
 
-screenshots/demo.cast: $(NATIVE_BIN)
-	LANG=en asciinema rec --title "$(NATIVE_BIN) $(LATEST_TAG_SHORT)" \
-		--command "$(NATIVE_BIN) /usr/share" ./screenshots/demo.cast \
-		--overwrite
-screenshots/demo2.cast: $(NATIVE_BIN)
-	LANG=en asciinema rec --title "$(NATIVE_BIN) $(LATEST_TAG_SHORT)" \
-		--command "$(NATIVE_BIN) ." ./screenshots/demo2.cast \
-		--overwrite
+screenshots/demo.gif:
+	vhs ./screenshots/demo.tape
 
 .ONESHELL:
 .SILENT:
@@ -145,6 +182,21 @@ build:
 build-all: clean
 	platforms=(
 		$(SUPPORTED_PLATFORMS)
+	)
+	$(call TITLE,Building...)
+	for platform in $${platforms[@]}; do
+		os=$$(echo "$$platform"| cut -d'/' -f1)
+		arch=$$(echo "$$platform"| cut -d'/' -f2-)
+
+		$(call INFO,$(BLUE)$$os$(NC)/$(BOLD)$$arch$(NC))
+		$(MAKE) -s build GOOS=$$os GOARCH=$$arch
+	done
+
+.ONESHELL:
+.SILENT:
+build-for-all: clean
+	platforms=(
+		$(COMPLATIBLE_PLATFORMS)
 	)
 	$(call TITLE,Building...)
 	for platform in $${platforms[@]}; do
