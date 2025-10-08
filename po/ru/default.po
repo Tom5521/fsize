@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-10-05 18:40-0300\n"
+"PO-Revision-Date: 2025-10-08 20:15-0300\n"
 "Last-Translator: thomas.bored5521@gmail.com\n"
 "Language-Team: \n"
 "Language: ru\n"
@@ -262,11 +262,11 @@ msgstr "Вы хотите продолжить обновление?"
 
 #: update/main.go:77 update/update-completions.go:37
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: update/main.go:86 update/update-completions.go:45
 msgid "error running confirm dialog"
-msgstr ""
+msgstr "ошибка при запуске диалогового окна подтверждения"
 
 #: update/main.go:88
 msgid "The command has been cancelled."
@@ -297,23 +297,20 @@ msgid "error reversing changes: failed to rename %s to %s: %v"
 msgstr "ошибка отмены изменений: не удалось переименовать %s в %s: %v"
 
 #: update/main.go:138
-#, fuzzy
 msgid "error finishing the progress bar: %s"
-msgstr "ошибка завершения индикатора прогресса"
+msgstr "ошибка при завершении индикатора выполнения: %s"
 
 #: update/main.go:142
-#, fuzzy
 msgid "error removing old executable: %s"
-msgstr "ошибка удаления старого исполняемого файла: %v"
+msgstr "ошибка при удалении старого исполняемого файла: %s"
 
 #: update/main.go:146
 msgid "Updating completions..."
 msgstr "Обновление автозаполнений..."
 
 #: update/main.go:149
-#, fuzzy
 msgid "error updating the completions: %s"
-msgstr "ошибка при удалении завершений %s: %s"
+msgstr "ошибка при обновлении завершений: %s"
 
 #: update/main.go:153
 msgid "Upgrade completed successfully"
@@ -328,13 +325,12 @@ msgid "error removing %s completions: %s"
 msgstr "ошибка при удалении завершений %s: %s"
 
 #: update/update-completions.go:36
-#, fuzzy
 msgid "Do you want to update the completions?"
-msgstr "Вы хотите продолжить обновление?"
+msgstr "Вы хотите обновить завершения?"
 
 #: update/update-completions.go:38
 msgid "No"
-msgstr ""
+msgstr "Нет"
 
 #: update/update-completions.go:53
 msgid "%s not found."

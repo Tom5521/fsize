@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-10-05 18:39-0300\n"
+"PO-Revision-Date: 2025-10-08 20:12-0300\n"
 "Last-Translator: thomas.bored5521@gmail.com\n"
 "Language-Team: \n"
 "Language: pt\n"
@@ -263,11 +263,11 @@ msgstr "Deseja continuar com a atualização?"
 
 #: update/main.go:77 update/update-completions.go:37
 msgid "Yes"
-msgstr ""
+msgstr "Sim"
 
 #: update/main.go:86 update/update-completions.go:45
 msgid "error running confirm dialog"
-msgstr ""
+msgstr "erro ao executar a caixa de diálogo de confirmação"
 
 #: update/main.go:88
 msgid "The command has been cancelled."
@@ -298,23 +298,20 @@ msgid "error reversing changes: failed to rename %s to %s: %v"
 msgstr "erro ao reverter alterações: falha ao renomear %s para %s: %v"
 
 #: update/main.go:138
-#, fuzzy
 msgid "error finishing the progress bar: %s"
-msgstr "erro ao finalizar a barra de progresso"
+msgstr "Erro ao concluir a barra de progresso: %s"
 
 #: update/main.go:142
-#, fuzzy
 msgid "error removing old executable: %s"
-msgstr "erro ao remover o executável antigo: %v"
+msgstr "Erro ao remover o executável antigo: %s"
 
 #: update/main.go:146
 msgid "Updating completions..."
 msgstr "Atualizando os arquivos de conclusão..."
 
 #: update/main.go:149
-#, fuzzy
 msgid "error updating the completions: %s"
-msgstr "erro ao remover %s sugestão: %s"
+msgstr "Erro ao atualizar as sugestões: %s"
 
 #: update/main.go:153
 msgid "Upgrade completed successfully"
@@ -329,13 +326,12 @@ msgid "error removing %s completions: %s"
 msgstr "erro ao remover %s sugestão: %s"
 
 #: update/update-completions.go:36
-#, fuzzy
 msgid "Do you want to update the completions?"
-msgstr "Deseja continuar com a atualização?"
+msgstr "Quer atualizar as sugestões?"
 
 #: update/update-completions.go:38
 msgid "No"
-msgstr ""
+msgstr "Não"
 
 #: update/update-completions.go:53
 msgid "%s not found."
