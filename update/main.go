@@ -135,18 +135,18 @@ func ApplyUpdate(tag string) (err error) {
 	close(sigchan)
 
 	if err = bar.Finish(); err != nil {
-		return fmt.Errorf(po.Get("error finishing the progress bar: %w"), err)
+		return errors.New(po.Get("error finishing the progress bar: %s", err.Error()))
 	}
 
 	if err = os.Remove(oldExec); err != nil {
-		return fmt.Errorf(po.Get("error removing old executable: %w"), err)
+		return errors.New(po.Get("error removing old executable: %s", err.Error()))
 	}
 
 	if checkos.Unix {
 		log.Info(po.Get("Updating completions..."))
 		err = updateCompletions(executable)
 		if err != nil {
-			return fmt.Errorf(po.Get("error updating the completions: %w"), err)
+			return errors.New(po.Get("error updating the completions: %s", err.Error()))
 		}
 	}
 

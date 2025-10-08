@@ -34,11 +34,13 @@ func main() {
 	logger := log.NewWithOptions(os.Stderr, cfg)
 	log.SetDefault(logger)
 
-	defer func() {
-		if r := recover(); r != nil {
-			logger.Fatal(r)
-		}
-	}()
+	if !flags.Test {
+		defer func() {
+			if r := recover(); r != nil {
+				logger.Fatal(r)
+			}
+		}()
+	}
 
 	// Initialize variables.
 
@@ -51,6 +53,9 @@ func main() {
 	initRoot()
 
 	InitFlags()
+	if flags.NoWarns {
+		logger.SetLevel(log.ErrorLevel)
+	}
 	root.SetErrPrefix(color.Error.Render(po.Get("ERROR:")))
 	defer root.Execute()
 }

@@ -92,11 +92,11 @@ msgstr ""
 msgid "Displays the information of the binary"
 msgstr "Отображает информацию о бинарном файле"
 
-#: flags.go:87
+#: flags.go:88
 msgid "Disable any progress indicator."
 msgstr "Отключить отображение индикатора прогресса."
 
-#: flags.go:94
+#: flags.go:96
 msgid ""
 "Specifies how long the program should be counting files\n"
 "before a progress indicator appears"
@@ -104,7 +104,7 @@ msgstr ""
 "Указывает, как долго программа должна подсчитывать файлы,\n"
 "прежде чем появится индикатор прогресса"
 
-#: flags.go:102
+#: flags.go:104
 msgid ""
 "If the pattern is not \"\", only files that match it will be included in the "
 "count.\n"
@@ -114,7 +114,7 @@ msgstr ""
 "соответствующие этому шаблону.\n"
 "Шаблон должен быть регулярным выражением, если не указан флаг --wildcard в"
 
-#: flags.go:111
+#: flags.go:113
 msgid ""
 "If ignore is not \"\", the files that match it will be excluded from the "
 "count.\n"
@@ -124,42 +124,42 @@ msgstr ""
 "исключены из подсчета.\n"
 "Шаблон должен быть регулярным выражением, если не установлен флаг --wildcard"
 
-#: flags.go:120
+#: flags.go:122
 msgid ""
 "Switches --ignore & --pattern from regular expressions to wildcard patterns"
 msgstr ""
 "Переключатели --ignore и --pattern из регулярных выражений на шаблоны с "
 "подстановочными знаками"
 
-#: main.go:54
+#: main.go:59
 msgid "ERROR:"
 msgstr "ОШИБКА:"
 
-#: main.go:71
+#: main.go:76
 msgid "Available configuration keys:"
 msgstr "Доступные ключи конфигурации:"
 
-#: main.go:84
+#: main.go:89
 msgid "Already in latest version"
 msgstr "Уже установлена последняя версия"
 
-#: main.go:100
+#: main.go:105
 msgid "Version:"
 msgstr "Версия:"
 
-#: main.go:101
+#: main.go:106
 msgid "Updated:"
 msgstr "Обновлено:"
 
-#: main.go:103
+#: main.go:108
 msgid "Latest version:"
 msgstr "Последняя версия:"
 
-#: main.go:106
+#: main.go:111
 msgid "Source Code: %s"
 msgstr "Исходный код: %s"
 
-#: main.go:111
+#: main.go:116
 msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr "Файл/директория не указаны, будет использована текущая директория. (.)"
@@ -188,13 +188,13 @@ msgstr "ошибка получения соответствующей стру�
 msgid "not supported on windows"
 msgstr "не поддерживается на windows"
 
-#: stat/file.go:61 stat/file.go:132
-msgid "Reading \"%s\"..."
-msgstr "Чтение \"%s\"..."
-
-#: stat/file.go:80
+#: stat/file.go:61
 msgid "%d files, %d errors, total size: %s"
 msgstr "%d файлов, %d ошибок, общий размер: %s"
+
+#: stat/file.go:113
+msgid "Reading \"%s\"..."
+msgstr "Чтение \"%s\"..."
 
 #: stat/format.go:18
 msgid "Name:"
@@ -298,12 +298,12 @@ msgstr "ошибка отмены изменений: не удалось пер
 
 #: update/main.go:138
 #, fuzzy
-msgid "error finishing the progress bar: %w"
+msgid "error finishing the progress bar: %s"
 msgstr "ошибка завершения индикатора прогресса"
 
 #: update/main.go:142
 #, fuzzy
-msgid "error removing old executable: %w"
+msgid "error removing old executable: %s"
 msgstr "ошибка удаления старого исполняемого файла: %v"
 
 #: update/main.go:146
@@ -312,7 +312,7 @@ msgstr "Обновление автозаполнений..."
 
 #: update/main.go:149
 #, fuzzy
-msgid "error updating the completions: %w"
+msgid "error updating the completions: %s"
 msgstr "ошибка при удалении завершений %s: %s"
 
 #: update/main.go:153

@@ -80,34 +80,36 @@ if any, the first argument will be taken as output file.`),
 		!viper.GetBool(settings.NoColor),
 		"enable or disable the color",
 	)
-	flag.BoolVar(
+	flag.BoolVarP(
 		&flags.NoProgress,
 		"no-progress",
+		"s",
 		viper.GetBool(settings.HideProgress),
 		gotext.Get("Disable any progress indicator."),
 	)
 
-	flag.DurationVar(
+	flag.DurationVarP(
 		&flags.ProgressDelay,
 		"progress-delay",
+		"d",
 		viper.GetDuration(settings.ProgressDelay),
 		gotext.Get(`Specifies how long the program should be counting files
 before a progress indicator appears`),
 	)
-	flag.StringVarP(
-		&flags.Pattern,
+	flag.StringSliceVarP(
+		&flags.Patterns,
 		"pattern", "f",
-		viper.GetString(settings.Pattern),
+		viper.GetStringSlice(settings.Pattern),
 		gotext.Get(
 			`If the pattern is not "", only files that match it will be included in the count.
 The pattern must be a regular expression unless the --wildcard flag on`,
 		),
 	)
 
-	flag.StringVarP(
-		&flags.IgnorePattern,
+	flag.StringSliceVarP(
+		&flags.IgnorePatterns,
 		"ignore", "i",
-		viper.GetString(settings.IgnorePattern),
+		viper.GetStringSlice(settings.IgnorePattern),
 		gotext.Get(`If ignore is not "", the files that match it will be excluded from the count.
 The pattern must be a regular expression unless the --wildcard flag is on`),
 	)
@@ -119,6 +121,16 @@ The pattern must be a regular expression unless the --wildcard flag is on`),
 		gotext.Get(
 			`Switches --ignore & --pattern from regular expressions to wildcard patterns`,
 		),
+	)
+
+	root.MarkFlagsMutuallyExclusive(
+		"progress",
+		"no-progress",
+	)
+	root.MarkFlagsMutuallyExclusive(
+		"no-progress",
+		"progress-delay",
+		"print-on-walk",
 	)
 
 	root.MarkFlagsMutuallyExclusive(

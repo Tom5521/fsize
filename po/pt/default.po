@@ -92,11 +92,11 @@ msgstr ""
 msgid "Displays the information of the binary"
 msgstr "Exibe as informações do binário"
 
-#: flags.go:87
+#: flags.go:88
 msgid "Disable any progress indicator."
 msgstr "Desativa qualquer indicador de progresso."
 
-#: flags.go:94
+#: flags.go:96
 msgid ""
 "Specifies how long the program should be counting files\n"
 "before a progress indicator appears"
@@ -104,7 +104,7 @@ msgstr ""
 "Especifica por quanto tempo o programa deve contar os arquivos\n"
 "antes que um indicador de progresso apareça"
 
-#: flags.go:102
+#: flags.go:104
 msgid ""
 "If the pattern is not \"\", only files that match it will be included in the "
 "count.\n"
@@ -115,7 +115,7 @@ msgstr ""
 "O padrão deve ser uma expressão regular, a menos que o sinalizador --"
 "wildcard em"
 
-#: flags.go:111
+#: flags.go:113
 msgid ""
 "If ignore is not \"\", the files that match it will be excluded from the "
 "count.\n"
@@ -126,40 +126,40 @@ msgstr ""
 "O padrão deve ser uma expressão regular, a menos que o sinalizador --"
 "wildcard esteja ativado"
 
-#: flags.go:120
+#: flags.go:122
 msgid ""
 "Switches --ignore & --pattern from regular expressions to wildcard patterns"
 msgstr "Muda --ignore e --pattern de expressões regulares para padrões curinga"
 
-#: main.go:54
+#: main.go:59
 msgid "ERROR:"
 msgstr "ERRO:"
 
-#: main.go:71
+#: main.go:76
 msgid "Available configuration keys:"
 msgstr "Chaves de configuração disponíveis:"
 
-#: main.go:84
+#: main.go:89
 msgid "Already in latest version"
 msgstr "Já está na versão mais recente"
 
-#: main.go:100
+#: main.go:105
 msgid "Version:"
 msgstr "Versão:"
 
-#: main.go:101
+#: main.go:106
 msgid "Updated:"
 msgstr "Atualizado:"
 
-#: main.go:103
+#: main.go:108
 msgid "Latest version:"
 msgstr "Última versão:"
 
-#: main.go:106
+#: main.go:111
 msgid "Source Code: %s"
 msgstr "Código-fonte: %s"
 
-#: main.go:111
+#: main.go:116
 msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr ""
@@ -189,13 +189,13 @@ msgstr "erro ao obter a estrutura correspondente de fileinfo.Sys()"
 msgid "not supported on windows"
 msgstr "não é suportado no Windows"
 
-#: stat/file.go:61 stat/file.go:132
-msgid "Reading \"%s\"..."
-msgstr "Lendo \"%s\"..."
-
-#: stat/file.go:80
+#: stat/file.go:61
 msgid "%d files, %d errors, total size: %s"
 msgstr "%d ficheiros, %d erros, tamanho total: %s"
+
+#: stat/file.go:113
+msgid "Reading \"%s\"..."
+msgstr "Lendo \"%s\"..."
 
 #: stat/format.go:18
 msgid "Name:"
@@ -299,12 +299,12 @@ msgstr "erro ao reverter alterações: falha ao renomear %s para %s: %v"
 
 #: update/main.go:138
 #, fuzzy
-msgid "error finishing the progress bar: %w"
+msgid "error finishing the progress bar: %s"
 msgstr "erro ao finalizar a barra de progresso"
 
 #: update/main.go:142
 #, fuzzy
-msgid "error removing old executable: %w"
+msgid "error removing old executable: %s"
 msgstr "erro ao remover o executável antigo: %v"
 
 #: update/main.go:146
@@ -313,7 +313,7 @@ msgstr "Atualizando os arquivos de conclusão..."
 
 #: update/main.go:149
 #, fuzzy
-msgid "error updating the completions: %w"
+msgid "error updating the completions: %s"
 msgstr "erro ao remover %s sugestão: %s"
 
 #: update/main.go:153

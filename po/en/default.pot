@@ -1,6 +1,18 @@
-#, fuzzy
+# SOME DESCRIPTIVE TITLE
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
 msgid ""
-msgstr "\nProject-Id-Version: v1.18.0-6-g2929875\n\nPO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\n\nLanguage-Team: LANGUAGE <LL@li.org>\n\nLanguage: en\n\nMIME-Version: 1.0\n\nContent-Type: text/plain; charset=CHARSET\n\nContent-Transfer-Encoding: 8bit\n\nX-Generator: xgotext\n"
+msgstr ""
+"Project-Id-Version: v1.18.0-9-gd95e2e6\n"
+"PO-Revision-Date: YEAR-MO-DA HO: MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: xgotext\n"
 
 #: flags.go:18
 msgid "Displays the file/folder properties."
@@ -50,55 +62,55 @@ msgstr ""
 msgid "Displays the information of the binary"
 msgstr ""
 
-#: flags.go:87
+#: flags.go:88
 msgid "Disable any progress indicator."
 msgstr ""
 
-#: flags.go:94
+#: flags.go:96
 msgid "Specifies how long the program should be counting files\nbefore a progress indicator appears"
 msgstr ""
 
-#: flags.go:102
+#: flags.go:104
 msgid "If the pattern is not \"\", only files that match it will be included in the count.\nThe pattern must be a regular expression unless the --wildcard flag on"
 msgstr ""
 
-#: flags.go:111
+#: flags.go:113
 msgid "If ignore is not \"\", the files that match it will be excluded from the count.\nThe pattern must be a regular expression unless the --wildcard flag is on"
 msgstr ""
 
-#: flags.go:120
+#: flags.go:122
 msgid "Switches --ignore & --pattern from regular expressions to wildcard patterns"
 msgstr ""
 
-#: main.go:54
+#: main.go:59
 msgid "ERROR:"
 msgstr ""
 
-#: main.go:71
+#: main.go:76
 msgid "Available configuration keys:"
 msgstr ""
 
-#: main.go:84
+#: main.go:89
 msgid "Already in latest version"
 msgstr ""
 
-#: main.go:100
+#: main.go:105
 msgid "Version:"
 msgstr ""
 
-#: main.go:101
+#: main.go:106
 msgid "Updated:"
 msgstr ""
 
-#: main.go:103
+#: main.go:108
 msgid "Latest version:"
 msgstr ""
 
-#: main.go:106
+#: main.go:111
 msgid "Source Code: %s"
 msgstr ""
 
-#: main.go:111
+#: main.go:116
 msgid "No file/directory was specified, the current directory will be used. (.)"
 msgstr ""
 
@@ -127,12 +139,11 @@ msgid "not supported on windows"
 msgstr ""
 
 #: stat/file.go:61
-#: stat/file.go:132
-msgid "Reading \"%s\"..."
+msgid "%d files, %d errors, total size: %s"
 msgstr ""
 
-#: stat/file.go:80
-msgid "%d files, %d errors, total size: %s"
+#: stat/file.go:113
+msgid "Reading \"%s\"..."
 msgstr ""
 
 #: stat/format.go:18
@@ -234,11 +245,11 @@ msgid "error reversing changes: failed to rename %s to %s: %v"
 msgstr ""
 
 #: update/main.go:138
-msgid "error finishing the progress bar: %w"
+msgid "error finishing the progress bar: %s"
 msgstr ""
 
 #: update/main.go:142
-msgid "error removing old executable: %w"
+msgid "error removing old executable: %s"
 msgstr ""
 
 #: update/main.go:146
@@ -246,7 +257,7 @@ msgid "Updating completions..."
 msgstr ""
 
 #: update/main.go:149
-msgid "error updating the completions: %w"
+msgid "error updating the completions: %s"
 msgstr ""
 
 #: update/main.go:153
