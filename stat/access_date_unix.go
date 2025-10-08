@@ -1,5 +1,4 @@
-//go:build unix && !darwin
-// +build unix,!darwin
+//go:build unix && !(darwin || freebsd || netbsd)
 
 package stat
 
@@ -16,5 +15,5 @@ func AccessDate(info os.FileInfo) (t time.Time, err error) {
 	}
 	// Make the conversion if having the 386 architecture.
 	t = time.Unix(int64(stat.Atim.Sec), int64(stat.Atim.Nsec))
-	return
+	return t, err
 }

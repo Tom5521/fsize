@@ -1,5 +1,4 @@
 //go:build windows
-// +build windows
 
 package stat
 
@@ -16,5 +15,5 @@ func AccessDate(info os.FileInfo) (t time.Time, err error) {
 	}
 
 	t = time.Unix(0, stat.LastAccessTime.Nanoseconds())
-	return
+	return t, err
 }

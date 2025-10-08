@@ -1,5 +1,4 @@
 //go:build unix
-// +build unix
 
 package stat
 
@@ -14,21 +13,21 @@ import (
 func NewFileIDs(info os.FileInfo) (fids FileIDs, err error) {
 	fids.SupportFileIDs = runtime.GOOS != "android"
 	if !fids.SupportFileIDs {
-		return
+		return fids, err
 	}
 	fids.User, fids.Group, err = usrAndGroup(info)
 
-	return
+	return fids, err
 }
 
 func usrAndGroup(info os.FileInfo) (usr *user.User, group *user.Group, err error) {
 	usr, err = fileUsr(info)
 	if err != nil {
-		return
+		return usr, group, err
 	}
 
 	group, err = fileGroup(info)
-	return
+	return usr, group, err
 }
 
 func fileUsr(info os.FileInfo) (*user.User, error) {
