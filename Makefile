@@ -4,6 +4,7 @@ GOOS := $(shell go env GOOS)
 GOARCH := $(shell go env GOARCH)
 GOPATH := $(shell go env GOPATH)
 GOENV := GOOS=$(GOOS) GOARCH=$(GOARCH)
+BUILD_TAGS :=
 
 ROOT_PREFIX := /usr/local
 LOCAL_PREFIX := $(HOME)/.local
@@ -174,6 +175,7 @@ changelog.md:
 .SILENT:
 build:
 	$(CMD) build $(V_FLAG) \
+	$(if $(BUILD_TAGS),-tags "$(BUILD_TAGS)") \
 	-o $(CURRENT_BIN) \
 	-ldflags="$(LD_FLAGS)" .
 
