@@ -5,7 +5,7 @@ msgstr ""
 "PO-Revision-Date: 2025-10-08 20:12-0300\n"
 "Last-Translator: thomas.bored5521@gmail.com\n"
 "Language-Team: \n"
-"Language: pt\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,22 +14,22 @@ msgstr ""
 
 #: flags.go:19
 msgid "Displays the file/folder properties."
-msgstr "Exibe as propriedades do arquivo/diretório."
+msgstr "Exibe as propriedades do arquivo/pasta."
 
 #: flags.go:45
 msgid ""
 "Prints the name of the file being walked if a directory has been selected."
-msgstr "Imprime o nome do arquivo processado se um diretório foi selecionado."
+msgstr "Imprime o nome do arquivo sendo processado se um diretório foi selecionado."
 
 #: flags.go:48
 msgid "Skips walking inside the directories."
-msgstr "Ignora a navegação dentro dos diretórios."
+msgstr "Ignora a navegação dentro das pastas."
 
 #: flags.go:51
 msgid ""
 "Displays a file count and progress bar when counting and summing file sizes."
 msgstr ""
-"Exibe a contagem de arquivos e uma barra de progresso ao contar e somar os "
+"Exibe uma contagem de arquivos e barra de progresso ao contar e somar os "
 "tamanhos dos arquivos."
 
 #: flags.go:54
@@ -50,18 +50,18 @@ msgstr ""
 
 #: flags.go:60
 msgid "Prints the current configuration values."
-msgstr "Exibe os valores atuais de configuração."
+msgstr "Imprime os valores atuais de configuração."
 
 #: flags.go:63
 msgid "Hide possible warnings."
-msgstr "Oculta avisos possíveis."
+msgstr "Oculta possíveis avisos."
 
 #: flags.go:66
 msgid ""
 "Generate a completion file for bash\n"
 "if any, the first argument will be taken as output file."
 msgstr ""
-"Gera um arquivo de conclusão para o bash\n"
+"Gera um arquivo de autocompletar para o bash\n"
 "se fornecido, o primeiro argumento será usado como arquivo de saída."
 
 #: flags.go:70
@@ -69,7 +69,7 @@ msgid ""
 "Generate a completion file for fish\n"
 "if any, the first argument will be taken as output file."
 msgstr ""
-"Gera um arquivo de conclusão para o fish\n"
+"Gera um arquivo de autocompletar para o fish\n"
 "se fornecido, o primeiro argumento será usado como arquivo de saída."
 
 #: flags.go:74
@@ -77,7 +77,7 @@ msgid ""
 "Generate a completion file for zsh\n"
 "if any, the first argument will be taken as output file."
 msgstr ""
-"Gera um arquivo de conclusão para o zsh\n"
+"Gera um arquivo de autocompletar para o zsh\n"
 "se fornecido, o primeiro argumento será usado como arquivo de saída."
 
 #: flags.go:82
@@ -86,7 +86,7 @@ msgid ""
 "the completions."
 msgstr ""
 "Atualiza automaticamente o programa substituindo o binário e regenerando os "
-"arquivos de conclusão."
+"arquivos de autocompletar."
 
 #: flags.go:89
 msgid "Displays the information of the binary"
@@ -101,7 +101,7 @@ msgid ""
 "Specifies how long the program should be counting files\n"
 "before a progress indicator appears"
 msgstr ""
-"Especifica por quanto tempo o programa deve contar os arquivos\n"
+"Especifica por quanto tempo o programa deve contar arquivos\n"
 "antes que um indicador de progresso apareça"
 
 #: flags.go:118
@@ -110,10 +110,10 @@ msgid ""
 "count.\n"
 "The pattern must be a regular expression unless the --wildcard flag on"
 msgstr ""
-"Se o padrão não for “”, apenas os ficheiros que correspondam a ele serão "
+"Se o padrão não for \"\", apenas os arquivos que corresponderem a ele serão "
 "incluídos na contagem.\n"
-"O padrão deve ser uma expressão regular, a menos que o sinalizador --"
-"wildcard em"
+"O padrão deve ser uma expressão regular, a menos que a flag --wildcard "
+"esteja ativa"
 
 #: flags.go:127
 msgid ""
@@ -121,10 +121,10 @@ msgid ""
 "count.\n"
 "The pattern must be a regular expression unless the --wildcard flag is on"
 msgstr ""
-"Se ignore não for “”, os ficheiros que corresponderem serão excluídos da "
-"contagem.\n"
-"O padrão deve ser uma expressão regular, a menos que o sinalizador --"
-"wildcard esteja ativado"
+"Se ignore não for \"\", os arquivos que corresponderem a ele serão excluídos "
+"da contagem.\n"
+"O padrão deve ser uma expressão regular, a menos que a flag --wildcard "
+"esteja ativa"
 
 #: flags.go:136
 msgid ""
@@ -133,24 +133,29 @@ msgstr "Muda --ignore e --pattern de expressões regulares para padrões curinga
 
 #: flags.go:143
 msgid "Prevents the progress indicator from being cleared after finishing"
-msgstr ""
+msgstr "Impede que o indicador de progresso seja limpo após a conclusão"
 
 #: flags.go:151
 msgid ""
 "Indicates the maximum depth to traverse within a directory; \n"
 "files/directories deeper than this will be skipped"
 msgstr ""
+"Indica a profundidade máxima a percorrer dentro de uma pasta; \n"
+"arquivos/pastas mais profundos que isso serão ignorados"
 
 #: flags.go:161
 msgid ""
 "Indicates the maximum number of warnings that will be printed. \n"
 "If it is -1, there is no limit."
 msgstr ""
+"Indica o número máximo de avisos que serão impressos. \n"
+"Se for -1, não há limite."
 
 #: flags.go:170
 msgid ""
 "Indicates the log level, which can be debug, info, warn, error, or fatal."
 msgstr ""
+"Indica o nível de log, que pode ser debug, info, warn, error ou fatal."
 
 #: main.go:56
 msgid "ERROR:"
@@ -184,7 +189,7 @@ msgstr "Código-fonte: %s"
 msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr ""
-"Nenhum arquivo/diretório foi especificado. O diretório atual será usado. (.)"
+"Nenhum arquivo/pasta foi especificado. O diretório atual será usado. (.)"
 
 #: settings/main.go:82
 msgid "syntax error"
@@ -192,7 +197,7 @@ msgstr "erro de sintaxe"
 
 #: settings/main.go:87
 msgid "unrecognized key \"%s\""
-msgstr "chave desconhecida \"%s\"."
+msgstr "chave não reconhecida \"%s\""
 
 #: settings/main.go:100
 msgid "invalid time duration(%s): %s"
@@ -200,16 +205,17 @@ msgstr "duração de tempo inválida(%s): %s"
 
 #: settings/main.go:107
 msgid "unrecognized value type \"%s\""
-msgstr "tipo de valor desconhecido \"%s\"."
+msgstr "tipo de valor não reconhecido \"%s\""
 
 #: stat/creation_date_bsd.go:24 stat/creation_date_others.go:16
 msgid "file birthtime is not supported"
-msgstr ""
+msgstr "data de criação do arquivo não é suportada"
 
 #: stat/creation_date_linux.go:27
 msgid ""
 "The statx syscall is not supported. At least Linux kernel 4.11 is needed"
 msgstr ""
+"A syscall statx não é suportada. É necessário pelo menos o kernel Linux 4.11"
 
 #: stat/file.go:15
 msgid "error getting the corresponding structure from fileinfo.Sys()"
@@ -217,7 +223,7 @@ msgstr "erro ao obter a estrutura correspondente de fileinfo.Sys()"
 
 #: stat/file.go:17
 msgid "not supported on windows"
-msgstr "não é suportado no Windows"
+msgstr "não suportado no Windows"
 
 #: stat/format.go:18
 msgid "Name:"
@@ -237,7 +243,7 @@ msgstr "Caminho físico:"
 
 #: stat/format.go:22
 msgid "Modify:"
-msgstr "Modificado:"
+msgstr "Modificação:"
 
 #: stat/format.go:23
 msgid "Access:"
@@ -276,12 +282,12 @@ msgid ""
 "Due to the non-standard filesystem implementation of the environment, the "
 "update command may not work as expected."
 msgstr ""
-"Devido à implementação não padrão do sistema de arquivos, o comando de "
-"atualização pode não funcionar como esperado."
+"Devido à implementação não padrão do sistema de arquivos do ambiente, o "
+"comando de atualização pode não funcionar como esperado."
 
 #: update/main.go:76
 msgid "Do you want to proceed with the update?"
-msgstr "Deseja continuar com a atualização?"
+msgstr "Deseja prosseguir com a atualização?"
 
 #: update/main.go:77 update/update-completions.go:37
 msgid "Yes"
@@ -289,7 +295,7 @@ msgstr "Sim"
 
 #: update/main.go:86 update/update-completions.go:45
 msgid "error running confirm dialog"
-msgstr "erro ao executar a caixa de diálogo de confirmação"
+msgstr "erro ao executar diálogo de confirmação"
 
 #: update/main.go:88
 msgid "The command has been cancelled."
@@ -321,7 +327,7 @@ msgstr "erro ao reverter alterações: falha ao renomear %s para %s: %v"
 
 #: update/main.go:147
 msgid "error finishing the progress bar: %s"
-msgstr "Erro ao concluir a barra de progresso: %s"
+msgstr "Erro ao finalizar a barra de progresso: %s"
 
 #: update/main.go:151
 msgid "error removing old executable: %s"
@@ -329,11 +335,11 @@ msgstr "Erro ao remover o executável antigo: %s"
 
 #: update/main.go:155
 msgid "Updating completions..."
-msgstr "Atualizando os arquivos de conclusão..."
+msgstr "Atualizando arquivos de autocompletar..."
 
 #: update/main.go:158
 msgid "error updating the completions: %s"
-msgstr "Erro ao atualizar as sugestões: %s"
+msgstr "Erro ao atualizar os arquivos de autocompletar: %s"
 
 #: update/main.go:162
 msgid "Upgrade completed successfully"
@@ -341,15 +347,15 @@ msgstr "Atualização concluída com sucesso"
 
 #: update/main.go:176
 msgid "%s detected, reversing changes before finishing program..."
-msgstr "%s detetado, revertendo alterações antes de terminar o programa..."
+msgstr "%s detectado, revertendo alterações antes de finalizar o programa..."
 
 #: update/update-completions.go:28
 msgid "error removing %s completions: %s"
-msgstr "erro ao remover %s sugestão: %s"
+msgstr "erro ao remover arquivos de autocompletar %s: %s"
 
 #: update/update-completions.go:36
 msgid "Do you want to update the completions?"
-msgstr "Quer atualizar as sugestões?"
+msgstr "Deseja atualizar os arquivos de autocompletar?"
 
 #: update/update-completions.go:38
 msgid "No"
@@ -361,11 +367,11 @@ msgstr "%s não encontrado."
 
 #: update/update-completions.go:58
 msgid "error creating completion directory: %s"
-msgstr "erro ao criar diretório de sugestões: %s"
+msgstr "erro ao criar diretório de autocompletar: %s"
 
 #: walk/progress_bar.go:50
 msgid "%d files, %d errors, total size: %s"
-msgstr "%d ficheiros, %d erros, tamanho total: %s"
+msgstr "%d arquivos, %d erros, tamanho total: %s"
 
 #: walk/walker.go:65
 msgid "Reading \"%s\"..."
@@ -373,4 +379,4 @@ msgstr "Lendo \"%s\"..."
 
 #: walk/walker.go:82
 msgid "too many warns (%d)"
-msgstr ""
+msgstr "muitos avisos (%d)"

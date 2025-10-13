@@ -135,24 +135,29 @@ msgstr ""
 
 #: flags.go:143
 msgid "Prevents the progress indicator from being cleared after finishing"
-msgstr ""
+msgstr "Evita que el indicador de progreso se borre después de finalizar"
 
 #: flags.go:151
 msgid ""
 "Indicates the maximum depth to traverse within a directory; \n"
 "files/directories deeper than this will be skipped"
 msgstr ""
+"Indica la profundidad máxima para recorrer dentro de un directorio; \n"
+"archivos/directorios más profundos que esto serán omitidos"
 
 #: flags.go:161
 msgid ""
 "Indicates the maximum number of warnings that will be printed. \n"
 "If it is -1, there is no limit."
 msgstr ""
+"Indica el número máximo de advertencias que se imprimirán. \n"
+"Si es -1, no hay límite."
 
 #: flags.go:170
 msgid ""
 "Indicates the log level, which can be debug, info, warn, error, or fatal."
 msgstr ""
+"Indica el nivel de registro, que puede ser debug, info, warn, error o fatal."
 
 #: main.go:56
 msgid "ERROR:"
@@ -207,12 +212,14 @@ msgstr "tipo de valor no reconocido \"%s\""
 
 #: stat/creation_date_bsd.go:24 stat/creation_date_others.go:16
 msgid "file birthtime is not supported"
-msgstr ""
+msgstr "la hora de creación del archivo no está soportada"
 
 #: stat/creation_date_linux.go:27
 msgid ""
 "The statx syscall is not supported. At least Linux kernel 4.11 is needed"
 msgstr ""
+"La llamada al sistema statx no está soportada. Se necesita al menos el kernel "
+"de Linux 4.11"
 
 #: stat/file.go:15
 msgid "error getting the corresponding structure from fileinfo.Sys()"
@@ -376,4 +383,4 @@ msgstr "Leyendo \"%s\"..."
 
 #: walk/walker.go:82
 msgid "too many warns (%d)"
-msgstr ""
+msgstr "demasiadas advertencias (%d)"

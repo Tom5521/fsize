@@ -112,7 +112,7 @@ msgid ""
 msgstr ""
 "Если шаблон не является «», то в подсчет будут включены только файлы, "
 "соответствующие этому шаблону.\n"
-"Шаблон должен быть регулярным выражением, если не указан флаг --wildcard в"
+"Шаблон должен быть регулярным выражением, если не указан флаг --wildcard"
 
 #: flags.go:127
 msgid ""
@@ -128,29 +128,35 @@ msgstr ""
 msgid ""
 "Switches --ignore & --pattern from regular expressions to wildcard patterns"
 msgstr ""
-"Переключатели --ignore и --pattern из регулярных выражений на шаблоны с "
+"Переключает --ignore и --pattern с регулярных выражений на шаблоны с "
 "подстановочными знаками"
 
 #: flags.go:143
 msgid "Prevents the progress indicator from being cleared after finishing"
-msgstr ""
+msgstr "Предотвращает очистку индикатора прогресса после завершения"
 
 #: flags.go:151
 msgid ""
 "Indicates the maximum depth to traverse within a directory; \n"
 "files/directories deeper than this will be skipped"
 msgstr ""
+"Указывает максимальную глубину обхода внутри директории; \n"
+"файлы/директории, находящиеся глубже, будут пропущены"
 
 #: flags.go:161
 msgid ""
 "Indicates the maximum number of warnings that will be printed. \n"
 "If it is -1, there is no limit."
 msgstr ""
+"Указывает максимальное количество предупреждений, которые будут напечатаны.\n"
+"Если значение -1, ограничения нет."
 
 #: flags.go:170
 msgid ""
 "Indicates the log level, which can be debug, info, warn, error, or fatal."
 msgstr ""
+"Указывает уровень ведения журнала, который может быть: debug, info, warn, "
+"error или fatal."
 
 #: main.go:56
 msgid "ERROR:"
@@ -203,12 +209,14 @@ msgstr "неопознанный тип значения \"%s\""
 
 #: stat/creation_date_bsd.go:24 stat/creation_date_others.go:16
 msgid "file birthtime is not supported"
-msgstr ""
+msgstr "время создания файла не поддерживается"
 
 #: stat/creation_date_linux.go:27
 msgid ""
 "The statx syscall is not supported. At least Linux kernel 4.11 is needed"
 msgstr ""
+"Системный вызов statx не поддерживается. Требуется как минимум Linux kernel "
+"4.11"
 
 #: stat/file.go:15
 msgid "error getting the corresponding structure from fileinfo.Sys()"
@@ -372,4 +380,4 @@ msgstr "Чтение \"%s\"..."
 
 #: walk/walker.go:82
 msgid "too many warns (%d)"
-msgstr ""
+msgstr "слишком много предупреждений (%d)"
