@@ -4,7 +4,7 @@ package stat
 
 import "os"
 
-func NewFileTimes(info os.FileInfo) (times FileTimes, err error) {
+func newFileTimes(info os.FileInfo) (times FileTimes, err error) {
 	times.ModTime = info.ModTime()
 	times.SupportCreationDate = true
 

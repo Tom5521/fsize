@@ -10,7 +10,7 @@ import (
 	"syscall"
 )
 
-func NewFileIDs(info os.FileInfo) (fids FileIDs, err error) {
+func newFileIDs(info os.FileInfo) (fids FileIDs, err error) {
 	fids.SupportFileIDs = runtime.GOOS != "android"
 	if !fids.SupportFileIDs {
 		return fids, err

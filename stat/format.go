@@ -51,7 +51,7 @@ var funcMap = template.FuncMap{
 		return color.Green.Render(gotext.Get(id))
 	},
 	"formatSize": func(size int64) string {
-		return humanize.Bytes(uint64(size))
+		return humanize.IBytes(uint64(size))
 	},
 	"formatTime": func(t time.Time) string {
 		return t.Format(time.DateTime)

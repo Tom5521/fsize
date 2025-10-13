@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func AccessDate(info os.FileInfo) (t time.Time, err error) {
+func accessDate(info os.FileInfo) (t time.Time, err error) {
 	stat, ok := info.Sys().(*syscall.Win32FileAttributeData)
 	if !ok {
 		return t, ErrGettingStruct

@@ -7,16 +7,16 @@ import (
 )
 
 type FileLink struct {
-	IsLink       bool
-	PhysicalPath string
+	IsLink   bool
+	RealPath string
 }
 
 func NewFileLink(linfo os.FileInfo, path string) (fl FileLink, err error) {
 	fl.IsLink = linfo.Mode()&fs.ModeSymlink != 0
 
 	if fl.IsLink {
-		fl.PhysicalPath, err = filepath.EvalSymlinks(path)
+		fl.RealPath, err = filepath.EvalSymlinks(path)
 	}
 
-	return
+	return fl, err
 }

@@ -1,6 +1,9 @@
 package stat
 
-import "os/user"
+import (
+	"os"
+	"os/user"
+)
 
 type FileIDs struct {
 	User  *user.User
@@ -8,3 +11,5 @@ type FileIDs struct {
 
 	SupportFileIDs bool
 }
+
+func NewFileIDs(info os.FileInfo) (fids FileIDs, err error) { return newFileIDs(info) }

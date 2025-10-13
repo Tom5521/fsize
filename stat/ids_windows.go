@@ -4,6 +4,6 @@ package stat
 
 import "os"
 
-func NewFileIDs(os.FileInfo) (fids FileIDs, err error) {
+func newFileIDs(os.FileInfo) (fids FileIDs, err error) {
 	return fids, err
 }
