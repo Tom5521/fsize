@@ -12,27 +12,27 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.6\n"
 
-#: flags.go:18
+#: flags.go:19
 msgid "Displays the file/folder properties."
 msgstr "Exibe as propriedades do arquivo/diretório."
 
-#: flags.go:31
+#: flags.go:45
 msgid ""
 "Prints the name of the file being walked if a directory has been selected."
 msgstr "Imprime o nome do arquivo processado se um diretório foi selecionado."
 
-#: flags.go:34
+#: flags.go:48
 msgid "Skips walking inside the directories."
 msgstr "Ignora a navegação dentro dos diretórios."
 
-#: flags.go:37
+#: flags.go:51
 msgid ""
 "Displays a file count and progress bar when counting and summing file sizes."
 msgstr ""
 "Exibe a contagem de arquivos e uma barra de progresso ao contar e somar os "
 "tamanhos dos arquivos."
 
-#: flags.go:40
+#: flags.go:54
 msgid ""
 "Configure the variables used for preferences\n"
 "Example: \"fsize --config 'always-show-progress=true,always-print-on-"
@@ -48,15 +48,15 @@ msgstr ""
 "Para ver as variáveis disponíveis e seus valores, execute \"fsize --print-"
 "settings\"."
 
-#: flags.go:46
+#: flags.go:60
 msgid "Prints the current configuration values."
 msgstr "Exibe os valores atuais de configuração."
 
-#: flags.go:49
+#: flags.go:63
 msgid "Hide possible warnings."
 msgstr "Oculta avisos possíveis."
 
-#: flags.go:52
+#: flags.go:66
 msgid ""
 "Generate a completion file for bash\n"
 "if any, the first argument will be taken as output file."
@@ -64,7 +64,7 @@ msgstr ""
 "Gera um arquivo de conclusão para o bash\n"
 "se fornecido, o primeiro argumento será usado como arquivo de saída."
 
-#: flags.go:56
+#: flags.go:70
 msgid ""
 "Generate a completion file for fish\n"
 "if any, the first argument will be taken as output file."
@@ -72,7 +72,7 @@ msgstr ""
 "Gera um arquivo de conclusão para o fish\n"
 "se fornecido, o primeiro argumento será usado como arquivo de saída."
 
-#: flags.go:60
+#: flags.go:74
 msgid ""
 "Generate a completion file for zsh\n"
 "if any, the first argument will be taken as output file."
@@ -80,7 +80,7 @@ msgstr ""
 "Gera um arquivo de conclusão para o zsh\n"
 "se fornecido, o primeiro argumento será usado como arquivo de saída."
 
-#: flags.go:68
+#: flags.go:82
 msgid ""
 "Automatically updates the program by overwriting the binary and regenerating "
 "the completions."
@@ -88,15 +88,15 @@ msgstr ""
 "Atualiza automaticamente o programa substituindo o binário e regenerando os "
 "arquivos de conclusão."
 
-#: flags.go:75
+#: flags.go:89
 msgid "Displays the information of the binary"
 msgstr "Exibe as informações do binário"
 
-#: flags.go:88
+#: flags.go:102
 msgid "Disable any progress indicator."
 msgstr "Desativa qualquer indicador de progresso."
 
-#: flags.go:96
+#: flags.go:110
 msgid ""
 "Specifies how long the program should be counting files\n"
 "before a progress indicator appears"
@@ -104,7 +104,7 @@ msgstr ""
 "Especifica por quanto tempo o programa deve contar os arquivos\n"
 "antes que um indicador de progresso apareça"
 
-#: flags.go:104
+#: flags.go:118
 msgid ""
 "If the pattern is not \"\", only files that match it will be included in the "
 "count.\n"
@@ -115,7 +115,7 @@ msgstr ""
 "O padrão deve ser uma expressão regular, a menos que o sinalizador --"
 "wildcard em"
 
-#: flags.go:113
+#: flags.go:127
 msgid ""
 "If ignore is not \"\", the files that match it will be excluded from the "
 "count.\n"
@@ -126,76 +126,98 @@ msgstr ""
 "O padrão deve ser uma expressão regular, a menos que o sinalizador --"
 "wildcard esteja ativado"
 
-#: flags.go:122
+#: flags.go:136
 msgid ""
 "Switches --ignore & --pattern from regular expressions to wildcard patterns"
 msgstr "Muda --ignore e --pattern de expressões regulares para padrões curinga"
 
-#: main.go:59
+#: flags.go:143
+msgid "Prevents the progress indicator from being cleared after finishing"
+msgstr ""
+
+#: flags.go:151
+msgid ""
+"Indicates the maximum depth to traverse within a directory; \n"
+"files/directories deeper than this will be skipped"
+msgstr ""
+
+#: flags.go:161
+msgid ""
+"Indicates the maximum number of warnings that will be printed. \n"
+"If it is -1, there is no limit."
+msgstr ""
+
+#: flags.go:170
+msgid ""
+"Indicates the log level, which can be debug, info, warn, error, or fatal."
+msgstr ""
+
+#: main.go:56
 msgid "ERROR:"
 msgstr "ERRO:"
 
-#: main.go:76
+#: main.go:73
 msgid "Available configuration keys:"
 msgstr "Chaves de configuração disponíveis:"
 
-#: main.go:89
+#: main.go:86
 msgid "Already in latest version"
 msgstr "Já está na versão mais recente"
 
-#: main.go:105
+#: main.go:102
 msgid "Version:"
 msgstr "Versão:"
 
-#: main.go:106
+#: main.go:103
 msgid "Updated:"
 msgstr "Atualizado:"
 
-#: main.go:108
+#: main.go:105
 msgid "Latest version:"
 msgstr "Última versão:"
 
-#: main.go:111
+#: main.go:108
 msgid "Source Code: %s"
 msgstr "Código-fonte: %s"
 
-#: main.go:116
+#: main.go:113
 msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr ""
 "Nenhum arquivo/diretório foi especificado. O diretório atual será usado. (.)"
 
-#: settings/main.go:73
+#: settings/main.go:82
 msgid "syntax error"
 msgstr "erro de sintaxe"
 
-#: settings/main.go:78
+#: settings/main.go:87
 msgid "unrecognized key \"%s\""
 msgstr "chave desconhecida \"%s\"."
 
-#: settings/main.go:91
+#: settings/main.go:100
 msgid "invalid time duration(%s): %s"
 msgstr "duração de tempo inválida(%s): %s"
 
-#: settings/main.go:98
+#: settings/main.go:107
 msgid "unrecognized value type \"%s\""
 msgstr "tipo de valor desconhecido \"%s\"."
 
-#: stat/file.go:22
+#: stat/creation_date_bsd.go:24 stat/creation_date_others.go:16
+msgid "file birthtime is not supported"
+msgstr ""
+
+#: stat/creation_date_linux.go:27
+msgid ""
+"The statx syscall is not supported. At least Linux kernel 4.11 is needed"
+msgstr ""
+
+#: stat/file.go:15
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "erro ao obter a estrutura correspondente de fileinfo.Sys()"
 
-#: stat/file.go:24
+#: stat/file.go:17
 msgid "not supported on windows"
 msgstr "não é suportado no Windows"
-
-#: stat/file.go:61
-msgid "%d files, %d errors, total size: %s"
-msgstr "%d ficheiros, %d erros, tamanho total: %s"
-
-#: stat/file.go:113
-msgid "Reading \"%s\"..."
-msgstr "Lendo \"%s\"..."
 
 #: stat/format.go:18
 msgid "Name:"
@@ -281,43 +303,43 @@ msgstr "erro ao renomear o executável antigo [%s] para: %v"
 msgid "error getting http response: %v"
 msgstr "erro ao obter resposta HTTP: %v"
 
-#: update/main.go:115
+#: update/main.go:118
 msgid "Downloading latest version..."
 msgstr "Baixando a versão mais recente..."
 
-#: update/main.go:118
+#: update/main.go:127
 msgid "Error downloading binary to %s: %v"
 msgstr "Erro ao baixar o binário para %s: %v"
 
-#: update/main.go:119
+#: update/main.go:128
 msgid "Reversing changes..."
 msgstr "Revertendo alterações..."
 
-#: update/main.go:124
+#: update/main.go:133
 msgid "error reversing changes: failed to rename %s to %s: %v"
 msgstr "erro ao reverter alterações: falha ao renomear %s para %s: %v"
 
-#: update/main.go:138
+#: update/main.go:147
 msgid "error finishing the progress bar: %s"
 msgstr "Erro ao concluir a barra de progresso: %s"
 
-#: update/main.go:142
+#: update/main.go:151
 msgid "error removing old executable: %s"
 msgstr "Erro ao remover o executável antigo: %s"
 
-#: update/main.go:146
+#: update/main.go:155
 msgid "Updating completions..."
 msgstr "Atualizando os arquivos de conclusão..."
 
-#: update/main.go:149
+#: update/main.go:158
 msgid "error updating the completions: %s"
 msgstr "Erro ao atualizar as sugestões: %s"
 
-#: update/main.go:153
+#: update/main.go:162
 msgid "Upgrade completed successfully"
 msgstr "Atualização concluída com sucesso"
 
-#: update/main.go:167
+#: update/main.go:176
 msgid "%s detected, reversing changes before finishing program..."
 msgstr "%s detetado, revertendo alterações antes de terminar o programa..."
 
@@ -340,3 +362,15 @@ msgstr "%s não encontrado."
 #: update/update-completions.go:58
 msgid "error creating completion directory: %s"
 msgstr "erro ao criar diretório de sugestões: %s"
+
+#: walk/progress_bar.go:50
+msgid "%d files, %d errors, total size: %s"
+msgstr "%d ficheiros, %d erros, tamanho total: %s"
+
+#: walk/walker.go:65
+msgid "Reading \"%s\"..."
+msgstr "Lendo \"%s\"..."
+
+#: walk/walker.go:82
+msgid "too many warns (%d)"
+msgstr ""

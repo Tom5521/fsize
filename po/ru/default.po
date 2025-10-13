@@ -12,27 +12,27 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.6\n"
 
-#: flags.go:18
+#: flags.go:19
 msgid "Displays the file/folder properties."
 msgstr "Отображает свойства файла/папки."
 
-#: flags.go:31
+#: flags.go:45
 msgid ""
 "Prints the name of the file being walked if a directory has been selected."
 msgstr "Выводит имя файла, если выбрана директория."
 
-#: flags.go:34
+#: flags.go:48
 msgid "Skips walking inside the directories."
 msgstr "Пропускает просмотр содержимого директорий."
 
-#: flags.go:37
+#: flags.go:51
 msgid ""
 "Displays a file count and progress bar when counting and summing file sizes."
 msgstr ""
 "Отображает количество файлов и индикатор прогресса при подсчете и "
 "суммировании размеров файлов."
 
-#: flags.go:40
+#: flags.go:54
 msgid ""
 "Configure the variables used for preferences\n"
 "Example: \"fsize --config 'always-show-progress=true,always-print-on-"
@@ -48,15 +48,15 @@ msgstr ""
 "Чтобы увидеть доступные переменные и их значения, запустите \"fsize --print-"
 "settings\"."
 
-#: flags.go:46
+#: flags.go:60
 msgid "Prints the current configuration values."
 msgstr "Выводит текущие значения конфигурации."
 
-#: flags.go:49
+#: flags.go:63
 msgid "Hide possible warnings."
 msgstr "Скрыть возможные предупреждения."
 
-#: flags.go:52
+#: flags.go:66
 msgid ""
 "Generate a completion file for bash\n"
 "if any, the first argument will be taken as output file."
@@ -64,7 +64,7 @@ msgstr ""
 "Создает файл автозаполнения для bash\n"
 "если есть, первый аргумент будет взят как файл вывода."
 
-#: flags.go:56
+#: flags.go:70
 msgid ""
 "Generate a completion file for fish\n"
 "if any, the first argument will be taken as output file."
@@ -72,7 +72,7 @@ msgstr ""
 "Создает файл автозаполнения для fish\n"
 "если есть, первый аргумент будет взят как файл вывода."
 
-#: flags.go:60
+#: flags.go:74
 msgid ""
 "Generate a completion file for zsh\n"
 "if any, the first argument will be taken as output file."
@@ -80,7 +80,7 @@ msgstr ""
 "Создает файл автозаполнения для zsh\n"
 "если есть, первый аргумент будет взят как файл вывода."
 
-#: flags.go:68
+#: flags.go:82
 msgid ""
 "Automatically updates the program by overwriting the binary and regenerating "
 "the completions."
@@ -88,15 +88,15 @@ msgstr ""
 "Автоматически обновляет программу, перезаписывая бинарный файл и регенерируя "
 "автозаполнения."
 
-#: flags.go:75
+#: flags.go:89
 msgid "Displays the information of the binary"
 msgstr "Отображает информацию о бинарном файле"
 
-#: flags.go:88
+#: flags.go:102
 msgid "Disable any progress indicator."
 msgstr "Отключить отображение индикатора прогресса."
 
-#: flags.go:96
+#: flags.go:110
 msgid ""
 "Specifies how long the program should be counting files\n"
 "before a progress indicator appears"
@@ -104,7 +104,7 @@ msgstr ""
 "Указывает, как долго программа должна подсчитывать файлы,\n"
 "прежде чем появится индикатор прогресса"
 
-#: flags.go:104
+#: flags.go:118
 msgid ""
 "If the pattern is not \"\", only files that match it will be included in the "
 "count.\n"
@@ -114,7 +114,7 @@ msgstr ""
 "соответствующие этому шаблону.\n"
 "Шаблон должен быть регулярным выражением, если не указан флаг --wildcard в"
 
-#: flags.go:113
+#: flags.go:127
 msgid ""
 "If ignore is not \"\", the files that match it will be excluded from the "
 "count.\n"
@@ -124,77 +124,99 @@ msgstr ""
 "исключены из подсчета.\n"
 "Шаблон должен быть регулярным выражением, если не установлен флаг --wildcard"
 
-#: flags.go:122
+#: flags.go:136
 msgid ""
 "Switches --ignore & --pattern from regular expressions to wildcard patterns"
 msgstr ""
 "Переключатели --ignore и --pattern из регулярных выражений на шаблоны с "
 "подстановочными знаками"
 
-#: main.go:59
+#: flags.go:143
+msgid "Prevents the progress indicator from being cleared after finishing"
+msgstr ""
+
+#: flags.go:151
+msgid ""
+"Indicates the maximum depth to traverse within a directory; \n"
+"files/directories deeper than this will be skipped"
+msgstr ""
+
+#: flags.go:161
+msgid ""
+"Indicates the maximum number of warnings that will be printed. \n"
+"If it is -1, there is no limit."
+msgstr ""
+
+#: flags.go:170
+msgid ""
+"Indicates the log level, which can be debug, info, warn, error, or fatal."
+msgstr ""
+
+#: main.go:56
 msgid "ERROR:"
 msgstr "ОШИБКА:"
 
-#: main.go:76
+#: main.go:73
 msgid "Available configuration keys:"
 msgstr "Доступные ключи конфигурации:"
 
-#: main.go:89
+#: main.go:86
 msgid "Already in latest version"
 msgstr "Уже установлена последняя версия"
 
-#: main.go:105
+#: main.go:102
 msgid "Version:"
 msgstr "Версия:"
 
-#: main.go:106
+#: main.go:103
 msgid "Updated:"
 msgstr "Обновлено:"
 
-#: main.go:108
+#: main.go:105
 msgid "Latest version:"
 msgstr "Последняя версия:"
 
-#: main.go:111
+#: main.go:108
 msgid "Source Code: %s"
 msgstr "Исходный код: %s"
 
-#: main.go:116
+#: main.go:113
 msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr "Файл/директория не указаны, будет использована текущая директория. (.)"
 
-#: settings/main.go:73
+#: settings/main.go:82
 msgid "syntax error"
 msgstr "синтаксическая ошибка"
 
-#: settings/main.go:78
+#: settings/main.go:87
 msgid "unrecognized key \"%s\""
 msgstr "неопознанный ключ \"%s\""
 
-#: settings/main.go:91
+#: settings/main.go:100
 msgid "invalid time duration(%s): %s"
 msgstr "недействительная продолжительность времени (%s): %s"
 
-#: settings/main.go:98
+#: settings/main.go:107
 msgid "unrecognized value type \"%s\""
 msgstr "неопознанный тип значения \"%s\""
 
-#: stat/file.go:22
+#: stat/creation_date_bsd.go:24 stat/creation_date_others.go:16
+msgid "file birthtime is not supported"
+msgstr ""
+
+#: stat/creation_date_linux.go:27
+msgid ""
+"The statx syscall is not supported. At least Linux kernel 4.11 is needed"
+msgstr ""
+
+#: stat/file.go:15
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "ошибка получения соответствующей структуры от fileinfo.Sys()"
 
-#: stat/file.go:24
+#: stat/file.go:17
 msgid "not supported on windows"
 msgstr "не поддерживается на windows"
-
-#: stat/file.go:61
-msgid "%d files, %d errors, total size: %s"
-msgstr "%d файлов, %d ошибок, общий размер: %s"
-
-#: stat/file.go:113
-msgid "Reading \"%s\"..."
-msgstr "Чтение \"%s\"..."
 
 #: stat/format.go:18
 msgid "Name:"
@@ -280,43 +302,43 @@ msgstr "ошибка переименования старого исполня�
 msgid "error getting http response: %v"
 msgstr "ошибка получения http ответа: %v"
 
-#: update/main.go:115
+#: update/main.go:118
 msgid "Downloading latest version..."
 msgstr "Загрузка последней версии..."
 
-#: update/main.go:118
+#: update/main.go:127
 msgid "Error downloading binary to %s: %v"
 msgstr "Ошибка загрузки бинарного файла в %s: %v"
 
-#: update/main.go:119
+#: update/main.go:128
 msgid "Reversing changes..."
 msgstr "Отмена изменений..."
 
-#: update/main.go:124
+#: update/main.go:133
 msgid "error reversing changes: failed to rename %s to %s: %v"
 msgstr "ошибка отмены изменений: не удалось переименовать %s в %s: %v"
 
-#: update/main.go:138
+#: update/main.go:147
 msgid "error finishing the progress bar: %s"
 msgstr "ошибка при завершении индикатора выполнения: %s"
 
-#: update/main.go:142
+#: update/main.go:151
 msgid "error removing old executable: %s"
 msgstr "ошибка при удалении старого исполняемого файла: %s"
 
-#: update/main.go:146
+#: update/main.go:155
 msgid "Updating completions..."
 msgstr "Обновление автозаполнений..."
 
-#: update/main.go:149
+#: update/main.go:158
 msgid "error updating the completions: %s"
 msgstr "ошибка при обновлении завершений: %s"
 
-#: update/main.go:153
+#: update/main.go:162
 msgid "Upgrade completed successfully"
 msgstr "Обновление успешно завершено"
 
-#: update/main.go:167
+#: update/main.go:176
 msgid "%s detected, reversing changes before finishing program..."
 msgstr "Обнаружено %s, отмена изменений перед завершением программы..."
 
@@ -339,3 +361,15 @@ msgstr "%s не найдено."
 #: update/update-completions.go:58
 msgid "error creating completion directory: %s"
 msgstr "ошибка при создании каталога завершения: %s"
+
+#: walk/progress_bar.go:50
+msgid "%d files, %d errors, total size: %s"
+msgstr "%d файлов, %d ошибок, общий размер: %s"
+
+#: walk/walker.go:65
+msgid "Reading \"%s\"..."
+msgstr "Чтение \"%s\"..."
+
+#: walk/walker.go:82
+msgid "too many warns (%d)"
+msgstr ""
