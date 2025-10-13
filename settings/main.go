@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/adrg/xdg"
+	"github.com/charmbracelet/log"
 	"github.com/gookit/color"
 	po "github.com/leonelquinteros/gotext"
 	"github.com/spf13/viper"
@@ -27,6 +28,10 @@ const (
 	Pattern            = "Pattern"
 	IgnorePattern      = "Ignore-Pattern"
 	Wildcard           = "Wildcard"
+	NotClearBar        = "not-clear-bar"
+	Depht              = "depth"
+	WarnLimit          = "warn-limit"
+	LogLevel           = "log-level"
 )
 
 func InitSettings() error {
@@ -47,6 +52,10 @@ func InitSettings() error {
 	viper.SetDefault(Pattern, []string(nil))
 	viper.SetDefault(IgnorePattern, []string(nil))
 	viper.SetDefault(Wildcard, false)
+	viper.SetDefault(NotClearBar, true)
+	viper.SetDefault(Depht, 0)
+	viper.SetDefault(WarnLimit, 8)
+	viper.SetDefault(LogLevel, log.InfoLevel.String())
 
 read:
 	if err := viper.ReadInConfig(); err != nil {

@@ -4,6 +4,7 @@ import (
 	"github.com/Tom5521/fsize/flags"
 	"github.com/Tom5521/fsize/meta"
 	"github.com/Tom5521/fsize/settings"
+	"github.com/charmbracelet/log"
 	"github.com/gookit/color"
 	"github.com/leonelquinteros/gotext"
 	"github.com/spf13/cobra"
@@ -16,10 +17,23 @@ func initRoot() {
 	root = cobra.Command{
 		Use:   "fsize",
 		Short: gotext.Get("Displays the file/folder properties."),
+
+		PreRunE: func(cmd *cobra.Command, args []string) error {
+			lvl, err := log.ParseLevel(flags.LogLevel)
+			if err != nil {
+				return err
+			}
+			log.SetLevel(lvl)
+
+			if flags.NoWarns {
+				log.SetLevel(log.ErrorLevel)
+			}
+			return nil
+		},
+		RunE: RunE,
 		PostRunE: func(cmd *cobra.Command, args []string) error {
 			return viper.WriteConfig()
 		},
-		RunE:    RunE,
 		Version: meta.LongVersion,
 	}
 }
@@ -36,7 +50,7 @@ func InitFlags() {
 	flag.BoolVarP(&flags.Progress, "progress", "p", viper.GetBool(settings.AlwaysShowProgress),
 		gotext.Get("Displays a file count and progress bar when counting and summing file sizes."),
 	)
-	flag.StringSliceVarP(&flags.SettingsFlag, "config", "c", []string{},
+	flag.StringSliceVar(&flags.SettingsFlag, "config", []string{},
 		gotext.Get(`Configure the variables used for preferences
 Example: "fsize --config 'always-show-progress=true,always-print-on-walk=false'".
 
@@ -91,7 +105,7 @@ if any, the first argument will be taken as output file.`),
 	flag.DurationVarP(
 		&flags.ProgressDelay,
 		"progress-delay",
-		"d",
+		"l",
 		viper.GetDuration(settings.ProgressDelay),
 		gotext.Get(`Specifies how long the program should be counting files
 before a progress indicator appears`),
@@ -120,6 +134,40 @@ The pattern must be a regular expression unless the --wildcard flag is on`),
 		viper.GetBool(settings.Wildcard),
 		gotext.Get(
 			`Switches --ignore & --pattern from regular expressions to wildcard patterns`,
+		),
+	)
+	flag.BoolVarP(
+		&flags.NotClearBar,
+		"not-clear-bar", "c",
+		viper.GetBool(settings.NotClearBar),
+		gotext.Get(`Prevents the progress indicator from being cleared after finishing`),
+	)
+	flag.UintVarP(
+		&flags.Depth,
+		"depth",
+		"d",
+		viper.GetUint(settings.Depht),
+		gotext.Get(
+			`Indicates the maximum depth to traverse within a directory; 
+files/directories deeper than this will be skipped`,
+		),
+	)
+	flag.IntVarP(
+		&flags.WarnLimit,
+		"warn-limit",
+		"x",
+		viper.GetInt(settings.WarnLimit),
+		gotext.Get(
+			`Indicates the maximum number of warnings that will be printed. 
+If it is -1, there is no limit.`,
+		),
+	)
+	flag.StringVar(
+		&flags.LogLevel,
+		"log",
+		viper.GetString(settings.LogLevel),
+		gotext.Get(
+			`Indicates the log level, which can be debug, info, warn, error, or fatal.`,
 		),
 	)
 

@@ -3,17 +3,22 @@ package flags
 import "time"
 
 var (
-	PrintOnWalk    bool
-	NoWalk         bool
-	Progress       bool
-	NoWarns        bool
-	Update         bool
-	BinInfo        bool
-	NoProgress     bool
-	ProgressDelay  time.Duration
+	PrintOnWalk bool
+	NoWalk      bool
+	Progress    bool
+	NoWarns     bool
+	Update      bool
+	BinInfo     bool
+	NoProgress  bool
+	NotClearBar bool
+	// FollowSymlinks bool // TODO: Implement this.
 	Wildcard       bool
+	ProgressDelay  time.Duration
 	Patterns       []string
 	IgnorePatterns []string
+	LogLevel       string
+	Depth          uint
+	WarnLimit      int
 
 	// Hidden flags.
 

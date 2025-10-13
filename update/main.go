@@ -112,7 +112,16 @@ func ApplyUpdate(tag string) (err error) {
 	signal.Notify(sigchan, os.Interrupt)
 	go catchSIGINT(resp, sigchan)
 
-	bar := progressbar.DefaultBytes(resp.ContentLength, po.Get("Downloading latest version..."))
+	bar := progressbar.NewOptions64(
+		resp.ContentLength,
+		progressbar.OptionClearOnFinish(),
+		progressbar.OptionSetDescription(po.Get("Downloading latest version...")),
+		progressbar.OptionShowBytes(true),
+		progressbar.OptionFullWidth(),
+		progressbar.OptionSetPredictTime(true),
+		progressbar.OptionSetElapsedTime(true),
+		progressbar.OptionSetVisibility(true),
+	)
 
 	if err = download(executable, resp, bar); err != nil {
 		log.Error(po.Get("Error downloading binary to %s: %v", executable, err))

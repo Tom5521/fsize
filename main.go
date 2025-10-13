@@ -11,6 +11,7 @@ import (
 	"github.com/Tom5521/fsize/settings"
 	"github.com/Tom5521/fsize/stat"
 	"github.com/Tom5521/fsize/update"
+	"github.com/Tom5521/fsize/walk"
 	"github.com/charmbracelet/log"
 	"github.com/gookit/color"
 	po "github.com/leonelquinteros/gotext"
@@ -43,9 +44,8 @@ func main() {
 	}
 
 	// Initialize variables.
-
 	if err := settings.InitSettings(); err != nil {
-		log.Error(err)
+		log.Fatal(err)
 		return
 	}
 
@@ -53,9 +53,6 @@ func main() {
 	initRoot()
 
 	InitFlags()
-	if flags.NoWarns {
-		logger.SetLevel(log.ErrorLevel)
-	}
 	root.SetErrPrefix(color.Error.Render(po.Get("ERROR:")))
 	defer root.Execute()
 }
@@ -124,6 +121,8 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 			if err != nil {
 				return err
 			}
+			walk.ProcessFile(&file)
+
 			fmt.Println(file)
 		}
 	}
