@@ -9,6 +9,7 @@ require (
 	github.com/charmbracelet/log v0.4.2
 	github.com/dustin/go-humanize v1.0.1
 	github.com/gookit/color v1.6.0
+	github.com/karrick/godirwalk v1.17.0
 	github.com/leonelquinteros/gotext v1.7.2
 	github.com/schollz/progressbar/v3 v3.18.0
 	github.com/spf13/cobra v1.10.1
