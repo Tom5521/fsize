@@ -13,7 +13,7 @@ import (
 )
 
 func ProcessFile(file *stat.File) {
-	if !flags.Progress && !file.IsDir && flags.NoWalk {
+	if (!flags.Progress || flags.NoProgress) || !file.IsDir || flags.NoWalk {
 		return
 	}
 	var warns []error
