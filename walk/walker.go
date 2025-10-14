@@ -2,13 +2,13 @@ package walk
 
 import (
 	"context"
-	"io/fs"
-	"path/filepath"
+	"os"
 	"time"
 
 	"github.com/Tom5521/fsize/flags"
 	"github.com/Tom5521/fsize/stat"
 	"github.com/charmbracelet/log"
+	"github.com/karrick/godirwalk"
 	po "github.com/leonelquinteros/gotext"
 )
 
@@ -26,7 +26,7 @@ func ProcessFile(file *stat.File) {
 	defer cancel()
 
 	go func() {
-		if flags.NoProgress || flags.PrintOnWalk {
+		if (flags.NoProgress || !flags.Progress) || flags.PrintOnWalk {
 			return
 		}
 		select {
@@ -38,50 +38,58 @@ func ProcessFile(file *stat.File) {
 		}
 	}()
 
-	err := filepath.Walk(file.Path,
-		func(path string, info fs.FileInfo, err error) error {
-			err = filter(path, info, err)
+	err := godirwalk.Walk(file.Path, &godirwalk.Options{
+		Callback: func(osPathname string, directoryEntry *godirwalk.Dirent) error {
+			err := filter(osPathname, directoryEntry)
 			if err != nil {
-				switch err {
-				case filepath.SkipDir, filepath.SkipAll:
-					return err
-				default:
-					warns = append(warns, err)
-					state.Lock()
-					state.nwarns = len(warns)
-					state.Unlock()
-					return nil
-				}
+				return err
 			}
-			file.FilesNumber++
-			file.Size += info.Size()
-
-			state.Lock()
-			state.nfiles = file.FilesNumber
-			state.size = uint64(file.Size)
-			state.Unlock()
-
 			if flags.PrintOnWalk && !flags.NoProgress {
-				log.Info(po.Get("Reading \"%s\"...", path))
+				log.Info(po.Get("Reading \"%s\"...", osPathname))
 			}
+
+			defer func() {
+				file.FilesNumber++
+
+				state.Lock()
+				state.nfiles = file.FilesNumber
+				state.size = file.Size
+				state.Unlock()
+			}()
+
+			stat, err := os.Stat(osPathname)
+			if err != nil {
+				return err
+			}
+
+			file.Size += stat.Size()
 
 			return nil
 		},
-	)
+		ErrorCallback: func(s string, err error) godirwalk.ErrorAction {
+			warns = append(warns, err)
+			state.Lock()
+			state.nwarns = len(warns)
+			state.Unlock()
+			return godirwalk.SkipNode
+		},
+		FollowSymbolicLinks: flags.FollowSymlinks,
+	})
+	if err != nil {
+		warns = append(warns, err)
+		return
+	}
+
 	cancel()
-	if !flags.NoProgress && !flags.PrintOnWalk {
+	if (!flags.NoProgress || flags.Progress) && !flags.PrintOnWalk {
 		<-progressCtx.Done()
 	}
 
-	if err != nil {
-		warns = append(warns, err)
-	}
-
-	for i, err2 := range warns {
+	for i, err := range warns {
 		if i >= flags.WarnLimit {
 			log.Warn(po.Get("too many warns (%d)", len(warns)))
 			break
 		}
-		log.Warn(err2.Error())
+		log.Warn(err)
 	}
 }

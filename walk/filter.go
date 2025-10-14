@@ -1,19 +1,18 @@
 package walk
 
 import (
-	"io/fs"
 	"path/filepath"
 	"regexp"
 	"strings"
 
 	"github.com/Tom5521/fsize/flags"
+	"github.com/karrick/godirwalk"
 )
 
-func filter(path string, info fs.FileInfo, _ error) error {
+func filter(path string, info *godirwalk.Dirent) error {
 	var (
 		cmp   = regexp.MatchString
 		match bool
-		err   error
 	)
 	if flags.Wildcard {
 		cmp = filepath.Match
@@ -29,21 +28,22 @@ func filter(path string, info fs.FileInfo, _ error) error {
 			relativeDepth := len(parts) - len(baseParts)
 
 			if uint(relativeDepth) >= flags.Depth && info.IsDir() {
-				return filepath.SkipDir
+				return godirwalk.SkipThis
 			}
 		}
 	}
 
+	var err error
 	for _, pattern := range flags.Patterns {
 		match, err = cmp(pattern, path)
 		if err != nil || !match {
-			return filepath.SkipDir
+			return godirwalk.SkipThis
 		}
 	}
 	for _, pattern := range flags.IgnorePatterns {
 		match, err = cmp(pattern, path)
 		if err != nil || match {
-			return filepath.SkipDir
+			return godirwalk.SkipThis
 		}
 	}
 

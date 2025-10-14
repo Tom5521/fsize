@@ -17,7 +17,7 @@ type progressState struct {
 	sync.RWMutex
 	nwarns int
 	nfiles int64
-	size   uint64
+	size   int64
 }
 
 func progressUpdater(
@@ -50,7 +50,7 @@ func progressUpdater(
 				"%d files, %d errors, total size: %s",
 				nfiles,
 				nwarns,
-				humanize.IBytes(size),
+				humanize.IBytes(uint64(size)),
 			),
 			time.Since(startedTime).Truncate(time.Second),
 			dots,
