@@ -73,9 +73,10 @@ darwin/arm64
 android/arm64
 endef
 
+TARGETS := SUPPORTED_PLATFORMS
 VERBOSE ?= 0
 
-MWIN_EXT = $(if $(filter windows,$(1)),.exe)
+OS_EXT = $(if $(filter windows,$(1)),.exe)
 
 RED = $(shell tput setaf 1)
 GREEN = $(shell tput setaf 2)
@@ -91,7 +92,7 @@ TITLE = @echo "$(BOLD)$(GREEN)$(1)$(NC)"
 
 override CMD := $(GOENV) go
 override V_FLAG := $(if $(filter 1,$(VERBOSE)),-v)
-override WIN_EXT := $(call MWIN_EXT,$(GOOS))
+override WIN_EXT := $(call OS_EXT,$(GOOS))
 override GO_PACKAGE := github.com/Tom5521/fsize
 
 LD_FLAGS := -s -w
@@ -119,10 +120,10 @@ override NATIVE_GOOS := $(shell go env GOOS)
 override NATIVE_GOARCH := $(shell go env GOARCH)
 override NATIVE_BIN := $(call BIN,$(NATIVE_GOOS),$(NATIVE_GOARCH))
 
-.PHONY: test all clean default run build build-all install uninstall \
+.PHONY: test all clean default run build build-targets install uninstall \
 	%-completions-install %-completions-uninstall go-install \
 	go-uninstall %-install %-uninstall release update-assets po/en/default.pot \
-	xgotext$(XGOTEXT_SUFFIX)
+	xgotext$(XGOTEXT_SUFFIX) build-supported build-compatible
 .DEFAULT_GOAL := default
 
 default: test
@@ -154,7 +155,7 @@ xgotext$(XGOTEXT_SUFFIX):
 	$(call WARN,xgotext isn't installed.)
 	$(call WARN,downloading xgotext...)
 	wget -O "$(XGOTEXT_PATH)" \
-		"https://github.com/Tom5521/gotext-tools/releases/latest/download/xgotext-$(NATIVE_GOOS)-$(NATIVE_GOARCH)$(call MWIN_EXT,$(NATIVE_GOOS))" 2> /dev/null
+		"https://github.com/Tom5521/gotext-tools/releases/latest/download/xgotext-$(NATIVE_GOOS)-$(NATIVE_GOARCH)$(call OS_EXT,$(NATIVE_GOOS))" 2> /dev/null
 	chmod +x "$(XGOTEXT_PATH)"
 	$(call TITLE,xgotext downloaded successfully!)
 
@@ -188,7 +189,7 @@ changelog.md:
 	echo '## Changelog' > changelog.md
 	echo >> changelog.md
 
-	latest_tag=$$(git describe --tags --abbrev=0)
+	latest_tag="$(LATEST_TAG_SHORT)"
 	penultimate_tag=$$(git describe --tags --abbrev=0 "$$latest_tag^")
 
 	git log --pretty=format:'- [%h](https://github.com/Tom5521/fsize/commit/%H): %s' \
@@ -204,9 +205,9 @@ build:
 
 .ONESHELL:
 .SILENT:
-build-all: clean
+build-targets: clean
 	platforms=(
-		$(SUPPORTED_PLATFORMS)
+		$(value $(TARGETS))
 	)
 	$(call TITLE,Building...)
 	for platform in $${platforms[@]}; do
@@ -217,28 +218,17 @@ build-all: clean
 		$(MAKE) -s build GOOS=$$os GOARCH=$$arch
 	done
 
-.ONESHELL:
-.SILENT:
-build-for-all: clean
-	platforms=(
-		$(COMPATIBLE_PLATFORMS)
-	)
-	$(call TITLE,Building...)
-	for platform in $${platforms[@]}; do
-		os=$$(echo "$$platform"| cut -d'/' -f1)
-		arch=$$(echo "$$platform"| cut -d'/' -f2-)
+build-supported: build-targets
+build-compatible:
+	$(MAKE) build-targets -s TARGETS='COMPATIBLE_PLATFORMS'
 
-		$(call INFO,$(BLUE)$$os$(NC)/$(BOLD)$$arch$(NC))
-		$(MAKE) -s build GOOS=$$os GOARCH=$$arch
-	done
-
-release: build-all changelog.md
+release: build-supported changelog.md
 	gh release create $(LATEST_TAG_SHORT) \
 		--notes-file ./changelog.md \
 		--title $(LATEST_TAG_SHORT) \
 		--fail-on-no-commits builds/*
 
-update-assets: build-all
+update-assets: build-supported
 	gh release upload --clobber "$(LATEST_TAG_SHORT)" ./builds/*
 
 completions: $(NATIVE_BIN)
@@ -273,10 +263,10 @@ go-uninstall:
 
 %-install:
 	$(MAKE) -s $*-completions-install
-	$(call SUDO,$*) install -D $(NATIVE_BIN) $(call PREFIX,$*)/bin/fsize$(call MWIN_EXT,$(NATIVE_GOOS))
+	$(call SUDO,$*) install -D $(NATIVE_BIN) $(call PREFIX,$*)/bin/fsize$(call OS_EXT,$(NATIVE_GOOS))
 
 %-uninstall:
-	$(call SUDO,$*) rm -f $(call PREFIX,$*)/bin/fsize$(call MWIN_EXT,$(NATIVE_GOOS))
+	$(call SUDO,$*) rm -f $(call PREFIX,$*)/bin/fsize$(call OS_EXT,$(NATIVE_GOOS))
 	$(MAKE) -s $*-completions-uninstall
 
 .ONESHELL:
