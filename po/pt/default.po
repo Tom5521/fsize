@@ -5,7 +5,7 @@ msgstr ""
 "PO-Revision-Date: 2025-10-08 20:12-0300\n"
 "Last-Translator: thomas.bored5521@gmail.com\n"
 "Language-Team: \n"
-"Language: pt_BR\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,7 +19,8 @@ msgstr "Exibe as propriedades do arquivo/pasta."
 #: flags.go:45
 msgid ""
 "Prints the name of the file being walked if a directory has been selected."
-msgstr "Imprime o nome do arquivo sendo processado se um diretório foi selecionado."
+msgstr ""
+"Imprime o nome do arquivo sendo processado se um diretório foi selecionado."
 
 #: flags.go:48
 msgid "Skips walking inside the directories."
@@ -96,7 +97,7 @@ msgstr "Exibe as informações do binário"
 msgid "Disable any progress indicator."
 msgstr "Desativa qualquer indicador de progresso."
 
-#: flags.go:110
+#: flags.go:109
 msgid ""
 "Specifies how long the program should be counting files\n"
 "before a progress indicator appears"
@@ -104,7 +105,7 @@ msgstr ""
 "Especifica por quanto tempo o programa deve contar arquivos\n"
 "antes que um indicador de progresso apareça"
 
-#: flags.go:118
+#: flags.go:117
 msgid ""
 "If the pattern is not \"\", only files that match it will be included in the "
 "count.\n"
@@ -115,7 +116,7 @@ msgstr ""
 "O padrão deve ser uma expressão regular, a menos que a flag --wildcard "
 "esteja ativa"
 
-#: flags.go:127
+#: flags.go:126
 msgid ""
 "If ignore is not \"\", the files that match it will be excluded from the "
 "count.\n"
@@ -126,16 +127,16 @@ msgstr ""
 "O padrão deve ser uma expressão regular, a menos que a flag --wildcard "
 "esteja ativa"
 
-#: flags.go:136
+#: flags.go:135
 msgid ""
 "Switches --ignore & --pattern from regular expressions to wildcard patterns"
 msgstr "Muda --ignore e --pattern de expressões regulares para padrões curinga"
 
-#: flags.go:143
+#: flags.go:142
 msgid "Prevents the progress indicator from being cleared after finishing"
 msgstr "Impede que o indicador de progresso seja limpo após a conclusão"
 
-#: flags.go:151
+#: flags.go:150
 msgid ""
 "Indicates the maximum depth to traverse within a directory; \n"
 "files/directories deeper than this will be skipped"
@@ -143,7 +144,7 @@ msgstr ""
 "Indica a profundidade máxima a percorrer dentro de uma pasta; \n"
 "arquivos/pastas mais profundos que isso serão ignorados"
 
-#: flags.go:161
+#: flags.go:160
 msgid ""
 "Indicates the maximum number of warnings that will be printed. \n"
 "If it is -1, there is no limit."
@@ -151,11 +152,14 @@ msgstr ""
 "Indica o número máximo de avisos que serão impressos. \n"
 "Se for -1, não há limite."
 
-#: flags.go:170
+#: flags.go:169
 msgid ""
 "Indicates the log level, which can be debug, info, warn, error, or fatal."
+msgstr "Indica o nível de log, que pode ser debug, info, warn, error ou fatal."
+
+#: flags.go:173
+msgid "If enabled, the program will follow symbolic links"
 msgstr ""
-"Indica o nível de log, que pode ser debug, info, warn, error ou fatal."
 
 #: main.go:56
 msgid "ERROR:"
@@ -373,10 +377,10 @@ msgstr "erro ao criar diretório de autocompletar: %s"
 msgid "%d files, %d errors, total size: %s"
 msgstr "%d arquivos, %d erros, tamanho total: %s"
 
-#: walk/walker.go:65
+#: walk/walker.go:48
 msgid "Reading \"%s\"..."
 msgstr "Lendo \"%s\"..."
 
-#: walk/walker.go:82
+#: walk/walker.go:90
 msgid "too many warns (%d)"
 msgstr "muitos avisos (%d)"

@@ -96,7 +96,7 @@ msgstr "Отображает информацию о бинарном файле
 msgid "Disable any progress indicator."
 msgstr "Отключить отображение индикатора прогресса."
 
-#: flags.go:110
+#: flags.go:109
 msgid ""
 "Specifies how long the program should be counting files\n"
 "before a progress indicator appears"
@@ -104,7 +104,7 @@ msgstr ""
 "Указывает, как долго программа должна подсчитывать файлы,\n"
 "прежде чем появится индикатор прогресса"
 
-#: flags.go:118
+#: flags.go:117
 msgid ""
 "If the pattern is not \"\", only files that match it will be included in the "
 "count.\n"
@@ -114,7 +114,7 @@ msgstr ""
 "соответствующие этому шаблону.\n"
 "Шаблон должен быть регулярным выражением, если не указан флаг --wildcard"
 
-#: flags.go:127
+#: flags.go:126
 msgid ""
 "If ignore is not \"\", the files that match it will be excluded from the "
 "count.\n"
@@ -124,18 +124,18 @@ msgstr ""
 "исключены из подсчета.\n"
 "Шаблон должен быть регулярным выражением, если не установлен флаг --wildcard"
 
-#: flags.go:136
+#: flags.go:135
 msgid ""
 "Switches --ignore & --pattern from regular expressions to wildcard patterns"
 msgstr ""
 "Переключает --ignore и --pattern с регулярных выражений на шаблоны с "
 "подстановочными знаками"
 
-#: flags.go:143
+#: flags.go:142
 msgid "Prevents the progress indicator from being cleared after finishing"
 msgstr "Предотвращает очистку индикатора прогресса после завершения"
 
-#: flags.go:151
+#: flags.go:150
 msgid ""
 "Indicates the maximum depth to traverse within a directory; \n"
 "files/directories deeper than this will be skipped"
@@ -143,7 +143,7 @@ msgstr ""
 "Указывает максимальную глубину обхода внутри директории; \n"
 "файлы/директории, находящиеся глубже, будут пропущены"
 
-#: flags.go:161
+#: flags.go:160
 msgid ""
 "Indicates the maximum number of warnings that will be printed. \n"
 "If it is -1, there is no limit."
@@ -151,12 +151,16 @@ msgstr ""
 "Указывает максимальное количество предупреждений, которые будут напечатаны.\n"
 "Если значение -1, ограничения нет."
 
-#: flags.go:170
+#: flags.go:169
 msgid ""
 "Indicates the log level, which can be debug, info, warn, error, or fatal."
 msgstr ""
 "Указывает уровень ведения журнала, который может быть: debug, info, warn, "
 "error или fatal."
+
+#: flags.go:173
+msgid "If enabled, the program will follow symbolic links"
+msgstr ""
 
 #: main.go:56
 msgid "ERROR:"
@@ -374,10 +378,10 @@ msgstr "ошибка при создании каталога завершени
 msgid "%d files, %d errors, total size: %s"
 msgstr "%d файлов, %d ошибок, общий размер: %s"
 
-#: walk/walker.go:65
+#: walk/walker.go:48
 msgid "Reading \"%s\"..."
 msgstr "Чтение \"%s\"..."
 
-#: walk/walker.go:82
+#: walk/walker.go:90
 msgid "too many warns (%d)"
 msgstr "слишком много предупреждений (%d)"

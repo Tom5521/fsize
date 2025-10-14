@@ -97,7 +97,7 @@ msgstr "Muestra la información del binario"
 msgid "Disable any progress indicator."
 msgstr "Desactiva cualquier indicador de progreso."
 
-#: flags.go:110
+#: flags.go:109
 msgid ""
 "Specifies how long the program should be counting files\n"
 "before a progress indicator appears"
@@ -105,7 +105,7 @@ msgstr ""
 "Especifica cuanto tiempo el programa debería estár contando archivos\n"
 "antes de que aparezca un indicador de progreso"
 
-#: flags.go:118
+#: flags.go:117
 msgid ""
 "If the pattern is not \"\", only files that match it will be included in the "
 "count.\n"
@@ -116,7 +116,7 @@ msgstr ""
 "El patrón debe ser una expresión regular a menos que la bandera --wildcard "
 "esté encendida"
 
-#: flags.go:127
+#: flags.go:126
 msgid ""
 "If ignore is not \"\", the files that match it will be excluded from the "
 "count.\n"
@@ -127,17 +127,17 @@ msgstr ""
 "El patrón debe ser una expresión regular a menos que la bandera --wildcard "
 "esté encendida"
 
-#: flags.go:136
+#: flags.go:135
 msgid ""
 "Switches --ignore & --pattern from regular expressions to wildcard patterns"
 msgstr ""
 "Cambia --ignore y --pattern de expresiones regulares a patrones comodín"
 
-#: flags.go:143
+#: flags.go:142
 msgid "Prevents the progress indicator from being cleared after finishing"
 msgstr "Evita que el indicador de progreso se borre después de finalizar"
 
-#: flags.go:151
+#: flags.go:150
 msgid ""
 "Indicates the maximum depth to traverse within a directory; \n"
 "files/directories deeper than this will be skipped"
@@ -145,7 +145,7 @@ msgstr ""
 "Indica la profundidad máxima para recorrer dentro de un directorio; \n"
 "archivos/directorios más profundos que esto serán omitidos"
 
-#: flags.go:161
+#: flags.go:160
 msgid ""
 "Indicates the maximum number of warnings that will be printed. \n"
 "If it is -1, there is no limit."
@@ -153,11 +153,15 @@ msgstr ""
 "Indica el número máximo de advertencias que se imprimirán. \n"
 "Si es -1, no hay límite."
 
-#: flags.go:170
+#: flags.go:169
 msgid ""
 "Indicates the log level, which can be debug, info, warn, error, or fatal."
 msgstr ""
 "Indica el nivel de registro, que puede ser debug, info, warn, error o fatal."
+
+#: flags.go:173
+msgid "If enabled, the program will follow symbolic links"
+msgstr ""
 
 #: main.go:56
 msgid "ERROR:"
@@ -218,8 +222,8 @@ msgstr "la hora de creación del archivo no está soportada"
 msgid ""
 "The statx syscall is not supported. At least Linux kernel 4.11 is needed"
 msgstr ""
-"La llamada al sistema statx no está soportada. Se necesita al menos el kernel "
-"de Linux 4.11"
+"La llamada al sistema statx no está soportada. Se necesita al menos el "
+"kernel de Linux 4.11"
 
 #: stat/file.go:15
 msgid "error getting the corresponding structure from fileinfo.Sys()"
@@ -377,10 +381,10 @@ msgstr "error creando el directorio de sugerencias: %s"
 msgid "%d files, %d errors, total size: %s"
 msgstr "%d archivos, %d errores, tamaño total: %s"
 
-#: walk/walker.go:65
+#: walk/walker.go:48
 msgid "Reading \"%s\"..."
 msgstr "Leyendo \"%s\"..."
 
-#: walk/walker.go:82
+#: walk/walker.go:90
 msgid "too many warns (%d)"
 msgstr "demasiadas advertencias (%d)"

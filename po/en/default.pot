@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: v1.19.0-4-g85f3aa6\n"
+"Project-Id-Version: v1.20.0-2-g5f54d80\n"
 "PO-Revision-Date: YEAR-MO-DA HO: MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -66,36 +66,40 @@ msgstr ""
 msgid "Disable any progress indicator."
 msgstr ""
 
-#: flags.go:110
+#: flags.go:109
 msgid "Specifies how long the program should be counting files\nbefore a progress indicator appears"
 msgstr ""
 
-#: flags.go:118
+#: flags.go:117
 msgid "If the pattern is not \"\", only files that match it will be included in the count.\nThe pattern must be a regular expression unless the --wildcard flag on"
 msgstr ""
 
-#: flags.go:127
+#: flags.go:126
 msgid "If ignore is not \"\", the files that match it will be excluded from the count.\nThe pattern must be a regular expression unless the --wildcard flag is on"
 msgstr ""
 
-#: flags.go:136
+#: flags.go:135
 msgid "Switches --ignore & --pattern from regular expressions to wildcard patterns"
 msgstr ""
 
-#: flags.go:143
+#: flags.go:142
 msgid "Prevents the progress indicator from being cleared after finishing"
 msgstr ""
 
-#: flags.go:151
+#: flags.go:150
 msgid "Indicates the maximum depth to traverse within a directory; \nfiles/directories deeper than this will be skipped"
 msgstr ""
 
-#: flags.go:161
+#: flags.go:160
 msgid "Indicates the maximum number of warnings that will be printed. \nIf it is -1, there is no limit."
 msgstr ""
 
-#: flags.go:170
+#: flags.go:169
 msgid "Indicates the log level, which can be debug, info, warn, error, or fatal."
+msgstr ""
+
+#: flags.go:173
+msgid "If enabled, the program will follow symbolic links"
 msgstr ""
 
 #: main.go:56
@@ -309,11 +313,11 @@ msgstr ""
 msgid "%d files, %d errors, total size: %s"
 msgstr ""
 
-#: walk/walker.go:65
+#: walk/walker.go:48
 msgid "Reading \"%s\"..."
 msgstr ""
 
-#: walk/walker.go:82
+#: walk/walker.go:90
 msgid "too many warns (%d)"
 msgstr ""
 
