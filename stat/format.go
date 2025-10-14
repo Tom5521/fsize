@@ -46,9 +46,13 @@ const formatTemplate = `{{get "Name:"}} {{.Name}}
 {{get "GID/Group:"}} {{formatGroup .Group}}
 {{- end }}`
 
+func get(k string, args []any) string {
+	return gotext.Get(k, args...)
+}
+
 var funcMap = template.FuncMap{
 	"get": func(id string) string {
-		return color.Green.Render(gotext.Get(id))
+		return color.Green.Render(get(id, nil))
 	},
 	"formatSize": func(size int64) string {
 		return humanize.IBytes(uint64(size))
