@@ -102,10 +102,9 @@ if any, the first argument will be taken as output file.`),
 		gotext.Get("Disable any progress indicator."),
 	)
 
-	flag.DurationVarP(
+	flag.DurationVar(
 		&flags.ProgressDelay,
 		"progress-delay",
-		"l",
 		viper.GetDuration(settings.ProgressDelay),
 		gotext.Get(`Specifies how long the program should be counting files
 before a progress indicator appears`),
@@ -169,6 +168,9 @@ If it is -1, there is no limit.`,
 		gotext.Get(
 			`Indicates the log level, which can be debug, info, warn, error, or fatal.`,
 		),
+	)
+	flag.BoolVarP(&flags.FollowSymlinks, "follow-symlinks", "l", false,
+		gotext.Get(`If enabled, the program will follow symbolic links`),
 	)
 
 	root.MarkFlagsMutuallyExclusive(
