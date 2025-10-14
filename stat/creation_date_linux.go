@@ -30,5 +30,14 @@ func creationDate(info os.FileInfo) (time.Time, error) {
 		}
 		return time.Time{}, err
 	}
+
+	if statx.Btime.Sec == 0 && statx.Btime.Nsec == 0 {
+		return time.Time{}, errors.New(
+			po.Get(
+				"BTIME isn't supported",
+			),
+		)
+	}
+
 	return time.Unix(int64(statx.Btime.Sec), int64(statx.Btime.Nsec)), nil
 }
