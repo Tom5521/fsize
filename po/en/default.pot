@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: v1.20.0-2-g5f54d80\n"
+"Project-Id-Version: v1.20.0-8-g53d35a1\n"
 "PO-Revision-Date: YEAR-MO-DA HO: MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -157,6 +157,10 @@ msgstr ""
 
 #: stat/creation_date_linux.go:27
 msgid "The statx syscall is not supported. At least Linux kernel 4.11 is needed"
+msgstr ""
+
+#: stat/creation_date_linux.go:37
+msgid "BTIME isn't supported"
 msgstr ""
 
 #: stat/file.go:15

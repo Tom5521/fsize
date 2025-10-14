@@ -225,6 +225,10 @@ msgstr ""
 "La llamada al sistema statx no está soportada. Se necesita al menos el "
 "kernel de Linux 4.11"
 
+#: stat/creation_date_linux.go:37
+msgid "BTIME isn't supported"
+msgstr ""
+
 #: stat/file.go:15
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "error al obtener la estructura correspondiente de fileinfo.Sys()"

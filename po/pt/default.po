@@ -221,6 +221,10 @@ msgid ""
 msgstr ""
 "A syscall statx não é suportada. É necessário pelo menos o kernel Linux 4.11"
 
+#: stat/creation_date_linux.go:37
+msgid "BTIME isn't supported"
+msgstr ""
+
 #: stat/file.go:15
 msgid "error getting the corresponding structure from fileinfo.Sys()"
 msgstr "erro ao obter a estrutura correspondente de fileinfo.Sys()"
