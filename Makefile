@@ -108,6 +108,8 @@ define CLEAN_TARGETS
 *.po~
 *.log
 *.diff
+*.rej
+*.orig
 completions
 builds
 fsize

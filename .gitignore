@@ -10,4 +10,5 @@ completions
 *.diff
 *.orig
 *.old
+*.rej
 changelog.md

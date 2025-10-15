@@ -160,7 +160,7 @@ msgstr ""
 
 #: flags.go:173
 msgid "If enabled, the program will follow symbolic links"
-msgstr ""
+msgstr "Если включено, программа будет следовать по символическим ссылкам"
 
 #: main.go:56
 msgid "ERROR:"
@@ -224,7 +224,7 @@ msgstr ""
 
 #: stat/creation_date_linux.go:37
 msgid "BTIME isn't supported"
-msgstr ""
+msgstr "BTIME не поддерживается"
 
 #: stat/file.go:15
 msgid "error getting the corresponding structure from fileinfo.Sys()"

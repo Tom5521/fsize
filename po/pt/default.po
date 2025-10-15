@@ -159,7 +159,7 @@ msgstr "Indica o nível de log, que pode ser debug, info, warn, error ou fatal."
 
 #: flags.go:173
 msgid "If enabled, the program will follow symbolic links"
-msgstr ""
+msgstr "Se habilitado, o programa seguirá links simbólicos"
 
 #: main.go:56
 msgid "ERROR:"
@@ -223,7 +223,7 @@ msgstr ""
 
 #: stat/creation_date_linux.go:37
 msgid "BTIME isn't supported"
-msgstr ""
+msgstr "BTIME não é suportado"
 
 #: stat/file.go:15
 msgid "error getting the corresponding structure from fileinfo.Sys()"

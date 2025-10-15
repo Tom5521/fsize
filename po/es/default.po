@@ -102,7 +102,7 @@ msgid ""
 "Specifies how long the program should be counting files\n"
 "before a progress indicator appears"
 msgstr ""
-"Especifica cuanto tiempo el programa debería estár contando archivos\n"
+"Especifica cuánto tiempo el programa debería estar contando archivos\n"
 "antes de que aparezca un indicador de progreso"
 
 #: flags.go:117
@@ -111,10 +111,10 @@ msgid ""
 "count.\n"
 "The pattern must be a regular expression unless the --wildcard flag on"
 msgstr ""
-"Si el patrón difiere a \"\", solo los archivos que coincidan con el van a "
-"ser incluidos en el conteo.\n"
+"Si el patrón no es \"\", solo los archivos que coincidan con él serán "
+"incluidos en el conteo.\n"
 "El patrón debe ser una expresión regular a menos que la bandera --wildcard "
-"esté encendida"
+"esté activada"
 
 #: flags.go:126
 msgid ""
@@ -122,10 +122,10 @@ msgid ""
 "count.\n"
 "The pattern must be a regular expression unless the --wildcard flag is on"
 msgstr ""
-"Si ignore difiere a \"\", los archivos que coincidan con el serán excluidos "
-"del conteo.\n"
+"Si ignore no es \"\", los archivos que coincidan con él serán excluidos del "
+"conteo.\n"
 "El patrón debe ser una expresión regular a menos que la bandera --wildcard "
-"esté encendida"
+"esté activada"
 
 #: flags.go:135
 msgid ""
@@ -161,7 +161,7 @@ msgstr ""
 
 #: flags.go:173
 msgid "If enabled, the program will follow symbolic links"
-msgstr ""
+msgstr "Si está habilitado, el programa seguirá enlaces simbólicos"
 
 #: main.go:56
 msgid "ERROR:"
@@ -208,7 +208,7 @@ msgstr "clave no reconocida \"%s\""
 
 #: settings/main.go:100
 msgid "invalid time duration(%s): %s"
-msgstr "duración de tiempo invalida(%s): %s"
+msgstr "duración de tiempo inválida(%s): %s"
 
 #: settings/main.go:107
 msgid "unrecognized value type \"%s\""
@@ -227,7 +227,7 @@ msgstr ""
 
 #: stat/creation_date_linux.go:37
 msgid "BTIME isn't supported"
-msgstr ""
+msgstr "BTIME no está soportado"
 
 #: stat/file.go:15
 msgid "error getting the corresponding structure from fileinfo.Sys()"
@@ -295,7 +295,7 @@ msgid ""
 "update command may not work as expected."
 msgstr ""
 "Debido a la implementación de sistema de archivos no estándar del entorno, "
-"el comando de actualizar puede no funcionar como se espera."
+"el comando de actualización puede no funcionar como se espera."
 
 #: update/main.go:76
 msgid "Do you want to proceed with the update?"
@@ -303,11 +303,11 @@ msgstr "¿Quieres continuar con la actualización?"
 
 #: update/main.go:77 update/update-completions.go:37
 msgid "Yes"
-msgstr "Si"
+msgstr "Sí"
 
 #: update/main.go:86 update/update-completions.go:45
 msgid "error running confirm dialog"
-msgstr "error ejecutando el dialogo de confirmación"
+msgstr "error ejecutando el diálogo de confirmación"
 
 #: update/main.go:88
 msgid "The command has been cancelled."
@@ -319,7 +319,7 @@ msgstr "error renombrando el ejecutable viejo [%s] a: %v"
 
 #: update/main.go:106
 msgid "error getting http response: %v"
-msgstr "error consiguiendo respuesta http: %v"
+msgstr "error obteniendo respuesta http: %v"
 
 #: update/main.go:118
 msgid "Downloading latest version..."
@@ -343,7 +343,7 @@ msgstr "error terminando la barra de progreso: %s"
 
 #: update/main.go:151
 msgid "error removing old executable: %s"
-msgstr "error removiendo ejecutable viejo: %s"
+msgstr "error eliminando ejecutable viejo: %s"
 
 #: update/main.go:155
 msgid "Updating completions..."
@@ -351,7 +351,7 @@ msgstr "Actualizando las autocompletaciones..."
 
 #: update/main.go:158
 msgid "error updating the completions: %s"
-msgstr "error actualizando las sugerencias: %s"
+msgstr "error actualizando las autocompletaciones: %s"
 
 #: update/main.go:162
 msgid "Upgrade completed successfully"
@@ -363,11 +363,11 @@ msgstr "%s detectado, revirtiendo cambios antes de terminar el programa..."
 
 #: update/update-completions.go:28
 msgid "error removing %s completions: %s"
-msgstr "error removiendo sugerencias de %s: %s"
+msgstr "error eliminando autocompletaciones de %s: %s"
 
 #: update/update-completions.go:36
 msgid "Do you want to update the completions?"
-msgstr "¿Quieres actualizar las sugerencias?"
+msgstr "¿Quieres actualizar las autocompletaciones?"
 
 #: update/update-completions.go:38
 msgid "No"
@@ -379,7 +379,7 @@ msgstr "%s no encontrado."
 
 #: update/update-completions.go:58
 msgid "error creating completion directory: %s"
-msgstr "error creando el directorio de sugerencias: %s"
+msgstr "error creando el directorio de autocompletaciones: %s"
 
 #: walk/progress_bar.go:50
 msgid "%d files, %d errors, total size: %s"
