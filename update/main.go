@@ -1,6 +1,7 @@
 package update
 
 import (
+	"context"
 	"errors"
 	"fmt"
 	"io"
@@ -8,12 +9,12 @@ import (
 	"os"
 	"os/signal"
 	"runtime"
-	"strings"
 
 	"github.com/Tom5521/fsize/checkos"
 	"github.com/Tom5521/fsize/meta"
 	"github.com/charmbracelet/huh"
 	"github.com/charmbracelet/log"
+	"github.com/google/go-github/v76/github"
 	"github.com/gookit/color"
 	po "github.com/leonelquinteros/gotext"
 	"github.com/schollz/progressbar/v3"
@@ -21,46 +22,61 @@ import (
 
 const UpdateURL string = "https://github.com/Tom5521/fsize/releases/latest"
 
-func CheckUpdate() (tag string, latest bool, err error) {
-	log.Info(po.Get("Checking the latest version available..."))
-	resp, err := http.Get(UpdateURL)
-	if err != nil {
-		err = fmt.Errorf("error getting http response: %v", err)
-		return tag, latest, err
-	}
-	defer resp.Body.Close()
-
-	latestURL := resp.Request.URL.String()
-	parts := strings.Split(latestURL, "/")
-
-	tag = parts[len(parts)-1]
-
-	if tag == meta.Version {
-		latest = true
-	}
-
-	return tag, latest, err
+type Status struct {
+	Asset         *github.ReleaseAsset
+	Release       *github.RepositoryRelease
+	Latest        bool
+	CurrentDigest string
 }
 
-func ApplyUpdate(tag string) (err error) {
-	const baseURL string = "https://github.com/Tom5521/fsize/releases/download/%s/fsize-%s-%s"
-
-	// This is for the termux users.
-	goos := runtime.GOOS
-	if runtime.GOOS == "android" {
-		goos = "linux"
+func CheckUpdate(client *github.Client) (status *Status, err error) {
+	log.Info(po.Get("Checking the latest version available..."))
+	rel, _, err := client.Repositories.GetLatestRelease(context.Background(), "Tom5521", "fsize")
+	if err != nil {
+		return nil, err
 	}
 
-	url := fmt.Sprintf(
-		baseURL,
-		tag,
-		goos,
+	binaryName := fmt.Sprintf("fsize-%s-%s",
+		runtime.GOOS,
 		runtime.GOARCH,
 	)
-	if checkos.Windows {
-		url += ".exe"
+	if runtime.GOOS == "windows" {
+		binaryName += ".exe"
+	}
+	var relAsset *github.ReleaseAsset
+	for _, ra := range rel.Assets {
+		if ra.GetName() == binaryName {
+			relAsset = ra
+			break
+		}
+	}
+	if relAsset == nil {
+		return &Status{
+			Release: rel,
+			Latest:  false,
+		}, nil
 	}
 
+	binDigest, err := binaryDigest()
+	if err != nil {
+		return nil, err
+	}
+
+	return &Status{
+		CurrentDigest: binDigest,
+		Asset:         relAsset,
+		Release:       rel,
+		Latest: rel.GetTagName() == meta.Version &&
+			binDigest == relAsset.GetDigest(),
+	}, nil
+}
+
+func ApplyUpdate(client *github.Client, status *Status) (err error) {
+	if status.Asset == nil {
+		return errors.New(
+			po.Get(`unsupported platform, try building fsize by yourself`),
+		)
+	}
 	var needConfirm bool
 	if isMaybeRunningInNixOS() {
 		needConfirm = true
@@ -101,7 +117,7 @@ func ApplyUpdate(tag string) (err error) {
 		return errors.New(po.Get("error renaming the old executable [%s] to: %v", executable, err))
 	}
 
-	resp, err := http.Get(url)
+	resp, err := http.Get(status.Asset.GetBrowserDownloadURL())
 	if err != nil {
 		return errors.New(po.Get("error getting http response: %v", err))
 	}
@@ -160,7 +176,11 @@ func ApplyUpdate(tag string) (err error) {
 	}
 
 	log.Info(po.Get("Upgrade completed successfully"))
-	fmt.Printf("%s -> %s\n", color.Red.Render(meta.Version), color.Green.Render(tag))
+	fmt.Printf(
+		"%s -> %s\n",
+		color.Red.Render(meta.Version),
+		color.Green.Render(status.Release.GetTagName()),
+	)
 
 	return err
 }

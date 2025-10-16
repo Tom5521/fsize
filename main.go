@@ -13,6 +13,7 @@ import (
 	"github.com/Tom5521/fsize/update"
 	"github.com/Tom5521/fsize/walk"
 	"github.com/charmbracelet/log"
+	"github.com/google/go-github/v76/github"
 	"github.com/gookit/color"
 	po "github.com/leonelquinteros/gotext"
 	"github.com/spf13/cobra"
@@ -20,7 +21,7 @@ import (
 )
 
 var (
-	releaseTarget string
+	releaseTarget string = "github-bin"
 	upgradable    bool
 )
 
@@ -70,7 +71,14 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 	if !term.IsTerminal(int(os.Stdout.Fd())) {
 		color.Enable = false
 	}
-
+	var client *github.Client
+	if flags.Update || flags.BinInfo {
+		client = github.NewClient(nil)
+		token := os.Getenv("GH_TOKEN")
+		if token != "" {
+			client = client.WithAuthToken(token)
+		}
+	}
 	switch {
 	case flags.GenBashCompletion || flags.GenFishCompletion || flags.GenZshCompletion:
 		err = GenerateCompletions(cmd, args)
@@ -83,25 +91,19 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 			settings.Print()
 		}
 	case flags.Update:
-		var (
-			tag     string
-			updated bool
-		)
-		tag, updated, err = update.CheckUpdate()
+		var status *update.Status
+		status, err = update.CheckUpdate(client)
 		if err != nil {
 			return err
 		}
-		if updated {
+		if status.Latest {
 			log.Info(po.Get("Already in latest version"))
 			return err
 		}
-		err = update.ApplyUpdate(tag)
+		err = update.ApplyUpdate(client, status)
 	case flags.BinInfo:
-		var (
-			tag     string
-			updated bool
-		)
-		tag, updated, err = update.CheckUpdate()
+		var status *update.Status
+		status, err = update.CheckUpdate(client)
 		if err != nil {
 			return err
 		}
@@ -110,9 +112,13 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 		fmt.Println("GOARCH:", runtime.GOARCH)
 		fmt.Println(po.Get("Self-upgradable:"), upgradable)
 		fmt.Println(po.Get("Version:"), meta.LongVersion)
-		fmt.Println(po.Get("Updated:"), updated)
-		if !updated {
-			fmt.Println(po.Get("Latest version:"), tag)
+		fmt.Println(po.Get("Updated:"), status.Latest)
+		if !status.Latest {
+			fmt.Print(po.Get("Latest version:"), status.Release.GetTagName())
+			if status.Release.GetTagName() == meta.Version {
+				fmt.Print(" " + po.Get("(the hashes differ)"))
+			}
+			fmt.Println()
 		}
 
 		fmt.Println(po.Get("Source Code: %s", "https://github.com/Tom5521/fsize"))

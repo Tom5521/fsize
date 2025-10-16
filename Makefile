@@ -73,7 +73,7 @@ darwin/arm64
 android/arm64
 endef
 
-TARGETS := SUPPORTED_PLATFORMS
+TARGETS := COMPATIBLE_PLATFORMS
 VERBOSE ?= 0
 
 OS_EXT = $(if $(filter windows,$(1)),.exe)
@@ -100,10 +100,8 @@ MANAGE_UPDATE := 1
 LD_FLAGS := -s -w
 LD_FLAGS += -X '$(GO_PACKAGE)/meta.LongVersion=$(LATEST_TAG)'
 LD_FLAGS += -X '$(GO_PACKAGE)/meta.Version=$(LATEST_TAG_SHORT)'
-ifeq ($(MANAGE_UPDATE),1)
-LD_FLAGS += -X 'main.releaseTarget=github-bin'
-else
-LD_FLAGS += -X 'main.releaseTarget=packageManagers'
+ifneq ($(MANAGE_UPDATE),1)
+LD_FLAGS += -X 'main.releaseTarget=package-manager'
 endif
 
 XGOTEXT_SUFFIX := $(if $(WIN_EXT),.exe,.bin)
@@ -227,17 +225,18 @@ build-targets: clean
 		$(MAKE) -s build GOOS=$$os GOARCH=$$arch
 	done
 
-build-supported: build-targets
+build-supported: 
+	$(MAKE) build-targets -s TARGETS='SUPPORTED_PLATFORMS'
 build-compatible:
 	$(MAKE) build-targets -s TARGETS='COMPATIBLE_PLATFORMS'
 
-release: build-supported changelog.md
+release: build-targets changelog.md
 	gh release create $(LATEST_TAG_SHORT) \
 		--notes-file ./changelog.md \
 		--title $(LATEST_TAG_SHORT) \
 		--fail-on-no-commits builds/*
 
-update-assets: build-supported
+update-assets: build-targets
 	gh release upload --clobber "$(LATEST_TAG_SHORT)" ./builds/*
 
 completions: $(NATIVE_BIN)
