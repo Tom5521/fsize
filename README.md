@@ -43,10 +43,13 @@ Usage:
 Flags:
       --bin-info                  Displays the information of the binary
       --color                     enable or disable the color (default true)
-  -c, --config strings            Configure the variables used for preferences
+      --config strings            Configure the variables used for preferences
                                   Example: "fsize --config 'always-show-progress=true,always-print-on-walk=false'".
 
                                   To see the available variables and their values run "fsize --print-settings".
+  -d, --depth uint                Indicates the maximum depth to traverse within a directory;
+                                  files/directories deeper than this will be skipped
+  -l, --follow-symlinks           If enabled, the program will follow symbolic links
       --gen-bash-completion       Generate a completion file for bash
                                   if any, the first argument will be taken as output file.
       --gen-fish-completion       Generate a completion file for fish
@@ -54,9 +57,15 @@ Flags:
       --gen-zsh-completion        Generate a completion file for zsh
                                   if any, the first argument will be taken as output file.
   -h, --help                      help for fsize
-      --no-progress               Disable any progress indicator.
+  -i, --ignore strings            If ignore is not "", the files that match it will be excluded from the count.
+                                  The pattern must be a regular expression unless the --wildcard flag is on
+      --log string                Indicates the log level, which can be debug, info, warn, error, or fatal. (default "info")
+  -s, --no-progress               Disable any progress indicator.
       --no-walk                   Skips walking inside the directories.
       --no-warns                  Hide possible warnings.
+  -c, --not-clear-bar             Prevents the progress indicator from being cleared after finishing (default true)
+  -f, --pattern strings           If the pattern is not "", only files that match it will be included in the count.
+                                  The pattern must be a regular expression unless the --wildcard flag on
       --print-on-walk             Prints the name of the file being walked if a directory has been selected.
       --print-settings            Prints the current configuration values.
   -p, --progress                  Displays a file count and progress bar when counting and summing file sizes. (default true)
@@ -64,6 +73,9 @@ Flags:
                                   before a progress indicator appears (default 1s)
       --update                    Automatically updates the program by overwriting the binary and regenerating the completions.
   -v, --version                   version for fsize
+  -x, --warn-limit int            Indicates the maximum number of warnings that will be printed.
+                                  If it is -1, there is no limit. (default 8)
+  -w, --wildcard                  Switches --ignore & --pattern from regular expressions to wildcard patterns
 ```
 
 Or by copying one of the
