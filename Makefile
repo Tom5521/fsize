@@ -95,9 +95,16 @@ override V_FLAG := $(if $(filter 1,$(VERBOSE)),-v)
 override WIN_EXT := $(call OS_EXT,$(GOOS))
 override GO_PACKAGE := github.com/Tom5521/fsize
 
+MANAGE_UPDATE := 1
+
 LD_FLAGS := -s -w
 LD_FLAGS += -X '$(GO_PACKAGE)/meta.LongVersion=$(LATEST_TAG)'
 LD_FLAGS += -X '$(GO_PACKAGE)/meta.Version=$(LATEST_TAG_SHORT)'
+ifeq ($(MANAGE_UPDATE),1)
+LD_FLAGS += -X 'main.releaseTarget=github-bin'
+else
+LD_FLAGS += -X 'main.releaseTarget=packageManagers'
+endif
 
 XGOTEXT_SUFFIX := $(if $(WIN_EXT),.exe,.bin)
 XGOTEXT_PATH := $(if $(shell command -v xgotext),\

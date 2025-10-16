@@ -74,14 +74,16 @@ if any, the first argument will be taken as output file.`),
 		gotext.Get(`Generate a completion file for zsh
 if any, the first argument will be taken as output file.`),
 	)
-	flag.BoolVar(
-		&flags.Update,
-		"update",
-		false,
-		gotext.Get(
-			`Automatically updates the program by overwriting the binary and regenerating the completions.`,
-		),
-	)
+	if upgradable {
+		flag.BoolVar(
+			&flags.Update,
+			"update",
+			false,
+			gotext.Get(
+				`Automatically updates the program by overwriting the binary and regenerating the completions.`,
+			),
+		)
+	}
 	flag.BoolVar(
 		&flags.BinInfo,
 		"bin-info",
@@ -183,13 +185,16 @@ If it is -1, there is no limit.`,
 		"print-on-walk",
 	)
 
-	root.MarkFlagsMutuallyExclusive(
-		"update",
+	otherFlags := []string{
 		"gen-zsh-completion",
 		"gen-bash-completion",
 		"gen-fish-completion",
 		"print-settings",
 		"bin-info",
 		"config",
-	)
+	}
+	if upgradable {
+		otherFlags = append(otherFlags, "update")
+	}
+	root.MarkFlagsMutuallyExclusive(otherFlags...)
 }

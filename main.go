@@ -19,6 +19,15 @@ import (
 	"golang.org/x/term"
 )
 
+var (
+	releaseTarget string
+	upgradable    bool
+)
+
+func init() {
+	upgradable = releaseTarget == "github-bin"
+}
+
 func main() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 
@@ -99,6 +108,7 @@ func RunE(cmd *cobra.Command, args []string) (err error) {
 
 		fmt.Println("GOOS:", runtime.GOOS)
 		fmt.Println("GOARCH:", runtime.GOARCH)
+		fmt.Println(po.Get("Self-upgradable:"), upgradable)
 		fmt.Println(po.Get("Version:"), meta.LongVersion)
 		fmt.Println(po.Get("Updated:"), updated)
 		if !updated {
