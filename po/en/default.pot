@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: v1.20.0-11-ge0e0fe1\n"
+"Project-Id-Version: v1.21.0\n"
 "PO-Revision-Date: YEAR-MO-DA HO: MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,83 +54,91 @@ msgstr ""
 msgid "Generate a completion file for zsh\nif any, the first argument will be taken as output file."
 msgstr ""
 
-#: flags.go:82
+#: flags.go:83
 msgid "Automatically updates the program by overwriting the binary and regenerating the completions."
 msgstr ""
 
-#: flags.go:89
+#: flags.go:91
 msgid "Displays the information of the binary"
 msgstr ""
 
-#: flags.go:102
+#: flags.go:104
 msgid "Disable any progress indicator."
 msgstr ""
 
-#: flags.go:109
+#: flags.go:111
 msgid "Specifies how long the program should be counting files\nbefore a progress indicator appears"
 msgstr ""
 
-#: flags.go:117
+#: flags.go:119
 msgid "If the pattern is not \"\", only files that match it will be included in the count.\nThe pattern must be a regular expression unless the --wildcard flag on"
 msgstr ""
 
-#: flags.go:126
+#: flags.go:128
 msgid "If ignore is not \"\", the files that match it will be excluded from the count.\nThe pattern must be a regular expression unless the --wildcard flag is on"
 msgstr ""
 
-#: flags.go:135
+#: flags.go:137
 msgid "Switches --ignore & --pattern from regular expressions to wildcard patterns"
 msgstr ""
 
-#: flags.go:142
+#: flags.go:144
 msgid "Prevents the progress indicator from being cleared after finishing"
 msgstr ""
 
-#: flags.go:150
+#: flags.go:152
 msgid "Indicates the maximum depth to traverse within a directory; \nfiles/directories deeper than this will be skipped"
 msgstr ""
 
-#: flags.go:160
+#: flags.go:162
 msgid "Indicates the maximum number of warnings that will be printed. \nIf it is -1, there is no limit."
 msgstr ""
 
-#: flags.go:169
+#: flags.go:171
 msgid "Indicates the log level, which can be debug, info, warn, error, or fatal."
 msgstr ""
 
-#: flags.go:173
+#: flags.go:175
 msgid "If enabled, the program will follow symbolic links"
 msgstr ""
 
-#: main.go:56
+#: main.go:66
 msgid "ERROR:"
 msgstr ""
 
-#: main.go:73
+#: main.go:90
 msgid "Available configuration keys:"
 msgstr ""
 
-#: main.go:86
+#: main.go:100
 msgid "Already in latest version"
 msgstr ""
 
-#: main.go:102
+#: main.go:113
+msgid "Self-upgradable:"
+msgstr ""
+
+#: main.go:114
 msgid "Version:"
 msgstr ""
 
-#: main.go:103
+#: main.go:115
 msgid "Updated:"
 msgstr ""
 
-#: main.go:105
+#: main.go:117
 msgid "Latest version:"
 msgstr ""
 
-#: main.go:108
+#: main.go:119
+msgid "(the hashes differ)"
+msgstr ""
+
+#: main.go:124
 msgid "Source Code: %s"
 msgstr ""
 
-#: main.go:113
+#: main.go:129
 msgid "No file/directory was specified, the current directory will be used. (.)"
 msgstr ""
 
@@ -215,81 +223,85 @@ msgstr ""
 msgid "GID/Group:"
 msgstr ""
 
-#: update/main.go:25
+#: update/main.go:33
 msgid "Checking the latest version available..."
 msgstr ""
 
-#: update/main.go:67
+#: update/main.go:77
+msgid "unsupported platform, try building fsize by yourself"
+msgstr ""
+
+#: update/main.go:83
 msgid "NB! It seems that you are in a NixOS."
 msgstr ""
 
-#: update/main.go:69
+#: update/main.go:85
 msgid "Due to the non-standard filesystem implementation of the environment, the update command may not work as expected."
 msgstr ""
 
-#: update/main.go:76
+#: update/main.go:92
 msgid "Do you want to proceed with the update?"
 msgstr ""
 
-#: update/main.go:77
+#: update/main.go:93
 #: update/update-completions.go:37
 msgid "Yes"
 msgstr ""
 
-#: update/main.go:86
+#: update/main.go:102
 #: update/update-completions.go:45
 msgid "error running confirm dialog"
 msgstr ""
 
-#: update/main.go:88
+#: update/main.go:104
 msgid "The command has been cancelled."
 msgstr ""
 
-#: update/main.go:101
+#: update/main.go:117
 msgid "error renaming the old executable [%s] to: %v"
 msgstr ""
 
-#: update/main.go:106
+#: update/main.go:122
 msgid "error getting http response: %v"
 msgstr ""
 
-#: update/main.go:118
+#: update/main.go:134
 msgid "Downloading latest version..."
 msgstr ""
 
-#: update/main.go:127
+#: update/main.go:143
 msgid "Error downloading binary to %s: %v"
 msgstr ""
 
-#: update/main.go:128
+#: update/main.go:144
 msgid "Reversing changes..."
 msgstr ""
 
-#: update/main.go:133
+#: update/main.go:149
 msgid "error reversing changes: failed to rename %s to %s: %v"
 msgstr ""
 
-#: update/main.go:147
+#: update/main.go:163
 msgid "error finishing the progress bar: %s"
 msgstr ""
 
-#: update/main.go:151
+#: update/main.go:167
 msgid "error removing old executable: %s"
 msgstr ""
 
-#: update/main.go:155
+#: update/main.go:171
 msgid "Updating completions..."
 msgstr ""
 
-#: update/main.go:158
+#: update/main.go:174
 msgid "error updating the completions: %s"
 msgstr ""
 
-#: update/main.go:162
+#: update/main.go:178
 msgid "Upgrade completed successfully"
 msgstr ""
 
-#: update/main.go:176
+#: update/main.go:196
 msgid "%s detected, reversing changes before finishing program..."
 msgstr ""
 

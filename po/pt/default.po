@@ -81,7 +81,7 @@ msgstr ""
 "Gera um arquivo de autocompletar para o zsh\n"
 "se fornecido, o primeiro argumento será usado como arquivo de saída."
 
-#: flags.go:82
+#: flags.go:83
 msgid ""
 "Automatically updates the program by overwriting the binary and regenerating "
 "the completions."
@@ -89,15 +89,15 @@ msgstr ""
 "Atualiza automaticamente o programa substituindo o binário e regenerando os "
 "arquivos de autocompletar."
 
-#: flags.go:89
+#: flags.go:91
 msgid "Displays the information of the binary"
 msgstr "Exibe as informações do binário"
 
-#: flags.go:102
+#: flags.go:104
 msgid "Disable any progress indicator."
 msgstr "Desativa qualquer indicador de progresso."
 
-#: flags.go:109
+#: flags.go:111
 msgid ""
 "Specifies how long the program should be counting files\n"
 "before a progress indicator appears"
@@ -105,7 +105,7 @@ msgstr ""
 "Especifica por quanto tempo o programa deve contar arquivos\n"
 "antes que um indicador de progresso apareça"
 
-#: flags.go:117
+#: flags.go:119
 msgid ""
 "If the pattern is not \"\", only files that match it will be included in the "
 "count.\n"
@@ -116,7 +116,7 @@ msgstr ""
 "O padrão deve ser uma expressão regular, a menos que a flag --wildcard "
 "esteja ativa"
 
-#: flags.go:126
+#: flags.go:128
 msgid ""
 "If ignore is not \"\", the files that match it will be excluded from the "
 "count.\n"
@@ -127,16 +127,16 @@ msgstr ""
 "O padrão deve ser uma expressão regular, a menos que a flag --wildcard "
 "esteja ativa"
 
-#: flags.go:135
+#: flags.go:137
 msgid ""
 "Switches --ignore & --pattern from regular expressions to wildcard patterns"
 msgstr "Muda --ignore e --pattern de expressões regulares para padrões curinga"
 
-#: flags.go:142
+#: flags.go:144
 msgid "Prevents the progress indicator from being cleared after finishing"
 msgstr "Impede que o indicador de progresso seja limpo após a conclusão"
 
-#: flags.go:150
+#: flags.go:152
 msgid ""
 "Indicates the maximum depth to traverse within a directory; \n"
 "files/directories deeper than this will be skipped"
@@ -144,7 +144,7 @@ msgstr ""
 "Indica a profundidade máxima a percorrer dentro de uma pasta; \n"
 "arquivos/pastas mais profundos que isso serão ignorados"
 
-#: flags.go:160
+#: flags.go:162
 msgid ""
 "Indicates the maximum number of warnings that will be printed. \n"
 "If it is -1, there is no limit."
@@ -152,44 +152,52 @@ msgstr ""
 "Indica o número máximo de avisos que serão impressos. \n"
 "Se for -1, não há limite."
 
-#: flags.go:169
+#: flags.go:171
 msgid ""
 "Indicates the log level, which can be debug, info, warn, error, or fatal."
 msgstr "Indica o nível de log, que pode ser debug, info, warn, error ou fatal."
 
-#: flags.go:173
+#: flags.go:175
 msgid "If enabled, the program will follow symbolic links"
 msgstr "Se habilitado, o programa seguirá links simbólicos"
 
-#: main.go:56
+#: main.go:66
 msgid "ERROR:"
 msgstr "ERRO:"
 
-#: main.go:73
+#: main.go:90
 msgid "Available configuration keys:"
 msgstr "Chaves de configuração disponíveis:"
 
-#: main.go:86
+#: main.go:100
 msgid "Already in latest version"
 msgstr "Já está na versão mais recente"
 
-#: main.go:102
+#: main.go:113
+msgid "Self-upgradable:"
+msgstr "Auto-atualizável:"
+
+#: main.go:114
 msgid "Version:"
 msgstr "Versão:"
 
-#: main.go:103
+#: main.go:115
 msgid "Updated:"
 msgstr "Atualizado:"
 
-#: main.go:105
+#: main.go:117
 msgid "Latest version:"
 msgstr "Última versão:"
 
-#: main.go:108
+#: main.go:119
+msgid "(the hashes differ)"
+msgstr "(os hashes diferem)"
+
+#: main.go:124
 msgid "Source Code: %s"
 msgstr "Código-fonte: %s"
 
-#: main.go:113
+#: main.go:129
 msgid ""
 "No file/directory was specified, the current directory will be used. (.)"
 msgstr ""
@@ -277,15 +285,19 @@ msgstr "UID/Usuário:"
 msgid "GID/Group:"
 msgstr "GID/Grupo:"
 
-#: update/main.go:25
+#: update/main.go:33
 msgid "Checking the latest version available..."
 msgstr "Verificando a versão mais recente disponível..."
 
-#: update/main.go:67
+#: update/main.go:77
+msgid "unsupported platform, try building fsize by yourself"
+msgstr "plataforma não suportada, tente compilar o fsize você mesmo"
+
+#: update/main.go:83
 msgid "NB! It seems that you are in a NixOS."
 msgstr "Atenção! Parece que você está em um NixOS."
 
-#: update/main.go:69
+#: update/main.go:85
 msgid ""
 "Due to the non-standard filesystem implementation of the environment, the "
 "update command may not work as expected."
@@ -293,67 +305,67 @@ msgstr ""
 "Devido à implementação não padrão do sistema de arquivos do ambiente, o "
 "comando de atualização pode não funcionar como esperado."
 
-#: update/main.go:76
+#: update/main.go:92
 msgid "Do you want to proceed with the update?"
 msgstr "Deseja prosseguir com a atualização?"
 
-#: update/main.go:77 update/update-completions.go:37
+#: update/main.go:93 update/update-completions.go:37
 msgid "Yes"
 msgstr "Sim"
 
-#: update/main.go:86 update/update-completions.go:45
+#: update/main.go:102 update/update-completions.go:45
 msgid "error running confirm dialog"
 msgstr "erro ao executar diálogo de confirmação"
 
-#: update/main.go:88
+#: update/main.go:104
 msgid "The command has been cancelled."
 msgstr "O comando foi cancelado."
 
-#: update/main.go:101
+#: update/main.go:117
 msgid "error renaming the old executable [%s] to: %v"
 msgstr "erro ao renomear o executável antigo [%s] para: %v"
 
-#: update/main.go:106
+#: update/main.go:122
 msgid "error getting http response: %v"
 msgstr "erro ao obter resposta HTTP: %v"
 
-#: update/main.go:118
+#: update/main.go:134
 msgid "Downloading latest version..."
 msgstr "Baixando a versão mais recente..."
 
-#: update/main.go:127
+#: update/main.go:143
 msgid "Error downloading binary to %s: %v"
 msgstr "Erro ao baixar o binário para %s: %v"
 
-#: update/main.go:128
+#: update/main.go:144
 msgid "Reversing changes..."
 msgstr "Revertendo alterações..."
 
-#: update/main.go:133
+#: update/main.go:149
 msgid "error reversing changes: failed to rename %s to %s: %v"
 msgstr "erro ao reverter alterações: falha ao renomear %s para %s: %v"
 
-#: update/main.go:147
+#: update/main.go:163
 msgid "error finishing the progress bar: %s"
 msgstr "Erro ao finalizar a barra de progresso: %s"
 
-#: update/main.go:151
+#: update/main.go:167
 msgid "error removing old executable: %s"
 msgstr "Erro ao remover o executável antigo: %s"
 
-#: update/main.go:155
+#: update/main.go:171
 msgid "Updating completions..."
 msgstr "Atualizando arquivos de autocompletar..."
 
-#: update/main.go:158
+#: update/main.go:174
 msgid "error updating the completions: %s"
 msgstr "Erro ao atualizar os arquivos de autocompletar: %s"
 
-#: update/main.go:162
+#: update/main.go:178
 msgid "Upgrade completed successfully"
 msgstr "Atualização concluída com sucesso"
 
-#: update/main.go:176
+#: update/main.go:196
 msgid "%s detected, reversing changes before finishing program..."
 msgstr "%s detectado, revertendo alterações antes de finalizar o programa..."
 
