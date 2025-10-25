@@ -125,8 +125,8 @@ endef
 
 BIN = ./builds/fsize-$(1)-$(2)$(call WIN_EXT,$(1))
 override CURRENT_BIN := $(call BIN,$(GOOS),$(GOARCH))
-override NATIVE_GOOS := $(shell go env GOOS)
-override NATIVE_GOARCH := $(shell go env GOARCH)
+override NATIVE_GOOS := $(shell GOOS="" go env GOOS)
+override NATIVE_GOARCH := $(shell GOARCH="" go env GOARCH)
 override NATIVE_BIN := $(call BIN,$(NATIVE_GOOS),$(NATIVE_GOARCH))
 
 NDK_TOOLCHAIN ?= /opt/android-ndk/toolchains/llvm/prebuilt/linux-x86_64/bin
@@ -209,11 +209,11 @@ changelog.md:
 .SILENT:
 .ONESHELL:
 build:
-	if [[ "$(GOOS)" == "android" && "$(NATIVE_GOOS)" != "android" ]];then
+	if [[ "$(GOOS)" == "android"  && "$(NATIVE_GOOS)" != "android" ]];then
 		export CGO_ENABLED=1
 		if [[ "$(GOARCH)" == "arm64" ]];then
 			export CC=$(NDK_TOOLCHAIN)/aarch64-linux-android35-clang
-		else
+		elif [[ "$(GOARCH)" == "arm" ]]; then
 			export CC=$(NDK_TOOLCHAIN)/armv7a-linux-androideabi35-clang
 		fi
 	fi
