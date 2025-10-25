@@ -209,7 +209,7 @@ changelog.md:
 .SILENT:
 .ONESHELL:
 build:
-	if [[ "$(GOOS)" == "android" ]];then
+	if [[ "$(GOOS)" == "android" && "$(NATIVE_GOOS)" != "android" ]];then
 		export CGO_ENABLED=1
 		if [[ "$(GOARCH)" == "arm64" ]];then
 			export CC=$(NDK_TOOLCHAIN)/aarch64-linux-android35-clang
