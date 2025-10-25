@@ -30,6 +30,7 @@ linux/arm
 darwin/amd64
 darwin/arm64
 android/arm64
+android/arm
 endef
 
 # These are just the platforms that fsize is compatible with.
@@ -127,6 +128,8 @@ override NATIVE_GOOS := $(shell go env GOOS)
 override NATIVE_GOARCH := $(shell go env GOARCH)
 override NATIVE_BIN := $(call BIN,$(NATIVE_GOOS),$(NATIVE_GOARCH))
 
+NDK_TOOLCHAIN ?= /opt/android-ndk/toolchains/llvm/prebuilt/linux-x86_64/bin
+
 .PHONY: test all clean default run build build-targets install uninstall \
 	%-completions-install %-completions-uninstall go-install \
 	go-uninstall %-install %-uninstall release update-assets po/en/default.pot \
@@ -203,7 +206,16 @@ changelog.md:
 		$$penultimate_tag..$$latest_tag >> changelog.md
 
 .SILENT:
+.ONESHELL:
 build:
+	if [[ "$(GOOS)" == "android" ]];then
+		export CGO_ENABLED=1
+		if [[ "$(GOARCH)" == "arm64" ]];then
+			export CC=$(NDK_TOOLCHAIN)/aarch64-linux-android35-clang
+		else
+			export CC=$(NDK_TOOLCHAIN)/armv7a-linux-androideabi35-clang
+		fi
+	fi
 	$(CMD) build $(V_FLAG) \
 	$(BUILD_ARGS) \
 	$(if $(BUILD_TAGS),-tags "$(BUILD_TAGS)") \
