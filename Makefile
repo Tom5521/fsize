@@ -72,6 +72,7 @@ solaris/amd64
 darwin/amd64
 darwin/arm64
 android/arm64
+android/arm
 endef
 
 TARGETS := COMPATIBLE_PLATFORMS
