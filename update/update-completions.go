@@ -38,8 +38,7 @@ func updateCompletions(executable string) (err error) {
 		Negative(po.Get("No")).
 		Value(&confirm).
 		WithTheme(huh.ThemeBase()).
-		WithAccessible(true).
-		Run()
+		RunAccessible(os.Stderr, os.Stdin)
 	if !confirm || err != nil {
 		if err != nil {
 			log.Error(po.Get("error running confirm dialog"), "err", err)

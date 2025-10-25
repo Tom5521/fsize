@@ -17,7 +17,6 @@ import (
 	"github.com/gookit/color"
 	po "github.com/leonelquinteros/gotext"
 	"github.com/spf13/cobra"
-	"golang.org/x/term"
 )
 
 var (
@@ -68,9 +67,6 @@ func main() {
 }
 
 func RunE(cmd *cobra.Command, args []string) (err error) {
-	if !term.IsTerminal(int(os.Stdout.Fd())) {
-		color.Enable = false
-	}
 	var client *github.Client
 	if flags.Update || flags.BinInfo {
 		client = github.NewClient(nil)

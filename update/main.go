@@ -94,8 +94,7 @@ func ApplyUpdate(client *github.Client, status *Status) (err error) {
 			Negative("No").
 			Value(&confirm).
 			WithTheme(huh.ThemeBase()).
-			WithAccessible(true).
-			Run()
+			RunAccessible(os.Stderr, os.Stdin)
 
 		if !confirm || err != nil {
 			if err != nil {

@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/Tom5521/fsize/flags"
 	"github.com/Tom5521/fsize/meta"
 	"github.com/Tom5521/fsize/settings"
@@ -9,6 +11,7 @@ import (
 	"github.com/leonelquinteros/gotext"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
+	"golang.org/x/term"
 )
 
 var root cobra.Command
@@ -19,6 +22,7 @@ func initRoot() {
 		Short: gotext.Get("Displays the file/folder properties."),
 
 		PreRunE: func(cmd *cobra.Command, args []string) error {
+			color.Enable = term.IsTerminal(int(os.Stdout.Fd()))
 			lvl, err := log.ParseLevel(flags.LogLevel)
 			if err != nil {
 				return err
